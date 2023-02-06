@@ -1,0 +1,16 @@
+name: dask
+channels:
+  - pytorch
+  - nvidia
+  - defaults
+  - conda-forge
+  - anaconda
+dependencies:
+  - jupyter
+  - dask
+  - pytorch
+  - pytorch-cuda
+  - torchvision
+  - cudatoolkit
+  - tqdm
+  
