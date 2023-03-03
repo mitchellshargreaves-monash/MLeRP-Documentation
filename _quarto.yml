@@ -1,0 +1,21 @@
+project:
+  type: website
+
+website:
+  title: "mlerp-quatro"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - about.qmd
+      - test.qmd
+      # - dask-pytorch.ipynb
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+
+
+

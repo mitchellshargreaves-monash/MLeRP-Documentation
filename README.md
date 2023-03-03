@@ -1,5 +1,9 @@
 # MLeRP Documentation
+This repo is to house the documentation for MLeRP. The documentation uses the Quarto format in order to render python notebooks as this . 
 
+The Quarto project is 
+
+When notebooks are ready 
 
 
 ## Getting started
