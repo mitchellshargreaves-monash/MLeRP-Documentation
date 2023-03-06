@@ -8,8 +8,8 @@ website:
       - href: index.qmd
         text: Home
       - about.qmd
-      - test.qmd
-      # - dask-pytorch.ipynb
+      - dask-slurm.ipynb
+      - dask-pytorch.ipynb
 
 format:
   html:
