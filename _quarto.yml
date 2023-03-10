@@ -17,6 +17,7 @@ website:
     contents:
       - text: "Home"
         file: index.qmd
+      - about.qmd
       - dask-slurm.ipynb
       - dask-pytorch.ipynb
 

@@ -1,0 +1,60 @@
+---
+title: About MLeRP
+---
+MLeRP is split into two clusters which users can choose between - one based in Monash (Melbourne, Victoria) and one based in QCIF (Brisbane, Queensland). The clusters have seperate file systems, so you will have to transfer your files across if you'd like to switch regions.
+
+# Monash
+Reference: https://docs.massive.org.au/M3/m3users.html#system-configuration
+
+Total number of cores: X
+
+Total number of GPU cores: X CUDA cores
+
+Total memory: X TBytes
+
+Storage capacity: X PBytes Lustre parallel file system
+
+Network: X cards
+
+## Compute
+
+| Name | Partition | Nodes | CPU Cores per node | Total CPU cores in partition | Memory per node (GB) | CPU Speed | Processor model | Codename |
+|-|-|-|-|-|-|-|-|-|
+|x|x|x|x|x|x|x|x|x|
+
+## GPU Compute
+
+
+| Name | Partition | Nodes | CPU Cores per node | Total CPU cores in partition | Memory per node (GB) | Number of GPUs per node | Total GPUs in partition | GPU model | GPU cores per card | CPU Speed | Processor model | Codename |
+|-|-|-|-|-|-|-|-|-|-|-|-|-|
+|x|x|x|x|x|x|x|x|x|x|x|x|x|
+
+## Remote desktops through the CVL
+I assume we cut this?
+
+# QCIF
+Total number of cores: X
+
+Total number of GPU cores: X CUDA cores
+
+Total memory: X TBytes
+
+Storage capacity: X PBytes Lustre parallel file system
+
+Network: X cards
+
+## Compute
+
+| Name | Partition | Nodes | CPU Cores per node | Total CPU cores in partition | Memory per node (GB) | CPU Speed | Processor model | Codename |
+|-|-|-|-|-|-|-|-|-|
+|x|x|x|x|x|x|x|x|x|
+
+## GPU Compute
+
+
+| Name | Partition | Nodes | CPU Cores per node | Total CPU cores in partition | Memory per node (GB) | Number of GPUs per node | Total GPUs in partition | GPU model | GPU cores per card | CPU Speed | Processor model | Codename |
+|-|-|-|-|-|-|-|-|-|-|-|-|-|
+|x|x|x|x|x|x|x|x|x|x|x|x|x|
+
+## Remote desktops through the CVL
+I assume we cut this?
