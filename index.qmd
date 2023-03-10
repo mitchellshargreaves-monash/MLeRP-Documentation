@@ -13,8 +13,8 @@ Be sure to check out the [Jupyter](https://docs.jupyter.org/en/latest/), [SLURM]
 MLeRP at the moment is only available through closed beta but is planned to be available through open beta to all Australian researchers. You can sign up to our mailing list if you'd like us to let you know when we're ready for open beta.
 
 <p style="text-align: center;">
-    <button type="button" class="btn btn-primary btn-lg" href="https://mlerp.cloud.edu.au/launch">Log in</button>
-    <button type="button" class="btn btn-primary btn-lg"  href="https://mlerp.cloud.edu.au/launch">Sign up</button>
+    <button type="button" class="btn btn-primary btn-lg" onclick="window.location.href='https://mlerp.cloud.edu.au/launch';">Log in</button>
+    <button type="button" class="btn btn-primary btn-lg" onclick="window.location.href='https://forms.gle/p9HWS79yxDouP6Tu8';">Sign up</button>
 </p>
 
 <!-- MLeRP is available through open beta to all Australian researchers. You can [sign up]() to be a part of our open beta to gain access to the MLeRP platform. -->
