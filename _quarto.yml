@@ -2,20 +2,28 @@ project:
   type: website
 
 website:
-  title: "mlerp-quatro"
+  title: "MLeRP User Guide Documentation"
+  favicon: ./favicon-32x32.png
   navbar:
+    logo: ./images/mstile-150x150.png
     left:
-      - href: index.qmd
-        text: Home
-      - about.qmd
+      - text: "Home"
+        file: index.qmd
+      - text: "Quick Start"
+        file: dask-slurm.ipynb
+      # - text: <a href="https://mlerp.cloud.edu.au/login">Login</a>
+
+  sidebar:
+    contents:
+      - text: "Home"
+        file: index.qmd
       - dask-slurm.ipynb
       - dask-pytorch.ipynb
 
 format:
   html:
-    theme: cosmo
+    theme: 
+      - cosmo
+      - styles.scss
     css: styles.css
     toc: true
-
-
-

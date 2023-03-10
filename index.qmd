@@ -1,7 +1,23 @@
 ---
-title: "mlerp-quatro"
+title: "Welcome to the MLeRP User guide"
 ---
 
-This is a Quarto website.
+![](./images/cluster-cat.png)
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+The MLeRP environment creates a middle ground that has the interactivity of a notebook with the power of a HPC environment that can share valuable resources between other users while code isn’t being executed.
+
+We provide users with CPU based Jupyter notebook sessions capable of basic analysis, with the ability to interactively send jobs to a SLURM queue for GPU or parallelised CPU acceleration through Dask.
+
+Be sure to check out the [Jupyter](https://docs.jupyter.org/en/latest/), [SLURM](https://slurm.schedmd.com/documentation.html) and [Dask](https://www.dask.org/) documentation for more information.
+
+MLeRP at the moment is only available through closed beta but is planned to be available through open beta to all Australian researchers. You can sign up to our mailing list if you'd like us to let you know when we're ready for open beta.
+
+<p style="text-align: center;">
+    <button type="button" class="btn btn-primary btn-lg" href="https://mlerp.cloud.edu.au/launch">Log in</button>
+    <button type="button" class="btn btn-primary btn-lg"  href="https://mlerp.cloud.edu.au/launch">Sign up</button>
+</p>
+
+<!-- MLeRP is available through open beta to all Australian researchers. You can [sign up]() to be a part of our open beta to gain access to the MLeRP platform. -->
+
+# Contact us
+Want to get in touch with the developers? You can reach us at: **EMAIL HERE**
