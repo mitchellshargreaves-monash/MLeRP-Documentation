@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.335">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>MLeRP User Guide Documentation - MLeRP FAQ</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="././favicon-32x32.png" rel="icon" type="image/png">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    <img src="././images/mstile-150x150.png" alt="" class="navbar-logo">
+    </a>
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">MLeRP User Guide Documentation</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="./index.html" aria-current="page">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./faq.html">
+ <span class="menu-text">MLeRP FAQ</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./dask-slurm.html">
+ <span class="menu-text">Quick Start</span></a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">MLeRP FAQ</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Home</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./about.html" class="sidebar-item-text sidebar-link">About MLeRP</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./faq.html" class="sidebar-item-text sidebar-link active">MLeRP FAQ</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./dask-slurm.html" class="sidebar-item-text sidebar-link">Dask SLURMClusters</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./dask-pytorch.html" class="sidebar-item-text sidebar-link">PyTorch and Dask</a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#what-is-mlerp" id="toc-what-is-mlerp" class="nav-link active" data-scroll-target="#what-is-mlerp">What is MLeRP?</a></li>
+  <li><a href="#why-do-i-still-have-to-wait-in-queue" id="toc-why-do-i-still-have-to-wait-in-queue" class="nav-link" data-scroll-target="#why-do-i-still-have-to-wait-in-queue">Why do I still have to wait in queue?</a></li>
+  <li><a href="#if-i-still-have-to-wait-in-queue-how-is-this-better-than-using-a-traditional-hpc-environment" id="toc-if-i-still-have-to-wait-in-queue-how-is-this-better-than-using-a-traditional-hpc-environment" class="nav-link" data-scroll-target="#if-i-still-have-to-wait-in-queue-how-is-this-better-than-using-a-traditional-hpc-environment">If I still have to wait in queue how is this better than using a traditional HPC environment?</a></li>
+  <li><a href="#why-dask" id="toc-why-dask" class="nav-link" data-scroll-target="#why-dask">Why Dask?</a></li>
+  <li><a href="#will-i-need-to-change-my-code-to-work-with-mlerp" id="toc-will-i-need-to-change-my-code-to-work-with-mlerp" class="nav-link" data-scroll-target="#will-i-need-to-change-my-code-to-work-with-mlerp">Will I need to change my code to work with MLeRP?</a></li>
+  <li><a href="#why-arent-my-print-statements-showing-up-in-my-jobs" id="toc-why-arent-my-print-statements-showing-up-in-my-jobs" class="nav-link" data-scroll-target="#why-arent-my-print-statements-showing-up-in-my-jobs">Why aren’t my print statements showing up in my jobs?</a></li>
+  <li><a href="#how-much-compute-should-i-ask-for-with-my-slurmcluster" id="toc-how-much-compute-should-i-ask-for-with-my-slurmcluster" class="nav-link" data-scroll-target="#how-much-compute-should-i-ask-for-with-my-slurmcluster">How much compute should I ask for with my <code>SLURMCluster</code>?</a></li>
+  <li><a href="#should-i-use-cluster.scale-or-cluster.adapt" id="toc-should-i-use-cluster.scale-or-cluster.adapt" class="nav-link" data-scroll-target="#should-i-use-cluster.scale-or-cluster.adapt">Should I use <code>cluster.scale</code> or <code>cluster.adapt</code>?</a></li>
+  <li><a href="#how-do-i-install-my-favourite-python-package" id="toc-how-do-i-install-my-favourite-python-package" class="nav-link" data-scroll-target="#how-do-i-install-my-favourite-python-package">How do I install my favourite python package?</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block">MLeRP FAQ</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="what-is-mlerp" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-mlerp">What is MLeRP?</h2>
+<p>Say we have a researcher who is a domain expert in a field and is just discovering that machine learning algorithms might be appropriate to accelerate their work. They explore online for potential approaches and even find some tutorials that use interactive environments, but quickly discover that dealing with large datasets requires more compute than their laptop can handle so they need to move to a HPC system. While desktop sessions are available they might have prohibitively long queues and have low utilisation of the underlying hardware. They could submit a job to the HPC queue but this leads to long times between iterations. At this stage the researcher is still discovering things about their data, how to clean it and how to analyse it.</p>
+<p>They need an interactive environment so they can develop and debug their algorithms and the algorithms, but still need access to high powered acceleration so they can process their dataset. At the same time we want to improve utilisation of the hardware so that we can serve more users and reduce wait times.</p>
+<p>MLeRP was built to be a middle ground that has the interactivity of a notebook with the power of a HPC environment that can share valuable resources between other users while code isn’t being executed.</p>
+<p>Now our new researcher can easily import the same code that they were using on their laptops or with online notebook services straight into a HPC environment without the need to convert it first into a SBATCH script, wait in long HPC queues or load modules for dependencies.</p>
+</section>
+<section id="why-do-i-still-have-to-wait-in-queue" class="level2">
+<h2 class="anchored" data-anchor-id="why-do-i-still-have-to-wait-in-queue">Why do I still have to wait in queue?</h2>
+<p>Directly attaching GPU compute to notebooks leads to very low utilisation since the GPU sits idle while you’re debugging your code. By using a queue we are able to service more researchers at once with greater efficiency.</p>
+</section>
+<section id="if-i-still-have-to-wait-in-queue-how-is-this-better-than-using-a-traditional-hpc-environment" class="level2">
+<h2 class="anchored" data-anchor-id="if-i-still-have-to-wait-in-queue-how-is-this-better-than-using-a-traditional-hpc-environment">If I still have to wait in queue how is this better than using a traditional HPC environment?</h2>
+<p>MLeRP is designed with the idea that a job’s size should be about the size of a cell in a jupyter notebook. With that in mind, the queue has been optimised for short jobs, with a wall time of <strong>|NEED TO WORK OUT|</strong>. Executing a cell won’t always be immediate but your job should start up pretty quickly. If you need to run a job that runs longer than this, checkpoint your code and split it into multiple jobs. If your job takes longer than <strong>|NEED TO WORK OUT|</strong>, contact us at <strong>|EMAIL HERE|</strong></p>
+</section>
+<section id="why-dask" class="level2">
+<h2 class="anchored" data-anchor-id="why-dask">Why Dask?</h2>
+<p>We looked at a few different options for the MLeRP environment including <a href="https://aws.amazon.com/sagemaker/">Sagemaker</a>, <a href="https://spark.apache.org/">Spark</a> and <a href="https://docs.ray.io/en/releases-1.11.1/index.html">Ray</a>. Ultimately we settled on Dask as the primary tool to interface with the queue because:</p>
+<ul>
+<li>SLURM jobs can be submitted with <code>SLURMCluster</code> whenever HPC is needed</li>
+<li>Debugging can be done locally first with <code>LocalCluster</code> with minimal code change</li>
+<li>It has a familiar syntax as it’s designed as a light wrapper around common libraries like Numpy, Pandas and SciKit-Learn</li>
+<li>High level applications can be implemented easily with <a href="https://ml.dask.org/joblib.html">Scikit-Learn</a>, <a href="https://ml.dask.org/xgboost.html">XGBoost</a>, <a href="https://ml.dask.org/pytorch.html">Skorch</a>, <a href="https://ml.dask.org/keras.html">SciKeras</a></li>
+<li>Dask can submit any python function to the SLURM queue allowing the flexibility for bespoke low level applications</li>
+<li>Lazy evaluation of functions which allows for asynchronous code</li>
+</ul>
+</section>
+<section id="will-i-need-to-change-my-code-to-work-with-mlerp" class="level2">
+<h2 class="anchored" data-anchor-id="will-i-need-to-change-my-code-to-work-with-mlerp">Will I need to change my code to work with MLeRP?</h2>
+<p>Yes. Dask unfortunately does not come for free, you will have to do some code change to use it to interface with the cluster. You will also need to get a sense of SLURM ’s parameters defaults but it is</p>
+<p>That said we believe that this approach of submitting jobs through a python notebook environment will feel more familiar to researchers familiar with the python datascience ecosystem given how Dask is designed as a light wrapper around common libraries like numpy, pandas and Scikit-Learn.</p>
+<p>You will also be able to work with the cluster without needing to convert your experimental notebook code into a script and maintain the environment with modules like with a traditional cluster.</p>
+</section>
+<section id="why-arent-my-print-statements-showing-up-in-my-jobs" class="level2">
+<h2 class="anchored" data-anchor-id="why-arent-my-print-statements-showing-up-in-my-jobs">Why aren’t my print statements showing up in my jobs?</h2>
+<p>Print statements that are executed on remote machines won’t show up in your notebook. If you are using print statements for debugging, consider using a <code>LocalCluster</code> where they will behave as expected.</p>
+<p>If you need to record information while code is executing remotely either pass the information back to the notebook when the function returns for it to be printed, or log the output to a file.</p>
+</section>
+<section id="how-much-compute-should-i-ask-for-with-my-slurmcluster" class="level2">
+<h2 class="anchored" data-anchor-id="how-much-compute-should-i-ask-for-with-my-slurmcluster">How much compute should I ask for with my <code>SLURMCluster</code>?</h2>
+<p>Unfortunately there is no one size fits all answer to this question. Every research problem has its on demands and constraints so this a bit like asking ‘How long is a piece of string?’.</p>
+<p>With that being said, our GPU compute is split into <strong>|FLAVOURS|</strong> sizes and they are on nodes with <strong>|THIS MUCH RAM|</strong>. As a default it may make sense to start with a fraction of RAM that is proportional to your chosen GPU size.</p>
+<p>If your work is primarily CPU bound, Dask allows as many tasks as you have CPU cores, but if you are using GPUs you may want to dramatically limit this. One process per GPU could be a good place to start.</p>
+<p>For more information about using <code>SLURMCluster</code>, visit <a href="https://jobqueue.dask.org/en/latest/generated/dask_jobqueue.SLURMCluster.html">Dask’s documentation</a></p>
+</section>
+<section id="should-i-use-cluster.scale-or-cluster.adapt" class="level2">
+<h2 class="anchored" data-anchor-id="should-i-use-cluster.scale-or-cluster.adapt">Should I use <code>cluster.scale</code> or <code>cluster.adapt</code>?</h2>
+<p>We reccommend that you use the adapt method while you’re actively developing your code so that you don’t need to worry about cleaning up after yourself. The scale method can be used when you’re ready to run longer tests with higher utilisation.</p>
+</section>
+<section id="how-do-i-install-my-favourite-python-package" class="level2">
+<h2 class="anchored" data-anchor-id="how-do-i-install-my-favourite-python-package">How do I install my favourite python package?</h2>
+<p>If you want to control the python environment we recommend that you install and maintain a miniconda environment in your <code>userdata</code> directory.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

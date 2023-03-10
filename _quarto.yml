@@ -9,6 +9,7 @@ website:
     left:
       - text: "Home"
         file: index.qmd
+      - faq.qmd
       - text: "Quick Start"
         file: dask-slurm.ipynb
       # - text: <a href="https://mlerp.cloud.edu.au/login">Login</a>
@@ -18,6 +19,7 @@ website:
       - text: "Home"
         file: index.qmd
       - about.qmd
+      - faq.qmd
       - dask-slurm.ipynb
       - dask-pytorch.ipynb
 
