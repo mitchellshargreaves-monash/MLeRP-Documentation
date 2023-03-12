@@ -3,7 +3,7 @@ project:
 
 website:
   title: "MLeRP User Guide Documentation"
-  favicon: ./favicon-32x32.png
+  favicon: ./images/favicon-32x32.png
   navbar:
     logo: ./images/mstile-150x150.png
     left:
@@ -12,8 +12,11 @@ website:
       - faq.qmd
       - text: "Quick Start"
         file: dask-slurm.ipynb
-      # - text: <a href="https://mlerp.cloud.edu.au/login">Login</a>
-
+    right:
+      - text: Log in
+        href: https://mlerp.cloud.edu.au/launch
+      - text: Sign up
+        href: https://forms.gle/p9HWS79yxDouP6Tu8
   sidebar:
     contents:
       - text: "Home"
