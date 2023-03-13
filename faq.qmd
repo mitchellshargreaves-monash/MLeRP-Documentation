@@ -40,7 +40,10 @@ If your work is primarily CPU bound, Dask allows as many tasks as you have CPU c
 For more information about using `SLURMCluster`, visit [Dask's documentation](https://jobqueue.dask.org/en/latest/generated/dask_jobqueue.SLURMCluster.html)
 
 ## Should I use `cluster.scale` or `cluster.adapt`?
-We reccommend that you use the adapt method while you're actively developing your code so that you don't need to worry about cleaning up after yourself. The scale method can be used when you're ready to run longer tests with higher utilisation.
+We recommend that you use the adapt method while you're actively developing your code so that you don't need to worry about cleaning up after yourself. The scale method can be used when you're ready to run longer tests with higher utilisation.
 
 ## How do I install my favourite python package?
 If you want to control the python environment we recommend that you install and maintain a miniconda environment in your `userdata` directory.
+
+## What is a daemonic process and why can't I run one?
+A daemon is a process that runs as a background process. Dask prefers to control all processes so that it can manage them more gracefully if they fail. If you need to take control of the multiprocessing yourself, you can turn this off with `LocalCluster(processes=False)` and `SLURMCluster(nanny=False)`.
