@@ -176,6 +176,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#how-much-compute-should-i-ask-for-with-my-slurmcluster" id="toc-how-much-compute-should-i-ask-for-with-my-slurmcluster" class="nav-link" data-scroll-target="#how-much-compute-should-i-ask-for-with-my-slurmcluster">How much compute should I ask for with my <code>SLURMCluster</code>?</a></li>
   <li><a href="#should-i-use-cluster.scale-or-cluster.adapt" id="toc-should-i-use-cluster.scale-or-cluster.adapt" class="nav-link" data-scroll-target="#should-i-use-cluster.scale-or-cluster.adapt">Should I use <code>cluster.scale</code> or <code>cluster.adapt</code>?</a></li>
   <li><a href="#how-do-i-install-my-favourite-python-package" id="toc-how-do-i-install-my-favourite-python-package" class="nav-link" data-scroll-target="#how-do-i-install-my-favourite-python-package">How do I install my favourite python package?</a></li>
+  <li><a href="#what-is-a-daemonic-process-and-why-cant-i-run-one" id="toc-what-is-a-daemonic-process-and-why-cant-i-run-one" class="nav-link" data-scroll-target="#what-is-a-daemonic-process-and-why-cant-i-run-one">What is a daemonic process and why can’t I run one?</a></li>
   </ul>
 </nav>
     </div>
@@ -239,11 +240,15 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="should-i-use-cluster.scale-or-cluster.adapt" class="level2">
 <h2 class="anchored" data-anchor-id="should-i-use-cluster.scale-or-cluster.adapt">Should I use <code>cluster.scale</code> or <code>cluster.adapt</code>?</h2>
-<p>We reccommend that you use the adapt method while you’re actively developing your code so that you don’t need to worry about cleaning up after yourself. The scale method can be used when you’re ready to run longer tests with higher utilisation.</p>
+<p>We recommend that you use the adapt method while you’re actively developing your code so that you don’t need to worry about cleaning up after yourself. The scale method can be used when you’re ready to run longer tests with higher utilisation.</p>
 </section>
 <section id="how-do-i-install-my-favourite-python-package" class="level2">
 <h2 class="anchored" data-anchor-id="how-do-i-install-my-favourite-python-package">How do I install my favourite python package?</h2>
 <p>If you want to control the python environment we recommend that you install and maintain a miniconda environment in your <code>userdata</code> directory.</p>
+</section>
+<section id="what-is-a-daemonic-process-and-why-cant-i-run-one" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-a-daemonic-process-and-why-cant-i-run-one">What is a daemonic process and why can’t I run one?</h2>
+<p>A daemon is a process that runs as a background process. Dask prefers to control all processes so that it can manage them more gracefully if they fail. If you need to take control of the multiprocessing yourself, you can turn this off with <code>LocalCluster(processes=False)</code> and <code>SLURMCluster(nanny=False)</code>.</p>
 
 
 </section>

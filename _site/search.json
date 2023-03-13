@@ -81,7 +81,7 @@
     "href": "faq.html#should-i-use-cluster.scale-or-cluster.adapt",
     "title": "FAQ",
     "section": "Should I use cluster.scale or cluster.adapt?",
-    "text": "Should I use cluster.scale or cluster.adapt?\nWe reccommend that you use the adapt method while you’re actively developing your code so that you don’t need to worry about cleaning up after yourself. The scale method can be used when you’re ready to run longer tests with higher utilisation."
+    "text": "Should I use cluster.scale or cluster.adapt?\nWe recommend that you use the adapt method while you’re actively developing your code so that you don’t need to worry about cleaning up after yourself. The scale method can be used when you’re ready to run longer tests with higher utilisation."
   },
   {
     "objectID": "faq.html#how-do-i-install-my-favourite-python-package",
@@ -89,6 +89,13 @@
     "title": "FAQ",
     "section": "How do I install my favourite python package?",
     "text": "How do I install my favourite python package?\nIf you want to control the python environment we recommend that you install and maintain a miniconda environment in your userdata directory."
+  },
+  {
+    "objectID": "faq.html#what-is-a-daemonic-process-and-why-cant-i-run-one",
+    "href": "faq.html#what-is-a-daemonic-process-and-why-cant-i-run-one",
+    "title": "FAQ",
+    "section": "What is a daemonic process and why can’t I run one?",
+    "text": "What is a daemonic process and why can’t I run one?\nA daemon is a process that runs as a background process. Dask prefers to control all processes so that it can manage them more gracefully if they fail. If you need to take control of the multiprocessing yourself, you can turn this off with LocalCluster(processes=False) and SLURMCluster(nanny=False)."
   },
   {
     "objectID": "index.html",
