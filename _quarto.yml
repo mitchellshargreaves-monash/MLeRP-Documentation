@@ -10,6 +10,7 @@ website:
       - text: "Home"
         file: index.qmd
       - faq.qmd
+      - about.qmd
       - text: "Quick Start"
         file: dask-slurm.ipynb
     right:
@@ -23,7 +24,8 @@ website:
         file: index.qmd
       - about.qmd
       - faq.qmd
-      - strudelv2_spa/docs/vscode.md
+      - text: VSCode
+        file: strudelv2_spa/docs/vscode.md
       - dask-slurm.ipynb
       - dask-pytorch.ipynb
 

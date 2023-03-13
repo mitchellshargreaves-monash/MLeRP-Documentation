@@ -10,7 +10,9 @@ We provide users with CPU based Jupyter notebook sessions capable of basic analy
 
 Be sure to check out the [Jupyter](https://docs.jupyter.org/en/latest/), [SLURM](https://slurm.schedmd.com/documentation.html) and [Dask](https://www.dask.org/) documentation for more information.
 
-MLeRP at the moment is only available through closed beta but is planned to be available through open beta to all Australian researchers. You can sign up to our mailing list if you'd like us to let you know when we're ready for open beta.
+MLeRP at the moment is only available through closed beta but is planned to be available through open beta to all Australian academic researchers through AAF. You can sign up to our mailing list if you'd like us to let you know when we're ready for open beta.
+
+MLeRP has been made possible through ARDC funding. Thanks ARDC!
 
 <p style="text-align: center;">
     <button type="button" class="btn btn-primary btn-lg" onclick="window.location.href='https://mlerp.cloud.edu.au/launch';">Log in</button>

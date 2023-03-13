@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>MLeRP User Guide Documentation - About MLeRP</title>
+<title>MLeRP User Guide Documentation - About</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -89,7 +89,11 @@ ul.task-list li input[type="checkbox"] {
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./faq.html">
- <span class="menu-text">MLeRP FAQ</span></a>
+ <span class="menu-text">FAQ</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./about.html">
+ <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./dask-slurm.html">
@@ -112,7 +116,7 @@ ul.task-list li input[type="checkbox"] {
     </nav>
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">About MLeRP</h1>
+      <h1 class="quarto-secondary-nav-title">About</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -132,17 +136,17 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./about.html" class="sidebar-item-text sidebar-link active">About MLeRP</a>
+  <a href="./about.html" class="sidebar-item-text sidebar-link active">About</a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./faq.html" class="sidebar-item-text sidebar-link">MLeRP FAQ</a>
+  <a href="./faq.html" class="sidebar-item-text sidebar-link">FAQ</a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./strudelv2_spa/docs/vscode.html" class="sidebar-item-text sidebar-link">Introduction</a>
+  <a href="./strudelv2_spa/docs/vscode.html" class="sidebar-item-text sidebar-link">VSCode</a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -164,7 +168,8 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#monash" id="toc-monash" class="nav-link active" data-scroll-target="#monash">Monash</a>
+  <li><a href="#what-is-mlerp" id="toc-what-is-mlerp" class="nav-link active" data-scroll-target="#what-is-mlerp">What is MLeRP?</a></li>
+  <li><a href="#monash" id="toc-monash" class="nav-link" data-scroll-target="#monash">Monash</a>
   <ul class="collapse">
   <li><a href="#compute" id="toc-compute" class="nav-link" data-scroll-target="#compute">Compute</a></li>
   <li><a href="#gpu-compute" id="toc-gpu-compute" class="nav-link" data-scroll-target="#gpu-compute">GPU Compute</a></li>
@@ -184,7 +189,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">About MLeRP</h1>
+<h1 class="title d-none d-lg-block">About</h1>
 </div>
 
 
@@ -199,17 +204,41 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
+<section id="what-is-mlerp" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-mlerp">What is MLeRP?</h2>
+<p>Say we have a researcher who is a domain expert in a field and is just discovering that machine learning algorithms might be appropriate to accelerate their work.</p>
+<p style="text-align: center;">
+<img src="./images/before-after.png" class="img-fluid">
+</p>
+<p>They explore online for potential approaches and even find some tutorials that use interactive environments, but quickly discover that dealing with large datasets requires more compute than their laptop can handle so they need to move to a HPC system.</p>
+<p style="text-align: center;">
+<img src="./images/notebook-cat.png" class="img-fluid">
+</p>
+<p>While desktop sessions are available they might have prohibitively long queues and have low utilisation of the underlying hardware. They could submit a job to the HPC queue but this leads to long times between iterations. At this stage the researcher is still discovering things about their data, how to clean it and how to analyse it.</p>
+<p style="text-align: center;">
+<img src="./images/hpc-cat.png" class="img-fluid">
+</p>
+<p>They need an interactive environment so they can develop and debug their algorithms and the algorithms, but still need access to high powered acceleration so they can process their dataset. At the same time we want to improve utilisation of the hardware so that we can serve more users and reduce wait times.</p>
+<p>MLeRP was built to be a middle ground that has the interactivity of a notebook with the power of a HPC environment that can share valuable resources between other users while code isn’t being executed.</p>
+<p style="text-align: center;">
+<img src="./images/captain-research-cloud.png" class="img-fluid">
+</p>
+<p>Now our new researcher can easily import the same code that they were using on their laptops or with online notebook services straight into a HPC environment without the need to convert it first into a SBATCH script, wait in long HPC queues or load modules for dependencies.</p>
+<p style="text-align: center;">
+<img src="./images/mlerp-rings.png" class="img-fluid">
+</p>
 <p>MLeRP is split into two clusters which users can choose between - one based in Monash (Melbourne, Victoria) and one based in QCIF (Brisbane, Queensland). The clusters have seperate file systems, so you will have to transfer your files across if you’d like to switch regions.</p>
-<section id="monash" class="level1">
-<h1>Monash</h1>
+</section>
+<section id="monash" class="level2">
+<h2 class="anchored" data-anchor-id="monash">Monash</h2>
 <p>Reference: https://docs.massive.org.au/M3/m3users.html#system-configuration</p>
 <p>Total number of cores: X</p>
 <p>Total number of GPU cores: X CUDA cores</p>
 <p>Total memory: X TBytes</p>
 <p>Storage capacity: X PBytes Lustre parallel file system</p>
 <p>Network: X cards</p>
-<section id="compute" class="level2">
-<h2 class="anchored" data-anchor-id="compute">Compute</h2>
+<section id="compute" class="level3">
+<h3 class="anchored" data-anchor-id="compute">Compute</h3>
 <table class="table">
 <colgroup>
 <col style="width: 11%">
@@ -250,8 +279,8 @@ ul.task-list li input[type="checkbox"] {
 </tbody>
 </table>
 </section>
-<section id="gpu-compute" class="level2">
-<h2 class="anchored" data-anchor-id="gpu-compute">GPU Compute</h2>
+<section id="gpu-compute" class="level3">
+<h3 class="anchored" data-anchor-id="gpu-compute">GPU Compute</h3>
 <table class="table">
 <colgroup>
 <col style="width: 7%">
@@ -304,20 +333,20 @@ ul.task-list li input[type="checkbox"] {
 </tbody>
 </table>
 </section>
-<section id="remote-desktops-through-the-cvl" class="level2">
-<h2 class="anchored" data-anchor-id="remote-desktops-through-the-cvl">Remote desktops through the CVL</h2>
+<section id="remote-desktops-through-the-cvl" class="level3">
+<h3 class="anchored" data-anchor-id="remote-desktops-through-the-cvl">Remote desktops through the CVL</h3>
 <p>I assume we cut this?</p>
 </section>
 </section>
-<section id="qcif" class="level1">
-<h1>QCIF</h1>
+<section id="qcif" class="level2">
+<h2 class="anchored" data-anchor-id="qcif">QCIF</h2>
 <p>Total number of cores: X</p>
 <p>Total number of GPU cores: X CUDA cores</p>
 <p>Total memory: X TBytes</p>
 <p>Storage capacity: X PBytes Lustre parallel file system</p>
 <p>Network: X cards</p>
-<section id="compute-1" class="level2">
-<h2 class="anchored" data-anchor-id="compute-1">Compute</h2>
+<section id="compute-1" class="level3">
+<h3 class="anchored" data-anchor-id="compute-1">Compute</h3>
 <table class="table">
 <colgroup>
 <col style="width: 11%">
@@ -358,8 +387,8 @@ ul.task-list li input[type="checkbox"] {
 </tbody>
 </table>
 </section>
-<section id="gpu-compute-1" class="level2">
-<h2 class="anchored" data-anchor-id="gpu-compute-1">GPU Compute</h2>
+<section id="gpu-compute-1" class="level3">
+<h3 class="anchored" data-anchor-id="gpu-compute-1">GPU Compute</h3>
 <table class="table">
 <colgroup>
 <col style="width: 7%">
@@ -412,8 +441,8 @@ ul.task-list li input[type="checkbox"] {
 </tbody>
 </table>
 </section>
-<section id="remote-desktops-through-the-cvl-1" class="level2">
-<h2 class="anchored" data-anchor-id="remote-desktops-through-the-cvl-1">Remote desktops through the CVL</h2>
+<section id="remote-desktops-through-the-cvl-1" class="level3">
+<h3 class="anchored" data-anchor-id="remote-desktops-through-the-cvl-1">Remote desktops through the CVL</h3>
 <p>I assume we cut this?</p>
 
 
