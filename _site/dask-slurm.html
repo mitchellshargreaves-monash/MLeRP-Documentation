@@ -93,7 +93,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="././favicon-32x32.png" rel="icon" type="image/png">
+<link href="././images/favicon-32x32.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -208,6 +208,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./strudelv2_spa/docs/vscode.html" class="sidebar-item-text sidebar-link">Introduction</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./dask-slurm.html" class="sidebar-item-text sidebar-link active">Dask SLURMClusters</a>
   </div>
 </li>
@@ -238,7 +243,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1>Dask SLURMClusters</h1>
 <p>The MLeRP notebook environment uses Dask SLURMClusters to create a middle ground that has the interactivity of a notebook backed by the power of HPC. You will be provisioned with a CPU based notebook session for your basic analysis and code development. Then, when you’re ready to run testsm you will use Dask to submit your python functions to the SLURM queue.</p>
 <p>This enables: - Flexibility to experiment with your dataset interactively - Ability to change compute requirements such as RAM, size of GPU, number of processes and so on… without ever leaving the notebook environment - Elastic scaling of compute - Efficient utilisation of the hardware - Releasing of resources when not in use</p>
-<div class="cell" data-execution_count="1">
+<div class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dask_jobqueue <span class="im">import</span> SLURMCluster</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> distributed <span class="im">import</span> Client, LocalCluster</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> dask</span>
@@ -253,13 +258,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>cluster.scale(num_nodes)</span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>client <span class="op">=</span> Client(cluster)</span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>client</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="1">
+<div class="cell-output cell-output-stderr">
+<pre><code>/userdata/mhar0048/miniconda/conda/envs/dask/lib/python3.10/site-packages/distributed/node.py:179: UserWarning: Port 8787 is already in use.
+Perhaps you already have a cluster running?
+Hosting the HTTP server on port 46719 instead
+  warnings.warn(</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="2">
 
 <div>
     <div style="width: 24px; height: 24px; background-color: #e1e1e1; border: 3px solid #9D9D9D; border-radius: 5px; position: absolute;"> </div>
     <div style="margin-left: 48px;">
         <h3 style="margin-bottom: 0px;" class="anchored" data-anchor-id="dask-slurmclusters">Client</h3>
-        <p style="color: #9D9D9D; margin-bottom: 0px;">Client-1fad484f-bbc8-11ed-9274-fa163e16ef68</p>
+        <p style="color: #9D9D9D; margin-bottom: 0px;">Client-fc123988-c131-11ed-818a-fa163e16ef68</p>
         <table style="width: 100%; text-align: left;">
 
         <tbody><tr>
@@ -272,7 +283,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         
             <tr>
                 <td style="text-align: left;">
-                    <strong>Dashboard: </strong> <a href="http://192.168.0.213:8787/status" target="_blank">http://192.168.0.213:8787/status</a>
+                    <strong>Dashboard: </strong> <a href="http://192.168.0.213:46719/status" target="_blank">http://192.168.0.213:46719/status</a>
                 </td>
                 <td style="text-align: left;"></td>
             </tr>
@@ -288,11 +299,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </div>
     <div style="margin-left: 48px;">
         <h3 style="margin-bottom: 0px; margin-top: 0px;" class="anchored">SLURMCluster</h3>
-        <p style="color: #9D9D9D; margin-bottom: 0px;">39116ce7</p>
+        <p style="color: #9D9D9D; margin-bottom: 0px;">e275099f</p>
         <table style="width: 100%; text-align: left;">
             <tbody><tr>
                 <td style="text-align: left;">
-                    <strong>Dashboard:</strong> <a href="http://192.168.0.213:8787/status" target="_blank">http://192.168.0.213:8787/status</a>
+                    <strong>Dashboard:</strong> <a href="http://192.168.0.213:46719/status" target="_blank">http://192.168.0.213:46719/status</a>
                 </td>
                 <td style="text-align: left;">
                     <strong>Workers:</strong> 0
@@ -319,11 +330,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         <div style="width: 24px; height: 24px; background-color: #FFF7E5; border: 3px solid #FF6132; border-radius: 5px; position: absolute;"> </div>
         <div style="margin-left: 48px;">
             <h3 style="margin-bottom: 0px;" class="anchored">Scheduler</h3>
-            <p style="color: #9D9D9D; margin-bottom: 0px;">Scheduler-5c613755-a2ec-4108-9ea6-678adcdceb3e</p>
+            <p style="color: #9D9D9D; margin-bottom: 0px;">Scheduler-257a694b-35cf-4fdb-b907-b030d5390c7a</p>
             <table style="width: 100%; text-align: left;">
                 <tbody><tr>
                     <td style="text-align: left;">
-                        <strong>Comm:</strong> tcp://192.168.0.213:43565
+                        <strong>Comm:</strong> tcp://192.168.0.213:40885
                     </td>
                     <td style="text-align: left;">
                         <strong>Workers:</strong> 0
@@ -331,7 +342,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
                 </tr>
                 <tr>
                     <td style="text-align: left;">
-                        <strong>Dashboard:</strong> <a href="http://192.168.0.213:8787/status" target="_blank">http://192.168.0.213:8787/status</a>
+                        <strong>Dashboard:</strong> <a href="http://192.168.0.213:46719/status" target="_blank">http://192.168.0.213:46719/status</a>
                     </td>
                     <td style="text-align: left;">
                         <strong>Total threads:</strong> 0
@@ -372,7 +383,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Dask will now spin our jobs up in anticipation for work to the scale that you specify.</p>
 <p>You can check in on your jobs like you would with any other SLURM job with <code>squeue</code>.</p>
 <div class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>squeue</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>squeue</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
               1637     batch Jupyter  mhar0048  R      42:23      1 mlerp-node05
@@ -385,14 +396,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Alternatively, we can use the adapt method, which will let us scale out as we need the compute… and scale back when we’re idle letting others use the cluster.</p>
 <p>We reccommend that you use the adapt method while you’re actively developing your code so that you don’t need to worry about cleaning up after yourself. The scale method can be used when you’re ready to run longer tests with higher utilisation.</p>
 <div class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>cluster.adapt(minimum<span class="op">=</span><span class="dv">0</span>, maximum<span class="op">=</span>num_nodes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>cluster.adapt(minimum<span class="op">=</span><span class="dv">0</span>, maximum<span class="op">=</span>num_nodes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
 <pre><code>&lt;distributed.deploy.adaptive.Adaptive at 0x7f85ea9ec820&gt;</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># You may need to run this cell a few times while waiting for Dask to clean up</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>squeue</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># You may need to run this cell a few times while waiting for Dask to clean up</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>squeue</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
               1637     batch Jupyter  mhar0048  R      43:01      1 mlerp-node05</code></pre>
@@ -402,11 +413,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Use the loopback address: http://127.0.0.1:8787 (Adjust the port to the one listed when you make the client if needed)</p>
 <p>Now let’s define a dask array and perform some computation. Dask arrays are parallelised across your workers nodes so they can be greater than the size of one worker’s memory. Dask evaluates lazily, retuning ‘futures’ which record the tasks needed to be completed in the compute graph. They can be computed later for its value.</p>
 <p>Dask also has parallelised implementations of dataframes and collections of objects (called bags). These are written to be as similar as possible to familiar libraries like numpy, pandas and pyspark. You can read more about <a href="https://docs.dask.org/en/stable/array.html">arrays</a>, <a href="https://docs.dask.org/en/stable/dataframe.html">dataframes</a> and <a href="https://docs.dask.org/en/stable/bag.html">bags</a> with Dask’s documentation.</p>
-<div class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> dask.array <span class="im">as</span> da</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> da.random.random((<span class="dv">1000</span>, <span class="dv">1000</span>, <span class="dv">1000</span>))</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>x  <span class="co"># Note how the value of the array hasn't been computed yet</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="8">
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> dask.array <span class="im">as</span> da</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> da.random.random((<span class="dv">1000</span>, <span class="dv">1000</span>, <span class="dv">1000</span>))</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>x  <span class="co"># Note how the value of the array hasn't been computed yet</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
 
 <table>
     <tbody><tr>
@@ -510,193 +521,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <p>You can check squeue while this is running to see the jobs dynamically spinning up to perform the computation.</p>
-<div class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>x.compute()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="9">
-<pre><code>array([[[0.81048276, 0.98448871, 0.1733459 , ..., 0.56455782,
-         0.87080788, 0.13560115],
-        [0.34637436, 0.87259813, 0.94473364, ..., 0.93145702,
-         0.1192914 , 0.29108374],
-        [0.41857781, 0.83517549, 0.08113376, ..., 0.85804457,
-         0.37388268, 0.37722865],
-        ...,
-        [0.46583782, 0.61815175, 0.09393558, ..., 0.66240159,
-         0.49874618, 0.81926554],
-        [0.24346786, 0.60615724, 0.99073193, ..., 0.06461803,
-         0.00183846, 0.67093819],
-        [0.08790386, 0.83009404, 0.12218377, ..., 0.06221952,
-         0.02795862, 0.71642665]],
-
-       [[0.87904067, 0.08657706, 0.54566209, ..., 0.88747936,
-         0.67862782, 0.06280928],
-        [0.60127705, 0.16065682, 0.20523986, ..., 0.37973246,
-         0.63451103, 0.76550924],
-        [0.40090817, 0.03877228, 0.40892043, ..., 0.28284783,
-         0.08165901, 0.62547838],
-        ...,
-        [0.91598835, 0.60142513, 0.58315254, ..., 0.4106674 ,
-         0.39268422, 0.0359192 ],
-        [0.43570915, 0.86416062, 0.19947181, ..., 0.26959132,
-         0.56094108, 0.67045609],
-        [0.77048317, 0.05800286, 0.79154034, ..., 0.20123776,
-         0.03886638, 0.46688039]],
-
-       [[0.90154212, 0.21625038, 0.43767504, ..., 0.29003829,
-         0.53543812, 0.05813288],
-        [0.70823206, 0.15378265, 0.50122973, ..., 0.83336165,
-         0.62442109, 0.99706319],
-        [0.39972706, 0.45769274, 0.71225809, ..., 0.59740476,
-         0.88300199, 0.78174948],
-        ...,
-        [0.43426827, 0.70359092, 0.93161099, ..., 0.61153736,
-         0.64245218, 0.93093052],
-        [0.34932829, 0.18280574, 0.03849763, ..., 0.47254602,
-         0.16659474, 0.50385353],
-        [0.55394197, 0.93967812, 0.19042393, ..., 0.79276809,
-         0.63940768, 0.76911959]],
-
-       ...,
-
-       [[0.45786038, 0.85513896, 0.65277041, ..., 0.88640097,
-         0.1332642 , 0.46490542],
-        [0.73694782, 0.60710629, 0.9022453 , ..., 0.9449639 ,
-         0.96740867, 0.27902221],
-        [0.14930582, 0.50213856, 0.40821156, ..., 0.6946832 ,
-         0.23331898, 0.28920961],
-        ...,
-        [0.74158561, 0.45597372, 0.65007944, ..., 0.99970547,
-         0.8797445 , 0.07684269],
-        [0.89195394, 0.46038323, 0.23562025, ..., 0.94244266,
-         0.52660567, 0.39521149],
-        [0.5888601 , 0.81723018, 0.17045886, ..., 0.67048762,
-         0.56533708, 0.25716144]],
-
-       [[0.63473717, 0.18832603, 0.84891618, ..., 0.97606878,
-         0.21760161, 0.54201549],
-        [0.3529744 , 0.38462424, 0.81971622, ..., 0.2029358 ,
-         0.22444116, 0.65069545],
-        [0.62372702, 0.28351268, 0.0386723 , ..., 0.90500265,
-         0.59215861, 0.62802261],
-        ...,
-        [0.28551262, 0.41386426, 0.25409061, ..., 0.17632859,
-         0.41365254, 0.68635382],
-        [0.02055029, 0.98061086, 0.31100677, ..., 0.00492097,
-         0.35997751, 0.25151212],
-        [0.92746433, 0.53906131, 0.08237071, ..., 0.28546093,
-         0.4792113 , 0.75821124]],
-
-       [[0.13938191, 0.21151459, 0.82413647, ..., 0.98384943,
-         0.73570428, 0.86907216],
-        [0.00827752, 0.21515904, 0.45043764, ..., 0.20621184,
-         0.04521416, 0.84621095],
-        [0.05534646, 0.22239314, 0.46678384, ..., 0.44320404,
-         0.60471602, 0.24567299],
-        ...,
-        [0.44036848, 0.23792716, 0.5878868 , ..., 0.17130055,
-         0.57048327, 0.94820776],
-        [0.80744186, 0.71882324, 0.49240172, ..., 0.87435928,
-         0.65409874, 0.0039221 ],
-        [0.18796252, 0.27960799, 0.57753044, ..., 0.98543126,
-         0.89218506, 0.96359486]]])</code></pre>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">0</span>][<span class="dv">0</span>][:<span class="dv">10</span>].compute()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<pre><code>array([0.9527929 , 0.93675059, 0.11717679, 0.47114357, 0.73693508,
+       0.01302143, 0.86360879, 0.12592881, 0.52676823, 0.99186392])</code></pre>
 </div>
 </div>
 <p>We can also accelerate dask arrays with GPUs using cupy. There is similar support for accelerating dask dataframes with CuDF.</p>
-<div class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>dask.config.<span class="bu">set</span>({<span class="st">"array.backend"</span>: <span class="st">"cupy"</span>})</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> da.random.random((<span class="dv">1000</span>, <span class="dv">1000</span>, <span class="dv">1000</span>))</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>y.compute()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="10">
-<pre><code>array([[[3.96333169e-03, 3.75975260e-01, 3.56959376e-01, ...,
-         4.50280915e-01, 2.35157391e-01, 7.94328044e-01],
-        [7.46712819e-01, 3.80351024e-02, 6.20411425e-01, ...,
-         4.25249481e-01, 1.79268928e-01, 4.18742215e-01],
-        [6.86661418e-01, 2.68955439e-01, 1.35690349e-01, ...,
-         6.07946338e-01, 5.99222969e-01, 9.05284417e-01],
-        ...,
-        [9.76543019e-01, 6.83623666e-01, 7.72140730e-02, ...,
-         5.01167957e-01, 9.58515852e-01, 5.07214775e-01],
-        [2.40601659e-01, 8.18106652e-01, 2.82227562e-01, ...,
-         4.40147690e-01, 2.40043011e-01, 7.48213851e-01],
-        [6.46267786e-01, 2.13913358e-01, 2.05269982e-01, ...,
-         8.90589693e-01, 5.19737573e-01, 9.10289392e-01]],
-
-       [[1.72304898e-01, 5.05337770e-01, 1.87073213e-01, ...,
-         6.76683193e-01, 1.69135886e-01, 2.43992433e-01],
-        [3.70932825e-01, 8.84938115e-01, 8.77260345e-01, ...,
-         4.57830983e-01, 5.27520536e-01, 2.01397156e-01],
-        [9.09455520e-01, 8.28202776e-01, 3.84134861e-01, ...,
-         8.07997870e-02, 4.24021864e-01, 8.34383254e-01],
-        ...,
-        [8.55113113e-01, 2.52211591e-01, 5.28010992e-01, ...,
-         8.19260228e-01, 2.82101588e-01, 8.39183043e-01],
-        [9.73137446e-01, 9.04520033e-01, 2.30853972e-01, ...,
-         4.23457838e-01, 7.94870403e-01, 1.00250089e-01],
-        [5.40579345e-01, 2.89968667e-01, 8.90332214e-01, ...,
-         6.70323229e-01, 7.73539876e-01, 8.15765293e-01]],
-
-       [[9.78069689e-01, 1.94483025e-01, 3.43399529e-01, ...,
-         4.02166898e-01, 6.71836852e-01, 9.52519632e-01],
-        [1.35657204e-03, 7.36432409e-02, 8.82288105e-01, ...,
-         2.36884145e-01, 2.10861265e-02, 4.61787761e-01],
-        [7.89820626e-01, 4.07889914e-01, 2.45503974e-01, ...,
-         4.62825525e-01, 5.82648973e-01, 3.43674022e-01],
-        ...,
-        [6.83155606e-01, 3.56633317e-01, 7.85189277e-01, ...,
-         9.94454587e-01, 7.13054153e-01, 3.45217158e-01],
-        [4.03539798e-01, 1.72588217e-01, 5.84980509e-02, ...,
-         3.99447478e-01, 5.61517474e-01, 4.41827263e-01],
-        [3.73142302e-01, 6.37492831e-01, 8.58445880e-01, ...,
-         2.94945156e-01, 7.04045362e-01, 6.42646469e-01]],
-
-       ...,
-
-       [[2.57379067e-02, 2.26092528e-01, 6.72177087e-01, ...,
-         1.03541559e-01, 7.04260574e-01, 3.09848467e-01],
-        [1.14911496e-01, 5.59038772e-01, 5.20089463e-01, ...,
-         5.98993990e-01, 2.97319738e-01, 2.12389183e-01],
-        [1.52607925e-01, 4.24765213e-01, 3.08108001e-01, ...,
-         3.70586265e-01, 1.03058160e-01, 8.31891440e-01],
-        ...,
-        [6.93327253e-01, 5.03617291e-01, 7.21311361e-01, ...,
-         4.75231608e-01, 4.14158400e-01, 1.13713830e-01],
-        [9.83901463e-02, 6.17394328e-02, 3.31051444e-01, ...,
-         3.18242299e-01, 5.28685022e-01, 1.00347141e-01],
-        [6.71486871e-01, 5.76711473e-02, 4.21947139e-01, ...,
-         8.98134777e-01, 9.62267196e-01, 4.09166441e-01]],
-
-       [[7.92228171e-01, 4.74861245e-01, 8.55582049e-01, ...,
-         2.01486700e-02, 2.35502699e-01, 4.10015940e-01],
-        [2.00915420e-01, 4.81461026e-01, 4.74642799e-01, ...,
-         9.93546874e-01, 2.16693458e-01, 2.86340839e-03],
-        [8.43810984e-01, 7.34739653e-01, 3.14340844e-01, ...,
-         6.44837946e-01, 4.85487627e-01, 3.75704414e-01],
-        ...,
-        [8.28949422e-01, 8.91638673e-01, 2.89596844e-01, ...,
-         7.15502825e-01, 5.78631295e-01, 7.86967250e-01],
-        [8.23241405e-01, 8.98084628e-01, 2.85672278e-01, ...,
-         6.20557458e-01, 5.81817995e-01, 2.52404515e-01],
-        [5.40497081e-01, 9.72915655e-01, 7.31110429e-01, ...,
-         5.08955347e-01, 6.97590461e-02, 5.89144368e-01]],
-
-       [[2.63822264e-01, 5.19700272e-01, 7.59760755e-01, ...,
-         6.18960236e-01, 8.61688534e-02, 6.81393559e-02],
-        [5.96324590e-01, 6.16036635e-01, 5.19938293e-01, ...,
-         6.44789632e-01, 7.99003165e-01, 5.07297511e-01],
-        [6.29738591e-04, 9.50428411e-01, 9.89160098e-01, ...,
-         9.91761810e-01, 8.79419963e-01, 5.79882246e-03],
-        ...,
-        [3.35997130e-01, 7.22035458e-01, 5.61892255e-01, ...,
-         3.84637676e-01, 8.86357871e-01, 3.79967524e-01],
-        [4.80935276e-01, 7.47906202e-01, 9.82953759e-01, ...,
-         4.06516152e-01, 9.77525540e-01, 6.24499056e-02],
-        [8.34387920e-02, 9.02366972e-02, 9.74848083e-01, ...,
-         9.40563574e-01, 6.10587311e-01, 8.08475318e-01]]])</code></pre>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>dask.config.<span class="bu">set</span>({<span class="st">"array.backend"</span>: <span class="st">"cupy"</span>})</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> da.random.random((<span class="dv">1000</span>, <span class="dv">1000</span>, <span class="dv">1000</span>))</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>y.compute()</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>y[<span class="dv">0</span>][<span class="dv">0</span>][:<span class="dv">10</span>].compute()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
+<pre><code>array([0.02380941, 0.62371184, 0.88393467, 0.8604588 , 0.16488854,
+       0.11214214, 0.86582312, 0.01384666, 0.79636323, 0.58940477])</code></pre>
 </div>
 </div>
 <p>Finally, we can shut down the SLURMCluster now that we’re done with it.</p>
 <div class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Shut down the cluster</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>client.shutdown()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Shut down the cluster</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>client.shutdown()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 

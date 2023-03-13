@@ -23,6 +23,7 @@ website:
         file: index.qmd
       - about.qmd
       - faq.qmd
+      - strudelv2_spa/docs/vscode.md
       - dask-slurm.ipynb
       - dask-pytorch.ipynb
 
