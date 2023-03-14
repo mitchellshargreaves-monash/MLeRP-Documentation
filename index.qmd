@@ -2,7 +2,7 @@
 title: "Welcome to the MLeRP User guide"
 ---
 
-![](./images/cluster-cat.png)
+![Artwork by [Kiowa Scott-Hurly](https://kiowa-scott-hurley.github.io/tea-tech-and-trials/)](./images/cluster-cat.png)
 
 The MLeRP environment creates a middle ground that has the interactivity of a notebook with the power of a HPC environment that can share valuable resources between other users while code isn’t being executed.
 
