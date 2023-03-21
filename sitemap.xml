@@ -2,38 +2,26 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>git@gitlab.erc.monash.edu.au:hpc-team/mlerp-documentation.git/about.html</loc>
-    <lastmod>2023-03-14T06:10:18.731Z</lastmod>
+    <lastmod>2023-03-21T01:17:26.364Z</lastmod>
   </url>
   <url>
     <loc>git@gitlab.erc.monash.edu.au:hpc-team/mlerp-documentation.git/dask-pytorch.html</loc>
-    <lastmod>2023-03-14T06:10:19.720Z</lastmod>
+    <lastmod>2023-03-21T01:17:27.205Z</lastmod>
   </url>
   <url>
     <loc>git@gitlab.erc.monash.edu.au:hpc-team/mlerp-documentation.git/dask-slurm.html</loc>
-    <lastmod>2023-03-14T06:10:20.248Z</lastmod>
+    <lastmod>2023-03-21T01:17:27.983Z</lastmod>
   </url>
   <url>
     <loc>git@gitlab.erc.monash.edu.au:hpc-team/mlerp-documentation.git/faq.html</loc>
-    <lastmod>2023-03-14T06:10:20.788Z</lastmod>
+    <lastmod>2023-03-21T01:17:28.514Z</lastmod>
   </url>
   <url>
     <loc>git@gitlab.erc.monash.edu.au:hpc-team/mlerp-documentation.git/index.html</loc>
-    <lastmod>2023-03-14T06:10:21.256Z</lastmod>
+    <lastmod>2023-03-21T01:17:28.996Z</lastmod>
   </url>
   <url>
-    <loc>git@gitlab.erc.monash.edu.au:hpc-team/mlerp-documentation.git/strudelv2_spa/docs/applications.html</loc>
-    <lastmod>2023-03-14T06:10:21.803Z</lastmod>
-  </url>
-  <url>
-    <loc>git@gitlab.erc.monash.edu.au:hpc-team/mlerp-documentation.git/strudelv2_spa/docs/conda.html</loc>
-    <lastmod>2023-03-14T06:10:22.264Z</lastmod>
-  </url>
-  <url>
-    <loc>git@gitlab.erc.monash.edu.au:hpc-team/mlerp-documentation.git/strudelv2_spa/docs/strudel2.html</loc>
-    <lastmod>2023-03-14T06:10:22.729Z</lastmod>
-  </url>
-  <url>
-    <loc>git@gitlab.erc.monash.edu.au:hpc-team/mlerp-documentation.git/strudelv2_spa/docs/vscode.html</loc>
-    <lastmod>2023-03-14T06:10:23.283Z</lastmod>
+    <loc>git@gitlab.erc.monash.edu.au:hpc-team/mlerp-documentation.git/vscode.html</loc>
+    <lastmod>2023-03-21T01:17:29.561Z</lastmod>
   </url>
 </urlset>
