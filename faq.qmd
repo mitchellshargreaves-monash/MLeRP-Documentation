@@ -4,13 +4,13 @@ title: FAQ
 
 <!-- <img src="./images/curious_mlerp.png" style="position: fixed; left: 0; bottom: 0;" class="d-none d-sm-block"/> -->
 
-## Why do I still have to wait in queue?
+### Why do I still have to wait in queue?
 Directly attaching GPU compute to notebooks leads to very low utilisation since the GPU sits idle while you're debugging your code. By using a queue we are able to service more researchers at once with greater efficiency.
 
-## If I still have to wait in queue how is this better than using a traditional HPC environment?
-MLeRP is designed with the idea that a job's size should be about the size of a cell in a jupyter notebook. With that in mind, the queue has been optimised for short jobs, with a wall time of **|NEED TO WORK OUT|**. Executing a cell won't always be immediate but your job should start up pretty quickly. If you need to run a job that runs longer than this, checkpoint your code and split it into multiple jobs. If your job takes longer than **|NEED TO WORK OUT|**, contact us at **|EMAIL HERE|**
+### If I still have to wait in queue how is this better than using a traditional HPC environment?
 
-## Why Dask?
+MLeRP is designed with the idea that a job's size should be about the size of a cell in a jupyter notebook. With that in mind, the queue has been optimised for short jobs. The maximum wall time of jobs in the MLeRP cluster is **30 minutes**. Executing a cell won't always be immediate but your job should start up pretty quickly. If you need to run a job that runs longer than this, checkpoint your code and split it into multiple jobs. If your code is mature enough that it makes more sense to run a multi-hour or multi-day job, consider using a traditional HPC service. Contact us at `{{< var email >}}` if your jobs aren't starting promptly or your usecase isn't covered by our platform and you think it should be.
+### Why Dask?
 We looked at a few different options for the MLeRP environment including [Sagemaker](https://aws.amazon.com/sagemaker/), [Spark](https://spark.apache.org/) and [Ray](https://docs.ray.io/en/releases-1.11.1/index.html). Ultimately we settled on Dask as the primary tool to interface with the queue because:
 
 * SLURM jobs can be submitted with `SLURMCluster` whenever HPC is needed
@@ -20,32 +20,54 @@ We looked at a few different options for the MLeRP environment including [Sagema
 * Dask can submit any python function to the SLURM queue allowing the flexibility for bespoke low level applications
 * Lazy evaluation of functions which allows for asynchronous code
 
-## Will I need to change my code to work with MLeRP?
-Yes. Dask unfortunately does not come for free, you will have to do some code change to use it to interface with the cluster. You will also need to get a sense of SLURM 's parameters defaults but it is 
+### Will I need to change my code to work with MLeRP?
+Yes. Dask unfortunately will not 'just work', you will have to do some code change to use it to interface with the cluster. You will also need to get a sense of how to request resources from the cluster with SLURM.
 
 That said we believe that this approach of submitting jobs through a python notebook environment will feel more familiar to researchers familiar with the python datascience ecosystem given how Dask is designed as a light wrapper around common libraries like numpy, pandas and Scikit-Learn.
 
 You will also be able to work with the cluster without needing to convert your experimental notebook code into a script and maintain the environment with modules like with a traditional cluster.
 
-## Why aren't my print statements showing up in my jobs?
+### How much compute should I ask for with my `SLURMCluster`?
+Unfortunately there is no one size fits all answer to this question. Every research problem has its on demands and constraints so this a bit like asking 'How long is a piece of string?'.
+
+If your work is primarily CPU bound, Dask allows as many tasks as you have CPU cores, but if you are using GPUs you may want to dramatically limit this. One process per GPU could be a good place to start.
+
+Our GPU compute is split into `10 GiB` and `20 GiB` sizes and they are on nodes with 640 GiB RAM. If you need a larger GPU flavour for your research, contact us at `{{< var email >}}`.
+
+Here are some default jobs sizes to consider:
+
+Small GPU: 
+
+`SLURMCluster(memory="64g", processes=1, cores=8, job_extra_directives=["--gres=gpu:10g:1"])`
+
+Multi GPU: 
+
+`SLURMCluster(memory="128g", processes=1, cores=8, job_extra_directives=["--gres=gpu:10g:2"])`
+
+Medium GPU: 
+
+`SLURMCluster(memory="128g", processes=1, cores=8, job_extra_directives=["--gres=gpu:20g:1"])`
+
+Large CPU workload:
+
+`SLURMCluster(memory="64g", processes=16, cores=16)`
+
+CPU multiprocessing (increase the scale appropriately with `cluster.adapt`):
+
+`SLURMCluster(memory="4g", processes=1, cores=1)`
+
+### Why aren't my print statements showing up in my jobs?
 Print statements that are executed on remote machines won't show up in your notebook. If you are using print statements for debugging, consider using a `LocalCluster` where they will behave as expected. 
 
 If you need to record information while code is executing remotely either pass the information back to the notebook when the function returns for it to be printed, or log the output to a file.
 
-## How much compute should I ask for with my `SLURMCluster`?
-Unfortunately there is no one size fits all answer to this question. Every research problem has its on demands and constraints so this a bit like asking 'How long is a piece of string?'.
-
-With that being said, our GPU compute is split into **|FLAVOURS|** sizes and they are on nodes with **|THIS MUCH RAM|**. As a default it may make sense to start with a fraction of RAM that is proportional to your chosen GPU size. 
-
-If your work is primarily CPU bound, Dask allows as many tasks as you have CPU cores, but if you are using GPUs you may want to dramatically limit this. One process per GPU could be a good place to start.
-
 For more information about using `SLURMCluster`, visit [Dask's documentation](https://jobqueue.dask.org/en/latest/generated/dask_jobqueue.SLURMCluster.html)
 
-## Should I use `cluster.scale` or `cluster.adapt`?
+### Should I use `cluster.scale` or `cluster.adapt`?
 We recommend that you use the adapt method while you're actively developing your code so that you don't need to worry about cleaning up after yourself. The scale method can be used when you're ready to run longer tests with higher utilisation.
 
-## How do I install my favourite python package?
+### How do I install my favourite python package?
 If you want to control the python environment we recommend that you install and maintain a miniconda environment in your `userdata` directory.
 
-## What is a daemonic process and why can't I run one?
+### What is a daemonic process and why can't I run one?
 A daemon is a process that runs as a background process. Dask prefers to control all processes so that it can manage them more gracefully if they fail. If you need to take control of the multiprocessing yourself, you can turn this off with `LocalCluster(processes=False)` and `SLURMCluster(nanny=False)`.

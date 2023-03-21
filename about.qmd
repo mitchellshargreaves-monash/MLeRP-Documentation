@@ -18,15 +18,14 @@ They need an interactive environment so they can develop and debug their algorit
 
 MLeRP was built to be a middle ground that has the interactivity of a notebook with the power of a HPC environment that can share valuable resources between other users while code isn’t being executed. 
 
+<p style="text-align: center;">![](./images/mlerp-rings.png)</p>
 <p style="text-align: center;">![](./images/captain-research-cloud.png)</p>
 
 Now our new researcher can easily import the same code that they were using on their laptops or with online notebook services straight into a HPC environment without the need to convert it first into a SBATCH script, wait in long HPC queues or load modules for dependencies. 
 
-<p style="text-align: center;">![](./images/mlerp-rings.png)</p>
-
 MLeRP is split into two clusters which users can choose between - one based in Monash (Melbourne, Victoria) and one based in QCIF (Brisbane, Queensland). The clusters have seperate file systems, so you will have to transfer your files across if you'd like to switch regions.
 
-## Monash
+<!-- ## Monash
 Reference: https://docs.massive.org.au/M3/m3users.html#system-configuration
 
 Total number of cores: X
@@ -79,4 +78,4 @@ Network: X cards
 |x|x|x|x|x|x|x|x|x|x|x|x|x|
 
 ### Remote desktops through the CVL
-I assume we cut this?
+I assume we cut this? -->

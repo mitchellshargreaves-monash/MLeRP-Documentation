@@ -11,8 +11,6 @@ website:
         file: index.qmd
       - faq.qmd
       - about.qmd
-      - text: "Quick Start"
-        file: dask-slurm.ipynb
     right:
       - text: Log in
         href: https://mlerp.cloud.edu.au/launch
@@ -24,8 +22,8 @@ website:
         file: index.qmd
       - about.qmd
       - faq.qmd
-      - text: VSCode
-        file: strudelv2_spa/docs/vscode.md
+      - text: VS Code
+        file: vscode.qmd
       - dask-slurm.ipynb
       - dask-pytorch.ipynb
 
