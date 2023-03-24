@@ -1,5 +1,6 @@
 project:
   type: website
+  # type: confluence
 
 website:
   title: "MLeRP User Guide Documentation"
@@ -24,8 +25,10 @@ website:
       - faq.qmd
       - text: VS Code
         file: vscode.qmd
-      - dask-slurm.ipynb
-      - dask-pytorch.ipynb
+      - section: "Tutorials"
+        contents:
+        - tutorials/dask-slurm.ipynb
+        - tutorials/dask-pytorch.ipynb
 
 format:
   html:

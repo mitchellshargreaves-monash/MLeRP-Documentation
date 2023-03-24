@@ -1,5 +1,5 @@
 ---
-title: "Welcome to the MLeRP User guide"
+title: "Welcome to the MLeRP User Guide"
 ---
 
 ![Artwork by [Kiowa Scott-Hurly](https://kiowa-scott-hurley.github.io/tea-tech-and-trials/)](./images/cluster-cat.png)
