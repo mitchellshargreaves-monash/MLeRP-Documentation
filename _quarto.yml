@@ -23,12 +23,13 @@ website:
         file: index.qmd
       - about.qmd
       - faq.qmd
-      - text: VS Code
-        file: vscode.qmd
+      - section: "Connecting"
+        contents:
+        - auto: "connecting/*.qmd"
+        - auto: "connecting/strudel2/*.qmd"
       - section: "Tutorials"
         contents:
-        - tutorials/dask-slurm.ipynb
-        - tutorials/dask-pytorch.ipynb
+        - auto: "tutorials/*.ipynb"
 
 format:
   html:

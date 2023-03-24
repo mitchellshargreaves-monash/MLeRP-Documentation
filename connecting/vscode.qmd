@@ -1,0 +1,263 @@
+---
+title: VS Code
+---
+
+## Introduction
+
+So you'd like to use [Visual Studio Code](https://code.visualstudio.com/), but you need access to {{< var cluster_name >}} too - 
+maybe your data is on the cluster, or you want to run code interactively on a GPU, or you just really love VS Code.
+No problem. You want a VS Code remote server.
+
+Please **DO NOT** follow the [official VS Code documentation for remote servers](https://code.visualstudio.com/docs/remote/ssh).
+
+By default, if you follow those instructions, you will end up running the VS Code remote server on the login node. 
+Please don't do this, the login nodes are a shared resource and we would rather allocate a resource just for you.
+
+## Set-Up Instructions (only do these once)
+
+### 1. Prepare VS Code
+1. Install [Visual Studio Code](https://code.visualstudio.com/)
+2. Install the [Remote Development Extension Pack](https://aka.ms/vscode-remote/download/extension)
+3. Open `Settings` with `Ctrl+,` and search for `Remote.SSH: Remote Server Listen On Socket`. Select the checkbox.
+    ![ssh-listen-on-socket-settings-screen](https://code.visualstudio.com/assets/docs/remote/ssh/ssh-listen-on-socket.png)
+
+### 2. Generate an ssh key and add it to the ssh agent
+You may be familiar with using passwords to authenticate to {{< var cluster_name >}} - ssh keys are another, more secure method of doing this. 
+If you're unfamiliar with ssh keys, no worries - we'll step you through how to set one up here. 
+If you want to learn more about why ssh keys are more secure than passwords, 
+[This YouTube video does a good job of explaining it,](https://www.youtube.com/watch?v=dPAw4opzN9g)
+even if it is designed for an AWS user.
+
+The process for creating keys and adding them to your ssh agent differs between Windows and Linux/Mac. 
+
+<details>
+<summary><b>Mac and Linux Instructions</b></summary>
+<br>
+
+*Note: These instructions will refer to your local terminal, as well as the Strudel2 terminal. Pay attention!*
+
+Firstly, we need to generate an ssh key-pair. Open a local terminal, and run the following command:
+
+```
+ssh-keygen -t ed25519
+```
+
+You will be asked where you would like to save the keys. Press enter to keep the default location.
+You will also be asked to enter a passphrase. This will be used to encrypt the private key on your computer.
+There will be a print out of your key's fingerprint and location on the screen.
+
+You should now have a public and private key in your `~/.ssh` directory, which will be named 
+`id_ed25519.pub` and `id_ed25519` respectively. Never share your private key with someone else.
+
+Secondly, you will need to copy your public key into {{< var cluster_name >}}. To do this, run the following command:
+
+
+```
+cat ~/.ssh/id_ed25519.pub                                                                                                       
+```
+
+Copy the line of text printed on the screen.
+
+Start a terminal session in [Strudel2](https://beta.desktop.cvl.org.au/login) by selecting `Terminal` from the
+sidebar on the left-hand side of the screen, and then selecting `Run on Login Node`.
+This will open a terminal on {{< var cluster_name >}} in a new tab. Ensure you have copied the public key from before, and run
+the following command in the Strudel2 terminal:
+
+```
+echo <paste the line you just copied> >> .ssh/authorized_keys
+``` 
+
+This will add your public key to {{< var cluster_name >}} and allow you to authenticate using your new ssh-keys. Close the terminal tab and terminate 
+the terminal session.
+
+Finally, you will want to add your ssh keys to the ssh-agent. You will remember setting a passphrase earlier
+for accessing your private key. When you add a private key to the ssh-agent, it will ask for your passphrase once,
+and then remember it until the next time your computer reboots. This means you won't need to enter a passphrase 
+everytime you log in to {{< var cluster_name >}} with your keys. 
+
+To do this, open a local terminal and run:
+
+```
+ssh-add ~/.ssh/id_ed25519
+```
+
+</details>
+
+
+<details>                                                                                                                              
+<summary><b>Windows Instructions</b></summary>
+<br>
+
+#### Install and enable OpenSSH
+
+Before we can generate keys on Windows, OpenSSH has to be installed and enabled. 
+
+1. Check OpenSSH is installed.
+- Navigate to `Setting > Apps > Apps & Features`
+- Select `Optional Features`. 
+- Check if `OpenSSH Client` is in the list. If it is, go to step 2. 
+- If it isn't, select the `Add a feature` button at the top of the page, then select `OpenSSH Client`, and `Install`. This will install the
+OpenSSH Client. 
+
+2. Once installed, you will need to start the OpenSSH Client. 
+- Use the Windows search bar to search for and open `Services`. 
+- Scroll through the list to find `OpenSSH Authentication Agent` 
+- Double click `OpenSSH Authentication Agent`. Change the Startup type to `Automatic` and select `OK`. 
+- Double click on `OpenSSH Authentication Agent` again and select `Start`. 
+
+The OpenSSH Agent will start automatically in future. Now we can create your ssh keys!
+
+#### Create ssh keys and add them to the ssh-agent
+
+*Note: These instructions will refer to your local PowerShell terminal, as well as the Strudel2 terminal. Pay attention!*
+
+Firstly, we need to generate an ssh key-pair. Open a Powershell terminal, and run the following command:
+
+```
+ssh-keygen -t ed25519
+```
+
+You will be asked where you would like to save the keys. Press enter to keep the default location.
+You will also be asked to enter a passphrase. This will be used to encrypt the private key on your computer.
+There will be a print out of your key's fingerprint and location on the screen.
+
+You should now have a public and private key in your `~/.ssh` directory, which will be named
+`id_ed25519.pub` and `id_ed25519` respectively. Never share your private key with someone else.
+
+Secondly, you will need to copy your public key into {{< var cluster_name >}}. To do this, run the following command:
+
+```
+cat ~/.ssh/id_ed25519.pub 
+```                                       
+
+Copy the line of text printed on the screen.
+
+Start a terminal session in [Strudel2](https://beta.desktop.cvl.org.au/login) by selecting `Terminal` from the
+sidebar on the left-hand side of the screen, and then selecting `Run on Login Node`.
+This will open a terminal on {{< var cluster_name >}} in a new tab. Ensure you have copied the public key from before, and run
+the following command in the Strudel2 terminal:
+
+```
+echo <paste the line you just copied> >> .ssh/authorized_keys
+```
+
+This will add your public key to {{< var cluster_name >}} and allow you to authenticate using your new ssh-keys.
+
+Finally, you will want to add your ssh keys to the ssh agent. You will remember setting a passphrase earlier
+for accessing your private key. When you add a private key to the ssh-agent, it will ask for your passphrase once,
+and then remember it until the next time your computer reboots. This means you won't need to enter a passphrase 
+everytime you log in to {{< var cluster_name >}} with your keys.
+
+Copy paste the location of your private key, which would have been printed on the screen in your PowerShell terminal earlier. 
+For example, `C:\Users\username/.ssh/id_ed25519`. Run the following in your PowerShell terminal to add the key to your ssh-agent:
+
+```
+ssh-add ~/.ssh/id_ed25519
+```
+
+</details>
+
+
+### 3. Configure VS Code
+
+Open VS Code and open the Command Palette (F1). In the dropdown menu, select `Remote-SSH: Add New SSH Host...`
+, or click on the Add New icon in the SSH Remote Explorer in the Activity Bar.
+
+You'll then be asked to enter the SSH connection information. Make sure you replace `<username>` with your {{< var cluster_name >}} username.
+
+</details>
+
+
+<details>                                                                                                                              
+<summary><b>Linux and Mac</b></summary>
+<br>
+
+On Linux and Mac, enter:
+
+```
+ssh -l <username> VSCode -o ProxyCommand="ssh <username>@{{< var cluster_name >}}.massive.org.au /usr/local/sv2/sshnc.sh"
+```
+
+</details>
+
+<details>                                                                                                                              
+<summary><b>Windows </b></summary>
+<br>
+
+On Windows enter:
+
+```
+ssh -l <username> VSCode -o ProxyCommand="ssh.exe <username>@{{< var cluster_name >}}.massive.org.au /usr/local/sv2/sshnc.sh"
+```
+
+</details>
+
+The proxycommand allows us to connect, not to the login nodes but to a node allocated just to you. 
+This is different than a regular VSCode setup because you're on a shared HPC cluster, not a regular server.
+
+## Using your VS Code remote server (do these every time you need a VS Code session on {{< var cluster_name >}})
+
+### 4. Allocate resources for the remote server (i.e. start a job)
+ 
+Using [Strudel2](https://beta.cloud.cvl.org.au) in your web browser, login to CVL and select and JupyterLab
+based application. Choose the resources you will need, including GPU type, number of CPUs, amount of RAM and time,
+and click `Launch`. Wait for the job to begin running under `Pending/Running Jupyter Labs`.
+
+### 5. Test the connection
+
+<details>                                                                                                                              
+<summary><b>Linux and Mac</b></summary>
+<br>
+
+Open a terminal and on Linux and Mac enter:
+
+```
+ssh -l <username> VSCode -o ProxyCommand="ssh <username>@{{< var cluster_name >}}.massive.org.au /usr/local/sv2/sshnc.sh"
+```
+
+</details>
+
+<details>                                                                                                                              
+<summary><b>Windows</b></summary>
+<br>
+
+On Windows, open a PowerShell terminal and enter:
+
+```
+ssh -l <username> VSCode -o ProxyCommand="ssh.exe <username>@{{< var cluster_name >}}.massive.org.au /usr/local/sv2/sshnc.sh"
+```
+
+</details>
+
+Verify that you can connect to {{< var cluster_name >}}. If you experience difficulties, this is the point to reach out to `{{ var email }}.` 
+This step will also prompt you to accept the public key for {{< var cluster_name >}}. 
+
+### 6. Start the remote server
+
+Open VS Code and open the Command Palette (F1). Select `Remote-SSH: Connect to Host` from the dropdown menu and select the 
+`VSCode` host. If you didn't add the private ssh key to the agent, VS Code will prompt you for your key passphrase
+It will ask twice (once to the connect to the login nodes, then again to connect to the node running the remote server).
+
+VS Code will also ask you what type of server it is, select Linux.
+
+Then you should be good to go.
+
+## FAQ
+
+### I see a message about "Connection Reset by peer".
+
+This will happen if you fail to authenticate too many times - perhaps typing in your key passphrase incorrectly. Wait 10 minutes, and try again. If you still run into errors please contact the helpdesk at `{{ var email }}`
+
+### I keep getting prompted for a password even though I'm using a key.
+
+Check that your connection command includes the username everwhere you need it (it should be in there twice, once for the login node and once for the compute node). Also, ensure you added your keys to the ssh-agent to avoid typing your key passphrase every time. You will need to do this after every reboot. 
+
+### I got an error message about posix spawn.
+
+You're probably on Windows. Check that you used the Windows specific command line with ssh.exe instead of ssh
+
+### I tried to use the ssh-agent but it says "Permissions `mykey` are too open.
+
+Private keys should never be shared - ensure only you have read, write, and execute permissions on your private key. 
+Linux/Mac user see [This StackOverflow post](https://stackoverflow.com/questions/9270734/ssh-permissions-are-too-open-error).
+Windows Users, see [This blog post](https://itectec.com/superuser/windows-ssh-permissions-for-private-key-are-too-open/)
