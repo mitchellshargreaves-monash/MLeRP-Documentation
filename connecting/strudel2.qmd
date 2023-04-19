@@ -14,7 +14,7 @@ You can also launch the web terminal attached to the login node if you just need
 ## Jupyter Lab
 Jupyter Lab jobs gives you some requested compute attached to a Jupyter Lab IDE. This is ideal if you prefer experimenting in python notebooks or visualising data with a GUI.
 
-If you prefer using VS Code to the Jupyter Lab IDE you can also connect to this job [Remote Development Extension Pack](https://aka.ms/vscode-remote/download/extension). For more details see our page on [connecting via VS Code](/connecting/vscode.qmd).
+If you prefer using VS Code to the Jupyter Lab IDE you can also connect to this job with the [Remote Development Extension Pack](https://aka.ms/vscode-remote/download/extension). For more details see our page on [connecting via VS Code](/connecting/vscode.qmd).
 
 
 ## FAQ
