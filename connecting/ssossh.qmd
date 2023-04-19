@@ -1,0 +1,13 @@
+---
+title: SSOSSH
+---
+
+SSOSSH is a tool that brings single sign on to {{< var cluster_name >}}. You can use it as an alternative to managing SSH keys when connecting via VS Code or your terminal.
+
+The tool works by generating an SSH Certificate rather than the usual approach of adding a public key to the list of authorised keys. This is more secure since the certificate will only be valid for 24 hours, requiring you to go through your organisation's single sign on again to renew the certificate. 
+
+This also means that you will no longer need to add your key manually since this will be handled automatically.
+
+You can install SSOSSH with: `pip install ssossh`
+
+You can read more about usage details at it's [PyPi page](https://pypi.org/project/ssossh/).
