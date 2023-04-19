@@ -46,7 +46,7 @@
     "href": "connecting/strudel2.html#jupyter-lab",
     "title": "Strudel 2",
     "section": "Jupyter Lab",
-    "text": "Jupyter Lab\nJupyter Lab jobs gives you some requested compute attached to a Jupyter Lab IDE. This is ideal if you prefer experimenting in python notebooks or visualising data with a GUI.\nIf you prefer using VS Code to the Jupyter Lab IDE you can also connect to this job Remote Development Extension Pack. For more details see our page on connecting via VS Code."
+    "text": "Jupyter Lab\nJupyter Lab jobs gives you some requested compute attached to a Jupyter Lab IDE. This is ideal if you prefer experimenting in python notebooks or visualising data with a GUI.\nIf you prefer using VS Code to the Jupyter Lab IDE you can also connect to this job with the Remote Development Extension Pack. For more details see our page on connecting via VS Code."
   },
   {
     "objectID": "connecting/strudel2.html#faq",
