@@ -10,8 +10,8 @@ website:
     left:
       - text: "Home"
         file: index.qmd
-      - faq.qmd
       - about.qmd
+      - faq.qmd
     right:
       - text: Log in
         href: https://mlerp.cloud.edu.au/launch
@@ -26,7 +26,6 @@ website:
       - section: "Connecting"
         contents:
         - auto: "connecting/*.qmd"
-        - auto: "connecting/strudel2/*.qmd"
       - section: "Tutorials"
         contents:
         - auto: "tutorials/*.ipynb"
