@@ -2,9 +2,21 @@
 title: Strudel 2
 ---
 
-Strudel 
+Strudel2 is an interactive environment to develop supports two types of jobs. You will be able to reach it from `{{< var strudel2 >}}`.
+
+It will allow you check the cluster's usage and your disk quota. You will also be able to launch interactive jobs on the cluster. Strudel2 offers two kinds of interactive jobs: terminal and jupyter lab.
 
 ## Terminal Jobs
+Terminal jobs gives you some requested compute attached to a simple text UI. This is ideal if you prefer writing python scripts or running experiments that don't require a GUI. 
 
+You can also launch the web terminal attached to the login node if you just need a quick terminal to manage your files, however this is a shared resource with limited compute.
 
 ## Jupyter Lab
+Jupyter Lab jobs gives you some requested compute attached to a Jupyter Lab IDE. This is ideal if you prefer experimenting in python notebooks or visualising data with a GUI.
+
+If you prefer using VS Code to the Jupyter Lab IDE you can also connect to this job [Remote Development Extension Pack](https://aka.ms/vscode-remote/download/extension). For more details see our page on [connecting via VS Code](/connecting/vscode.qmd).
+
+
+## FAQ
+### Why can't I connect to Jupyter Lab?
+Jupyter Lab needs to be able to create files to run properly. If your disk quota is completely full, it will create empty files that will confuse the system. To fix this, ssh into the cluster or use a terminal job to reduce your disk usage back under quota, then delete the empty files which will be found at `/home/<USERNAME>/.local/share/jupyter/runtime`.
