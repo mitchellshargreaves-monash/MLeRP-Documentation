@@ -24,8 +24,7 @@ Please don't do this, the login nodes are a shared resource and we would rather 
 ### 2. Generate an ssh key and add it to the ssh agent
 You may be familiar with using passwords to authenticate to {{< var cluster_name >}} - ssh keys are another, more secure method of doing this. 
 If you're unfamiliar with ssh keys, no worries - we'll step you through how to set one up here. 
-If you want to learn more about why ssh keys are more secure than passwords, 
-[This YouTube video does a good job of explaining it,](https://www.youtube.com/watch?v=dPAw4opzN9g)
+If you want to learn more about why ssh keys are more secure than passwords, this [YouTube video](https://www.youtube.com/watch?v=dPAw4opzN9g) does a good job of explaining it,
 even if it is designed for an AWS user.
 
 The process for creating keys and adding them to your ssh agent differs between Windows and Linux/Mac. 
@@ -53,12 +52,12 @@ Secondly, you will need to copy your public key into {{< var cluster_name >}}. T
 
 
 ```
-cat ~/.ssh/id_ed25519.pub                                                                                                       
+cat ~/.ssh/id_ed25519.pub                                  
 ```
 
 Copy the line of text printed on the screen.
 
-Start a terminal session in [Strudel2](https://beta.desktop.cvl.org.au/login) by selecting `Terminal` from the
+Start a terminal session in [Strudel2]({{< var strudel >}}) by selecting `Terminal` from the
 sidebar on the left-hand side of the screen, and then selecting `Run on Login Node`.
 This will open a terminal on {{< var cluster_name >}} in a new tab. Ensure you have copied the public key from before, and run
 the following command in the Strudel2 terminal:
@@ -229,7 +228,7 @@ ssh -l <username> VSCode -o ProxyCommand="ssh.exe <username>@{{< var cluster_nam
 
 </details>
 
-Verify that you can connect to {{< var cluster_name >}}. If you experience difficulties, this is the point to reach out to `{{ var email }}.` 
+Verify that you can connect to {{< var cluster_name >}}. If you experience difficulties, this is the point to reach out to `{{< var email >}}.` 
 This step will also prompt you to accept the public key for {{< var cluster_name >}}. 
 
 ### 6. Start the remote server
@@ -246,7 +245,7 @@ Then you should be good to go.
 
 ### I see a message about "Connection Reset by peer".
 
-This will happen if you fail to authenticate too many times - perhaps typing in your key passphrase incorrectly. Wait 10 minutes, and try again. If you still run into errors please contact the helpdesk at `{{ var email }}`
+This will happen if you fail to authenticate too many times - perhaps typing in your key passphrase incorrectly. Wait 10 minutes, and try again. If you still run into errors please contact the helpdesk at `{{< var email >}}`.
 
 ### I keep getting prompted for a password even though I'm using a key.
 
@@ -259,5 +258,5 @@ You're probably on Windows. Check that you used the Windows specific command lin
 ### I tried to use the ssh-agent but it says "Permissions `mykey` are too open.
 
 Private keys should never be shared - ensure only you have read, write, and execute permissions on your private key. 
-Linux/Mac user see [This StackOverflow post](https://stackoverflow.com/questions/9270734/ssh-permissions-are-too-open-error).
-Windows Users, see [This blog post](https://itectec.com/superuser/windows-ssh-permissions-for-private-key-are-too-open/)
+Linux/Mac user see this [StackOverflow post](https://stackoverflow.com/questions/9270734/ssh-permissions-are-too-open-error).
+Windows Users, see this [blog post](https://itectec.com/superuser/windows-ssh-permissions-for-private-key-are-too-open/)
