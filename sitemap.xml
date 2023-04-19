@@ -2,26 +2,38 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>git@gitlab.erc.monash.edu.au:hpc-team/mlerp-documentation.git/about.html</loc>
-    <lastmod>2023-03-21T01:17:26.364Z</lastmod>
+    <lastmod>2023-04-19T03:13:02.204Z</lastmod>
   </url>
   <url>
-    <loc>git@gitlab.erc.monash.edu.au:hpc-team/mlerp-documentation.git/dask-pytorch.html</loc>
-    <lastmod>2023-03-21T01:17:27.205Z</lastmod>
+    <loc>git@gitlab.erc.monash.edu.au:hpc-team/mlerp-documentation.git/connecting/aaf.html</loc>
+    <lastmod>2023-04-19T03:13:02.661Z</lastmod>
   </url>
   <url>
-    <loc>git@gitlab.erc.monash.edu.au:hpc-team/mlerp-documentation.git/dask-slurm.html</loc>
-    <lastmod>2023-03-21T01:17:27.983Z</lastmod>
+    <loc>git@gitlab.erc.monash.edu.au:hpc-team/mlerp-documentation.git/connecting/ssossh.html</loc>
+    <lastmod>2023-04-19T03:13:03.189Z</lastmod>
+  </url>
+  <url>
+    <loc>git@gitlab.erc.monash.edu.au:hpc-team/mlerp-documentation.git/connecting/strudel2.html</loc>
+    <lastmod>2023-04-19T03:13:03.667Z</lastmod>
+  </url>
+  <url>
+    <loc>git@gitlab.erc.monash.edu.au:hpc-team/mlerp-documentation.git/connecting/vscode.html</loc>
+    <lastmod>2023-04-19T03:13:04.421Z</lastmod>
   </url>
   <url>
     <loc>git@gitlab.erc.monash.edu.au:hpc-team/mlerp-documentation.git/faq.html</loc>
-    <lastmod>2023-03-21T01:17:28.514Z</lastmod>
+    <lastmod>2023-04-19T03:13:04.967Z</lastmod>
   </url>
   <url>
     <loc>git@gitlab.erc.monash.edu.au:hpc-team/mlerp-documentation.git/index.html</loc>
-    <lastmod>2023-03-21T01:17:28.996Z</lastmod>
+    <lastmod>2023-04-19T03:13:05.408Z</lastmod>
   </url>
   <url>
-    <loc>git@gitlab.erc.monash.edu.au:hpc-team/mlerp-documentation.git/vscode.html</loc>
-    <lastmod>2023-03-21T01:17:29.561Z</lastmod>
+    <loc>git@gitlab.erc.monash.edu.au:hpc-team/mlerp-documentation.git/tutorials/dask-pytorch.html</loc>
+    <lastmod>2023-04-19T03:13:06.494Z</lastmod>
+  </url>
+  <url>
+    <loc>git@gitlab.erc.monash.edu.au:hpc-team/mlerp-documentation.git/tutorials/dask-slurm.html</loc>
+    <lastmod>2023-04-19T03:13:07.074Z</lastmod>
   </url>
 </urlset>

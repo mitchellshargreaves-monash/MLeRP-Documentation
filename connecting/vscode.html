@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.335">
+<meta name="generator" content="quarto-1.3.330">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>MLeRP User Guide Documentation – vscode</title>
+<title>MLeRP User Guide Documentation - VS Code</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -17,29 +17,29 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="././images/favicon-32x32.png" rel="icon" type="image/png">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href=".././images/favicon-32x32.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -61,7 +61,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="nav-sidebar floating nav-fixed">
@@ -71,93 +71,144 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
-    <a href="./index.html" class="navbar-brand navbar-brand-logo">
-    <img src="././images/mstile-150x150.png" alt="" class="navbar-logo">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src=".././images/mstile-150x150.png" alt="" class="navbar-logo">
     </a>
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">MLeRP User Guide Documentation</span>
     </a>
   </div>
+            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page">
+    <a class="nav-link active" href="../index.html" rel="" target="" aria-current="page">
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./faq.html">
- <span class="menu-text">FAQ</span></a>
+    <a class="nav-link" href="../about.html" rel="" target="">
+ <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./about.html">
- <span class="menu-text">About</span></a>
+    <a class="nav-link" href="../faq.html" rel="" target="">
+ <span class="menu-text">FAQ</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="https://mlerp.cloud.edu.au/launch">
+    <a class="nav-link" href="https://mlerp.cloud.edu.au/launch" rel="" target="">
  <span class="menu-text">Log in</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://forms.gle/p9HWS79yxDouP6Tu8">
+    <a class="nav-link" href="https://forms.gle/p9HWS79yxDouP6Tu8" rel="" target="">
  <span class="menu-text">Sign up</span></a>
   </li>  
 </ul>
-              <div id="quarto-search" class="" title="Search"></div>
+            <div class="quarto-navbar-tools">
+</div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
-  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-    <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"></h1>
-      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
-        <i class="bi bi-chevron-right"></i>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../connecting/aaf.html">Connecting</a></li><li class="breadcrumb-item"><a href="../connecting/vscode.html">VS Code</a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
     </div>
   </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">Home</a>
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Home</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./about.html" class="sidebar-item-text sidebar-link">About</a>
+  <a href="../about.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./faq.html" class="sidebar-item-text sidebar-link">FAQ</a>
+  <a href="../faq.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">FAQ</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Connecting</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./vscode.html" class="sidebar-item-text sidebar-link active">VS Code</a>
+  <a href="../connecting/aaf.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">AAF</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./dask-slurm.html" class="sidebar-item-text sidebar-link">Dask SLURMClusters</a>
+  <a href="../connecting/ssossh.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">SSOSSH</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./dask-pytorch.html" class="sidebar-item-text sidebar-link">PyTorch and Dask</a>
+  <a href="../connecting/strudel2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Strudel 2</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../connecting/vscode.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">VS Code</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Tutorials</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tutorials/dask-pytorch.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">PyTorch and Dask</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tutorials/dask-slurm.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Dask SLURMClusters</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -190,7 +241,22 @@ ul.task-list li input[type="checkbox"] {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">VS Code</h1>
+</div>
 
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
 
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
@@ -210,7 +276,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="generate-an-ssh-key-and-add-it-to-the-ssh-agent" class="level3">
 <h3 class="anchored" data-anchor-id="generate-an-ssh-key-and-add-it-to-the-ssh-agent">2. Generate an ssh key and add it to the ssh agent</h3>
-<p>You may be familiar with using passwords to authenticate to MLeRP - ssh keys are another, more secure method of doing this. If you’re unfamiliar with ssh keys, no worries - we’ll step you through how to set one up here. If you want to learn more about why ssh keys are more secure than passwords, <a href="https://www.youtube.com/watch?v=dPAw4opzN9g">This YouTube video does a good job of explaining it,</a> even if it is designed for an AWS user.</p>
+<p>You may be familiar with using passwords to authenticate to MLeRP - ssh keys are another, more secure method of doing this. If you’re unfamiliar with ssh keys, no worries - we’ll step you through how to set one up here. If you want to learn more about why ssh keys are more secure than passwords, this <a href="https://www.youtube.com/watch?v=dPAw4opzN9g">YouTube video</a> does a good job of explaining it, even if it is designed for an AWS user.</p>
 <p>The process for creating keys and adding them to your ssh agent differs between Windows and Linux/Mac.</p>
 <details>
 <summary>
@@ -223,9 +289,9 @@ ul.task-list li input[type="checkbox"] {
 <p>You will be asked where you would like to save the keys. Press enter to keep the default location. You will also be asked to enter a passphrase. This will be used to encrypt the private key on your computer. There will be a print out of your key’s fingerprint and location on the screen.</p>
 <p>You should now have a public and private key in your <code>~/.ssh</code> directory, which will be named <code>id_ed25519.pub</code> and <code>id_ed25519</code> respectively. Never share your private key with someone else.</p>
 <p>Secondly, you will need to copy your public key into MLeRP. To do this, run the following command:</p>
-<pre><code>cat ~/.ssh/id_ed25519.pub                                                                                                       </code></pre>
+<pre><code>cat ~/.ssh/id_ed25519.pub                                  </code></pre>
 <p>Copy the line of text printed on the screen.</p>
-<p>Start a terminal session in <a href="https://beta.desktop.cvl.org.au/login">Strudel2</a> by selecting <code>Terminal</code> from the sidebar on the left-hand side of the screen, and then selecting <code>Run on Login Node</code>. This will open a terminal on MLeRP in a new tab. Ensure you have copied the public key from before, and run the following command in the Strudel2 terminal:</p>
+<p>Start a terminal session in <a href="https://mlerp.cloud.edu.au/">Strudel2</a> by selecting <code>Terminal</code> from the sidebar on the left-hand side of the screen, and then selecting <code>Run on Login Node</code>. This will open a terminal on MLeRP in a new tab. Ensure you have copied the public key from before, and run the following command in the Strudel2 terminal:</p>
 <pre><code>echo &lt;paste the line you just copied&gt; &gt;&gt; .ssh/authorized_keys</code></pre>
 <p>This will add your public key to MLeRP and allow you to authenticate using your new ssh-keys. Close the terminal tab and terminate the terminal session.</p>
 <p>Finally, you will want to add your ssh keys to the ssh-agent. You will remember setting a passphrase earlier for accessing your private key. When you add a private key to the ssh-agent, it will ask for your passphrase once, and then remember it until the next time your computer reboots. This means you won’t need to enter a passphrase everytime you log in to MLeRP with your keys.</p>
@@ -270,7 +336,7 @@ ul.task-list li input[type="checkbox"] {
 <p>Secondly, you will need to copy your public key into MLeRP. To do this, run the following command:</p>
 <pre><code>cat ~/.ssh/id_ed25519.pub </code></pre>
 <p>Copy the line of text printed on the screen.</p>
-<p>Start a terminal session in <a href="https://beta.desktop.cvl.org.au/login">Strudel2</a> by selecting <code>Terminal</code> from the sidebar on the left-hand side of the screen, and then selecting <code>Run on Login Node</code>. This will open a terminal on MLeRP in a new tab. Ensure you have copied the public key from before, and run the following command in the Strudel2 terminal:</p>
+<p>Start a terminal session in <a href="https://mlerp.cloud.edu.au/">Strudel2</a> by selecting <code>Terminal</code> from the sidebar on the left-hand side of the screen, and then selecting <code>Run on Login Node</code>. This will open a terminal on MLeRP in a new tab. Ensure you have copied the public key from before, and run the following command in the Strudel2 terminal:</p>
 <pre><code>echo &lt;paste the line you just copied&gt; &gt;&gt; .ssh/authorized_keys</code></pre>
 <p>This will add your public key to MLeRP and allow you to authenticate using your new ssh-keys.</p>
 <p>Finally, you will want to add your ssh keys to the ssh agent. You will remember setting a passphrase earlier for accessing your private key. When you add a private key to the ssh-agent, it will ask for your passphrase once, and then remember it until the next time your computer reboots. This means you won’t need to enter a passphrase everytime you log in to MLeRP with your keys.</p>
@@ -307,7 +373,7 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="using-your-vs-code-remote-server-do-these-every-time-you-need-a-vs-code-session-on-var-cluster_name">Using your VS Code remote server (do these every time you need a VS Code session on MLeRP)</h2>
 <section id="allocate-resources-for-the-remote-server-i.e.-start-a-job" class="level3">
 <h3 class="anchored" data-anchor-id="allocate-resources-for-the-remote-server-i.e.-start-a-job">4. Allocate resources for the remote server (i.e.&nbsp;start a job)</h3>
-<p>Using <a href="https://beta.cloud.cvl.org.au">Strudel2</a> in your web browser, login to CVL and select and JupyterLab based application. Choose the resources you will need, including GPU type, number of CPUs, amount of RAM and time, and click <code>Launch</code>. Wait for the job to begin running under <code>Pending/Running Jupyter Labs</code>.</p>
+<p>Using <a href="https://beta.cloud.cvl.org.au">Strudel2</a> in your web browser, login to CVL and select and Jupyter Lab based application. Choose the resources you will need, including GPU type, number of CPUs, amount of RAM and time, and click <code>Launch</code>. Wait for the job to begin running under <code>Pending/Running Jupyter Labs</code>.</p>
 </section>
 <section id="test-the-connection" class="level3">
 <h3 class="anchored" data-anchor-id="test-the-connection">5. Test the connection</h3>
@@ -327,7 +393,7 @@ ul.task-list li input[type="checkbox"] {
 <p>On Windows, open a PowerShell terminal and enter:</p>
 <pre><code>ssh -l &lt;username&gt; VSCode -o ProxyCommand="ssh.exe &lt;username&gt;@MLeRP.massive.org.au /usr/local/sv2/sshnc.sh"</code></pre>
 </details>
-<p>Verify that you can connect to MLeRP. If you experience difficulties, this is the point to reach out to <code>{{ var email }}.</code> This step will also prompt you to accept the public key for MLeRP.</p>
+<p>Verify that you can connect to MLeRP. If you experience difficulties, this is the point to reach out to <code>mlerphelp@gmail.com.</code> This step will also prompt you to accept the public key for MLeRP.</p>
 </section>
 <section id="start-the-remote-server" class="level3">
 <h3 class="anchored" data-anchor-id="start-the-remote-server">6. Start the remote server</h3>
@@ -340,7 +406,7 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="faq">FAQ</h2>
 <section id="i-see-a-message-about-connection-reset-by-peer." class="level3">
 <h3 class="anchored" data-anchor-id="i-see-a-message-about-connection-reset-by-peer.">I see a message about “Connection Reset by peer”.</h3>
-<p>This will happen if you fail to authenticate too many times - perhaps typing in your key passphrase incorrectly. Wait 10 minutes, and try again. If you still run into errors please contact the helpdesk at <code>{{ var email }}</code></p>
+<p>This will happen if you fail to authenticate too many times - perhaps typing in your key passphrase incorrectly. Wait 10 minutes, and try again. If you still run into errors please contact the helpdesk at <code>mlerphelp@gmail.com</code>.</p>
 </section>
 <section id="i-keep-getting-prompted-for-a-password-even-though-im-using-a-key." class="level3">
 <h3 class="anchored" data-anchor-id="i-keep-getting-prompted-for-a-password-even-though-im-using-a-key.">I keep getting prompted for a password even though I’m using a key.</h3>
@@ -352,7 +418,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="i-tried-to-use-the-ssh-agent-but-it-says-permissions-mykey-are-too-open." class="level3">
 <h3 class="anchored" data-anchor-id="i-tried-to-use-the-ssh-agent-but-it-says-permissions-mykey-are-too-open.">I tried to use the ssh-agent but it says “Permissions <code>mykey</code> are too open.</h3>
-<p>Private keys should never be shared - ensure only you have read, write, and execute permissions on your private key. Linux/Mac user see <a href="https://stackoverflow.com/questions/9270734/ssh-permissions-are-too-open-error">This StackOverflow post</a>. Windows Users, see <a href="https://itectec.com/superuser/windows-ssh-permissions-for-private-key-are-too-open/">This blog post</a></p>
+<p>Private keys should never be shared - ensure only you have read, write, and execute permissions on your private key. Linux/Mac user see this <a href="https://stackoverflow.com/questions/9270734/ssh-permissions-are-too-open-error">StackOverflow post</a>. Windows Users, see this <a href="https://itectec.com/superuser/windows-ssh-permissions-for-private-key-are-too-open/">blog post</a></p>
 
 
 </section>
@@ -386,9 +452,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -453,6 +533,92 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
