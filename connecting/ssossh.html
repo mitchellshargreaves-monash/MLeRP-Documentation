@@ -236,8 +236,11 @@ ul.task-list li input[type="checkbox"] {
 <p>SSOSSH is a tool that brings single sign on to MLeRP. You can use it as an alternative to managing SSH keys when connecting via VS Code or your terminal.</p>
 <p>The tool works by generating an SSH Certificate rather than the usual approach of adding a public key to the list of authorised keys. This is more secure since the certificate will only be valid for 24 hours, requiring you to go through your organisation’s single sign on again to renew the certificate.</p>
 <p>This also means that you will no longer need to add your key manually since this will be handled automatically.</p>
-<p>You can install SSOSSH with: <code>pip install ssossh</code></p>
-<p>You can read more about usage details at it’s <a href="https://pypi.org/project/ssossh/">PyPi page</a>.</p>
+<p>You can read more about usage details at it’s <a href="https://github.com/mitchellshargreaves-monash/ssossh">GitHub Repo</a>.</p>
+<p>You can pip install SSOSSH with:</p>
+<pre><code>pip install git+https://github.com/mitchellshargreaves-monash/ssossh</code></pre>
+<p>or if you want to test an experimental feature:</p>
+<pre><code>pip install git+https://github.com/mitchellshargreaves-monash/ssossh@branch-name</code></pre>
 
 
 

@@ -2,38 +2,38 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>git@gitlab.erc.monash.edu.au:hpc-team/mlerp-documentation.git/about.html</loc>
-    <lastmod>2023-04-19T03:51:22.428Z</lastmod>
+    <lastmod>2023-04-26T06:29:47.485Z</lastmod>
   </url>
   <url>
     <loc>git@gitlab.erc.monash.edu.au:hpc-team/mlerp-documentation.git/connecting/aaf.html</loc>
-    <lastmod>2023-04-19T03:51:22.866Z</lastmod>
+    <lastmod>2023-04-26T06:29:48.093Z</lastmod>
   </url>
   <url>
     <loc>git@gitlab.erc.monash.edu.au:hpc-team/mlerp-documentation.git/connecting/ssossh.html</loc>
-    <lastmod>2023-04-19T03:51:23.442Z</lastmod>
+    <lastmod>2023-04-26T06:29:48.560Z</lastmod>
   </url>
   <url>
     <loc>git@gitlab.erc.monash.edu.au:hpc-team/mlerp-documentation.git/connecting/strudel2.html</loc>
-    <lastmod>2023-04-19T03:51:23.906Z</lastmod>
+    <lastmod>2023-04-26T06:29:49.037Z</lastmod>
   </url>
   <url>
     <loc>git@gitlab.erc.monash.edu.au:hpc-team/mlerp-documentation.git/connecting/vscode.html</loc>
-    <lastmod>2023-04-19T03:51:24.614Z</lastmod>
+    <lastmod>2023-04-26T06:29:49.774Z</lastmod>
   </url>
   <url>
     <loc>git@gitlab.erc.monash.edu.au:hpc-team/mlerp-documentation.git/faq.html</loc>
-    <lastmod>2023-04-19T03:51:25.160Z</lastmod>
+    <lastmod>2023-04-26T06:29:50.366Z</lastmod>
   </url>
   <url>
     <loc>git@gitlab.erc.monash.edu.au:hpc-team/mlerp-documentation.git/index.html</loc>
-    <lastmod>2023-04-19T03:51:25.606Z</lastmod>
+    <lastmod>2023-04-26T06:29:50.829Z</lastmod>
   </url>
   <url>
     <loc>git@gitlab.erc.monash.edu.au:hpc-team/mlerp-documentation.git/tutorials/dask-pytorch.html</loc>
-    <lastmod>2023-04-19T03:51:26.661Z</lastmod>
+    <lastmod>2023-04-26T06:29:52.066Z</lastmod>
   </url>
   <url>
     <loc>git@gitlab.erc.monash.edu.au:hpc-team/mlerp-documentation.git/tutorials/dask-slurm.html</loc>
-    <lastmod>2023-04-19T03:51:27.191Z</lastmod>
+    <lastmod>2023-04-26T06:29:52.677Z</lastmod>
   </url>
 </urlset>
