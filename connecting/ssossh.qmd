@@ -8,6 +8,13 @@ The tool works by generating an SSH Certificate rather than the usual approach o
 
 This also means that you will no longer need to add your key manually since this will be handled automatically.
 
-You can install SSOSSH with: `pip install ssossh`
+You can read more about usage details at it's [GitHub Repo](https://github.com/mitchellshargreaves-monash/ssossh).
 
-You can read more about usage details at it's [PyPi page](https://pypi.org/project/ssossh/).
+You can pip install SSOSSH with: 
+```
+pip install git+https://github.com/mitchellshargreaves-monash/ssossh
+```
+or if you want to test an experimental feature:
+```
+pip install git+https://github.com/mitchellshargreaves-monash/ssossh@branch-name
+```
