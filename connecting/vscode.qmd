@@ -13,6 +13,14 @@ Please **DO NOT** follow the [official VS Code documentation for remote servers]
 By default, if you follow those instructions, you will end up running the VS Code remote server on the login node. 
 Please don't do this, the login nodes are a shared resource and we would rather allocate a resource just for you.
 
+Instead, please use this proxy command which will forward your connection to our compute nodes rather than the login node. This will connect to a `Jupyter Lab` job, or if one doesn't exist, it will make one for you.
+```
+ProxyCommand="ssh <username>@{{< var login >}} /usr/local/sv2/sshnc.sh"
+```
+Note that you will need to authenticate with your ssh key/cert, either through your authorized keys file or by generating a cert with ssossh. You can then add it to your agent or provide it to the ssh command (and proxy command) with the `-i` flag.
+
+If you're not sure how to use a proxy command, read on and we'll walk you through the steps.
+
 ## Set-Up Instructions (only do these once)
 
 ### 1. Prepare VS Code
@@ -30,7 +38,7 @@ even if it is designed for an AWS user.
 The process for creating keys and adding them to your ssh agent differs between Windows and Linux/Mac. 
 
 <details>
-<summary><b>Mac and Linux Instructions</b></summary>
+<summary><b>Mac and Linux</b></summary>
 <br>
 
 *Note: These instructions will refer to your local terminal, as well as the Strudel2 terminal. Pay attention!*
@@ -84,7 +92,7 @@ ssh-add ~/.ssh/id_ed25519
 
 
 <details>                                                                                                                              
-<summary><b>Windows Instructions</b></summary>
+<summary><b>Windows</b></summary>
 <br>
 
 #### Install and enable OpenSSH
@@ -174,7 +182,7 @@ You'll then be asked to enter the SSH connection information. Make sure you repl
 On Linux and Mac, enter:
 
 ```
-ssh -l <username> VSCode -o ProxyCommand="ssh <username>@{{< var cluster_name >}}.massive.org.au /usr/local/sv2/sshnc.sh"
+ssh -l <username> VSCode -o ProxyCommand="ssh <username>@{{< var login >}} /usr/local/sv2/sshnc.sh"
 ```
 
 </details>
@@ -186,7 +194,7 @@ ssh -l <username> VSCode -o ProxyCommand="ssh <username>@{{< var cluster_name >}
 On Windows enter:
 
 ```
-ssh -l <username> VSCode -o ProxyCommand="ssh.exe <username>@{{< var cluster_name >}}.massive.org.au /usr/local/sv2/sshnc.sh"
+ssh -l <username> VSCode -o ProxyCommand="ssh.exe <username>@{{< var login >}} /usr/local/sv2/sshnc.sh"
 ```
 
 </details>
@@ -211,7 +219,7 @@ and click `Launch`. Wait for the job to begin running under `Pending/Running Jup
 Open a terminal and on Linux and Mac enter:
 
 ```
-ssh -l <username> VSCode -o ProxyCommand="ssh <username>@{{< var cluster_name >}}.massive.org.au /usr/local/sv2/sshnc.sh"
+ssh -l <username> VSCode -o ProxyCommand="ssh <username>@{{< var login >}} /usr/local/sv2/sshnc.sh"
 ```
 
 </details>
@@ -223,7 +231,7 @@ ssh -l <username> VSCode -o ProxyCommand="ssh <username>@{{< var cluster_name >}
 On Windows, open a PowerShell terminal and enter:
 
 ```
-ssh -l <username> VSCode -o ProxyCommand="ssh.exe <username>@{{< var cluster_name >}}.massive.org.au /usr/local/sv2/sshnc.sh"
+ssh -l <username> VSCode -o ProxyCommand="ssh.exe <username>@{{< var login >}} /usr/local/sv2/sshnc.sh"
 ```
 
 </details>
