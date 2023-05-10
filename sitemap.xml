@@ -2,42 +2,42 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>git@gitlab.erc.monash.edu.au:hpc-team/mlerp-documentation.git/about.html</loc>
-    <lastmod>2023-05-10T04:29:45.963Z</lastmod>
+    <lastmod>2023-05-10T06:27:57.158Z</lastmod>
   </url>
   <url>
     <loc>git@gitlab.erc.monash.edu.au:hpc-team/mlerp-documentation.git/connecting/aaf.html</loc>
-    <lastmod>2023-05-10T04:29:46.480Z</lastmod>
+    <lastmod>2023-05-10T06:27:57.699Z</lastmod>
   </url>
   <url>
     <loc>git@gitlab.erc.monash.edu.au:hpc-team/mlerp-documentation.git/connecting/ssossh.html</loc>
-    <lastmod>2023-05-10T04:29:47.146Z</lastmod>
+    <lastmod>2023-05-10T06:27:58.286Z</lastmod>
   </url>
   <url>
     <loc>git@gitlab.erc.monash.edu.au:hpc-team/mlerp-documentation.git/connecting/strudel2.html</loc>
-    <lastmod>2023-05-10T04:29:48.065Z</lastmod>
+    <lastmod>2023-05-10T06:27:58.778Z</lastmod>
   </url>
   <url>
     <loc>git@gitlab.erc.monash.edu.au:hpc-team/mlerp-documentation.git/connecting/transferring_files.html</loc>
-    <lastmod>2023-05-10T04:29:49.517Z</lastmod>
+    <lastmod>2023-05-10T06:27:59.329Z</lastmod>
   </url>
   <url>
     <loc>git@gitlab.erc.monash.edu.au:hpc-team/mlerp-documentation.git/connecting/vscode.html</loc>
-    <lastmod>2023-05-10T04:29:51.572Z</lastmod>
+    <lastmod>2023-05-10T06:28:00.187Z</lastmod>
   </url>
   <url>
     <loc>git@gitlab.erc.monash.edu.au:hpc-team/mlerp-documentation.git/faq.html</loc>
-    <lastmod>2023-05-10T04:29:52.396Z</lastmod>
+    <lastmod>2023-05-10T06:28:00.872Z</lastmod>
   </url>
   <url>
     <loc>git@gitlab.erc.monash.edu.au:hpc-team/mlerp-documentation.git/index.html</loc>
-    <lastmod>2023-05-10T04:29:53.081Z</lastmod>
+    <lastmod>2023-05-10T06:28:01.456Z</lastmod>
   </url>
   <url>
     <loc>git@gitlab.erc.monash.edu.au:hpc-team/mlerp-documentation.git/tutorials/dask-pytorch.html</loc>
-    <lastmod>2023-05-10T04:29:54.516Z</lastmod>
+    <lastmod>2023-05-10T06:28:02.758Z</lastmod>
   </url>
   <url>
     <loc>git@gitlab.erc.monash.edu.au:hpc-team/mlerp-documentation.git/tutorials/dask-slurm.html</loc>
-    <lastmod>2023-05-10T04:29:55.259Z</lastmod>
+    <lastmod>2023-05-10T06:28:03.483Z</lastmod>
   </url>
 </urlset>
