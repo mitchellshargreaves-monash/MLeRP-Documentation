@@ -101,7 +101,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link rel="stylesheet" href="../styles.css">
 </head>
 
-<body class="nav-sidebar docked nav-fixed">
+<body class="nav-sidebar floating nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -163,7 +163,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
@@ -209,6 +209,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="../connecting/strudel2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Strudel 2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../connecting/transferring_files.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Transferring Files</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -271,12 +277,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 <p>The MLeRP notebook environment uses Dask SLURMClusters to create a middle ground that has the interactivity of a notebook backed by the power of HPC. You will be provisioned with a CPU based notebook session for your basic analysis and code development. Then, when you’re ready to run tests you will use Dask to submit your python functions to the SLURM queue.</p>
-<p>This enables:<br>
-- Flexibility to experiment with your dataset interactively<br>
-- Ability to change compute requirements such as RAM, size of GPU, number of processes and so on… without ever leaving the notebook environment<br>
-- Elastic scaling of compute<br>
-- Efficient utilisation of the hardware<br>
-- Releasing of resources when not in use</p>
+<p>This enables: - Flexibility to experiment with your dataset interactively - Ability to change compute requirements such as RAM, size of GPU, number of processes and so on… without ever leaving the notebook environment - Elastic scaling of compute - Efficient utilisation of the hardware - Releasing of resources when not in use</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dask_jobqueue <span class="im">import</span> SLURMCluster</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> distributed <span class="im">import</span> Client, LocalCluster</span>

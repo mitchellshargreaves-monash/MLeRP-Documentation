@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>MLeRP User Guide Documentation - Strudel 2</title>
+<title>MLeRP User Guide Documentation - Transferring Files</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -117,7 +117,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../connecting/aaf.html">Connecting</a></li><li class="breadcrumb-item"><a href="../connecting/strudel2.html">Strudel 2</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../connecting/aaf.html">Connecting</a></li><li class="breadcrumb-item"><a href="../connecting/transferring_files.html">Transferring Files</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -170,13 +170,13 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../connecting/strudel2.html" class="sidebar-item-text sidebar-link active">
+  <a href="../connecting/strudel2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Strudel 2</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../connecting/transferring_files.html" class="sidebar-item-text sidebar-link">
+  <a href="../connecting/transferring_files.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Transferring Files</span></a>
   </div>
 </li>
@@ -221,12 +221,9 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#terminal-jobs" id="toc-terminal-jobs" class="nav-link active" data-scroll-target="#terminal-jobs">Terminal Jobs</a></li>
-  <li><a href="#jupyter-lab" id="toc-jupyter-lab" class="nav-link" data-scroll-target="#jupyter-lab">Jupyter Lab</a></li>
-  <li><a href="#faq" id="toc-faq" class="nav-link" data-scroll-target="#faq">FAQ</a>
-  <ul class="collapse">
-  <li><a href="#why-cant-i-connect-to-jupyter-lab" id="toc-why-cant-i-connect-to-jupyter-lab" class="nav-link" data-scroll-target="#why-cant-i-connect-to-jupyter-lab">Why can’t I connect to Jupyter Lab?</a></li>
-  </ul></li>
+  <li><a href="#jupyter-lab" id="toc-jupyter-lab" class="nav-link active" data-scroll-target="#jupyter-lab">Jupyter Lab</a></li>
+  <li><a href="#vs-code" id="toc-vs-code" class="nav-link" data-scroll-target="#vs-code">VS Code</a></li>
+  <li><a href="#rsync" id="toc-rsync" class="nav-link" data-scroll-target="#rsync">rsync</a></li>
   </ul>
 </nav>
     </div>
@@ -235,7 +232,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Strudel 2</h1>
+<h1 class="title">Transferring Files</h1>
 </div>
 
 
@@ -250,26 +247,23 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>Strudel2 is an interactive environment to develop supports two types of jobs. You will be able to reach it from <code>https://mlerp.cloud.edu.au/</code>.</p>
-<p>It will allow you check the cluster’s usage and your disk quota. You will also be able to launch interactive jobs on the cluster. Strudel2 offers two kinds of interactive jobs: terminal and jupyter lab.</p>
-<section id="terminal-jobs" class="level2">
-<h2 class="anchored" data-anchor-id="terminal-jobs">Terminal Jobs</h2>
-<p>Terminal jobs gives you some requested compute attached to a simple text UI. This is ideal if you prefer writing python scripts or running experiments that don’t require a GUI.</p>
-<p>You can also launch the web terminal attached to the login node if you just need a quick terminal to manage your files, however this is a shared resource with limited compute.</p>
-</section>
+<p>MLeRP does not have a dedicated data transfer node. We recommend that you use the login node when managing your files.</p>
 <section id="jupyter-lab" class="level2">
 <h2 class="anchored" data-anchor-id="jupyter-lab">Jupyter Lab</h2>
-<p>Jupyter Lab jobs gives you some requested compute attached to a Jupyter Lab IDE. This is ideal if you prefer experimenting in python notebooks or visualising data with a GUI.</p>
-<p>If you prefer using VS Code to the Jupyter Lab IDE you can also connect to this job with the <a href="https://aka.ms/vscode-remote/download/extension">Remote Development Extension Pack</a>. For more details see our page on <a href="../connecting/vscode.html">connecting via VS Code</a>.</p>
+<p>The easiest option to move files into the MLeRP environment is to use a Jupyter Lab job through Strudle2 since it requires no additional setup. You should be able to drag and drop files into the filetree on the left though it comes with some limitations.</p>
+<p>Jupyter Lab does not support transferring folders, so you will need to either zip your files first or create your desired structure first and drop in the files later. You can still select multiple files and drag and drop all of them at once. It also only supports dropping files into the directory you are viewing.</p>
 </section>
-<section id="faq" class="level2">
-<h2 class="anchored" data-anchor-id="faq">FAQ</h2>
-<section id="why-cant-i-connect-to-jupyter-lab" class="level3">
-<h3 class="anchored" data-anchor-id="why-cant-i-connect-to-jupyter-lab">Why can’t I connect to Jupyter Lab?</h3>
-<p>Jupyter Lab needs to be able to create files to run properly. If your disk quota is completely full, it will create empty files that will confuse the system. To fix this, ssh into the cluster or use a terminal job to reduce your disk usage back under quota, then delete the empty files which will be found at <code>/home/&lt;USERNAME&gt;/.local/share/jupyter/runtime</code>.</p>
+<section id="vs-code" class="level2">
+<h2 class="anchored" data-anchor-id="vs-code">VS Code</h2>
+<p>If you have already gone through the steps to connect your VS Code you can drag and drop files into the filetree just like with Jupyter Lab, but VS Code will allow you to drop whole folders at once, including nested folders. You can control where the files and folders end up by hovering over the desired folder.</p>
+</section>
+<section id="rsync" class="level2">
+<h2 class="anchored" data-anchor-id="rsync">rsync</h2>
+<p>If you’re familiar with the terminal you can use <code>rsync</code> to synchronise file systems and to transfer large amounts of files, with the ability to stop and restart the file transfers. <code>rsync</code> will replicate all files in a folder from one spot to another. It first analyses both file systems to find the difference and then transfers only the changes.</p>
+<p>A typical command to synchronise files from a local folder to M3 is:</p>
+<p><code>rsync -auv -e ssh adirectory &lt;username&gt;@mlerp-login0.mlerp.cloud.edu.au:~/destinationdirectory/</code> rsync is very powerful and has many options to help transfer data. For example it can delete unwanted files (–delete), compress data before transfer (-z) or can you let you see what command options might do without actually executing them (–dry-run). For more info on rsync try man rsync.</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

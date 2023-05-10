@@ -64,7 +64,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="../styles.css">
 </head>
 
-<body class="nav-sidebar docked nav-fixed">
+<body class="nav-sidebar floating nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -126,7 +126,7 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
@@ -172,6 +172,12 @@ ul.task-list li input[type="checkbox"] {
   <div class="sidebar-item-container"> 
   <a href="../connecting/strudel2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Strudel 2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../connecting/transferring_files.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Transferring Files</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -262,7 +268,12 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
 <p>So you’d like to use <a href="https://code.visualstudio.com/">Visual Studio Code</a>, but you need access to MLeRP too - maybe your data is on the cluster, or you want to run code interactively on a GPU, or you just really love VS Code. No problem. You want a VS Code remote server.</p>
 <p>Please <strong>DO NOT</strong> follow the <a href="https://code.visualstudio.com/docs/remote/ssh">official VS Code documentation for remote servers</a>.</p>
-<p>By default, if you follow those instructions, you will end up running the VS Code remote server on the login node. Please don’t do this, the login nodes are a shared resource and we would rather allocate a resource just for you.</p>
+<p>By default, if you follow those instructions, you will end up running the VS Code remote server on the login node.<br>
+Please don’t do this, the login nodes are a shared resource and we would rather allocate a resource just for you.</p>
+<p>Instead, please use this proxy command which will forward your connection to our compute nodes rather than the login node. This will connect to a <code>Jupyter Lab</code> job, or if one doesn’t exist, it will make one for you.</p>
+<pre><code>ProxyCommand="ssh &lt;username&gt;@mlerp-login0.mlerp.cloud.edu.au /usr/local/sv2/sshnc.sh"</code></pre>
+<p>Note that you will need to authenticate with your ssh key/cert, either through your authorized keys file or by generating a cert with ssossh. You can then add it to your agent or provide it to the ssh command (and proxy command) with the <code>-i</code> flag.</p>
+<p>If you’re not sure how to use a proxy command, read on and we’ll walk you through the steps.</p>
 </section>
 <section id="set-up-instructions-only-do-these-once" class="level2">
 <h2 class="anchored" data-anchor-id="set-up-instructions-only-do-these-once">Set-Up Instructions (only do these once)</h2>
@@ -280,7 +291,7 @@ ul.task-list li input[type="checkbox"] {
 <p>The process for creating keys and adding them to your ssh agent differs between Windows and Linux/Mac.</p>
 <details>
 <summary>
-<b>Mac and Linux Instructions</b>
+<b>Mac and Linux</b>
 </summary>
 <p><br></p>
 <p><em>Note: These instructions will refer to your local terminal, as well as the Strudel2 terminal. Pay attention!</em></p>
@@ -300,7 +311,7 @@ ul.task-list li input[type="checkbox"] {
 </details>
 <details>
 <summary>
-<b>Windows Instructions</b>
+<b>Windows</b>
 </summary>
 <p><br></p>
 <section id="install-and-enable-openssh" class="level4">
@@ -356,7 +367,7 @@ ul.task-list li input[type="checkbox"] {
 </summary>
 <p><br></p>
 <p>On Linux and Mac, enter:</p>
-<pre><code>ssh -l &lt;username&gt; VSCode -o ProxyCommand="ssh &lt;username&gt;@MLeRP.massive.org.au /usr/local/sv2/sshnc.sh"</code></pre>
+<pre><code>ssh -l &lt;username&gt; VSCode -o ProxyCommand="ssh &lt;username&gt;@mlerp-login0.mlerp.cloud.edu.au /usr/local/sv2/sshnc.sh"</code></pre>
 </details>
 <details>
 <summary>
@@ -364,7 +375,7 @@ ul.task-list li input[type="checkbox"] {
 </summary>
 <p><br></p>
 <p>On Windows enter:</p>
-<pre><code>ssh -l &lt;username&gt; VSCode -o ProxyCommand="ssh.exe &lt;username&gt;@MLeRP.massive.org.au /usr/local/sv2/sshnc.sh"</code></pre>
+<pre><code>ssh -l &lt;username&gt; VSCode -o ProxyCommand="ssh.exe &lt;username&gt;@mlerp-login0.mlerp.cloud.edu.au /usr/local/sv2/sshnc.sh"</code></pre>
 </details>
 <p>The proxycommand allows us to connect, not to the login nodes but to a node allocated just to you. This is different than a regular VSCode setup because you’re on a shared HPC cluster, not a regular server.</p>
 </section>
@@ -383,7 +394,7 @@ ul.task-list li input[type="checkbox"] {
 </summary>
 <p><br></p>
 <p>Open a terminal and on Linux and Mac enter:</p>
-<pre><code>ssh -l &lt;username&gt; VSCode -o ProxyCommand="ssh &lt;username&gt;@MLeRP.massive.org.au /usr/local/sv2/sshnc.sh"</code></pre>
+<pre><code>ssh -l &lt;username&gt; VSCode -o ProxyCommand="ssh &lt;username&gt;@mlerp-login0.mlerp.cloud.edu.au /usr/local/sv2/sshnc.sh"</code></pre>
 </details>
 <details>
 <summary>
@@ -391,7 +402,7 @@ ul.task-list li input[type="checkbox"] {
 </summary>
 <p><br></p>
 <p>On Windows, open a PowerShell terminal and enter:</p>
-<pre><code>ssh -l &lt;username&gt; VSCode -o ProxyCommand="ssh.exe &lt;username&gt;@MLeRP.massive.org.au /usr/local/sv2/sshnc.sh"</code></pre>
+<pre><code>ssh -l &lt;username&gt; VSCode -o ProxyCommand="ssh.exe &lt;username&gt;@mlerp-login0.mlerp.cloud.edu.au /usr/local/sv2/sshnc.sh"</code></pre>
 </details>
 <p>Verify that you can connect to MLeRP. If you experience difficulties, this is the point to reach out to <code>mlerphelp@gmail.com.</code> This step will also prompt you to accept the public key for MLeRP.</p>
 </section>
