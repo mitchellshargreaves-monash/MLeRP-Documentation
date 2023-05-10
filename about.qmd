@@ -53,7 +53,7 @@ Six nodes with:
   - 2 10 GB VRAM
 
 ## QCIF
-The QCIF region uses a more traditional approach with GPU enabled notebook or terminal sessions. This user experience is much closer to using a service like Google Colab.
+The QCIF region uses a more traditional approach with A100 GPU enabled notebook or terminal sessions. This user experience is much closer to using a service like Google Colab.
 
 GPU notebook or terminal sessions in three sizes:
 
