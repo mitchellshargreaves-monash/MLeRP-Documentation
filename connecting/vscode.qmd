@@ -10,7 +10,7 @@ No problem. You want a VS Code remote server.
 
 Please **DO NOT** follow the [official VS Code documentation for remote servers](https://code.visualstudio.com/docs/remote/ssh).
 
-By default, if you follow those instructions, you will end up running the VS Code remote server on the login node. 
+By default, if you follow those instructions, you will end up running the VS Code remote server on the login node.  
 Please don't do this, the login nodes are a shared resource and we would rather allocate a resource just for you.
 
 Instead, please use this proxy command which will forward your connection to our compute nodes rather than the login node. This will connect to a `Jupyter Lab` job, or if one doesn't exist, it will make one for you.

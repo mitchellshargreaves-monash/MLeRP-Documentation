@@ -16,7 +16,7 @@ MLeRP has been made possible through ARDC funding. Thanks ARDC!
 
 <p style="text-align: center;">
     <button type="button" class="btn btn-primary btn-lg" onclick="window.location.href='https://mlerp.cloud.edu.au/launch';">Log in</button>
-    <button type="button" class="btn btn-primary btn-lg" onclick="window.location.href='https://forms.gle/p9HWS79yxDouP6Tu8';">Sign up</button>
+    <button type="button" class="btn btn-primary btn-lg" onclick="window.location.href='https://forms.gle/HuPk8ckmptq2LCaR7';">Sign up</button>
 </p>
 
 <!-- MLeRP is available through open beta to all Australian researchers. You can [sign up]() to be a part of our open beta to gain access to the MLeRP platform. -->
