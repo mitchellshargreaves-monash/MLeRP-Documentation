@@ -1,0 +1,32 @@
+[
+    { 
+        "url": null,
+        "name": "Custom Jupyter Lab",
+        "desc": "This is a custom Jupyter Lab container defined in a user's directory.",
+        "startscript": "#!/bin/bash\n/apps/strudel2/strudel_apps/jupyter/custom_env.sh /path/to/your/conda/install/ conda_env_name",
+        "instactions": [
+            {
+                "name": "Connect",
+                "paramscmd": "/apps/strudel2/strudel_apps/jupyter/params_cmd.py {jobid} 2>/dev/null",
+                "client": {
+                    "cmd": null,
+                    "redir": "?token={token}"
+                },
+                "states": [
+                    "RUNNING"
+                ]
+            },
+            {
+                "name": "Remove log",
+                "paramscmd": "rm ~/.strudel2-*{jobid}.out ; echo []",
+                "client": null,
+                "notunnel": true,
+                "states": [
+                    "Finished"
+                ]
+            }
+        ],
+        "localbind": true,
+        "applist": null
+    }
+]
