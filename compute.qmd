@@ -1,34 +1,53 @@
-MLeRP is split into two regions which users can choose between - one based in Monash (Melbourne, Victoria) and one based in QCIF (Brisbane, Queensland). The clusters have seperate file systems, so you will have to transfer your files across if you'd like to switch regions.
+---
+title: Compute
+---
+
+MLeRP is split into two regions which users can choose between - one based in Monash (Melbourne, Victoria) and one based in QCIF (Brisbane, Queensland). The clusters have seperate file systems and quotas are provisioned seperately, so you will have to transfer your files across if you'd like to switch regions.
 
 ## Monash
 
-The Monash region is designed to be flexible. Users use CPU notebook or terminal sessions along with a Dask scheduler as an interface to the HPC system. This allows users to change the amount of compute they request are using entirely within the notebook and return valuable resources when they no longer need it. See [this FAQ](/faq.qmd#how-much-compute-should-i-ask-for-with-my-slurmcluster) for advice on requesting resources through the Dask scheduler.
+The Monash region is designed to be flexible. It is split into two partitions: `BigCats` and `HouseCats`.
+
+![](images/mlerp-monash-arch.drawio.png)
+
+### `BigCats` Partition
+
+#### **CPU notebooks that control Dask workers**
+Lion QoS Notebook with Cheetah QoS Workers  
+
+Ideal for:  
+
+- Data processing
+- Rapid and flexible iteration during development
+- Experimenting with techniques
+
+See our [tutorials](/tutorials/1_dask_slurm.ipynb) for more details and [this FAQ](/faq.qmd#how-much-compute-should-i-ask-for-with-my-slurmcluster) for advice on requesting resources through the Dask scheduler.
+
+#### **Batch submission**
+Lion QoS Script
+
+Ideal for:  
+
+- Model training
+- Heavy duty processing
+- Hyperparameter sweeps
+
+### `HouseCats` Partition
+
+#### **Notebooks with GPU compute**
+Tabby QoS Notebook  
+
+Ideal for:  
+
+- Data exploration
+- Data visualization
+- New users who just want to get started with minimal setup
 
 Monash workloads are also able to make use of attached NVME for temporary file storage.
 
-Notebook or terminal sessions in three sizes:  
-
-- Small 
-  - 4 VCPUs 
-  - 16 GB RAM 
-- Medium  
-  - 8 VCPUs
-  - 32 GB RAM  
-- Large  
-  - 8 VCPUs
-  - 64 GB RAM  
-
-Six nodes with:
-
-- 54 VCPUs
-- 460 GB RAM
-- 1.5 TB NVME
-- 2 A100s, each split with MIG into:
-  - 1 20 GB VRAM
-  - 2 10 GB VRAM
 
 ## QCIF
-The QCIF region uses a more traditional approach with A100 GPU enabled notebook or terminal sessions. This user experience is much closer to using a service like Google Colab.
+The QCIF region uses a more traditional approach with A100 GPU enabled notebook or terminal sessions. This user experience is much closer to using a service like Google Colab, but with a permanent file system.
 
 GPU notebook or terminal sessions in three sizes:
 

@@ -22,6 +22,7 @@ website:
       - text: "Home"
         file: index.qmd
       - about.qmd
+      - compute.qmd
       - faq.qmd
       - section: "Applications"
         contents:
