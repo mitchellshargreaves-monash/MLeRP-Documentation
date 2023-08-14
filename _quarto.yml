@@ -23,12 +23,16 @@ website:
         file: index.qmd
       - about.qmd
       - faq.qmd
+      - section: "Applications"
+        contents:
+        - auto: "applications/*"
+      
       - section: "Connecting"
         contents:
         - auto: "connecting/*.qmd"
       - section: "Tutorials"
         contents:
-        - auto: "tutorials/*.ipynb"
+        - auto: "tutorials/*"
 
 format:
   html:
