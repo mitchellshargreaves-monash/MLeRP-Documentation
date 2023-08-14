@@ -144,6 +144,12 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./compute.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Compute</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./faq.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">FAQ</span></a>
   </div>
@@ -278,25 +284,14 @@ ul.task-list li input[type="checkbox"] {
 <section id="what-is-mlerp" class="level2">
 <h2 class="anchored" data-anchor-id="what-is-mlerp">What is MLeRP?</h2>
 <p>Say we have a researcher who is a domain expert in a field and is just discovering that machine learning algorithms might be appropriate to accelerate their work.</p>
-<p style="text-align: center;">
-<img src="./images/before-after.png" class="img-fluid">
-</p>
+<p><img src="./images/before-after.png" class="img-fluid"></p>
 <p>They explore online for potential approaches and even find some tutorials that use interactive environments, but quickly discover that dealing with large datasets requires more compute than their laptop can handle so they need to move to a HPC system.</p>
-<p style="text-align: center;">
-<img src="./images/notebook-cat.png" class="img-fluid">
-</p>
+<p><img src="./images/notebook-cat.png" class="img-fluid"></p>
 <p>While desktop sessions are available they might have prohibitively long queues and have low utilisation of the underlying hardware. They could submit a job to the HPC queue but this leads to long times between iterations. At this stage the researcher is still discovering things about their data, how to clean it and how to analyse it.</p>
-<p style="text-align: center;">
-<img src="./images/hpc-cat.png" class="img-fluid">
-</p>
+<p><img src="./images/hpc-cat.png" class="img-fluid"></p>
 <p>They need an interactive environment so they can develop and debug their algorithms and the algorithms, but still need access to high powered acceleration so they can process their dataset. At the same time we want to improve utilisation of the hardware so that we can serve more users and reduce wait times.</p>
 <p>MLeRP was built to be a middle ground that has the interactivity of a notebook with the power of a HPC environment that can share valuable resources between other users while code isn’t being executed.</p>
-<p style="text-align: center;">
-<img src="./images/mlerp-rings.png" class="img-fluid">
-</p>
-<p style="text-align: center;">
-<img src="./images/captain-research-cloud.png" class="img-fluid">
-</p>
+<p><img src="./images/mlerp-rings.png" class="img-fluid"> <img src="./images/captain-research-cloud.png" class="img-fluid"></p>
 <p>Now our new researcher can easily import the same code that they were using on their laptops or with online notebook services straight into a HPC environment without the need to convert it first into a SBATCH script, wait in long HPC queues or load modules for dependencies.</p>
 
 

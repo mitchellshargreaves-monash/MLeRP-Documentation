@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>MLeRP User Guide Documentation – compute</title>
+<title>MLeRP User Guide Documentation - Compute</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -118,7 +118,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./compute.html">Compute</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -140,6 +140,12 @@ ul.task-list li input[type="checkbox"] {
   <div class="sidebar-item-container"> 
   <a href="./about.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">About</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./compute.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Compute</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -251,7 +257,11 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#monash" id="toc-monash" class="nav-link active" data-scroll-target="#monash">Monash</a></li>
+  <li><a href="#monash" id="toc-monash" class="nav-link active" data-scroll-target="#monash">Monash</a>
+  <ul class="collapse">
+  <li><a href="#bigcats-partition" id="toc-bigcats-partition" class="nav-link" data-scroll-target="#bigcats-partition"><code>BigCats</code> Partition</a></li>
+  <li><a href="#housecats-partition" id="toc-housecats-partition" class="nav-link" data-scroll-target="#housecats-partition"><code>HouseCats</code> Partition</a></li>
+  </ul></li>
   <li><a href="#qcif" id="toc-qcif" class="nav-link" data-scroll-target="#qcif">QCIF</a></li>
   </ul>
 </nav>
@@ -259,47 +269,70 @@ ul.task-list li input[type="checkbox"] {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Compute</h1>
+</div>
 
 
-<p>MLeRP is split into two regions which users can choose between - one based in Monash (Melbourne, Victoria) and one based in QCIF (Brisbane, Queensland). The clusters have seperate file systems, so you will have to transfer your files across if you’d like to switch regions.</p>
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>MLeRP is split into two regions which users can choose between - one based in Monash (Melbourne, Victoria) and one based in QCIF (Brisbane, Queensland). The clusters have seperate file systems and quotas are provisioned seperately, so you will have to transfer your files across if you’d like to switch regions.</p>
 <section id="monash" class="level2">
 <h2 class="anchored" data-anchor-id="monash">Monash</h2>
-<p>The Monash region is designed to be flexible. Users use CPU notebook or terminal sessions along with a Dask scheduler as an interface to the HPC system. This allows users to change the amount of compute they request are using entirely within the notebook and return valuable resources when they no longer need it. See <a href="./faq.html#how-much-compute-should-i-ask-for-with-my-slurmcluster">this FAQ</a> for advice on requesting resources through the Dask scheduler.</p>
+<p>The Monash region is designed to be flexible. It is split into two partitions: <code>BigCats</code> and <code>HouseCats</code>.</p>
+<p><img src="images/mlerp-monash-arch.drawio.png" class="img-fluid"></p>
+<section id="bigcats-partition" class="level3">
+<h3 class="anchored" data-anchor-id="bigcats-partition"><code>BigCats</code> Partition</h3>
+<section id="cpu-notebooks-that-control-dask-workers" class="level4">
+<h4 class="anchored" data-anchor-id="cpu-notebooks-that-control-dask-workers"><strong>CPU notebooks that control Dask workers</strong></h4>
+<p>Lion QoS Notebook with Cheetah QoS Workers</p>
+<p>Ideal for:</p>
+<ul>
+<li>Data processing</li>
+<li>Rapid and flexible iteration during development</li>
+<li>Experimenting with techniques</li>
+</ul>
+<p>See our <a href="./tutorials/1_dask_slurm.html">tutorials</a> for more details and <a href="./faq.html#how-much-compute-should-i-ask-for-with-my-slurmcluster">this FAQ</a> for advice on requesting resources through the Dask scheduler.</p>
+</section>
+<section id="batch-submission" class="level4">
+<h4 class="anchored" data-anchor-id="batch-submission"><strong>Batch submission</strong></h4>
+<p>Lion QoS Script</p>
+<p>Ideal for:</p>
+<ul>
+<li>Model training</li>
+<li>Heavy duty processing</li>
+<li>Hyperparameter sweeps</li>
+</ul>
+</section>
+</section>
+<section id="housecats-partition" class="level3">
+<h3 class="anchored" data-anchor-id="housecats-partition"><code>HouseCats</code> Partition</h3>
+<section id="notebooks-with-gpu-compute" class="level4">
+<h4 class="anchored" data-anchor-id="notebooks-with-gpu-compute"><strong>Notebooks with GPU compute</strong></h4>
+<p>Tabby QoS Notebook</p>
+<p>Ideal for:</p>
+<ul>
+<li>Data exploration</li>
+<li>Data visualization</li>
+<li>New users who just want to get started with minimal setup</li>
+</ul>
 <p>Monash workloads are also able to make use of attached NVME for temporary file storage.</p>
-<p>Notebook or terminal sessions in three sizes:</p>
-<ul>
-<li>Small
-<ul>
-<li>4 VCPUs</li>
-<li>16 GB RAM</li>
-</ul></li>
-<li>Medium
-<ul>
-<li>8 VCPUs</li>
-<li>32 GB RAM<br>
-</li>
-</ul></li>
-<li>Large
-<ul>
-<li>8 VCPUs</li>
-<li>64 GB RAM</li>
-</ul></li>
-</ul>
-<p>Six nodes with:</p>
-<ul>
-<li>54 VCPUs</li>
-<li>460 GB RAM</li>
-<li>1.5 TB NVME</li>
-<li>2 A100s, each split with MIG into:
-<ul>
-<li>1 20 GB VRAM</li>
-<li>2 10 GB VRAM</li>
-</ul></li>
-</ul>
+</section>
+</section>
 </section>
 <section id="qcif" class="level2">
 <h2 class="anchored" data-anchor-id="qcif">QCIF</h2>
-<p>The QCIF region uses a more traditional approach with A100 GPU enabled notebook or terminal sessions. This user experience is much closer to using a service like Google Colab.</p>
+<p>The QCIF region uses a more traditional approach with A100 GPU enabled notebook or terminal sessions. This user experience is much closer to using a service like Google Colab, but with a permanent file system.</p>
 <p>GPU notebook or terminal sessions in three sizes:</p>
 <ul>
 <li>Regular
