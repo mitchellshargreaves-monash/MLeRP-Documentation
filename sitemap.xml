@@ -1,59 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://mitchellshargreaves-monash.github.io/MLeRP-Documentation/tutorials/0_getting_started.html</loc>
-    <lastmod>2023-08-14T05:54:00.997Z</lastmod>
-  </url>
-  <url>
-    <loc>https://mitchellshargreaves-monash.github.io/MLeRP-Documentation/tutorials/1_dask_slurm.html</loc>
-    <lastmod>2023-08-14T05:53:59.449Z</lastmod>
-  </url>
-  <url>
     <loc>https://mitchellshargreaves-monash.github.io/MLeRP-Documentation/about.html</loc>
-    <lastmod>2023-08-14T05:53:58.069Z</lastmod>
+    <lastmod>2023-08-15T03:33:21.317Z</lastmod>
   </url>
   <url>
     <loc>https://mitchellshargreaves-monash.github.io/MLeRP-Documentation/applications/base.html</loc>
-    <lastmod>2023-08-14T05:53:57.149Z</lastmod>
-  </url>
-  <url>
-    <loc>https://mitchellshargreaves-monash.github.io/MLeRP-Documentation/faq.html</loc>
-    <lastmod>2023-08-14T05:53:56.253Z</lastmod>
-  </url>
-  <url>
-    <loc>https://mitchellshargreaves-monash.github.io/MLeRP-Documentation/connecting/transferring_files.html</loc>
-    <lastmod>2023-08-14T05:53:55.069Z</lastmod>
-  </url>
-  <url>
-    <loc>https://mitchellshargreaves-monash.github.io/MLeRP-Documentation/connecting/vscode.html</loc>
-    <lastmod>2023-08-14T05:53:54.193Z</lastmod>
-  </url>
-  <url>
-    <loc>https://mitchellshargreaves-monash.github.io/MLeRP-Documentation/connecting/aaf.html</loc>
-    <lastmod>2023-08-14T05:53:53.381Z</lastmod>
-  </url>
-  <url>
-    <loc>https://mitchellshargreaves-monash.github.io/MLeRP-Documentation/connecting/ssossh.html</loc>
-    <lastmod>2023-08-14T05:53:54.637Z</lastmod>
-  </url>
-  <url>
-    <loc>https://mitchellshargreaves-monash.github.io/MLeRP-Documentation/connecting/strudel2.html</loc>
-    <lastmod>2023-08-14T05:53:55.565Z</lastmod>
+    <lastmod>2023-08-15T03:33:21.811Z</lastmod>
   </url>
   <url>
     <loc>https://mitchellshargreaves-monash.github.io/MLeRP-Documentation/applications/dsks.html</loc>
-    <lastmod>2023-08-14T05:53:56.725Z</lastmod>
+    <lastmod>2023-08-15T03:33:22.306Z</lastmod>
   </url>
   <url>
     <loc>https://mitchellshargreaves-monash.github.io/MLeRP-Documentation/compute.html</loc>
-    <lastmod>2023-08-14T05:53:57.629Z</lastmod>
+    <lastmod>2023-08-15T03:33:22.925Z</lastmod>
+  </url>
+  <url>
+    <loc>https://mitchellshargreaves-monash.github.io/MLeRP-Documentation/connecting/aaf.html</loc>
+    <lastmod>2023-08-15T03:33:23.453Z</lastmod>
+  </url>
+  <url>
+    <loc>https://mitchellshargreaves-monash.github.io/MLeRP-Documentation/connecting/ssossh.html</loc>
+    <lastmod>2023-08-15T03:33:23.922Z</lastmod>
+  </url>
+  <url>
+    <loc>https://mitchellshargreaves-monash.github.io/MLeRP-Documentation/connecting/strudel2.html</loc>
+    <lastmod>2023-08-15T03:33:24.465Z</lastmod>
+  </url>
+  <url>
+    <loc>https://mitchellshargreaves-monash.github.io/MLeRP-Documentation/connecting/transferring_files.html</loc>
+    <lastmod>2023-08-15T03:33:24.977Z</lastmod>
+  </url>
+  <url>
+    <loc>https://mitchellshargreaves-monash.github.io/MLeRP-Documentation/connecting/vscode.html</loc>
+    <lastmod>2023-08-15T03:33:25.858Z</lastmod>
+  </url>
+  <url>
+    <loc>https://mitchellshargreaves-monash.github.io/MLeRP-Documentation/faq.html</loc>
+    <lastmod>2023-08-15T03:33:26.475Z</lastmod>
   </url>
   <url>
     <loc>https://mitchellshargreaves-monash.github.io/MLeRP-Documentation/index.html</loc>
-    <lastmod>2023-08-14T05:53:58.493Z</lastmod>
+    <lastmod>2023-08-15T03:33:26.939Z</lastmod>
+  </url>
+  <url>
+    <loc>https://mitchellshargreaves-monash.github.io/MLeRP-Documentation/tutorials/0_getting_started.html</loc>
+    <lastmod>2023-08-15T03:33:27.508Z</lastmod>
+  </url>
+  <url>
+    <loc>https://mitchellshargreaves-monash.github.io/MLeRP-Documentation/tutorials/1_dask_slurm.html</loc>
+    <lastmod>2023-08-15T03:33:28.495Z</lastmod>
   </url>
   <url>
     <loc>https://mitchellshargreaves-monash.github.io/MLeRP-Documentation/tutorials/2_dask_pytorch.html</loc>
-    <lastmod>2023-08-14T05:54:00.561Z</lastmod>
+    <lastmod>2023-08-15T03:33:29.578Z</lastmod>
   </url>
 </urlset>

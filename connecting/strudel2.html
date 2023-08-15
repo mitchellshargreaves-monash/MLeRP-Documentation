@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.3.330">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -56,8 +56,7 @@ ul.task-list li input[type="checkbox"] {
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
+    "search-submit-button-title": "Submit"
   }
 }</script>
 
@@ -140,12 +139,6 @@ ul.task-list li input[type="checkbox"] {
   <div class="sidebar-item-container"> 
   <a href="../about.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">About</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../compute.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Compute</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -303,12 +296,14 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="conda-environments">Conda Environments</h2>
 <p>We’ve provided two environments for you to explore the platform and get started right away:</p>
 <ul>
-<li>The ‘base’ environment which aims is a minimal installation of jupyter lab.</li>
-<li>The Data Science Kitchen Sink (DSKS) which is an environment with many typical packages for analysis and machine learning</li>
+<li><a href="../applications/base.html">Base</a><br>
+A minimal environment with jupyter lab</li>
+<li><a href="../applications/dsks.html">Data Science Kitchen Sink (DSKS)</a><br>
+An environment with many typical packages for analysis and machine learning</li>
 </ul>
 <p>You can visit <a href="../applications/conda_environments.ipynb">this page</a> for a complete list of packages and versions in each environment.</p>
 <p>If our conda environments don’t meet your needs, you can consider maintaining your own <a href="https://docs.conda.io/en/latest/miniconda.html">miniconda</a> or <a href="https://mamba.readthedocs.io/en/latest/mamba-installation.html#mamba-install">mambaforge</a> installation in your home directory. Once you’re happy with your environment you can point Strudel2 to your environment by edditing your <code>apps.json</code> file which can be found in the <code>.strudel2</code> folder in your <code>home</code> directory.</p>
-<p>Strudel2 will append the new app you’ve configured below An example <code>apps.json</code> template has been provided below:</p>
+<p>Strudel2 will append the new app you’ve configured below. An example <code>apps.json</code> template has been provided below:</p>
 <pre><code>[
     { 
         "url": null,
