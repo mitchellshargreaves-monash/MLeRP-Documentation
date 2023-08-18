@@ -1,5 +1,10 @@
 slurm*.out
 */.ipynb_checkpoints
+*.html
+*.xml
 
 /.quarto/
 /_site/
+
+/tutorials/data
+/tutorials/model
