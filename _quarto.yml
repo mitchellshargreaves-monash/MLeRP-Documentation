@@ -2,6 +2,9 @@ project:
   type: website
   # type: confluence
 
+resources:
+  - CNAME
+
 website:
   title: "MLeRP User Guide Documentation"
   favicon: ./images/favicon-32x32.png
@@ -27,7 +30,6 @@ website:
       - section: "Applications"
         contents:
         - auto: "applications/*"
-      
       - section: "Connecting"
         contents:
         - auto: "connecting/*.qmd"
