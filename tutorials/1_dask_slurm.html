@@ -313,7 +313,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 <p>The MLeRP notebook environment uses Dask SLURMClusters to create a middle ground that has the interactivity of a notebook backed by the power of HPC. This notebook shows how you can use the lion service to use a CPU based notebook session for your basic analysis and code development. Then, when you’re ready to run tests you will use Dask to submit your python functions to the SLURM queue.</p>
-<p>This enables: - Flexibility to experiment with your dataset interactively - Ability to change compute requirements such as RAM, size of GPU, number of processes and so on… without ever leaving the notebook environment - Elastic scaling of compute - Efficient utilisation of the hardware - Releasing of resources when not in use</p>
+<p>This enables:</p>
+<ul>
+<li>Flexibility to experiment with your dataset interactively</li>
+<li>Ability to change compute requirements such as RAM, size of GPU, number of processes and so on… without ever leaving the notebook environment</li>
+<li>Elastic scaling of compute</li>
+<li>Efficient utilisation of the hardware</li>
+<li>Releasing of resources when not in use</li>
+</ul>
 <div class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dask_jobqueue <span class="im">import</span> SLURMCluster</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> distributed <span class="im">import</span> Client, LocalCluster</span>
