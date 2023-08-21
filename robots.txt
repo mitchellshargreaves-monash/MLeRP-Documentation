@@ -1,1 +1,1 @@
-Sitemap: https://mitchellshargreaves-monash.github.io/MLeRP-Documentation/sitemap.xml
+Sitemap: https://docs.mlerp.cloud.edu.au/sitemap.xml
