@@ -1,59 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://mitchellshargreaves-monash.github.io/MLeRP-Documentation/about.html</loc>
-    <lastmod>2023-08-15T03:33:21.317Z</lastmod>
-  </url>
-  <url>
-    <loc>https://mitchellshargreaves-monash.github.io/MLeRP-Documentation/applications/base.html</loc>
-    <lastmod>2023-08-15T03:33:21.811Z</lastmod>
-  </url>
-  <url>
-    <loc>https://mitchellshargreaves-monash.github.io/MLeRP-Documentation/applications/dsks.html</loc>
-    <lastmod>2023-08-15T03:33:22.306Z</lastmod>
-  </url>
-  <url>
-    <loc>https://mitchellshargreaves-monash.github.io/MLeRP-Documentation/compute.html</loc>
-    <lastmod>2023-08-15T03:33:22.925Z</lastmod>
-  </url>
-  <url>
-    <loc>https://mitchellshargreaves-monash.github.io/MLeRP-Documentation/connecting/aaf.html</loc>
-    <lastmod>2023-08-15T03:33:23.453Z</lastmod>
-  </url>
-  <url>
-    <loc>https://mitchellshargreaves-monash.github.io/MLeRP-Documentation/connecting/ssossh.html</loc>
-    <lastmod>2023-08-15T03:33:23.922Z</lastmod>
-  </url>
-  <url>
-    <loc>https://mitchellshargreaves-monash.github.io/MLeRP-Documentation/connecting/strudel2.html</loc>
-    <lastmod>2023-08-15T03:33:24.465Z</lastmod>
-  </url>
-  <url>
-    <loc>https://mitchellshargreaves-monash.github.io/MLeRP-Documentation/connecting/transferring_files.html</loc>
-    <lastmod>2023-08-15T03:33:24.977Z</lastmod>
-  </url>
-  <url>
-    <loc>https://mitchellshargreaves-monash.github.io/MLeRP-Documentation/connecting/vscode.html</loc>
-    <lastmod>2023-08-15T03:33:25.858Z</lastmod>
-  </url>
-  <url>
-    <loc>https://mitchellshargreaves-monash.github.io/MLeRP-Documentation/faq.html</loc>
-    <lastmod>2023-08-15T03:33:26.475Z</lastmod>
-  </url>
-  <url>
-    <loc>https://mitchellshargreaves-monash.github.io/MLeRP-Documentation/index.html</loc>
-    <lastmod>2023-08-15T03:33:26.939Z</lastmod>
-  </url>
-  <url>
     <loc>https://mitchellshargreaves-monash.github.io/MLeRP-Documentation/tutorials/0_getting_started.html</loc>
-    <lastmod>2023-08-15T03:33:27.508Z</lastmod>
+    <lastmod>2023-08-21T03:05:09.031Z</lastmod>
   </url>
   <url>
     <loc>https://mitchellshargreaves-monash.github.io/MLeRP-Documentation/tutorials/1_dask_slurm.html</loc>
-    <lastmod>2023-08-15T03:33:28.495Z</lastmod>
+    <lastmod>2023-08-21T03:05:07.451Z</lastmod>
+  </url>
+  <url>
+    <loc>https://mitchellshargreaves-monash.github.io/MLeRP-Documentation/about.html</loc>
+    <lastmod>2023-08-21T03:05:06.067Z</lastmod>
+  </url>
+  <url>
+    <loc>https://mitchellshargreaves-monash.github.io/MLeRP-Documentation/applications/base.html</loc>
+    <lastmod>2023-08-21T03:05:05.115Z</lastmod>
+  </url>
+  <url>
+    <loc>https://mitchellshargreaves-monash.github.io/MLeRP-Documentation/faq.html</loc>
+    <lastmod>2023-08-21T03:05:04.203Z</lastmod>
+  </url>
+  <url>
+    <loc>https://mitchellshargreaves-monash.github.io/MLeRP-Documentation/connecting/transferring_files.html</loc>
+    <lastmod>2023-08-21T03:05:03.083Z</lastmod>
+  </url>
+  <url>
+    <loc>https://mitchellshargreaves-monash.github.io/MLeRP-Documentation/connecting/vscode.html</loc>
+    <lastmod>2023-08-21T03:05:02.079Z</lastmod>
+  </url>
+  <url>
+    <loc>https://mitchellshargreaves-monash.github.io/MLeRP-Documentation/connecting/aaf.html</loc>
+    <lastmod>2023-08-21T03:05:01.107Z</lastmod>
+  </url>
+  <url>
+    <loc>https://mitchellshargreaves-monash.github.io/MLeRP-Documentation/connecting/ssossh.html</loc>
+    <lastmod>2023-08-21T03:05:02.587Z</lastmod>
+  </url>
+  <url>
+    <loc>https://mitchellshargreaves-monash.github.io/MLeRP-Documentation/connecting/strudel2.html</loc>
+    <lastmod>2023-08-21T03:05:03.599Z</lastmod>
+  </url>
+  <url>
+    <loc>https://mitchellshargreaves-monash.github.io/MLeRP-Documentation/applications/dsks.html</loc>
+    <lastmod>2023-08-21T03:05:04.719Z</lastmod>
+  </url>
+  <url>
+    <loc>https://mitchellshargreaves-monash.github.io/MLeRP-Documentation/compute.html</loc>
+    <lastmod>2023-08-21T03:05:05.639Z</lastmod>
+  </url>
+  <url>
+    <loc>https://mitchellshargreaves-monash.github.io/MLeRP-Documentation/index.html</loc>
+    <lastmod>2023-08-21T03:05:06.531Z</lastmod>
   </url>
   <url>
     <loc>https://mitchellshargreaves-monash.github.io/MLeRP-Documentation/tutorials/2_dask_pytorch.html</loc>
-    <lastmod>2023-08-15T03:33:29.578Z</lastmod>
+    <lastmod>2023-08-21T03:05:08.615Z</lastmod>
   </url>
 </urlset>

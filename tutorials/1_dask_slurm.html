@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.330">
+<meta name="generator" content="quarto-1.3.450">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -90,7 +90,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
@@ -176,6 +177,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="../about.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">About</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../compute.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Compute</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -305,9 +312,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p>The MLeRP notebook environment uses Dask SLURMClusters to create a middle ground that has the interactivity of a notebook backed by the power of HPC. You will be provisioned with a CPU based notebook session for your basic analysis and code development. Then, when you’re ready to run tests you will use Dask to submit your python functions to the SLURM queue.</p>
+<p>The MLeRP notebook environment uses Dask SLURMClusters to create a middle ground that has the interactivity of a notebook backed by the power of HPC. This notebook shows how you can use the lion service to use a CPU based notebook session for your basic analysis and code development. Then, when you’re ready to run tests you will use Dask to submit your python functions to the SLURM queue.</p>
 <p>This enables: - Flexibility to experiment with your dataset interactively - Ability to change compute requirements such as RAM, size of GPU, number of processes and so on… without ever leaving the notebook environment - Elastic scaling of compute - Efficient utilisation of the hardware - Releasing of resources when not in use</p>
-<div class="cell">
+<div class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dask_jobqueue <span class="im">import</span> SLURMCluster</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> distributed <span class="im">import</span> Client, LocalCluster</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> dask</span>
@@ -328,11 +335,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>squeue</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
-              1637     batch Jupyter  mhar0048  R      42:23      1 mlerp-node05
-              1638     batch dask-wor mhar0048  R       0:16      1 mlerp-node05
-              1639     batch dask-wor mhar0048  R       0:16      1 mlerp-node05
-              1640     batch dask-wor mhar0048  R       0:16      1 mlerp-node05
-              1641     batch dask-wor mhar0048  R       0:16      1 mlerp-node05</code></pre>
+               383   BigCats dask-wor mhar0048 PD       0:00      1 (None)
+               382   BigCats dask-wor mhar0048 PD       0:00      1 (None)
+               381   BigCats dask-wor mhar0048 PD       0:00      1 (None)
+               380   BigCats dask-wor mhar0048 PD       0:00      1 (None)
+               373   BigCats DSKS Jup andrewpe  R    1:48:56      1 mlerp-monash-node00
+               375   BigCats DSKS Jup mhar0048  R    1:15:17      1 mlerp-monash-node00</code></pre>
 </div>
 </div>
 <p>Alternatively, we can use the adapt method, which will let us scale out as we need the compute… and scale back when we’re idle letting others use the cluster.</p>
@@ -340,26 +348,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>cluster.adapt(minimum<span class="op">=</span><span class="dv">0</span>, maximum<span class="op">=</span>num_nodes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
-<pre><code>&lt;distributed.deploy.adaptive.Adaptive at 0x7f85ea9ec820&gt;</code></pre>
+<pre><code>&lt;distributed.deploy.adaptive.Adaptive at 0x7fd919ab7670&gt;</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="7">
+<div class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># You may need to run this cell a few times while waiting for Dask to clean up</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>squeue</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
-              1637     batch Jupyter  mhar0048  R      43:01      1 mlerp-node05</code></pre>
+               373   BigCats DSKS Jup andrewpe  R    1:48:56      1 mlerp-monash-node00
+               380   BigCats dask-wor mhar0048  R       0:00      1 mlerp-monash-node00
+               381   BigCats dask-wor mhar0048  R       0:00      1 mlerp-monash-node00
+               382   BigCats dask-wor mhar0048  R       0:00      1 mlerp-monash-node00
+               383   BigCats dask-wor mhar0048  R       0:00      1 mlerp-monash-node00
+               375   BigCats DSKS Jup mhar0048  R    1:15:17      1 mlerp-monash-node00</code></pre>
 </div>
 </div>
 <p>Dask has a UI that will let you see how the tasks are being computed. You won’t be able to connect to this with your web browser but VSCode and Jupyter have extensions for you to connect to it.</p>
 <p>Use the loopback address: http://127.0.0.1:8787 (Adjust the port to the one listed when you make the client if needed)</p>
 <p>Now let’s define a dask array and perform some computation. Dask arrays are parallelised across your workers nodes so they can be greater than the size of one worker’s memory. Dask evaluates lazily, retuning ‘futures’ which record the tasks needed to be completed in the compute graph. They can be computed later for its value.</p>
 <p>Dask also has parallelised implementations of dataframes and collections of objects (called bags). These are written to be as similar as possible to familiar libraries like numpy, pandas and pyspark. You can read more about <a href="https://docs.dask.org/en/stable/array.html">arrays</a>, <a href="https://docs.dask.org/en/stable/dataframe.html">dataframes</a> and <a href="https://docs.dask.org/en/stable/bag.html">bags</a> with Dask’s documentation.</p>
-<div class="cell" data-execution_count="4">
+<div class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> dask.array <span class="im">as</span> da</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> da.random.random((<span class="dv">1000</span>, <span class="dv">1000</span>, <span class="dv">1000</span>))</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>x  <span class="co"># Note how the value of the array hasn't been computed yet</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="4">
+<div class="cell-output cell-output-display" data-execution_count="5">
 <table data-quarto-postprocess="true" class="table table-sm table-striped small">
 <colgroup>
 <col style="width: 50%">
@@ -379,54 +392,44 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Bytes</td>
 <td>7.45 GiB</td>
-<td>119.21 MiB</td>
+<td>126.51 MiB</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Shape</td>
 <td>(1000, 1000, 1000)</td>
-<td>(250, 250, 250)</td>
+<td>(255, 255, 255)</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">Count</td>
-<td>64 Tasks</td>
-<td>64 Chunks</td>
+<td data-quarto-table-cell-role="th">Dask graph</td>
+<td colspan="2">64 chunks in 1 graph layer</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">Type</td>
-<td>float64</td>
-<td>numpy.ndarray</td>
+<td data-quarto-table-cell-role="th">Data type</td>
+<td colspan="2">float64 numpy.ndarray</td>
 </tr>
 </tbody>
 </table></td>
-<td><img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjUwIiBoZWlnaHQ9IjI0MCIgc3R5bGU9InN0cm9rZTpyZ2IoMCwwLDApO3N0cm9rZS13aWR0aDoxIj4KCiAgPCEtLSBIb3Jpem9udGFsIGxpbmVzIC0tPgogIDxsaW5lIHgxPSIxMCIgeTE9IjAiIHgyPSI4MCIgeTI9IjcwIiBzdHlsZT0ic3Ryb2tlLXdpZHRoOjIiPjwvbGluZT4KICA8bGluZSB4MT0iMTAiIHkxPSIzMCIgeDI9IjgwIiB5Mj0iMTAwIj48L2xpbmU+CiAgPGxpbmUgeDE9IjEwIiB5MT0iNjAiIHgyPSI4MCIgeTI9IjEzMCI+PC9saW5lPgogIDxsaW5lIHgxPSIxMCIgeTE9IjkwIiB4Mj0iODAiIHkyPSIxNjAiPjwvbGluZT4KICA8bGluZSB4MT0iMTAiIHkxPSIxMjAiIHgyPSI4MCIgeTI9IjE5MCIgc3R5bGU9InN0cm9rZS13aWR0aDoyIj48L2xpbmU+CgogIDwhLS0gVmVydGljYWwgbGluZXMgLS0+CiAgPGxpbmUgeDE9IjEwIiB5MT0iMCIgeDI9IjEwIiB5Mj0iMTIwIiBzdHlsZT0ic3Ryb2tlLXdpZHRoOjIiPjwvbGluZT4KICA8bGluZSB4MT0iMjciIHkxPSIxNyIgeDI9IjI3IiB5Mj0iMTM3Ij48L2xpbmU+CiAgPGxpbmUgeDE9IjQ1IiB5MT0iMzUiIHgyPSI0NSIgeTI9IjE1NSI+PC9saW5lPgogIDxsaW5lIHgxPSI2MiIgeTE9IjUyIiB4Mj0iNjIiIHkyPSIxNzIiPjwvbGluZT4KICA8bGluZSB4MT0iODAiIHkxPSI3MCIgeDI9IjgwIiB5Mj0iMTkwIiBzdHlsZT0ic3Ryb2tlLXdpZHRoOjIiPjwvbGluZT4KCiAgPCEtLSBDb2xvcmVkIFJlY3RhbmdsZSAtLT4KICA8cG9seWdvbiBwb2ludHM9IjEwLjAsMC4wIDgwLjU4ODIzNTI5NDExNzY1LDcwLjU4ODIzNTI5NDExNzY1IDgwLjU4ODIzNTI5NDExNzY1LDE5MC41ODgyMzUyOTQxMTc2NSAxMC4wLDEyMC4wIiBzdHlsZT0iZmlsbDojRUNCMTcyQTA7c3Ryb2tlLXdpZHRoOjAiPjwvcG9seWdvbj4KCiAgPCEtLSBIb3Jpem9udGFsIGxpbmVzIC0tPgogIDxsaW5lIHgxPSIxMCIgeTE9IjAiIHgyPSIxMzAiIHkyPSIwIiBzdHlsZT0ic3Ryb2tlLXdpZHRoOjIiPjwvbGluZT4KICA8bGluZSB4MT0iMjciIHkxPSIxNyIgeDI9IjE0NyIgeTI9IjE3Ij48L2xpbmU+CiAgPGxpbmUgeDE9IjQ1IiB5MT0iMzUiIHgyPSIxNjUiIHkyPSIzNSI+PC9saW5lPgogIDxsaW5lIHgxPSI2MiIgeTE9IjUyIiB4Mj0iMTgyIiB5Mj0iNTIiPjwvbGluZT4KICA8bGluZSB4MT0iODAiIHkxPSI3MCIgeDI9IjIwMCIgeTI9IjcwIiBzdHlsZT0ic3Ryb2tlLXdpZHRoOjIiPjwvbGluZT4KCiAgPCEtLSBWZXJ0aWNhbCBsaW5lcyAtLT4KICA8bGluZSB4MT0iMTAiIHkxPSIwIiB4Mj0iODAiIHkyPSI3MCIgc3R5bGU9InN0cm9rZS13aWR0aDoyIj48L2xpbmU+CiAgPGxpbmUgeDE9IjQwIiB5MT0iMCIgeDI9IjExMCIgeTI9IjcwIj48L2xpbmU+CiAgPGxpbmUgeDE9IjcwIiB5MT0iMCIgeDI9IjE0MCIgeTI9IjcwIj48L2xpbmU+CiAgPGxpbmUgeDE9IjEwMCIgeTE9IjAiIHgyPSIxNzAiIHkyPSI3MCI+PC9saW5lPgogIDxsaW5lIHgxPSIxMzAiIHkxPSIwIiB4Mj0iMjAwIiB5Mj0iNzAiIHN0eWxlPSJzdHJva2Utd2lkdGg6MiI+PC9saW5lPgoKICA8IS0tIENvbG9yZWQgUmVjdGFuZ2xlIC0tPgogIDxwb2x5Z29uIHBvaW50cz0iMTAuMCwwLjAgMTMwLjAsMC4wIDIwMC41ODgyMzUyOTQxMTc2NSw3MC41ODgyMzUyOTQxMTc2NSA4MC41ODgyMzUyOTQxMTc2NSw3MC41ODgyMzUyOTQxMTc2NSIgc3R5bGU9ImZpbGw6I0VDQjE3MkEwO3N0cm9rZS13aWR0aDowIj48L3BvbHlnb24+CgogIDwhLS0gSG9yaXpvbnRhbCBsaW5lcyAtLT4KICA8bGluZSB4MT0iODAiIHkxPSI3MCIgeDI9IjIwMCIgeTI9IjcwIiBzdHlsZT0ic3Ryb2tlLXdpZHRoOjIiPjwvbGluZT4KICA8bGluZSB4MT0iODAiIHkxPSIxMDAiIHgyPSIyMDAiIHkyPSIxMDAiPjwvbGluZT4KICA8bGluZSB4MT0iODAiIHkxPSIxMzAiIHgyPSIyMDAiIHkyPSIxMzAiPjwvbGluZT4KICA8bGluZSB4MT0iODAiIHkxPSIxNjAiIHgyPSIyMDAiIHkyPSIxNjAiPjwvbGluZT4KICA8bGluZSB4MT0iODAiIHkxPSIxOTAiIHgyPSIyMDAiIHkyPSIxOTAiIHN0eWxlPSJzdHJva2Utd2lkdGg6MiI+PC9saW5lPgoKICA8IS0tIFZlcnRpY2FsIGxpbmVzIC0tPgogIDxsaW5lIHgxPSI4MCIgeTE9IjcwIiB4Mj0iODAiIHkyPSIxOTAiIHN0eWxlPSJzdHJva2Utd2lkdGg6MiI+PC9saW5lPgogIDxsaW5lIHgxPSIxMTAiIHkxPSI3MCIgeDI9IjExMCIgeTI9IjE5MCI+PC9saW5lPgogIDxsaW5lIHgxPSIxNDAiIHkxPSI3MCIgeDI9IjE0MCIgeTI9IjE5MCI+PC9saW5lPgogIDxsaW5lIHgxPSIxNzAiIHkxPSI3MCIgeDI9IjE3MCIgeTI9IjE5MCI+PC9saW5lPgogIDxsaW5lIHgxPSIyMDAiIHkxPSI3MCIgeDI9IjIwMCIgeTI9IjE5MCIgc3R5bGU9InN0cm9rZS13aWR0aDoyIj48L2xpbmU+CgogIDwhLS0gQ29sb3JlZCBSZWN0YW5nbGUgLS0+CiAgPHBvbHlnb24gcG9pbnRzPSI4MC41ODgyMzUyOTQxMTc2NSw3MC41ODgyMzUyOTQxMTc2NSAyMDAuNTg4MjM1Mjk0MTE3NjUsNzAuNTg4MjM1Mjk0MTE3NjUgMjAwLjU4ODIzNTI5NDExNzY1LDE5MC41ODgyMzUyOTQxMTc2NSA4MC41ODgyMzUyOTQxMTc2NSwxOTAuNTg4MjM1Mjk0MTE3NjUiIHN0eWxlPSJmaWxsOiNFQ0IxNzJBMDtzdHJva2Utd2lkdGg6MCI+PC9wb2x5Z29uPgoKICA8IS0tIFRleHQgLS0+CiAgPHRleHQgeD0iMTQwLjU4ODIzNSIgeT0iMjEwLjU4ODIzNSIgZm9udC1zaXplPSIxLjByZW0iIGZvbnQtd2VpZ2h0PSIxMDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjEwMDA8L3RleHQ+CiAgPHRleHQgeD0iMjIwLjU4ODIzNSIgeT0iMTMwLjU4ODIzNSIgZm9udC1zaXplPSIxLjByZW0iIGZvbnQtd2VpZ2h0PSIxMDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIHRyYW5zZm9ybT0icm90YXRlKC05MCwyMjAuNTg4MjM1LDEzMC41ODgyMzUpIj4xMDAwPC90ZXh0PgogIDx0ZXh0IHg9IjM1LjI5NDExOCIgeT0iMTc1LjI5NDExOCIgZm9udC1zaXplPSIxLjByZW0iIGZvbnQtd2VpZ2h0PSIxMDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIHRyYW5zZm9ybT0icm90YXRlKDQ1LDM1LjI5NDExOCwxNzUuMjk0MTE4KSI+MTAwMDwvdGV4dD4KPC9zdmc+" class="img-fluid"></td>
+<td><img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjUwIiBoZWlnaHQ9IjI0MCIgc3R5bGU9InN0cm9rZTpyZ2IoMCwwLDApO3N0cm9rZS13aWR0aDoxIj4KCiAgPCEtLSBIb3Jpem9udGFsIGxpbmVzIC0tPgogIDxsaW5lIHgxPSIxMCIgeTE9IjAiIHgyPSI4MCIgeTI9IjcwIiBzdHlsZT0ic3Ryb2tlLXdpZHRoOjIiPjwvbGluZT4KICA8bGluZSB4MT0iMTAiIHkxPSIzMCIgeDI9IjgwIiB5Mj0iMTAxIj48L2xpbmU+CiAgPGxpbmUgeDE9IjEwIiB5MT0iNjEiIHgyPSI4MCIgeTI9IjEzMSI+PC9saW5lPgogIDxsaW5lIHgxPSIxMCIgeTE9IjkxIiB4Mj0iODAiIHkyPSIxNjIiPjwvbGluZT4KICA8bGluZSB4MT0iMTAiIHkxPSIxMjAiIHgyPSI4MCIgeTI9IjE5MCIgc3R5bGU9InN0cm9rZS13aWR0aDoyIj48L2xpbmU+CgogIDwhLS0gVmVydGljYWwgbGluZXMgLS0+CiAgPGxpbmUgeDE9IjEwIiB5MT0iMCIgeDI9IjEwIiB5Mj0iMTIwIiBzdHlsZT0ic3Ryb2tlLXdpZHRoOjIiPjwvbGluZT4KICA8bGluZSB4MT0iMjgiIHkxPSIxOCIgeDI9IjI4IiB5Mj0iMTM4Ij48L2xpbmU+CiAgPGxpbmUgeDE9IjQ2IiB5MT0iMzYiIHgyPSI0NiIgeTI9IjE1NiI+PC9saW5lPgogIDxsaW5lIHgxPSI2NCIgeTE9IjU0IiB4Mj0iNjQiIHkyPSIxNzQiPjwvbGluZT4KICA8bGluZSB4MT0iODAiIHkxPSI3MCIgeDI9IjgwIiB5Mj0iMTkwIiBzdHlsZT0ic3Ryb2tlLXdpZHRoOjIiPjwvbGluZT4KCiAgPCEtLSBDb2xvcmVkIFJlY3RhbmdsZSAtLT4KICA8cG9seWdvbiBwb2ludHM9IjEwLjAsMC4wIDgwLjU4ODIzNTI5NDExNzY1LDcwLjU4ODIzNTI5NDExNzY1IDgwLjU4ODIzNTI5NDExNzY1LDE5MC41ODgyMzUyOTQxMTc2NSAxMC4wLDEyMC4wIiBzdHlsZT0iZmlsbDojRUNCMTcyQTA7c3Ryb2tlLXdpZHRoOjAiPjwvcG9seWdvbj4KCiAgPCEtLSBIb3Jpem9udGFsIGxpbmVzIC0tPgogIDxsaW5lIHgxPSIxMCIgeTE9IjAiIHgyPSIxMzAiIHkyPSIwIiBzdHlsZT0ic3Ryb2tlLXdpZHRoOjIiPjwvbGluZT4KICA8bGluZSB4MT0iMjgiIHkxPSIxOCIgeDI9IjE0OCIgeTI9IjE4Ij48L2xpbmU+CiAgPGxpbmUgeDE9IjQ2IiB5MT0iMzYiIHgyPSIxNjYiIHkyPSIzNiI+PC9saW5lPgogIDxsaW5lIHgxPSI2NCIgeTE9IjU0IiB4Mj0iMTg0IiB5Mj0iNTQiPjwvbGluZT4KICA8bGluZSB4MT0iODAiIHkxPSI3MCIgeDI9IjIwMCIgeTI9IjcwIiBzdHlsZT0ic3Ryb2tlLXdpZHRoOjIiPjwvbGluZT4KCiAgPCEtLSBWZXJ0aWNhbCBsaW5lcyAtLT4KICA8bGluZSB4MT0iMTAiIHkxPSIwIiB4Mj0iODAiIHkyPSI3MCIgc3R5bGU9InN0cm9rZS13aWR0aDoyIj48L2xpbmU+CiAgPGxpbmUgeDE9IjQwIiB5MT0iMCIgeDI9IjExMSIgeTI9IjcwIj48L2xpbmU+CiAgPGxpbmUgeDE9IjcxIiB5MT0iMCIgeDI9IjE0MSIgeTI9IjcwIj48L2xpbmU+CiAgPGxpbmUgeDE9IjEwMSIgeTE9IjAiIHgyPSIxNzIiIHkyPSI3MCI+PC9saW5lPgogIDxsaW5lIHgxPSIxMzAiIHkxPSIwIiB4Mj0iMjAwIiB5Mj0iNzAiIHN0eWxlPSJzdHJva2Utd2lkdGg6MiI+PC9saW5lPgoKICA8IS0tIENvbG9yZWQgUmVjdGFuZ2xlIC0tPgogIDxwb2x5Z29uIHBvaW50cz0iMTAuMCwwLjAgMTMwLjAsMC4wIDIwMC41ODgyMzUyOTQxMTc2NSw3MC41ODgyMzUyOTQxMTc2NSA4MC41ODgyMzUyOTQxMTc2NSw3MC41ODgyMzUyOTQxMTc2NSIgc3R5bGU9ImZpbGw6I0VDQjE3MkEwO3N0cm9rZS13aWR0aDowIj48L3BvbHlnb24+CgogIDwhLS0gSG9yaXpvbnRhbCBsaW5lcyAtLT4KICA8bGluZSB4MT0iODAiIHkxPSI3MCIgeDI9IjIwMCIgeTI9IjcwIiBzdHlsZT0ic3Ryb2tlLXdpZHRoOjIiPjwvbGluZT4KICA8bGluZSB4MT0iODAiIHkxPSIxMDEiIHgyPSIyMDAiIHkyPSIxMDEiPjwvbGluZT4KICA8bGluZSB4MT0iODAiIHkxPSIxMzEiIHgyPSIyMDAiIHkyPSIxMzEiPjwvbGluZT4KICA8bGluZSB4MT0iODAiIHkxPSIxNjIiIHgyPSIyMDAiIHkyPSIxNjIiPjwvbGluZT4KICA8bGluZSB4MT0iODAiIHkxPSIxOTAiIHgyPSIyMDAiIHkyPSIxOTAiIHN0eWxlPSJzdHJva2Utd2lkdGg6MiI+PC9saW5lPgoKICA8IS0tIFZlcnRpY2FsIGxpbmVzIC0tPgogIDxsaW5lIHgxPSI4MCIgeTE9IjcwIiB4Mj0iODAiIHkyPSIxOTAiIHN0eWxlPSJzdHJva2Utd2lkdGg6MiI+PC9saW5lPgogIDxsaW5lIHgxPSIxMTEiIHkxPSI3MCIgeDI9IjExMSIgeTI9IjE5MCI+PC9saW5lPgogIDxsaW5lIHgxPSIxNDEiIHkxPSI3MCIgeDI9IjE0MSIgeTI9IjE5MCI+PC9saW5lPgogIDxsaW5lIHgxPSIxNzIiIHkxPSI3MCIgeDI9IjE3MiIgeTI9IjE5MCI+PC9saW5lPgogIDxsaW5lIHgxPSIyMDAiIHkxPSI3MCIgeDI9IjIwMCIgeTI9IjE5MCIgc3R5bGU9InN0cm9rZS13aWR0aDoyIj48L2xpbmU+CgogIDwhLS0gQ29sb3JlZCBSZWN0YW5nbGUgLS0+CiAgPHBvbHlnb24gcG9pbnRzPSI4MC41ODgyMzUyOTQxMTc2NSw3MC41ODgyMzUyOTQxMTc2NSAyMDAuNTg4MjM1Mjk0MTE3NjUsNzAuNTg4MjM1Mjk0MTE3NjUgMjAwLjU4ODIzNTI5NDExNzY1LDE5MC41ODgyMzUyOTQxMTc2NSA4MC41ODgyMzUyOTQxMTc2NSwxOTAuNTg4MjM1Mjk0MTE3NjUiIHN0eWxlPSJmaWxsOiNFQ0IxNzJBMDtzdHJva2Utd2lkdGg6MCI+PC9wb2x5Z29uPgoKICA8IS0tIFRleHQgLS0+CiAgPHRleHQgeD0iMTQwLjU4ODIzNSIgeT0iMjEwLjU4ODIzNSIgZm9udC1zaXplPSIxLjByZW0iIGZvbnQtd2VpZ2h0PSIxMDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjEwMDA8L3RleHQ+CiAgPHRleHQgeD0iMjIwLjU4ODIzNSIgeT0iMTMwLjU4ODIzNSIgZm9udC1zaXplPSIxLjByZW0iIGZvbnQtd2VpZ2h0PSIxMDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIHRyYW5zZm9ybT0icm90YXRlKC05MCwyMjAuNTg4MjM1LDEzMC41ODgyMzUpIj4xMDAwPC90ZXh0PgogIDx0ZXh0IHg9IjM1LjI5NDExOCIgeT0iMTc1LjI5NDExOCIgZm9udC1zaXplPSIxLjByZW0iIGZvbnQtd2VpZ2h0PSIxMDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIHRyYW5zZm9ybT0icm90YXRlKDQ1LDM1LjI5NDExOCwxNzUuMjk0MTE4KSI+MTAwMDwvdGV4dD4KPC9zdmc+" class="img-fluid"></td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
 <p>You can check squeue while this is running to see the jobs dynamically spinning up to perform the computation.</p>
-<div class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">0</span>][<span class="dv">0</span>][:<span class="dv">10</span>].compute()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="7">
-<pre><code>array([0.9527929 , 0.93675059, 0.11717679, 0.47114357, 0.73693508,
-       0.01302143, 0.86360879, 0.12592881, 0.52676823, 0.99186392])</code></pre>
-</div>
-</div>
-<p>We can also accelerate dask arrays with GPUs using cupy. There is similar support for accelerating dask dataframes with CuDF.</p>
 <div class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>dask.config.<span class="bu">set</span>({<span class="st">"array.backend"</span>: <span class="st">"cupy"</span>})</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> da.random.random((<span class="dv">1000</span>, <span class="dv">1000</span>, <span class="dv">1000</span>))</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>y.compute()</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>y[<span class="dv">0</span>][<span class="dv">0</span>][:<span class="dv">10</span>].compute()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">0</span>][<span class="dv">0</span>][:<span class="dv">10</span>].compute()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
-<pre><code>array([0.02380941, 0.62371184, 0.88393467, 0.8604588 , 0.16488854,
-       0.11214214, 0.86582312, 0.01384666, 0.79636323, 0.58940477])</code></pre>
+<pre><code>array([0.15885921, 0.35993257, 0.08629273, 0.19472071, 0.76723019,
+       0.65067334, 0.33802127, 0.61253251, 0.37531874, 0.06273974])</code></pre>
 </div>
 </div>
 <p>Finally, we can shut down the SLURMCluster now that we’re done with it.</p>
-<div class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Shut down the cluster</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>client.shutdown()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Shut down the cluster</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>client.shutdown()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>2023-08-21 02:44:02,335 - distributed.deploy.adaptive_core - INFO - Adaptive stop</code></pre>
+</div>
 </div>
 
 
