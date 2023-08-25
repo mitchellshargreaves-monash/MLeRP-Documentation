@@ -10,7 +10,9 @@ This also means that you will no longer need to add your key manually since this
 
 SSOSSH uses a configuration file in your user's home directory named `~/.authservers.json`. This file should be a list of configs for the clusters you wish to connect to. 
 
-For MLeRP QCIF:
+<details>
+<summary><b>For MLeRP QCIF:</b></summary>
+<br>
 ```json
 [
     {
@@ -20,7 +22,7 @@ For MLeRP QCIF:
         "client_id": "Q96kt2Vtw6S78dpORktM81DH",
         "desc": "<div>MLeRP</div>",
         "icon": null,
-        "login": "mlerp-login0.mlerp.cloud.edu.au",
+        "login": "{{< var qcif_login >}}",
         "logout": "https://sshauthz.cloud.cvl.org.au/pysshauthz/oauth2/logout",
         "name": "MLeRP_Monash",
         "proxy": "/nfs/opt/sv2/sshnc.sh",
@@ -29,8 +31,11 @@ For MLeRP QCIF:
     }
 ]
 ```
+</details>
 
-For MLeRP Monash:
+<details>
+<summary><b>For MLeRP Monash:</b></summary>
+<br>
 ```json
 [
     {
@@ -40,7 +45,7 @@ For MLeRP Monash:
         "client_id": "Q96kt2Vtw6S78dpORktM81DH",
         "desc": "<div>MLeRP</div>",
         "icon": null,
-        "login": "monash-mlerp-login0.mlerp.cloud.edu.au",
+        "login": "{{< var monash_login >}}",
         "logout": "https://sshauthz.cloud.cvl.org.au/pysshauthz/oauth2/logout",
         "name": "MLeRP_QCIF",
         "proxy": "/apps/strudel2/strudel_apps/sshnc.sh",
@@ -49,6 +54,7 @@ For MLeRP Monash:
     }
 ]
 ```
+</details>
 
 You can pip install SSOSSH with: 
 ```bash
