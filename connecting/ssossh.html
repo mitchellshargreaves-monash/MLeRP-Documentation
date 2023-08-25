@@ -313,7 +313,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The tool works by generating an SSH Certificate rather than the usual approach of adding a public key to the list of authorised keys. This is more secure since the certificate will only be valid for 24 hours, requiring you to go through your organisation’s single sign on again to renew the certificate.</p>
 <p>This also means that you will no longer need to add your key manually since this will be handled automatically.</p>
 <p>SSOSSH uses a configuration file in your user’s home directory named <code>~/.authservers.json</code>. This file should be a list of configs for the clusters you wish to connect to.</p>
-<p>For MLeRP QCIF:</p>
+<details>
+<summary>
+<b>For MLeRP QCIF:</b>
+</summary>
+<p><br></p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ot">[</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"authorise"</span><span class="fu">:</span> <span class="st">"https://sshauthz.cloud.cvl.org.au/pysshauthz/oauth2/oauth/authorize/choose"</span><span class="fu">,</span></span>
@@ -330,7 +334,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"sign"</span><span class="fu">:</span> <span class="st">"https://sshauthz.cloud.cvl.org.au/pysshauthz/sign/mlerp_users/api/v1/sign_key"</span></span>
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span></span>
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="ot">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>For MLeRP Monash:</p>
+</details>
+<details>
+<summary>
+<b>For MLeRP Monash:</b>
+</summary>
+<p><br></p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ot">[</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"authorise"</span><span class="fu">:</span> <span class="st">"https://sshauthz.cloud.cvl.org.au/pysshauthz/oauth2/oauth/authorize/choose"</span><span class="fu">,</span></span>
@@ -347,6 +356,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"sign"</span><span class="fu">:</span> <span class="st">"https://sshauthz.cloud.cvl.org.au/pysshauthz/sign/mlerp_users/api/v1/sign_key"</span></span>
 <span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span></span>
 <span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="ot">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <p>You can pip install SSOSSH with:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install git+https://github.com/mitchellshargreaves-monash/ssossh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>or if you want to test an experimental feature:</p>

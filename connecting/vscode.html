@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -302,12 +336,30 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<p>So you’d like to use <a href="https://code.visualstudio.com/">Visual Studio Code</a>, but you need access to MLeRP too - maybe your data is on the cluster, or you want to run code interactively on a GPU, or you just really love VS Code. No problem. You want a VS Code remote server.</p>
+<p>So you’d like to use <a href="https://code.visualstudio.com/">Visual Studio Code</a>, but you need access to MLeRP too - maybe your data is on the cluster, or you want to run code interactively on a GPU, or you just really love VS Code.</p>
+<p>No problem. You want a VS Code remote server.</p>
 <p>Please <strong>DO NOT</strong> follow the <a href="https://code.visualstudio.com/docs/remote/ssh">official VS Code documentation for remote servers</a>.</p>
-<p>By default, if you follow those instructions, you will end up running the VS Code remote server on the login node.<br>
-Please don’t do this, the login nodes are a shared resource and we would rather allocate a resource just for you.</p>
+<p>By default, if you follow those instructions, you will end up running the VS Code remote server on the login node.</p>
+<p>Please don’t do this, the login nodes are a shared resource and we would rather allocate a resource just for you.</p>
 <p>Instead, please use this proxy command which will forward your connection to our compute nodes rather than the login node. This will connect to a <code>Jupyter Lab</code> job, or if one doesn’t exist, it will make one for you.</p>
-<pre><code>ProxyCommand="ssh &lt;username&gt;@mlerp-login0.mlerp.cloud.edu.au /usr/local/sv2/sshnc.sh"</code></pre>
+<details>
+<summary>
+<b>Linux and Mac</b>
+</summary>
+<p><br> For MLeRP QCIF:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="va">ProxyCommand</span><span class="op">=</span><span class="st">"ssh &lt;username&gt;@mlerp-login0.mlerp.cloud.edu.au /usr/local/sv2/sshnc.sh"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>For MLeRP Monash:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="va">ProxyCommand</span><span class="op">=</span><span class="st">"ssh &lt;username&gt;@monash-mlerp-login0.mlerp.cloud.edu.au /apps/strudel2/strudel_apps/sshnc.sh"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<details>
+<summary>
+<b>Windows</b>
+</summary>
+<p><br> For MLeRP QCIF:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="va">ProxyCommand</span><span class="op">=</span><span class="st">"ssh.exe &lt;username&gt;@mlerp-login0.mlerp.cloud.edu.au /usr/local/sv2/sshnc.sh"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>For MLeRP Monash:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="va">ProxyCommand</span><span class="op">=</span><span class="st">"ssh.exe &lt;username&gt;@monash-mlerp-login0.mlerp.cloud.edu.au /apps/strudel2/strudel_apps/sshnc.sh"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <p>Note that you will need to authenticate with your ssh key/cert, either through your authorized keys file or by generating a cert with ssossh. You can then add it to your agent or provide it to the ssh command (and proxy command) with the <code>-i</code> flag.</p>
 <p>If you’re not sure how to use a proxy command, read on and we’ll walk you through the steps.</p>
 </section>
@@ -323,28 +375,9 @@ Please don’t do this, the login nodes are a shared resource and we would rathe
 </section>
 <section id="generate-an-ssh-key-and-add-it-to-the-ssh-agent" class="level3">
 <h3 class="anchored" data-anchor-id="generate-an-ssh-key-and-add-it-to-the-ssh-agent">2. Generate an ssh key and add it to the ssh agent</h3>
-<p>You may be familiar with using passwords to authenticate to MLeRP - ssh keys are another, more secure method of doing this. If you’re unfamiliar with ssh keys, no worries - we’ll step you through how to set one up here. If you want to learn more about why ssh keys are more secure than passwords, this <a href="https://www.youtube.com/watch?v=dPAw4opzN9g">YouTube video</a> does a good job of explaining it, even if it is designed for an AWS user.</p>
+<p>You may be familiar with using passwords to authenticate to MLeRP - ssh keys are another, more secure method of doing this. If you’re unfamiliar with ssh keys, no worries - we’ll step you through how to set one up here.</p>
+<p>If you want to learn more about why ssh keys are more secure than passwords, this <a href="https://www.youtube.com/watch?v=dPAw4opzN9g">YouTube video</a> does a good job of explaining it, even if it is designed for an AWS user.</p>
 <p>The process for creating keys and adding them to your ssh agent differs between Windows and Linux/Mac.</p>
-<details>
-<summary>
-<b>Mac and Linux</b>
-</summary>
-<p><br></p>
-<p><em>Note: These instructions will refer to your local terminal, as well as the Strudel2 terminal. Pay attention!</em></p>
-<p>Firstly, we need to generate an ssh key-pair. Open a local terminal, and run the following command:</p>
-<pre><code>ssh-keygen -t ed25519</code></pre>
-<p>You will be asked where you would like to save the keys. Press enter to keep the default location. You will also be asked to enter a passphrase. This will be used to encrypt the private key on your computer. There will be a print out of your key’s fingerprint and location on the screen.</p>
-<p>You should now have a public and private key in your <code>~/.ssh</code> directory, which will be named <code>id_ed25519.pub</code> and <code>id_ed25519</code> respectively. Never share your private key with someone else.</p>
-<p>Secondly, you will need to copy your public key into MLeRP. To do this, run the following command:</p>
-<pre><code>cat ~/.ssh/id_ed25519.pub                                  </code></pre>
-<p>Copy the line of text printed on the screen.</p>
-<p>Start a terminal session in <a href="https://mlerp.cloud.edu.au/">Strudel2</a> by selecting <code>Terminal</code> from the sidebar on the left-hand side of the screen, and then selecting <code>Run on Login Node</code>. This will open a terminal on MLeRP in a new tab. Ensure you have copied the public key from before, and run the following command in the Strudel2 terminal:</p>
-<pre><code>echo &lt;paste the line you just copied&gt; &gt;&gt; .ssh/authorized_keys</code></pre>
-<p>This will add your public key to MLeRP and allow you to authenticate using your new ssh-keys. Close the terminal tab and terminate the terminal session.</p>
-<p>Finally, you will want to add your ssh keys to the ssh-agent. You will remember setting a passphrase earlier for accessing your private key. When you add a private key to the ssh-agent, it will ask for your passphrase once, and then remember it until the next time your computer reboots. This means you won’t need to enter a passphrase everytime you log in to MLeRP with your keys.</p>
-<p>To do this, open a local terminal and run:</p>
-<pre><code>ssh-add ~/.ssh/id_ed25519</code></pre>
-</details>
 <details>
 <summary>
 <b>Windows</b>
@@ -377,43 +410,47 @@ Please don’t do this, the login nodes are a shared resource and we would rathe
 <h4 class="anchored" data-anchor-id="create-ssh-keys-and-add-them-to-the-ssh-agent">Create ssh keys and add them to the ssh-agent</h4>
 <p><em>Note: These instructions will refer to your local PowerShell terminal, as well as the Strudel2 terminal. Pay attention!</em></p>
 <p>Firstly, we need to generate an ssh key-pair. Open a Powershell terminal, and run the following command:</p>
-<pre><code>ssh-keygen -t ed25519</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-keygen</span> <span class="at">-t</span> ed25519</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>You will be asked where you would like to save the keys. Press enter to keep the default location. You will also be asked to enter a passphrase. This will be used to encrypt the private key on your computer. There will be a print out of your key’s fingerprint and location on the screen.</p>
 <p>You should now have a public and private key in your <code>~/.ssh</code> directory, which will be named <code>id_ed25519.pub</code> and <code>id_ed25519</code> respectively. Never share your private key with someone else.</p>
 <p>Secondly, you will need to copy your public key into MLeRP. To do this, run the following command:</p>
-<pre><code>cat ~/.ssh/id_ed25519.pub </code></pre>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> ~/.ssh/id_ed25519.pub </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Copy the line of text printed on the screen.</p>
 <p>Start a terminal session in <a href="https://mlerp.cloud.edu.au/">Strudel2</a> by selecting <code>Terminal</code> from the sidebar on the left-hand side of the screen, and then selecting <code>Run on Login Node</code>. This will open a terminal on MLeRP in a new tab. Ensure you have copied the public key from before, and run the following command in the Strudel2 terminal:</p>
-<pre><code>echo &lt;paste the line you just copied&gt; &gt;&gt; .ssh/authorized_keys</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="op">&lt;</span>paste the line you just copied<span class="op">&gt;</span> <span class="op">&gt;&gt;</span> .ssh/authorized_keys</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This will add your public key to MLeRP and allow you to authenticate using your new ssh-keys.</p>
 <p>Finally, you will want to add your ssh keys to the ssh agent. You will remember setting a passphrase earlier for accessing your private key. When you add a private key to the ssh-agent, it will ask for your passphrase once, and then remember it until the next time your computer reboots. This means you won’t need to enter a passphrase everytime you log in to MLeRP with your keys.</p>
 <p>Copy paste the location of your private key, which would have been printed on the screen in your PowerShell terminal earlier. For example, <code>C:\Users\username/.ssh/id_ed25519</code>. Run the following in your PowerShell terminal to add the key to your ssh-agent:</p>
-<pre><code>ssh-add ~/.ssh/id_ed25519</code></pre>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-add</span> ~/.ssh/id_ed25519</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section></details>
+<details>
+<summary>
+<b>Mac and Linux</b>
+</summary>
+<p><br> <em>Note: These instructions will refer to your local terminal, as well as the Strudel2 terminal. Pay attention!</em></p>
+<p>Firstly, we need to generate an ssh key-pair. Open a local terminal, and run the following command:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-keygen</span> <span class="at">-t</span> ed25519</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>You will be asked where you would like to save the keys. Press enter to keep the default location. You will also be asked to enter a passphrase. This will be used to encrypt the private key on your computer. There will be a print out of your key’s fingerprint and location on the screen.</p>
+<p>You should now have a public and private key in your <code>~/.ssh</code> directory, which will be named <code>id_ed25519.pub</code> and <code>id_ed25519</code> respectively. Never share your private key with someone else.</p>
+<p>Secondly, you will need to copy your public key into MLeRP. To do this, run the following command:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> ~/.ssh/id_ed25519.pub</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Copy the line of text printed on the screen.</p>
+<p>Start a terminal session in <a href="https://mlerp.cloud.edu.au/">Strudel2</a> by selecting <code>Terminal</code> from the sidebar on the left-hand side of the screen, and then selecting <code>Run on Login Node</code>. This will open a terminal on MLeRP in a new tab. Ensure you have copied the public key from before, and run the following command in the Strudel2 terminal:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="op">&lt;</span>paste the line you just copied<span class="op">&gt;</span> <span class="op">&gt;&gt;</span> .ssh/authorized_keys</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This will add your public key to MLeRP and allow you to authenticate using your new ssh-keys. Close the terminal tab and terminate the terminal session.</p>
+<p>Finally, you will want to add your ssh keys to the ssh-agent. You will remember setting a passphrase earlier for accessing your private key. When you add a private key to the ssh-agent, it will ask for your passphrase once, and then remember it until the next time your computer reboots. This means you won’t need to enter a passphrase everytime you log in to MLeRP with your keys.</p>
+<p>To do this, open a local terminal and run:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-add</span> ~/.ssh/id_ed25519</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </section>
 </section>
 <section id="configure-vs-code" class="level3">
 <h3 class="anchored" data-anchor-id="configure-vs-code">3. Configure VS Code</h3>
 <p>Open VS Code and open the Command Palette (F1). In the dropdown menu, select <code>Remote-SSH: Add New SSH Host...</code> , or click on the Add New icon in the SSH Remote Explorer in the Activity Bar.</p>
-<p>You’ll then be asked to enter the SSH connection information. Make sure you replace <code>&lt;username&gt;</code> with your MLeRP username.</p>
-
-<details>
-<summary>
-<b>Linux and Mac</b>
-</summary>
-<p><br></p>
-<p>On Linux and Mac, enter:</p>
-<pre><code>ssh -l &lt;username&gt; VSCode -o ProxyCommand="ssh &lt;username&gt;@mlerp-login0.mlerp.cloud.edu.au /usr/local/sv2/sshnc.sh"</code></pre>
-</details>
-<details>
-<summary>
-<b>Windows </b>
-</summary>
-<p><br></p>
-<p>On Windows enter:</p>
-<pre><code>ssh -l &lt;username&gt; VSCode -o ProxyCommand="ssh.exe &lt;username&gt;@mlerp-login0.mlerp.cloud.edu.au /usr/local/sv2/sshnc.sh"</code></pre>
-</details>
-<p>The proxycommand allows us to connect, not to the login nodes but to a node allocated just to you. This is different than a regular VSCode setup because you’re on a shared HPC cluster, not a regular server.</p>
+<p>You’ll then be asked to enter the SSH connection information. Make sure you replace <code>&lt;username&gt;</code> with your MLeRP username and <code>&lt;ProxyCommand&gt;</code> with the <a href="../connecting/vscode.html#introduction">proxy command</a> appropriate to your OS and selected region.</p>
+<p>Enter:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> <span class="at">-l</span> <span class="op">&lt;</span>username<span class="op">&gt;</span> VSCode <span class="at">-o</span> ProxyCommand=<span class="st">"&lt;ProxyCommand&gt;"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The proxy command allows us to connect, not to the login nodes but to a job allocated just to you. This is different than a regular VS Code setup because you’re on a shared HPC cluster, not a regular server.</p>
 </section>
 
 <section id="using-your-vs-code-remote-server-do-these-every-time-you-need-a-vs-code-session-on-var-cluster_name" class="level2">
@@ -424,22 +461,8 @@ Please don’t do this, the login nodes are a shared resource and we would rathe
 </section>
 <section id="test-the-connection" class="level3">
 <h3 class="anchored" data-anchor-id="test-the-connection">5. Test the connection</h3>
-<details>
-<summary>
-<b>Linux and Mac</b>
-</summary>
-<p><br></p>
-<p>Open a terminal and on Linux and Mac enter:</p>
-<pre><code>ssh -l &lt;username&gt; VSCode -o ProxyCommand="ssh &lt;username&gt;@mlerp-login0.mlerp.cloud.edu.au /usr/local/sv2/sshnc.sh"</code></pre>
-</details>
-<details>
-<summary>
-<b>Windows</b>
-</summary>
-<p><br></p>
-<p>On Windows, open a PowerShell terminal and enter:</p>
-<pre><code>ssh -l &lt;username&gt; VSCode -o ProxyCommand="ssh.exe &lt;username&gt;@mlerp-login0.mlerp.cloud.edu.au /usr/local/sv2/sshnc.sh"</code></pre>
-</details>
+<p>Open a terminal and enter:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> <span class="at">-l</span> <span class="op">&lt;</span>username<span class="op">&gt;</span> VSCode <span class="at">-o</span> ProxyCommand=<span class="st">"&lt;ProxyCommand&gt;"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Verify that you can connect to MLeRP. If you experience difficulties, this is the point to reach out to <code>mlerphelp@gmail.com.</code> This step will also prompt you to accept the public key for MLeRP.</p>
 </section>
 <section id="start-the-remote-server" class="level3">

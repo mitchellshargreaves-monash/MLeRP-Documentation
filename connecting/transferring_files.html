@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -288,7 +322,7 @@ ul.task-list li input[type="checkbox"] {
 <section id="wget" class="level2">
 <h2 class="anchored" data-anchor-id="wget">Wget</h2>
 <p>If you’re looking for an application or dataset that is publically available from the internet, you will be able to download the data directly into the MLeRP environment with a <code>wget</code> command:</p>
-<pre><code>wget -o destination URL</code></pre>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="at">-o</span> destination URL</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="jupyter-lab" class="level2">
 <h2 class="anchored" data-anchor-id="jupyter-lab">Jupyter Lab</h2>
@@ -303,7 +337,12 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="rsync">rsync</h2>
 <p>If you’re familiar with the terminal you can use <code>rsync</code> to synchronise file systems and to transfer large amounts of files, with the ability to stop and restart the file transfers. <code>rsync</code> will replicate all files in a folder from one spot to another. It first analyses both file systems to find the difference and then transfers only the changes.</p>
 <p>A typical command to synchronise files from a local folder to MLeRP is:</p>
-<p><code>rsync -auv -e ssh adirectory &lt;username&gt;@mlerp-login0.mlerp.cloud.edu.au:~/destinationdirectory/</code> rsync is very powerful and has many options to help transfer data. For example it can delete unwanted files (–delete), compress data before transfer (-z) or can you let you see what command options might do without actually executing them (–dry-run). For more info on rsync try man rsync.</p>
+<p>For MLeRP QCIF:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rsync</span> <span class="at">-auv</span> <span class="at">-e</span> ssh adirectory <span class="op">&lt;</span>username<span class="op">&gt;</span>@mlerp-login0.mlerp.cloud.edu.au:~/destinationdirectory/</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>For MLeRP Monash:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rsync</span> <span class="at">-auv</span> <span class="at">-e</span> ssh adirectory <span class="op">&lt;</span>username<span class="op">&gt;</span>@monash-mlerp-login0.mlerp.cloud.edu.au:~/destinationdirectory/</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>rsync</code> is very powerful and has many options to help transfer data. For example it can delete unwanted files with <code>--delete</code>, compress data before transfer <code>-z</code> or can you let you see what command options might do without actually executing them <code>--dry-run</code>. For more info on <code>rsync</code> try:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">man</span> rsync</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 </section>
