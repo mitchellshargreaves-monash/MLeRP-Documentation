@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -278,11 +312,49 @@ ul.task-list li input[type="checkbox"] {
 <p>SSOSSH is a tool that brings single sign on to MLeRP. You can use it as an alternative to managing SSH keys when connecting via VS Code or your terminal.</p>
 <p>The tool works by generating an SSH Certificate rather than the usual approach of adding a public key to the list of authorised keys. This is more secure since the certificate will only be valid for 24 hours, requiring you to go through your organisation’s single sign on again to renew the certificate.</p>
 <p>This also means that you will no longer need to add your key manually since this will be handled automatically.</p>
-<p>You can read more about usage details at it’s <a href="https://github.com/mitchellshargreaves-monash/ssossh">GitHub Repo</a>.</p>
+<p>SSOSSH uses a configuration file in your user’s home directory named <code>~/.authservers.json</code>. This file should be a list of configs for the clusters you wish to connect to.</p>
+<p>For MLeRP QCIF:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ot">[</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"authorise"</span><span class="fu">:</span> <span class="st">"https://sshauthz.cloud.cvl.org.au/pysshauthz/oauth2/oauth/authorize/choose"</span><span class="fu">,</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"base"</span><span class="fu">:</span> <span class="st">"https://sshauthz.cloud.cvl.org.au/pysshauthz/oauth2/"</span><span class="fu">,</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"cafingerprint"</span><span class="fu">:</span> <span class="st">"SHA256:ywDDZvIbx7B2AxujVIsW433fd4Sl1aZ0wl4FFsCRX/E"</span><span class="fu">,</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"client_id"</span><span class="fu">:</span> <span class="st">"Q96kt2Vtw6S78dpORktM81DH"</span><span class="fu">,</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"desc"</span><span class="fu">:</span> <span class="st">"&lt;div&gt;MLeRP&lt;/div&gt;"</span><span class="fu">,</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"icon"</span><span class="fu">:</span> <span class="kw">null</span><span class="fu">,</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"login"</span><span class="fu">:</span> <span class="st">"mlerp-login0.mlerp.cloud.edu.au"</span><span class="fu">,</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"logout"</span><span class="fu">:</span> <span class="st">"https://sshauthz.cloud.cvl.org.au/pysshauthz/oauth2/logout"</span><span class="fu">,</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"name"</span><span class="fu">:</span> <span class="st">"MLeRP_Monash"</span><span class="fu">,</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"proxy"</span><span class="fu">:</span> <span class="st">"/nfs/opt/sv2/sshnc.sh"</span><span class="fu">,</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"scope"</span><span class="fu">:</span> <span class="st">"user:email"</span><span class="fu">,</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"sign"</span><span class="fu">:</span> <span class="st">"https://sshauthz.cloud.cvl.org.au/pysshauthz/sign/mlerp_users/api/v1/sign_key"</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="ot">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>For MLeRP Monash:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ot">[</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"authorise"</span><span class="fu">:</span> <span class="st">"https://sshauthz.cloud.cvl.org.au/pysshauthz/oauth2/oauth/authorize/choose"</span><span class="fu">,</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"base"</span><span class="fu">:</span> <span class="st">"https://sshauthz.cloud.cvl.org.au/pysshauthz/oauth2/"</span><span class="fu">,</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"cafingerprint"</span><span class="fu">:</span> <span class="st">"SHA256:ywDDZvIbx7B2AxujVIsW433fd4Sl1aZ0wl4FFsCRX/E"</span><span class="fu">,</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"client_id"</span><span class="fu">:</span> <span class="st">"Q96kt2Vtw6S78dpORktM81DH"</span><span class="fu">,</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"desc"</span><span class="fu">:</span> <span class="st">"&lt;div&gt;MLeRP&lt;/div&gt;"</span><span class="fu">,</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"icon"</span><span class="fu">:</span> <span class="kw">null</span><span class="fu">,</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"login"</span><span class="fu">:</span> <span class="st">"monash-mlerp-login0.mlerp.cloud.edu.au"</span><span class="fu">,</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"logout"</span><span class="fu">:</span> <span class="st">"https://sshauthz.cloud.cvl.org.au/pysshauthz/oauth2/logout"</span><span class="fu">,</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"name"</span><span class="fu">:</span> <span class="st">"MLeRP_QCIF"</span><span class="fu">,</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"proxy"</span><span class="fu">:</span> <span class="st">"/apps/strudel2/strudel_apps/sshnc.sh"</span><span class="fu">,</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"scope"</span><span class="fu">:</span> <span class="st">"user:email"</span><span class="fu">,</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"sign"</span><span class="fu">:</span> <span class="st">"https://sshauthz.cloud.cvl.org.au/pysshauthz/sign/mlerp_users/api/v1/sign_key"</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="ot">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>You can pip install SSOSSH with:</p>
-<pre><code>pip install git+https://github.com/mitchellshargreaves-monash/ssossh</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install git+https://github.com/mitchellshargreaves-monash/ssossh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>or if you want to test an experimental feature:</p>
-<pre><code>pip install git+https://github.com/mitchellshargreaves-monash/ssossh@branch-name</code></pre>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install git+https://github.com/mitchellshargreaves-monash/ssossh@branch-name</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>After installation you should be able to run <code>ssossh</code> in your favourite terminal to run the program. By default it will create the SSH keys and certificates in your <code>.ssh</code> folder, but you can optionally change this path or have it add direct to your SSH Agent which you may find to be neater. We reccommend using the <code>--setssh</code> flag the first time you use SSOSSH to set up some default SSH configurations to connect to the login node and start up a jupyter session.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">ssossh</span> <span class="at">--setssh</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> MLeRP_Monash_login</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>You can read more about usage details at it’s <a href="https://github.com/mitchellshargreaves-monash/ssossh">GitHub Repo</a>.</p>
 
 
 
