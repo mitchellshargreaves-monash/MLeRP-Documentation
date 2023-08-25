@@ -8,13 +8,62 @@ The tool works by generating an SSH Certificate rather than the usual approach o
 
 This also means that you will no longer need to add your key manually since this will be handled automatically.
 
-You can read more about usage details at it's [GitHub Repo](https://github.com/mitchellshargreaves-monash/ssossh).
+SSOSSH uses a configuration file in your user's home directory named `~/.authservers.json`. This file should be a list of configs for the clusters you wish to connect to. 
+
+For MLeRP QCIF:
+```json
+[
+    {
+        "authorise": "https://sshauthz.cloud.cvl.org.au/pysshauthz/oauth2/oauth/authorize/choose",
+        "base": "https://sshauthz.cloud.cvl.org.au/pysshauthz/oauth2/",
+        "cafingerprint": "SHA256:ywDDZvIbx7B2AxujVIsW433fd4Sl1aZ0wl4FFsCRX/E",
+        "client_id": "Q96kt2Vtw6S78dpORktM81DH",
+        "desc": "<div>MLeRP</div>",
+        "icon": null,
+        "login": "mlerp-login0.mlerp.cloud.edu.au",
+        "logout": "https://sshauthz.cloud.cvl.org.au/pysshauthz/oauth2/logout",
+        "name": "MLeRP_Monash",
+        "proxy": "/nfs/opt/sv2/sshnc.sh",
+        "scope": "user:email",
+        "sign": "https://sshauthz.cloud.cvl.org.au/pysshauthz/sign/mlerp_users/api/v1/sign_key"
+    }
+]
+```
+
+For MLeRP Monash:
+```json
+[
+    {
+        "authorise": "https://sshauthz.cloud.cvl.org.au/pysshauthz/oauth2/oauth/authorize/choose",
+        "base": "https://sshauthz.cloud.cvl.org.au/pysshauthz/oauth2/",
+        "cafingerprint": "SHA256:ywDDZvIbx7B2AxujVIsW433fd4Sl1aZ0wl4FFsCRX/E",
+        "client_id": "Q96kt2Vtw6S78dpORktM81DH",
+        "desc": "<div>MLeRP</div>",
+        "icon": null,
+        "login": "monash-mlerp-login0.mlerp.cloud.edu.au",
+        "logout": "https://sshauthz.cloud.cvl.org.au/pysshauthz/oauth2/logout",
+        "name": "MLeRP_QCIF",
+        "proxy": "/apps/strudel2/strudel_apps/sshnc.sh",
+        "scope": "user:email",
+        "sign": "https://sshauthz.cloud.cvl.org.au/pysshauthz/sign/mlerp_users/api/v1/sign_key"
+    }
+]
+```
 
 You can pip install SSOSSH with: 
-```
+```bash
 pip install git+https://github.com/mitchellshargreaves-monash/ssossh
 ```
 or if you want to test an experimental feature:
-```
+```bash
 pip install git+https://github.com/mitchellshargreaves-monash/ssossh@branch-name
 ```
+
+After installation you should be able to run `ssossh` in your favourite terminal to run the program. By default it will create the SSH keys and certificates in your `.ssh` folder, but you can optionally change this path or have it add direct to your SSH Agent which you may find to be neater. We reccommend using the `--setssh` flag the first time you use SSOSSH to set up some default SSH configurations to connect to the login node and start up a jupyter session.
+
+```bash
+ssossh --setssh
+ssh MLeRP_Monash_login
+```
+
+You can read more about usage details at it's [GitHub Repo](https://github.com/mitchellshargreaves-monash/ssossh).
