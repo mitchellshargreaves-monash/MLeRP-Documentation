@@ -66,4 +66,11 @@ ssossh --setssh
 ssh MLeRP_Monash_login
 ```
 
+Now that the SSH configurations have been generated you will not need this flag. Each time you can simply rerun the `ssossh` program to refresh your certificates then use your SSH or VS Code remote session as per normal.
+
+```bash
+ssossh
+ssh MLeRP_Monash_login
+```
+
 You can read more about usage details at it's [GitHub Repo](https://github.com/mitchellshargreaves-monash/ssossh).
