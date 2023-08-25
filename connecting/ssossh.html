@@ -354,6 +354,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>After installation you should be able to run <code>ssossh</code> in your favourite terminal to run the program. By default it will create the SSH keys and certificates in your <code>.ssh</code> folder, but you can optionally change this path or have it add direct to your SSH Agent which you may find to be neater. We reccommend using the <code>--setssh</code> flag the first time you use SSOSSH to set up some default SSH configurations to connect to the login node and start up a jupyter session.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">ssossh</span> <span class="at">--setssh</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> MLeRP_Monash_login</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Now that the SSH configurations have been generated you will not need this flag. Each time you can simply rerun the <code>ssossh</code> program to refresh your certificates then use your SSH or VS Code remote session as per normal.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">ssossh</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> MLeRP_Monash_login</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>You can read more about usage details at it’s <a href="https://github.com/mitchellshargreaves-monash/ssossh">GitHub Repo</a>.</p>
 
 

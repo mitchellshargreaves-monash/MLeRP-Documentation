@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -306,41 +340,41 @@ ul.task-list li input[type="checkbox"] {
 <li>The ‘base’ environment which aims is a minimal installation of jupyter lab.</li>
 <li>The Data Science Kitchen Sink (DSKS) which is an environment with many typical packages for analysis and machine learning</li>
 </ul>
-<p>You can visit <a href="../applications/conda_environments.ipynb">this page</a> for a complete list of packages and versions in each environment.</p>
+<p>You can visit the <a href="../applications/base.html">Base</a> and <a href="../applications/dsks.html">DSKS</a> pages complete lists of packages and versions in each environment.</p>
 <p>If our conda environments don’t meet your needs, you can consider maintaining your own <a href="https://docs.conda.io/en/latest/miniconda.html">miniconda</a> or <a href="https://mamba.readthedocs.io/en/latest/mamba-installation.html#mamba-install">mambaforge</a> installation in your home directory. Once you’re happy with your environment you can point Strudel2 to your environment by edditing your <code>apps.json</code> file which can be found in the <code>.strudel2</code> folder in your <code>home</code> directory.</p>
 <p>Strudel2 will append the new app you’ve configured below An example <code>apps.json</code> template has been provided below:</p>
-<pre><code>[
-    { 
-        "url": null,
-        "name": "Custom Jupyter Lab",
-        "desc": "This is a custom Jupyter Lab container defined in a user's directory.",
-        "startscript": "#!/bin/bash\n/apps/strudel2/strudel_apps/jupyter/custom_env.sh /PATH/TO/YOUR/CONDA/INSTALL/ CONDA_ENV_NAME",
-        "instactions": [
-            {
-                "name": "Connect",
-                "paramscmd": "/apps/strudel2/strudel_apps/jupyter/params_cmd.py {jobid} 2&gt;/dev/null",
-                "client": {
-                    "cmd": null,
-                    "redir": "?token={token}"
-                },
-                "states": [
-                    "RUNNING"
-                ]
-            },
-            {
-                "name": "Remove log",
-                "paramscmd": "rm ~/.strudel2-*{jobid}.out ; echo []",
-                "client": null,
-                "notunnel": true,
-                "states": [
-                    "Finished"
-                ]
-            }
-        ],
-        "localbind": true,
-        "applist": null
-    }
-]</code></pre>
+<div class="sourceCode" id="cb1"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ot">[</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span> </span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"url"</span><span class="fu">:</span> <span class="kw">null</span><span class="fu">,</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"name"</span><span class="fu">:</span> <span class="st">"Custom Jupyter Lab"</span><span class="fu">,</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"desc"</span><span class="fu">:</span> <span class="st">"This is a custom Jupyter Lab container defined in a user's directory."</span><span class="fu">,</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"startscript"</span><span class="fu">:</span> <span class="st">"#!/bin/bash</span><span class="ch">\n</span><span class="st">/apps/strudel2/strudel_apps/jupyter/custom_env.sh /PATH/TO/YOUR/CONDA/INSTALL/ CONDA_ENV_NAME"</span><span class="fu">,</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"instactions"</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>            <span class="fu">{</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>                <span class="dt">"name"</span><span class="fu">:</span> <span class="st">"Connect"</span><span class="fu">,</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>                <span class="dt">"paramscmd"</span><span class="fu">:</span> <span class="st">"/apps/strudel2/strudel_apps/jupyter/params_cmd.py {jobid} 2&gt;/dev/null"</span><span class="fu">,</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>                <span class="dt">"client"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>                    <span class="dt">"cmd"</span><span class="fu">:</span> <span class="kw">null</span><span class="fu">,</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>                    <span class="dt">"redir"</span><span class="fu">:</span> <span class="st">"?token={token}"</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>                <span class="fu">},</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>                <span class="dt">"states"</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"RUNNING"</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>                <span class="ot">]</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>            <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>            <span class="fu">{</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>                <span class="dt">"name"</span><span class="fu">:</span> <span class="st">"Remove log"</span><span class="fu">,</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>                <span class="dt">"paramscmd"</span><span class="fu">:</span> <span class="st">"rm ~/.strudel2-*{jobid}.out ; echo []"</span><span class="fu">,</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>                <span class="dt">"client"</span><span class="fu">:</span> <span class="kw">null</span><span class="fu">,</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>                <span class="dt">"notunnel"</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>                <span class="dt">"states"</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"Finished"</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>                <span class="ot">]</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>            <span class="fu">}</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>        <span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"localbind"</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"applist"</span><span class="fu">:</span> <span class="kw">null</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="ot">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>You can edit the name and description fields to suit your environment for your reference. You will also need to edit the path to your conda installation and the environment name you’d like to activate. Note that to use the strudel <code>Jupyter Lab</code> application you will need to make sure the <code>jupyterlab</code> package is installed in your environment. If you’d like to point Strudel2 to more than one environment, simply append another object to the list.</p>
 </section>
 <section id="faq" class="level2">
