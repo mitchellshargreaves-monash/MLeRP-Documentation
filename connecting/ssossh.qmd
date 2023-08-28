@@ -79,4 +79,4 @@ ssossh
 ssh MLeRP_Monash_login
 ```
 
-You can read more about usage details at it's [GitHub Repo](https://github.com/mitchellshargreaves-monash/ssossh).
+You can read more about usage details at it's [GitHub Repo](https://github.com/HecticHPCSolutions/ssossh).
