@@ -58,11 +58,11 @@ SSOSSH uses a configuration file in your user's home directory named `~/.authser
 
 You can pip install SSOSSH with: 
 ```bash
-pip install git+https://github.com/mitchellshargreaves-monash/ssossh
+pip install git+https://github.com/HecticHPCSolutions/ssossh
 ```
 or if you want to test an experimental feature:
 ```bash
-pip install git+https://github.com/mitchellshargreaves-monash/ssossh@branch-name
+pip install git+https://github.com/HecticHPCSolutions/ssossh@branch-name
 ```
 
 After installation you should be able to run `ssossh` in your favourite terminal to run the program. By default it will create the SSH keys and certificates in your `.ssh` folder, but you can optionally change this path or have it add direct to your SSH Agent which you may find to be neater. We reccommend using the `--setssh` flag the first time you use SSOSSH to set up some default SSH configurations to connect to the login node and start up a jupyter session.
