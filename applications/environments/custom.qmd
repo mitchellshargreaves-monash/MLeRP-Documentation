@@ -29,7 +29,9 @@ wget https://.../Mambaforge-Linux-x86_64.sh
 bash Mambaforge-Linux-x86_64.sh
 ```
 
-Following the prompts from the installer, accept the license agreement and choose where you'd like your installation to be kept. By default the installer will choose your home directory.
+Following the prompts from the installer, accept the license agreement and choose where you'd like your installation to be kept. By default the installer will choose your home directory. 
+
+The installer will prompt you to initislise conda and edit the `.bashrc` so that it will activate when you log in. This is **NOT** reccommended as this can lead to unexpect interactions with batch jobs. If you have done so by accident you can remove the additions to your `.bashrc` file manually (this is located in your home directory).
 
 You can now activate your environment using one of the following:
 ```bash
@@ -55,6 +57,7 @@ mamba env create -f custom.yml
 ```
 
 You can then install packages manually if you're still experimenting with new packages, or update your install with the environment file.
+
 ```bash
 mamba install package_name
 mamba env update -f custom.yml
