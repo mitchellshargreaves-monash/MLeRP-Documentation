@@ -1,0 +1,106 @@
+---
+title: Custom Conda Environments
+---
+
+## Introduction
+
+If our conda environments don't meet your needs, you can consider maintaining your own [miniconda](https://docs.conda.io/en/latest/miniconda.html) or [mambaforge](https://mamba.readthedocs.io/en/latest/index.html) installation in your home directory.
+
+Conda has often used as a standard for maintaining python datascience environments, but because of the complexity of the environments typically needed, the conda solver can be known to hang (for 20 minutes or longer) especially if trying to install into an existing complicated environment, only to report that it was unable to solve due to version conflicts. 
+
+Mamba is a parallelised C++ rewrite of the slowest parts of mamba, though while much faster (similar environments can solve in a minute or so), it can be unstable at times leading to unexpected errors.
+
+Since a mamba installation comes compatible with conda and acts as a dropin replacement, we recommend that you start with a mambaforge installation and then fall back on conda commands whenever mamba fails. Simply replace the `mamba` keyword with `conda`.
+
+In this tutorial we will cover installing a mambaforge environment.
+
+## Installing mambaforge
+Following the recommendations on [mamba's installation page](https://mamba.readthedocs.io/en/latest/mamba-installation.html), we will be using the Mambaforge distribution.
+
+Following the link through to the [download page](https://github.com/conda-forge/miniforge#mambaforge), we are looking for the distribution for:
+- OS: Linux
+- Architecture: x86_64 (amd64)
+
+Using the [Strudel2 terminal application](/connecting/strudel2.qmd#terminal-jobs) or your favourite terminal application using [SSOSSH](/connecting/ssossh.qmd), log into the cluster.
+
+Download the distribution to your home directory and run the installer
+```bash
+wget https://.../Mambaforge-Linux-x86_64.sh
+bash Mambaforge-Linux-x86_64.sh
+```
+
+Following the prompts from the installer, accept the license agreement and choose where you'd like your installation to be kept. By default the installer will choose your home directory.
+
+You can now activate your environment using one of the following:
+```bash
+# Absolute paths are preferred for batch jobs or config files
+source /path/to/install/...mambaforge/bin/activate
+# Relative paths may be more convenient in everyday usage
+source ./mambaforge/bin/activate 
+# `.` works as a shorthand for the source command
+. ./mambaforge/bin/activate 
+```
+
+## Installing your packages
+Both mamba and conda environments are intended to leave their base environments untouched, so when maintaining your environments it is good practice to create a new one before installing any packages.
+
+To encourage reproducability it is recommended to use an `environment.yml` file to maintain your packages. If you'd like a reference, the recipes to our environments are stored in `/apps/conda-envs`. We have created the `custom-base.yml` recipe for you to use as a minimal install that will be compatible with our Strudel2 apps.
+
+Copy this environment file to your home directory and modify it to suit your requirements. Then create the environment off the file.
+
+```bash
+cp /app/conda-envs/custom-base.yml ~/custom.yml
+nano ~/custom.yml
+mamba env create -f custom.yml
+```
+
+You can then install packages manually if you're still experimenting with new packages, or update your install with the environment file.
+```bash
+mamba install package_name
+mamba env update -f custom.yml
+```
+
+Note that conda's solver can result in different results if installing packages in a different order so once you have confirmed which packages you need, it is good practice to work out an `environment.yml` that will build your environment in one command. Alternatively if your application requires multiple install stages, consider a script to build the environment so that your work is reproducible.
+
+For more details about environment file syntax, have a look at conda's documentation on [managing environments](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html).
+
+## Integrating with strudel2
+
+Once you're happy with your environment you can point Strudel2 to your environment by editing your `apps.json` file which can be found in the `.strudel2` folder in your `home` directory. Strudel2 will append the new app you've configured below An example `apps.json` template has been provided below:
+
+```json
+[
+    { 
+        "url": null,
+        "name": "Custom Jupyter Lab",
+        "desc": "This is a custom Jupyter Lab container defined in a user's directory.",
+        "startscript": "#!/bin/bash\n/apps/strudel2/strudel_apps/jupyter/custom_env.sh /PATH/TO/YOUR/CONDA/INSTALL/ CONDA_ENV_NAME",
+        "instactions": [
+            {
+                "name": "Connect",
+                "paramscmd": "/apps/strudel2/strudel_apps/jupyter/params_cmd.py {jobid} 2>/dev/null",
+                "client": {
+                    "cmd": null,
+                    "redir": "?token={token}"
+                },
+                "states": [
+                    "RUNNING"
+                ]
+            },
+            {
+                "name": "Remove log",
+                "paramscmd": "rm ~/.strudel2-*{jobid}.out ; echo []",
+                "client": null,
+                "notunnel": true,
+                "states": [
+                    "Finished"
+                ]
+            }
+        ],
+        "localbind": true,
+        "applist": null
+    }
+]
+```
+
+You can edit the name and description fields to suit your environment for your reference. You will also need to edit the path to your conda installation and the environment name you'd like to activate. Note that to use the strudel `Jupyter Lab` application you will need to make sure the `jupyterlab` package is installed in your environment. If you'd like to point Strudel2 to more than one environment, simply append another object to the list.

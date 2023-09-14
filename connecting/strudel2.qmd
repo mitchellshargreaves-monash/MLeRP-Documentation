@@ -19,52 +19,13 @@ If you prefer using VS Code to the Jupyter Lab IDE you can also connect to this 
 ## Conda Environments
 We've provided two environments for you to explore the platform and get started right away:
 
-- The 'base' environment which aims is a minimal installation of jupyter lab. 
-- The Data Science Kitchen Sink (DSKS) which is an environment with many typical packages for analysis and machine learning
+- The 'Base' environment which aims is a minimal installation of jupyter lab. 
+- The 'Data Science Kitchen Sink (DSKS)' which is an environment with many typical packages for analysis and machine learning
 
 You can visit the [Base](/applications/base.ipynb) and [DSKS](/applications/dsks.ipynb) pages complete lists of packages and versions in each environment.
 
-If our conda environments don't meet your needs, you can consider maintaining your own [miniconda](https://docs.conda.io/en/latest/miniconda.html) or [mambaforge](https://mamba.readthedocs.io/en/latest/mamba-installation.html#mamba-install) installation in your home directory. Once you're happy with your environment you can point Strudel2 to your environment by edditing your `apps.json` file which can be found in the `.strudel2` folder in your `home` directory. 
-
-Strudel2 will append the new app you've configured below An example `apps.json` template has been provided below:
-
-```json
-[
-    { 
-        "url": null,
-        "name": "Custom Jupyter Lab",
-        "desc": "This is a custom Jupyter Lab container defined in a user's directory.",
-        "startscript": "#!/bin/bash\n/apps/strudel2/strudel_apps/jupyter/custom_env.sh /PATH/TO/YOUR/CONDA/INSTALL/ CONDA_ENV_NAME",
-        "instactions": [
-            {
-                "name": "Connect",
-                "paramscmd": "/apps/strudel2/strudel_apps/jupyter/params_cmd.py {jobid} 2>/dev/null",
-                "client": {
-                    "cmd": null,
-                    "redir": "?token={token}"
-                },
-                "states": [
-                    "RUNNING"
-                ]
-            },
-            {
-                "name": "Remove log",
-                "paramscmd": "rm ~/.strudel2-*{jobid}.out ; echo []",
-                "client": null,
-                "notunnel": true,
-                "states": [
-                    "Finished"
-                ]
-            }
-        ],
-        "localbind": true,
-        "applist": null
-    }
-]
-```
-
-You can edit the name and description fields to suit your environment for your reference. You will also need to edit the path to your conda installation and the environment name you'd like to activate. Note that to use the strudel `Jupyter Lab` application you will need to make sure the `jupyterlab` package is installed in your environment. If you'd like to point Strudel2 to more than one environment, simply append another object to the list.
-
+If our conda environments don't meet your needs, you can consider maintaining your own [miniconda](https://docs.conda.io/en/latest/miniconda.html) or [mambaforge](https://mamba.readthedocs.io/en/latest/index.html) installation in your home directory.
+Have a look at [this page](/applications/custom.qmd) for more information about creating a conda environment to interface with our environment.
 
 ## FAQ
 ### Why can't I connect to Jupyter Lab?
