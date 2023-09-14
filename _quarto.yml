@@ -5,6 +5,9 @@ project:
 resources:
   - CNAME
 
+render:
+  - "!*.ipynb_checkpoints"
+
 website:
   title: "MLeRP User Guide Documentation"
   favicon: ./images/favicon-32x32.png
@@ -29,7 +32,7 @@ website:
       - faq.qmd
       - section: "Applications"
         contents:
-        - auto: "applications/*"
+        - auto: "applications/environments/*"
       - section: "Connecting"
         contents:
         - auto: "connecting/*.qmd"

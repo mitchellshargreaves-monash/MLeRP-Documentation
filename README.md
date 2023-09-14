@@ -7,7 +7,7 @@ The pages are written in quarto markdown for main pages, with iPython notebook t
 The HTML that is rendered is hosted on the `gh-pages` branch. To render it run:
 
 To publish:
-1. Set the project type to confluence in `_quarto.yml`
+1. Set the project type to website in `_quarto.yml`
 2. Then run: `quarto publish gh-pages`
 3. Push to the [GitHub repo](https://github.com/mitchellshargreaves-monash/MLeRP-Documentation) if its not your main remote
 
