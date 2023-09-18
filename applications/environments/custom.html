@@ -297,10 +297,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#installing-mambaforge" id="toc-installing-mambaforge" class="nav-link" data-scroll-target="#installing-mambaforge">Installing mambaforge</a></li>
-  <li><a href="#installing-your-packages" id="toc-installing-your-packages" class="nav-link" data-scroll-target="#installing-your-packages">Installing your packages</a></li>
-  <li><a href="#integrating-with-strudel2" id="toc-integrating-with-strudel2" class="nav-link" data-scroll-target="#integrating-with-strudel2">Integrating with strudel2</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a>
+  <ul class="collapse">
+  <li><a href="#conda-vs-mamba" id="toc-conda-vs-mamba" class="nav-link" data-scroll-target="#conda-vs-mamba">Conda vs Mamba</a></li>
+  <li><a href="#installing-mambaforge" id="toc-installing-mambaforge" class="nav-link" data-scroll-target="#installing-mambaforge">1. Installing mambaforge</a></li>
+  <li><a href="#installing-your-packages" id="toc-installing-your-packages" class="nav-link" data-scroll-target="#installing-your-packages">2. Installing your packages</a></li>
+  <li><a href="#integrating-with-strudel2" id="toc-integrating-with-strudel2" class="nav-link" data-scroll-target="#integrating-with-strudel2">3. Integrating with strudel2</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -327,81 +330,122 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
 <p>If our conda environments don’t meet your needs, you can consider maintaining your own <a href="https://docs.conda.io/en/latest/miniconda.html">miniconda</a> or <a href="https://mamba.readthedocs.io/en/latest/index.html">mambaforge</a> installation in your home directory.</p>
-<p>Conda has often used as a standard for maintaining python datascience environments, but because of the complexity of the environments typically needed, the conda solver can be known to hang (for 20 minutes or longer) especially if trying to install into an existing complicated environment, only to report that it was unable to solve due to version conflicts.</p>
+<p>Please <strong>DO NOT</strong> install this environment as you would on your desktop.</p>
+<p>By default, this will initialise conda, which can interfere negatively with the functionality of batch submissions. Furthermore, it will then not interact with Strudel2.</p>
+<section id="conda-vs-mamba" class="level3">
+<h3 class="anchored" data-anchor-id="conda-vs-mamba">Conda vs Mamba</h3>
+<p>Conda is often used as a standard for maintaining python datascience environments, but because of the complexity of the environments typically needed, the conda solver can be known to hang (for 20 minutes or longer) especially if trying to install into an existing complicated environment, only to report that it was unable to solve due to version conflicts.</p>
 <p>Mamba is a parallelised C++ rewrite of the slowest parts of mamba, though while much faster (similar environments can solve in a minute or so), it can be unstable at times leading to unexpected errors.</p>
 <p>Since a mamba installation comes compatible with conda and acts as a dropin replacement, we recommend that you start with a mambaforge installation and then fall back on conda commands whenever mamba fails. Simply replace the <code>mamba</code> keyword with <code>conda</code>.</p>
 <p>In this tutorial we will cover installing a mambaforge environment.</p>
 </section>
-<section id="installing-mambaforge" class="level2">
-<h2 class="anchored" data-anchor-id="installing-mambaforge">Installing mambaforge</h2>
-<p>Following the recommendations on <a href="https://mamba.readthedocs.io/en/latest/mamba-installation.html">mamba’s installation page</a>, we will be using the Mambaforge distribution.</p>
-<p>Following the link through to the <a href="https://github.com/conda-forge/miniforge#mambaforge">download page</a>, we are looking for the distribution for: - OS: Linux - Architecture: x86_64 (amd64)</p>
-<p>Using the <a href="../../connecting/strudel2.html#terminal-jobs">Strudel2 terminal application</a> or your favourite terminal application using <a href="../../connecting/ssossh.html">SSOSSH</a>, log into the cluster.</p>
-<p>Download the distribution to your home directory and run the installer</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://.../Mambaforge-Linux-x86_64.sh</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">bash</span> Mambaforge-Linux-x86_64.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Following the prompts from the installer, accept the license agreement and choose where you’d like your installation to be kept. By default the installer will choose your home directory.</p>
-<p>The installer will prompt you to initislise conda and edit the <code>.bashrc</code> so that it will activate when you log in. This is <strong>NOT</strong> reccommended as this can lead to unexpect interactions with batch jobs. If you have done so by accident you can remove the additions to your <code>.bashrc</code> file manually (this is located in your home directory).</p>
-<p>You can now activate your environment using one of the following:</p>
+<section id="installing-mambaforge" class="level3">
+<h3 class="anchored" data-anchor-id="installing-mambaforge">1. Installing mambaforge</h3>
+<ol type="1">
+<li><p>Following the recommendations on <a href="https://mamba.readthedocs.io/en/latest/mamba-installation.html">mamba’s installation page</a>, we will be using the Mambaforge distribution.</p></li>
+<li><p>Following the link through to the <a href="https://github.com/conda-forge/miniforge#mambaforge">download page</a>, copy the link for the following distribution:</p>
+<ul>
+<li>OS: Linux</li>
+<li>Architecture: x86_64 (amd64)</li>
+</ul></li>
+<li><p>Using the <a href="../../connecting/strudel2.html#terminal-jobs">Strudel2 terminal application</a> or your favourite terminal application using <a href="../../connecting/ssossh.html">SSOSSH</a>, log into the cluster.</p></li>
+<li><p>Download the distribution to your home directory and run the installer</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Replace this URL with the one you copied</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://.../Mambaforge-Linux-x86_64.sh</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">bash</span> Mambaforge-Linux-x86_64.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Following the prompts from the installer:</p>
+<ol type="1">
+<li>Accept the license agreement</li>
+<li>Choose where you’d like your installation to be kept.<br>
+(By default your home directory)</li>
+</ol>
+<p>The installer will prompt you to initislise conda. This is <strong>NOT</strong> recommended.</p>
+<p>This will and edit the <code>.bashrc</code> so that it will activate when you log in, which can lead to unexpected interactions with batch jobs on cluster like MLeRP.</p>
+<p>If you have done so by accident you can remove the additions to your <code>.bashrc</code> file manually (this is located in your home directory).</p></li>
+<li><p>You can now activate your environment using one of the following commands:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Absolute paths are preferred for batch jobs or config files</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> /path/to/install/...mambaforge/bin/activate</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Relative paths may be more convenient in everyday usage</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> ./mambaforge/bin/activate </span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># `.` works as a shorthand for the source command</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="bu">.</span> ./mambaforge/bin/activate </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="bu">.</span> ./mambaforge/bin/activate </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ol>
 </section>
-<section id="installing-your-packages" class="level2">
-<h2 class="anchored" data-anchor-id="installing-your-packages">Installing your packages</h2>
-<p>Both mamba and conda environments are intended to leave their base environments untouched, so when maintaining your environments it is good practice to create a new one before installing any packages.</p>
-<p>To encourage reproducability it is recommended to use an <code>environment.yml</code> file to maintain your packages. If you’d like a reference, the recipes to our environments are stored in <code>/apps/conda-envs</code>. We have created the <code>custom-base.yml</code> recipe for you to use as a minimal install that will be compatible with our Strudel2 apps.</p>
-<p>Copy this environment file to your home directory and modify it to suit your requirements. Then create the environment off the file.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> /app/conda-envs/custom-base.yml ~/custom.yml</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nano</span> ~/custom.yml</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> env create <span class="at">-f</span> custom.yml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>You can then install packages manually if you’re still experimenting with new packages, or update your install with the environment file.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> install package_name</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> env update <span class="at">-f</span> custom.yml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Note that conda’s solver can result in different results if installing packages in a different order so once you have confirmed which packages you need, it is good practice to work out an <code>environment.yml</code> that will build your environment in one command. Alternatively if your application requires multiple install stages, consider a script to build the environment so that your work is reproducible.</p>
+<section id="installing-your-packages" class="level3">
+<h3 class="anchored" data-anchor-id="installing-your-packages">2. Installing your packages</h3>
+<p>Both mamba and conda environments are intended to leave their <code>base</code> environments untouched, so when maintaining your environments it is good practice to create a new one before installing any packages.</p>
+<p>To encourage reproducability it is recommended to use an <code>environment.yml</code> file to maintain your packages. If you’d like a reference, the recipes to our environments are stored in <code>/apps/conda-envs</code>.</p>
+<p>We have created the <code>custom-base.yml</code> recipe for you to use as a minimal install that will be compatible with our Strudel2 apps. Alternatively, you could opt to use one of our other environments as a starting point.</p>
+<ol type="1">
+<li><p>Copy your chosen environment file to your home directory and modify it to suit your requirements. Make sure to uncomment the <code>pip</code> section if you need <code>pip</code>to install packages.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> /apps/conda-envs/custom-base.yml ~/custom.yml</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nano</span> ~/custom.yml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Then create the environment off the file.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> env create <span class="at">-f</span> ~/custom.yml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>You can then install packages manually if you’re still experimenting with new packages, or update your install with the environment file.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> install package_name</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install package_name</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> env update <span class="at">-f</span> custom.yml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ol>
+<p>Conda’s solver can result in different package versions if installing packages in a different order. Once you have confirmed which packages you need, it is good practice to work out an <code>environment.yml</code> that will build your environment in one command.</p>
+<p>Alternatively if your application requires multiple install stages, consider a script to build the environment so that your work is reproducible.</p>
 <p>For more details about environment file syntax, have a look at conda’s documentation on <a href="https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html">managing environments</a>.</p>
 </section>
-<section id="integrating-with-strudel2" class="level2">
-<h2 class="anchored" data-anchor-id="integrating-with-strudel2">Integrating with strudel2</h2>
-<p>Once you’re happy with your environment you can point Strudel2 to your environment by editing your <code>apps.json</code> file which can be found in the <code>.strudel2</code> folder in your <code>home</code> directory. Strudel2 will append the new app you’ve configured below An example <code>apps.json</code> template has been provided below:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ot">[</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span> </span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"url"</span><span class="fu">:</span> <span class="kw">null</span><span class="fu">,</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"name"</span><span class="fu">:</span> <span class="st">"Custom Jupyter Lab"</span><span class="fu">,</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"desc"</span><span class="fu">:</span> <span class="st">"This is a custom Jupyter Lab container defined in a user's directory."</span><span class="fu">,</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"startscript"</span><span class="fu">:</span> <span class="st">"#!/bin/bash</span><span class="ch">\n</span><span class="st">/apps/strudel2/strudel_apps/jupyter/custom_env.sh /PATH/TO/YOUR/CONDA/INSTALL/ CONDA_ENV_NAME"</span><span class="fu">,</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"instactions"</span><span class="fu">:</span> <span class="ot">[</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>            <span class="fu">{</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>                <span class="dt">"name"</span><span class="fu">:</span> <span class="st">"Connect"</span><span class="fu">,</span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>                <span class="dt">"paramscmd"</span><span class="fu">:</span> <span class="st">"/apps/strudel2/strudel_apps/jupyter/params_cmd.py {jobid} 2&gt;/dev/null"</span><span class="fu">,</span></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>                <span class="dt">"client"</span><span class="fu">:</span> <span class="fu">{</span></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>                    <span class="dt">"cmd"</span><span class="fu">:</span> <span class="kw">null</span><span class="fu">,</span></span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>                    <span class="dt">"redir"</span><span class="fu">:</span> <span class="st">"?token={token}"</span></span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>                <span class="fu">},</span></span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>                <span class="dt">"states"</span><span class="fu">:</span> <span class="ot">[</span></span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"RUNNING"</span></span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>                <span class="ot">]</span></span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>            <span class="fu">}</span><span class="ot">,</span></span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>            <span class="fu">{</span></span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>                <span class="dt">"name"</span><span class="fu">:</span> <span class="st">"Remove log"</span><span class="fu">,</span></span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>                <span class="dt">"paramscmd"</span><span class="fu">:</span> <span class="st">"rm ~/.strudel2-*{jobid}.out ; echo []"</span><span class="fu">,</span></span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>                <span class="dt">"client"</span><span class="fu">:</span> <span class="kw">null</span><span class="fu">,</span></span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>                <span class="dt">"notunnel"</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
-<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>                <span class="dt">"states"</span><span class="fu">:</span> <span class="ot">[</span></span>
-<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"Finished"</span></span>
-<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>                <span class="ot">]</span></span>
-<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>            <span class="fu">}</span></span>
-<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>        <span class="ot">]</span><span class="fu">,</span></span>
-<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"localbind"</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
-<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"applist"</span><span class="fu">:</span> <span class="kw">null</span></span>
-<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span></span>
-<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a><span class="ot">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>You can edit the name and description fields to suit your environment for your reference. You will also need to edit the path to your conda installation and the environment name you’d like to activate. Note that to use the strudel <code>Jupyter Lab</code> application you will need to make sure the <code>jupyterlab</code> package is installed in your environment. If you’d like to point Strudel2 to more than one environment, simply append another object to the list.</p>
+<section id="integrating-with-strudel2" class="level3">
+<h3 class="anchored" data-anchor-id="integrating-with-strudel2">3. Integrating with strudel2</h3>
+<p>Once you’re happy with your environment you can point Strudel2 to your environment by editing your <code>apps.json</code> file. Strudel2 will append the new app you’ve configured after the apps that we provide for you.</p>
+<p>An example <code>apps.json</code> template has been provided below:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ot">[</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span> </span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"url"</span><span class="fu">:</span> <span class="kw">null</span><span class="fu">,</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"name"</span><span class="fu">:</span> <span class="st">"Custom Jupyter Lab"</span><span class="fu">,</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"desc"</span><span class="fu">:</span> <span class="st">"This is a custom Jupyter Lab container defined in a user's directory."</span><span class="fu">,</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"startscript"</span><span class="fu">:</span> <span class="st">"#!/bin/bash</span><span class="ch">\n</span><span class="st">/apps/strudel2/strudel_apps/jupyter/custom_env.sh /PATH/TO/YOUR/CONDA/INSTALL/ CONDA_ENV_NAME"</span><span class="fu">,</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"instactions"</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>            <span class="fu">{</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>                <span class="dt">"name"</span><span class="fu">:</span> <span class="st">"Connect"</span><span class="fu">,</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>                <span class="dt">"paramscmd"</span><span class="fu">:</span> <span class="st">"/apps/strudel2/strudel_apps/jupyter/params_cmd.py {jobid} 2&gt;/dev/null"</span><span class="fu">,</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>                <span class="dt">"client"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>                    <span class="dt">"cmd"</span><span class="fu">:</span> <span class="kw">null</span><span class="fu">,</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>                    <span class="dt">"redir"</span><span class="fu">:</span> <span class="st">"?token={token}"</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>                <span class="fu">},</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>                <span class="dt">"states"</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"RUNNING"</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>                <span class="ot">]</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>            <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>            <span class="fu">{</span></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>                <span class="dt">"name"</span><span class="fu">:</span> <span class="st">"Remove log"</span><span class="fu">,</span></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>                <span class="dt">"paramscmd"</span><span class="fu">:</span> <span class="st">"rm ~/.strudel2-*{jobid}.out ; echo []"</span><span class="fu">,</span></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>                <span class="dt">"client"</span><span class="fu">:</span> <span class="kw">null</span><span class="fu">,</span></span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>                <span class="dt">"notunnel"</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>                <span class="dt">"states"</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"Finished"</span></span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>                <span class="ot">]</span></span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>            <span class="fu">}</span></span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>        <span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"localbind"</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"applist"</span><span class="fu">:</span> <span class="kw">null</span></span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span></span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a><span class="ot">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol type="1">
+<li><p>Open your <code>apps.json</code> file and paste the template:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nano</span> ~/.strudel2/apps.json</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Edit the following fields to suit your use case:</p>
+<ol type="1">
+<li>The <code>name</code><br>
+This will edit the displayed name in the Strudel2 menu</li>
+<li>The <code>desc</code> This will edit the displayed description at the top of the Strudel2 page when the app is selected</li>
+<li>The <code>startscript</code> This tells Strudel2 what to run when you launch the app. We will need to provide:
+<ol type="1">
+<li>The full path to your installation</li>
+<li>Your custom environment name</li>
+</ol></li>
+<li>If you’d like to point Strudel2 to more than one environment, append another copy of the templated object to the list.</li>
+</ol></li>
+</ol>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
