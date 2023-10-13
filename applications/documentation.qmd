@@ -1,0 +1,12 @@
+---
+title: Documetation
+---
+
+All of our documentation is generated using [Quarto](https://quarto.org/) and publicly available on [GitHub](https://github.com/mitchellshargreaves-monash/MLeRP-Documentation). If you feel like our documentation is lacking, we encourage you to submit Issues and Pull Requests to help us make it better for all of you. Even if you're not contributing, cloning the repository is a great way to get easy access to our notebook tutorials to explore the functionality of the cluster.
+
+An instance of this repository is available at `/apps/MLeRP-Documentation` for your reference.
+
+We have an installation of Quarto on the MLeRP Monash to generate our documentation in our environment, which is available at `/apps/quarto`. 
+
+The full path to the Quarto CLI executable is:  
+`/apps/quarto/opt/quarto/bin/quarto`
