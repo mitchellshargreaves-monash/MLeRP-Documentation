@@ -16,7 +16,7 @@ Mamba is a parallelised C++ rewrite of the slowest parts of mamba, though while 
 
 Since a mamba installation comes compatible with conda and acts as a dropin replacement, we recommend that you start with a mambaforge installation and then fall back on conda commands whenever mamba fails. Simply replace the `mamba` keyword with `conda`.
 
-In this tutorial we will cover installing a mambaforge environment.
+In this tutorial we will cover installing a mambaforge environment. 
 
 ## 1. Installing mambaforge
 1. Following the recommendations on [mamba's installation page](https://mamba.readthedocs.io/en/latest/mamba-installation.html), we will be using the Mambaforge distribution.
@@ -50,8 +50,10 @@ In this tutorial we will cover installing a mambaforge environment.
    ```bash
    # Absolute paths are preferred for batch jobs or config files
    source /path/to/install/...mambaforge/bin/activate
+
    # Relative paths may be more convenient in everyday usage
    source ./mambaforge/bin/activate 
+   
    # `.` works as a shorthand for the source command
    . ./mambaforge/bin/activate 
    ```
@@ -92,58 +94,8 @@ For more details about environment file syntax, have a look at conda's documenta
 
 ## 3. Integrating with strudel2
 
-Once you're happy with your environment you can point Strudel2 to your environment by editing your `apps.json` file. Strudel2 will append the new app you've configured after the apps that we provide for you.
+Our [Jupyter Lab](/applications/strudel2.qmd#jupyter-lab) application should recognise the conda environment that has just been created and you will be able to select it from the environment dropdown. If the environment that you're looking for is missing, check that its path is included in the `~/.conda/environments.txt` file in your home directory. If it's missing, append the path to your environment to the bottom of the file.
 
-An example `apps.json` template has been provided below:
-
-```json
-[
-    { 
-        "url": null,
-        "name": "Custom Jupyter Lab",
-        "desc": "This is a custom Jupyter Lab container defined in a user's directory.",
-        "startscript": "#!/bin/bash\n/apps/strudel2/strudel_apps/jupyter/custom_env.sh /PATH/TO/YOUR/CONDA/INSTALL/ CONDA_ENV_NAME",
-        "instactions": [
-            {
-                "name": "Connect",
-                "paramscmd": "/apps/strudel2/strudel_apps/jupyter/params_cmd.py {jobid} 2>/dev/null",
-                "client": {
-                    "cmd": null,
-                    "redir": "?token={token}"
-                },
-                "states": [
-                    "RUNNING"
-                ]
-            },
-            {
-                "name": "Remove log",
-                "paramscmd": "rm ~/.strudel2-*{jobid}.out ; echo []",
-                "client": null,
-                "notunnel": true,
-                "states": [
-                    "Finished"
-                ]
-            }
-        ],
-        "localbind": true,
-        "applist": null
-    }
-]
+```bash
+echo /path/to/your/environment >> ~/.conda/environments.txt
 ```
-
-1. Open your `apps.json` file and paste the template:
-
-   ```bash
-   nano ~/.strudel2/apps.json
-   ```
-
-2. Edit the following fields to suit your use case:
-   1. The `name`  
-      This will edit the displayed name in the Strudel2 menu
-   2. The `desc`
-      This will edit the displayed description at the top of the Strudel2 page when the app is selected
-   3. The `startscript`
-      This tells Strudel2 what to run when you launch the app. We will need to provide: 
-      1. The full path to your installation
-      2. Your custom environment name
-   4. If you'd like to point Strudel2 to more than one environment, append another copy of the templated object to the list.

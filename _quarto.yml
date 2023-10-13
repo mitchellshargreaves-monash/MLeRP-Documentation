@@ -32,7 +32,7 @@ website:
       - faq.qmd
       - section: "Applications"
         contents:
-        - auto: "applications/environments/*"
+        - auto: "applications/*"
       - section: "Connecting"
         contents:
         - auto: "connecting/*.qmd"
