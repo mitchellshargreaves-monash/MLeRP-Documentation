@@ -25,7 +25,7 @@ In this tutorial we will cover installing a mambaforge environment.
    - OS: Linux
    - Architecture: x86_64 (amd64)
 
-3. Using the [Strudel2 terminal application](/connecting/strudel2.qmd#terminal-jobs) or your favourite terminal application using [SSOSSH](/connecting/ssossh.qmd), log into the cluster.
+3. Using the [Strudel2 terminal application](/applications/strudel2.qmd#terminal-jobs) or your favourite terminal application using [SSOSSH](/connecting/ssossh.qmd), log into the cluster.
 
 4. Download the distribution to your home directory and run the installer
    ```bash
