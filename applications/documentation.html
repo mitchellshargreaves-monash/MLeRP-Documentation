@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>MLeRP User Guide Documentation - Strudel 2</title>
+<title>MLeRP User Guide Documentation - Documetation</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -118,7 +118,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../connecting/aaf.html">Connecting</a></li><li class="breadcrumb-item"><a href="../connecting/strudel2.html">Strudel 2</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../applications/custom.html">Applications</a></li><li class="breadcrumb-item"><a href="../applications/documentation.html">Documetation</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -165,20 +165,26 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../applications/environments/base.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Base</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../applications/environments/custom.html" class="sidebar-item-text sidebar-link">
+  <a href="../applications/custom.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Custom Conda Environments</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../applications/environments/dsks.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Data Science Kitchen Sink (DSKS)</span></a>
+  <a href="../applications/documentation.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Documetation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../applications/environments.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Provided Environments</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../applications/strudel2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Strudel 2</span></a>
   </div>
 </li>
       </ul>
@@ -202,12 +208,6 @@ ul.task-list li input[type="checkbox"] {
   <div class="sidebar-item-container"> 
   <a href="../connecting/ssossh.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">SSOSSH</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../connecting/strudel2.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Strudel 2</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -259,26 +259,14 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#terminal-jobs" id="toc-terminal-jobs" class="nav-link active" data-scroll-target="#terminal-jobs">Terminal Jobs</a></li>
-  <li><a href="#jupyter-lab" id="toc-jupyter-lab" class="nav-link" data-scroll-target="#jupyter-lab">Jupyter Lab</a></li>
-  <li><a href="#conda-environments" id="toc-conda-environments" class="nav-link" data-scroll-target="#conda-environments">Conda Environments</a></li>
-  <li><a href="#faq" id="toc-faq" class="nav-link" data-scroll-target="#faq">FAQ</a>
-  <ul class="collapse">
-  <li><a href="#why-cant-i-connect-to-jupyter-lab" id="toc-why-cant-i-connect-to-jupyter-lab" class="nav-link" data-scroll-target="#why-cant-i-connect-to-jupyter-lab">Why can’t I connect to Jupyter Lab?</a></li>
-  </ul></li>
-  </ul>
-</nav>
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Strudel 2</h1>
+<h1 class="title">Documetation</h1>
 </div>
 
 
@@ -293,38 +281,13 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>Strudel2 is an interactive environment to develop supports two types of jobs. You will be able to reach it from <code>https://mlerp.cloud.edu.au/</code>.</p>
-<p>It will allow you check the cluster’s usage and your disk quota. You will also be able to launch interactive jobs on the cluster. Strudel2 offers two kinds of interactive jobs: terminal and jupyter lab.</p>
-<section id="terminal-jobs" class="level2">
-<h2 class="anchored" data-anchor-id="terminal-jobs">Terminal Jobs</h2>
-<p>Terminal jobs gives you some requested compute attached to a simple text UI. This is ideal if you prefer writing python scripts or running experiments that don’t require a GUI.</p>
-<p>You can also launch the web terminal attached to the login node if you just need a quick terminal to manage your files, however this is a shared resource with limited compute.</p>
-</section>
-<section id="jupyter-lab" class="level2">
-<h2 class="anchored" data-anchor-id="jupyter-lab">Jupyter Lab</h2>
-<p>Jupyter Lab jobs gives you some requested compute attached to a Jupyter Lab IDE. This is ideal if you prefer experimenting in python notebooks or visualising data with a GUI.</p>
-<p>If you prefer using VS Code to the Jupyter Lab IDE you can also connect to this job with the <a href="https://aka.ms/vscode-remote/download/extension">Remote Development Extension Pack</a>. For more details see our page on <a href="../connecting/vscode.html">connecting via VS Code</a>.</p>
-</section>
-<section id="conda-environments" class="level2">
-<h2 class="anchored" data-anchor-id="conda-environments">Conda Environments</h2>
-<p>We’ve provided two environments for you to explore the platform and get started right away:</p>
-<ul>
-<li>The ‘Base’ environment which aims is a minimal installation of jupyter lab.</li>
-<li>The ‘Data Science Kitchen Sink (DSKS)’ which is an environment with many typical packages for analysis and machine learning</li>
-</ul>
-<p>You can visit the <a href="../applications/environments/base.html">Base</a> and <a href="../applications/environments/dsks.html">DSKS</a> pages complete lists of packages and versions in each environment.</p>
-<p>If our conda environments don’t meet your needs, you can consider maintaining your own <a href="https://docs.conda.io/en/latest/miniconda.html">miniconda</a> or <a href="https://mamba.readthedocs.io/en/latest/index.html">mambaforge</a> installation in your home directory. Have a look at <a href="../applications/environments/custom.html">this page</a> for more information about creating a conda environment to interface with our environment.</p>
-</section>
-<section id="faq" class="level2">
-<h2 class="anchored" data-anchor-id="faq">FAQ</h2>
-<section id="why-cant-i-connect-to-jupyter-lab" class="level3">
-<h3 class="anchored" data-anchor-id="why-cant-i-connect-to-jupyter-lab">Why can’t I connect to Jupyter Lab?</h3>
-<p>Jupyter Lab needs to be able to create files to run properly. If your disk quota is completely full, it will create empty files that will confuse the system. To fix this, ssh into the cluster or use a terminal job to reduce your disk usage back under quota, then delete the empty files which will be found at <code>/home/&lt;USERNAME&gt;/.local/share/jupyter/runtime</code>.</p>
-<p>There is also a known bug where Brave’s ‘shield’ feature will block the Strudel2 Jupyter application. To bypass this, you’ll need to turn off ‘shields’ for both the <a href="https://mlerp.cloud.edu.au/">strudel2 home page</a> and the <a href="https://strudel2-api-dev.cloud.cvl.org.au/">strudel2 api</a>.</p>
+<p>All of our documentation is generated using <a href="https://quarto.org/">Quarto</a> and publicly available on <a href="https://github.com/mitchellshargreaves-monash/MLeRP-Documentation">GitHub</a>. If you feel like our documentation is lacking, we encourage you to submit Issues and Pull Requests to help us make it better for all of you. Even if you’re not contributing, cloning the repository is a great way to get easy access to our notebook tutorials to explore the functionality of the cluster.</p>
+<p>An instance of this repository is available at <code>/apps/MLeRP-Documentation</code> for your reference.</p>
+<p>We have an installation of Quarto on the MLeRP Monash to generate our documentation in our environment, which is available at <code>/apps/quarto</code>.</p>
+<p>The full path to the Quarto CLI executable is:<br>
+<code>/apps/quarto/opt/quarto/bin/quarto</code></p>
 
 
-</section>
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

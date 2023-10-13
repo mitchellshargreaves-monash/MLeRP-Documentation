@@ -199,20 +199,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../applications/environments/base.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Base</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../applications/environments/custom.html" class="sidebar-item-text sidebar-link">
+  <a href="../applications/custom.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Custom Conda Environments</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../applications/environments/dsks.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Data Science Kitchen Sink (DSKS)</span></a>
+  <a href="../applications/documentation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Documetation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../applications/environments.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Provided Environments</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../applications/strudel2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Strudel 2</span></a>
   </div>
 </li>
       </ul>
@@ -236,12 +242,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="../connecting/ssossh.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">SSOSSH</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../connecting/strudel2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Strudel 2</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -297,9 +297,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#wget" id="toc-wget" class="nav-link active" data-scroll-target="#wget">Wget</a></li>
-  <li><a href="#jupyter-lab" id="toc-jupyter-lab" class="nav-link" data-scroll-target="#jupyter-lab">Jupyter Lab</a></li>
+  <li><a href="#jupyter-lab" id="toc-jupyter-lab" class="nav-link active" data-scroll-target="#jupyter-lab">Jupyter Lab</a></li>
   <li><a href="#vs-code" id="toc-vs-code" class="nav-link" data-scroll-target="#vs-code">VS Code</a></li>
+  <li><a href="#wget" id="toc-wget" class="nav-link" data-scroll-target="#wget">Wget</a></li>
   <li><a href="#rsync" id="toc-rsync" class="nav-link" data-scroll-target="#rsync">rsync</a></li>
   </ul>
 </nav>
@@ -325,11 +325,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 <p>MLeRP does not have a dedicated data transfer node. We recommend that you use the login node when managing your files.</p>
-<section id="wget" class="level2">
-<h2 class="anchored" data-anchor-id="wget">Wget</h2>
-<p>If you’re looking for an application or dataset that is publically available from the internet, you will be able to download the data directly into the MLeRP environment with a <code>wget</code> command:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="at">-o</span> destination URL</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
 <section id="jupyter-lab" class="level2">
 <h2 class="anchored" data-anchor-id="jupyter-lab">Jupyter Lab</h2>
 <p>The easiest option to move files into the MLeRP environment is to use a Jupyter Lab job through Strudle2 since it requires no additional setup. You should be able to drag and drop files into the filetree on the left though it comes with some limitations.</p>
@@ -338,6 +333,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="vs-code" class="level2">
 <h2 class="anchored" data-anchor-id="vs-code">VS Code</h2>
 <p>If you have already gone through the steps to connect your VS Code you can drag and drop files into the filetree just like with Jupyter Lab, but VS Code will allow you to drop whole folders at once, including nested folders. You can control where the files and folders end up by hovering over the desired folder.</p>
+</section>
+<section id="wget" class="level2">
+<h2 class="anchored" data-anchor-id="wget">Wget</h2>
+<p>If you’re looking for an application or dataset that is publically available from the internet, you will be able to download the data directly into the MLeRP environment with a <code>wget</code> command:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="at">-o</span> destination URL</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="rsync" class="level2">
 <h2 class="anchored" data-anchor-id="rsync">rsync</h2>

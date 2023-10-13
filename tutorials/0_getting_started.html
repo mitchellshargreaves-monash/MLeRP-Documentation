@@ -165,20 +165,26 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../applications/environments/base.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Base</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../applications/environments/custom.html" class="sidebar-item-text sidebar-link">
+  <a href="../applications/custom.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Custom Conda Environments</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../applications/environments/dsks.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Data Science Kitchen Sink (DSKS)</span></a>
+  <a href="../applications/documentation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Documetation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../applications/environments.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Provided Environments</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../applications/strudel2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Strudel 2</span></a>
   </div>
 </li>
       </ul>
@@ -202,12 +208,6 @@ ul.task-list li input[type="checkbox"] {
   <div class="sidebar-item-container"> 
   <a href="../connecting/ssossh.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">SSOSSH</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../connecting/strudel2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Strudel 2</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -282,8 +282,8 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 <p>Welcome to MLeRP!</p>
-<p>Most users will find that the easiest way to start using MLeRP will be through the <a href="../connecting/strudel2.html">Strudel2 Web Interface</a>. Here you can find the <code>Terminal</code> and <code>Jupyter Lab</code> applications we have prepared for you.</p>
-<p>We have provided <a href="../connecting/strudel2.html#conda-environments">some python environments</a> for you so you can get started right away, until you eventually outgrow them and feel like you need more control over the environment. At this point, we can help you to transition to maintaining your own environment with whatever applications and packages you need.</p>
+<p>Most users will find that the easiest way to start using MLeRP will be through the <a href="../applications/strudel2.html">Strudel2 Web Interface</a>. Here you can find the <code>Terminal</code> and <code>Jupyter Lab</code> applications we have prepared for you.</p>
+<p>We have provided <a href="../applications/environments.html">some python environments</a> for you so you can get started right away, until you eventually outgrow them and feel like you need more control over the environment. At this point, we can help you to transition to maintaining your own environment with whatever applications and packages you need.</p>
 <p>Your home directory will be set up with a quota based on what you told us you’ll need to do your research. You can use this space to maintain your datasets, programs and code base. Let us know if you need more space and we’ll see what we can do.</p>
 <p>Regardless of what compute you choose, in order to start your research here you will need to be able to import your data and code. If you’re working with relatively small files, then the simplest way could be to use the FTP clients built into <a href="../connecting/transferring_files.html#jupyter-lab">Jupyter Lab</a> or <a href="../connecting/transferring_files.html#vs-code">VS Code</a>. Otherwise something like <a href="../connecting/transferring_files.html#rsync">rsync</a> may be more appropriate.</p>
 <p>If you are maintaining your code base through Git, then you will likely need to set up an ssh key and add it to your account before pulling down your repository. To use the right ssh key when using git you will need to set up an ssh config that will look something like this:</p>
