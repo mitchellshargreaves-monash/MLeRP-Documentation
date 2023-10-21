@@ -12,7 +12,7 @@ By default, this will initialise conda, which can interfere negatively with the 
 ### Conda vs Mamba
 Conda is often used as a standard for maintaining python datascience environments, but because of the complexity of the environments typically needed, the conda solver can be known to hang (for 20 minutes or longer) especially if trying to install into an existing complicated environment, only to report that it was unable to solve due to version conflicts. 
 
-Mamba is a parallelised C++ rewrite of the slowest parts of mamba, though while much faster (similar environments can solve in a minute or so), it can be unstable at times leading to unexpected errors.
+Mamba is a parallelised C++ rewrite of the slowest parts of conda, though while much faster (similar environments can solve in a minute or so), it can be unstable at times leading to unexpected errors.
 
 Since a mamba installation comes compatible with conda and acts as a dropin replacement, we recommend that you start with a mambaforge installation and then fall back on conda commands whenever mamba fails. Simply replace the `mamba` keyword with `conda`.
 
@@ -39,9 +39,9 @@ In this tutorial we will cover installing a mambaforge environment.
    2. Choose where you'd like your installation to be kept.  
       (By default your home directory)
 
-   The installer will prompt you to initislise conda. This is **NOT** recommended. 
+   The installer will prompt you to initialise conda. This is **NOT** recommended. 
 
-   This will and edit the `.bashrc` so that it will activate when you log in, which can lead to unexpected interactions with batch jobs on cluster like {{< var cluster_name >}}.
+   This will edit your `~/.bashrc` file so the environment will activate when you log in, which can lead to unexpected interactions with batch jobs on cluster like {{< var cluster_name >}}.
 
    If you have done so by accident you can remove the additions to your `.bashrc` file manually (this is located in your home directory).
 
@@ -92,7 +92,7 @@ Alternatively if your application requires multiple install stages, consider a s
 
 For more details about environment file syntax, have a look at conda's documentation on [managing environments](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html).
 
-## 3. Integrating with strudel2
+## 3. Integrating with Strudel2
 
 Our [Jupyter Lab](/applications/strudel2.qmd#jupyter-lab) application should recognise the conda environment that has just been created and you will be able to select it from the environment dropdown. If the environment that you're looking for is missing, check that its path is included in the `~/.conda/environments.txt` file in your home directory. If it's missing, append the path to your environment to the bottom of the file.
 
