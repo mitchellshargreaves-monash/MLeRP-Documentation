@@ -10,6 +10,7 @@ Directly attaching GPU compute to notebooks leads to very low utilisation since 
 ### If I still have to wait in queue how is this better than using a traditional HPC environment?
 
 MLeRP is designed with the idea that a job's size should be about the size of a cell in a jupyter notebook. With that in mind, the queue has been optimised for short jobs. The maximum wall time of jobs in the MLeRP cluster is **30 minutes**. Executing a cell won't always be immediate but your job should start up pretty quickly. If you need to run a job that runs longer than this, checkpoint your code and split it into multiple jobs. If your code is mature enough that it makes more sense to run a multi-hour or multi-day job, consider using a traditional HPC service. Contact us at `{{< var email >}}` if your jobs aren't starting promptly or your usecase isn't covered by our platform and you think it should be.
+
 ### Why Dask?
 We looked at a few different options for the MLeRP environment including [Sagemaker](https://aws.amazon.com/sagemaker/), [Spark](https://spark.apache.org/) and [Ray](https://docs.ray.io/en/releases-1.11.1/index.html). Ultimately we settled on Dask as the primary tool to interface with the queue because:
 
@@ -28,7 +29,7 @@ That said we believe that this approach of submitting jobs through a python note
 You will also be able to work with the cluster without needing to convert your experimental notebook code into a script and maintain the environment with modules like with a traditional cluster.
 
 ### How much compute should I ask for with my `SLURMCluster`?
-Unfortunately there is no one size fits all answer to this question. Every research problem has its on demands and constraints so this a bit like asking 'How long is a piece of string?'.
+Unfortunately there is no one size fits all answer to this question. Every research problem has its on demands and constraints so this a bit like asking 'How long is a piece of string?'
 
 If your work is primarily CPU bound, Dask allows as many tasks as you have CPU cores, but if you are using GPUs you may want to dramatically limit this. One process per GPU could be a good place to start.
 
@@ -61,7 +62,7 @@ Print statements that are executed on remote machines won't show up in your note
 
 If you need to record information while code is executing remotely either pass the information back to the notebook when the function returns for it to be printed, or log the output to a file.
 
-For more information about using `SLURMCluster`, visit [Dask's documentation](https://jobqueue.dask.org/en/latest/generated/dask_jobqueue.SLURMCluster.html)
+For more information about using `SLURMCluster`, visit [Dask's documentation](https://jobqueue.dask.org/en/latest/generated/dask_jobqueue.SLURMCluster.html).
 
 ### Should I use `cluster.scale` or `cluster.adapt`?
 We recommend that you use the adapt method while you're actively developing your code so that you don't need to worry about cleaning up after yourself. The scale method can be used when you're ready to run longer tests with higher utilisation.
