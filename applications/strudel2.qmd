@@ -4,7 +4,7 @@ title: Strudel 2
 
 Strudel2 is an interactive environment to develop supports two types of jobs. You will be able to reach it from `{{< var strudel2 >}}`.
 
-It will allow you check the cluster's usage and your disk quota. You will also be able to launch interactive jobs on the cluster. Strudel2 offers two kinds of interactive jobs: terminal and jupyter lab.
+It will allow you check the cluster's usage and your disk quota. You will also be able to launch interactive jobs on the cluster. Strudel2 offers two kinds of interactive jobs: terminal and Jupyter Lab.
 
 ## Terminal Jobs
 Terminal jobs give you some requested compute attached to a simple text UI. This is ideal if you need to clone repositories, create conda environments, organise your files or anything else that you can do with a linux shell that doesn't require a GUI.
@@ -26,7 +26,7 @@ If our conda environments don't meet your needs, you can consider maintaining yo
 ### Why can't I connect to Jupyter Lab?
 Jupyter Lab needs to be able to create files to run properly. If your disk quota is completely full, it will create empty files that will confuse the system. To fix this, ssh into the cluster or use a terminal job to reduce your disk usage back under quota, then delete the empty files which will be found at `/home/<USERNAME>/.local/share/jupyter/runtime`.
 
-There is also a known bug where Brave's 'shield' feature will block the Strudel2 Jupyter application. To bypass this, you'll need to turn off 'shields' for both the [strudel2 home page](https://mlerp.cloud.edu.au/) and the [strudel2 api](https://strudel2-api-dev.cloud.cvl.org.au/).
+There is also a known bug where Brave's 'shield' feature will block the Strudel2 Jupyter application. To bypass this, you'll need to turn off 'shields' for both the [Strudel2 home page](https://mlerp.cloud.edu.au/) and the [Strudel2 api](https://strudel2-api-dev.cloud.cvl.org.au/).
 
 ### Why is my VS Code not attaching to the remote session?
 The SSH certificates that [SSOSSH](/connecting/ssossh.qmd) creates are only valid for 24 hours, this means that you'll need to generate new certificates each day before you connect. VS Code also has a known bug where it can get confused if you have another SSH client (such as MobaXTerm) open when it tries to establish the connection.

@@ -45,7 +45,7 @@ ProxyCommand="ssh.exe <username>@{{< var monash_login >}} /apps/strudel2/strudel
 ```
 </details>
 
-Note that you will need to authenticate with your ssh key/cert, either through your authorized keys file or by generating a cert with ssossh. You can then add it to your agent or provide it to the ssh command (and proxy command) with the `-i` flag.
+Note that you will need to authenticate with your ssh key/cert, either through your authorized keys file [or by generating a cert with ssossh](/connecting/ssossh.qmd). You can then add it to your agent or provide it to the ssh command (and proxy command) with the `-i` flag.
 
 If you're not sure how to use a proxy command, read on and we'll walk you through the steps.
 
