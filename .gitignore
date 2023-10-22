@@ -1,5 +1,5 @@
 slurm*.out
-*/.ipynb_checkpoints
+*.ipynb_checkpoints
 *.html
 *.xml
 
