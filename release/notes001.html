@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="dcterms.date" content="2023-09-05">
 
-<title>MLeRP User Guide Documentation - Documentation</title>
+<title>MLeRP User Guide Documentation - Release Notes #1</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -118,7 +119,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../applications/custom.html">Applications</a></li><li class="breadcrumb-item"><a href="../applications/documentation.html">Documentation</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Release Notes #1</li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -171,7 +172,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../applications/documentation.html" class="sidebar-item-text sidebar-link active">
+  <a href="../applications/documentation.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Documentation</span></a>
   </div>
 </li>
@@ -272,7 +273,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Documentation</h1>
+<h1 class="title">Release Notes #1</h1>
 </div>
 
 
@@ -280,6 +281,12 @@ ul.task-list li input[type="checkbox"] {
 <div class="quarto-title-meta">
 
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">September 5, 2023</p>
+    </div>
+  </div>
   
     
   </div>
@@ -287,11 +294,13 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>All of our documentation is generated using <a href="https://quarto.org/">Quarto</a> and publicly available on <a href="https://github.com/mitchellshargreaves-monash/MLeRP-Documentation">GitHub</a>. If you feel like our documentation is lacking, we encourage you to submit Issues and Pull Requests to help us make it better for all of you. Even if you’re not contributing, cloning the repository is a great way to get easy access to our notebook tutorials to explore the functionality of the cluster.</p>
-<p>An instance of this repository is available at <code>/apps/MLeRP-Documentation</code> for your reference.</p>
-<p>We have an installation of Quarto on the MLeRP Monash to generate our documentation in our environment, which is available at <code>/apps/quarto</code>.</p>
-<p>The full path to the Quarto CLI executable is:<br>
-<code>/apps/quarto/opt/quarto/bin/quarto</code></p>
+<p>Hello MLeRP users,</p>
+<p>I hope you are all doing well.</p>
+<p>I have received a message from a user asking about getting help with provisioning, so I wanted to clear up that I provisioned all accounts according to your requested usernames and dataset sizes before the launch event. Meaning that you can all log in and test things right now through the <a href="https://mlerp.cloud.edu.au/login">login portal</a>. I apologise if that wasn’t communicated clearly. The cluster has been very quiet recently, making now a great time to test the system without any wait time. If you’re not sure where to start, have a look at <a href="../tutorials/0_getting_started.html">this tutorial</a> or have a look at our documentation on <a href="../applications/strudel2.html">connecting through the web portal</a>.</p>
+<p>Speaking of, we have just improved our documentation on alternative methods for connecting to the cluster through <a href="../connecting/ssossh.html">SSH</a> or <a href="../connecting/vscode.html">VS Code remote sessions</a>. If this sounds like something that’s interesting to you, we’d love to get some feedback on this.</p>
+<p>Since we last spoke at the launch event we’ve been working behind the scenes on some of your requested features. We’ve updated the user permissions of the home directory to 700 rather than 755. This means that privacy is now the default rather than collaboration. You still have the flexibility to change the permissions on your files if you’d like to do so.</p>
+<p>We’ve also been having a think about the best way to implement the requested multiday low resource CPU notebooks (which we’ve been tentatively calling the Panther QoS internally). This is likely going to require changing the way we structure the cluster’s partitions under the hood, so we’ve hold off on implementing things so far but it’s on our radar. We’ll be in touch with more details when we have something for you all to try out.</p>
+<p>Kind regards, Mitchell Hargreaves</p>
 
 
 

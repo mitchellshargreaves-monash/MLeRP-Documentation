@@ -72,9 +72,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-title',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
+      valueNames: ['listing-title','listing-Version','listing-date',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
       
-      searchColumns: ["listing-title","listing-author"],
+      searchColumns: ["listing-date","listing-title","listing-author"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -286,6 +286,12 @@ ul.task-list li input[type="checkbox"] {
 </li>
       </ul>
   </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../release.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Release Notes</span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -325,6 +331,12 @@ ul.task-list li input[type="checkbox"] {
      <select id="listing-listing-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
        <option value="" disabled="" selected="" hidden="">Order By</option>
        <option value="index" data-direction="asc">Default</option>
+         <option value="listing-date-sort" data-direction="asc">
+          Date - Oldest
+        </option>
+         <option value="listing-date-sort" data-direction="desc">
+          Date - Newest
+        </option>
          <option value="listing-title-sort" data-direction="asc">
           Title
         </option>
@@ -342,17 +354,35 @@ ul.task-list li input[type="checkbox"] {
 <th>
 <a class="sort" data-sort="listing-title-sort" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Title</a>
 </th>
+<th>
+Version
+</th>
+<th>
+<a class="sort" data-sort="listing-date-sort" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Date</a>
+</th>
 </tr>
 </thead>
 <tbody class="list">
-<tr data-index="0" data-listing-file-modified-sort="1697170422593" data-listing-reading-time-sort="1" data-listing-title-sort="Data Science Kitchen Sink (DSKS) 2023.05" data-listing-filename-sort="dsks_2023.05.ipynb">
+<tr data-index="0" data-listing-date-sort="1696118400000" data-listing-file-modified-sort="1698022607976" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="Data Science Kitchen Sink" data-listing-filename-sort="dsks_2023.10.ipynb">
 <td>
-<a href="../applications/environments/dsks/dsks_2023.05.html" class="title listing-title">Data Science Kitchen Sink (DSKS) 2023.05</a>
+<a href="../applications/environments/dsks/dsks_2023.10.html" class="title listing-title">Data Science Kitchen Sink</a>
+</td>
+<td>
+<span class="listing-Version">dsks_2023.10</span>
+</td>
+<td>
+<span class="listing-date">Oct 2023</span>
 </td>
 </tr>
-<tr data-index="1" data-listing-file-modified-sort="1697170395461" data-listing-reading-time-sort="1" data-listing-title-sort="Data Science Kitchen Sink (DSKS) 2023.10" data-listing-filename-sort="dsks_2023.10.ipynb">
+<tr data-index="1" data-listing-date-sort="1682899200000" data-listing-file-modified-sort="1698022542287" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="Data Science Kitchen Sink" data-listing-filename-sort="dsks_2023.05.ipynb">
 <td>
-<a href="../applications/environments/dsks/dsks_2023.10.html" class="title listing-title">Data Science Kitchen Sink (DSKS) 2023.10</a>
+<a href="../applications/environments/dsks/dsks_2023.05.html" class="title listing-title">Data Science Kitchen Sink</a>
+</td>
+<td>
+<span class="listing-Version">dsks_2023.05</span>
+</td>
+<td>
+<span class="listing-date">May 2023</span>
 </td>
 </tr>
 </tbody>
