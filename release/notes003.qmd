@@ -1,0 +1,25 @@
+---
+title: "Release Notes #3"
+date: 2023-10-13
+---
+
+Hello MLeRP users,
+
+We're pleased to announce that we now have a better UI solution to use conda environments with our new [Jupyter Lab app](/applications/strudel2.qmd#jupyter-lab). Now, rather than each app being tied to a given conda environment and requiring users to create a new app to support their own environments, we are using a dropdown which will allow you to select from any of the environments we provide, or any that you provide for yourself.
+
+The dropdown is populated using your `~/.conda/environments.txt​` file which conda should maintaining as you create new installations of miniconda or mamba. This means that the app should automatically pick up any new environments that you create with no input from yourself. If for whatever reason this doesn't happen and you can't find the environment that you're looking for, you can manually append a new environment to the file with this command:
+
+```bash
+echo /path/to/your/environment >> ~/.conda/environments.txt​
+```
+
+We have also used this opportunity to come out with a new version of DSKS that addresses some of the shortcomings with the previous version. The environment now has more packages to support a wider range of data types and tools, for a full list visit the [DSKS environment's page](/applications/environments/dsks/dsks_2023.10.ipynb).
+
+If you still need to use the [old version of DSKS](/applications/environments/dsks/dsks_2023.05.ipynb), it's still there just renamed. From now on, we will be versioning the environments that we release, tagging them with the year and month that they were built. The old version of DSKS that you are familiar with can now be accessed as dsks_2023.05, while the new version can be accessed as dsks_2023.10​. Similarly, the DSKS specific Jupyter App will point to this renamed environment. A full list of every environment that we support will be available on [this new page of our documentation](/applications/environments.qmd). There's only 2 versions of DSKS there now, but we're sure that the list will grow as we get more requests for packages and functionality. If you have a curated environment that you think would be suitable for other users, let us know and we'll see what we can do.
+
+We are also going to be deprecating the Base Jupyter Lab application. The Base Jupyter Lab application has always been in a weird place in that it simultaneously has too many packages to be representative of a basic python installation, but not enough for the kind of useful data science that we expect from users in the system. The app was originally written to work isolated within a singularity container, but as we move towards providing environments through our mambaforge installation continuing to maintain this unicorn environment seemed more trouble as it was worth, especially since the DSKS environments offer as a superset of it's functionality and the base environment that is created in a [mambaforge](https://mamba.readthedocs.io/en/latest/) install is more suitable for minimal applications.
+
+Please let us know how the new Jupyter Lab app works for you. If this experiment goes well, we'll also deprecate the old DSKS specific Jupyter Lab since you can still reach that environment by selecting it in the environment dropdown. 
+
+Regards,
+Mitchell Hargreaves

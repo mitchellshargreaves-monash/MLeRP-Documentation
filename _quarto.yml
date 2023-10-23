@@ -39,6 +39,8 @@ website:
       - section: "Tutorials"
         contents:
         - auto: "tutorials/*"
+      - text: "Release Notes"
+        file: release.qmd
 
 format:
   html:

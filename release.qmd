@@ -1,0 +1,9 @@
+---
+title: "Release Notes"
+listing: 
+    type: table
+    fields: [title, date]
+    sort: "date desc"
+    contents: 
+        - "release/*.qmd"
+---
