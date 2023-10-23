@@ -23,7 +23,13 @@ website:
       - text: Log in
         href: https://mlerp.cloud.edu.au/launch
       - text: Sign up
-        href: https://forms.gle/p9HWS79yxDouP6Tu8
+        href: https://forms.gle/HuPk8ckmptq2LCaR7
+      - icon: github
+        href: https://github.com/mitchellshargreaves-monash/MLeRP-Documentation
+        aria-label: Documentation
+      - icon: rss
+        href: https://docs.mlerp.cloud.edu.au/release.xml
+        aria-label: Release Notes
   sidebar:
     contents:
       - text: "Home"
@@ -40,8 +46,7 @@ website:
       - section: "Tutorials"
         contents:
         - auto: "tutorials/*"
-      - text: "Release Notes"
-        file: release.qmd
+      - file: release.qmd
 
 format:
   html:
