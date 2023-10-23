@@ -9,6 +9,7 @@ render:
   - "!*.ipynb_checkpoints"
 
 website:
+  site-url: "https://docs.mlerp.cloud.edu.au/"
   title: "MLeRP User Guide Documentation"
   favicon: ./images/favicon-32x32.png
   navbar:
