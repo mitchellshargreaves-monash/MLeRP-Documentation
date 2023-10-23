@@ -2,7 +2,9 @@
 title: "Provided Environments"
 listing: 
     type: table
-    fields: [title]
+    fields: [title, Version, date]
+    date-format: "MMM YYYY"
+    sort: "date desc"
     contents: 
         - "environments/dsks/*.ipynb"
 ---
