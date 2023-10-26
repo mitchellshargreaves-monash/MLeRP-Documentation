@@ -403,7 +403,7 @@ Exception: 'AssertionError()'
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dask_jobqueue <span class="im">import</span> SLURMCluster</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> distributed <span class="im">import</span> Client</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>cluster <span class="op">=</span> SLURMCluster(</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    memory<span class="op">=</span><span class="st">"128g"</span>, processes<span class="op">=</span><span class="dv">1</span>, cores<span class="op">=</span><span class="dv">16</span>, job_extra_directives<span class="op">=</span>[<span class="st">"--gres=gpu:1"</span>], nanny<span class="op">=</span><span class="va">False</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    memory<span class="op">=</span><span class="st">"128g"</span>, processes<span class="op">=</span><span class="dv">1</span>, cores<span class="op">=</span><span class="dv">16</span>, job_extra_directives<span class="op">=</span>[<span class="st">"--gres=gpu:1"</span>]</span>
 <span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>cluster.scale(<span class="dv">1</span>)</span>
