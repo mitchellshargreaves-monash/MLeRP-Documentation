@@ -320,7 +320,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#testing-with-a-localcluster" id="toc-testing-with-a-localcluster" class="nav-link active" data-scroll-target="#testing-with-a-localcluster">Testing with a <code>LocalCluster</code></a></li>
-  <li><a href="#training-with-a-slurmcluster" id="toc-training-with-a-slurmcluster" class="nav-link" data-scroll-target="#training-with-a-slurmcluster">Training with a <code>SLURMCluster</code></a></li>
+  <li><a href="#running-on-a-slurmcluster" id="toc-running-on-a-slurmcluster" class="nav-link" data-scroll-target="#running-on-a-slurmcluster">Running on a <code>SLURMCluster</code></a></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="2_dask_offloading.out.ipynb" download="2_dask_offloading.out.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></nav>
     </div>
@@ -396,8 +396,8 @@ Exception: 'AssertionError()'
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>client.shutdown()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="training-with-a-slurmcluster" class="level3">
-<h3 class="anchored" data-anchor-id="training-with-a-slurmcluster">Training with a <code>SLURMCluster</code></h3>
+<section id="running-on-a-slurmcluster" class="level3">
+<h3 class="anchored" data-anchor-id="running-on-a-slurmcluster">Running on a <code>SLURMCluster</code></h3>
 <p>We can pass in extra SLURM requirements in job_extra_directives to request a GPU for our jobs. To read more about configuring the <code>SLURMCluster</code> to interact with the SLURM queue, go to Dask’s <a href="https://jobqueue.dask.org/en/latest/generated/dask_jobqueue.SLURMCluster.html?highlight=slurmcluster">jobqueue documentation</a>.</p>
 <div class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dask_jobqueue <span class="im">import</span> SLURMCluster</span>
