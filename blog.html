@@ -340,8 +340,13 @@ ul.task-list li input[type="checkbox"] {
 <h3 class="anchored" data-anchor-id="what-is-the-advantage-of-dask-slurmclusters-over-direct-gpu-reservations">What is the advantage of Dask SLURMClusters over direct GPU reservations?</h3>
 <p>Dask has the ability to offload individual python functions to another device, once complete the result is then passed back to the parent notebook. Any errors that occur during the process will be forwarded to the notebook just like running things locally, making things more intuitive to debug than a submitted script. This allows the user to write asynchronous code that doesn’t tie up the main computing device and only access it when needed, allowing the platform to serve more users at once. This adds an overhead to the process - the offloading doesn’t happen for free, but it does allow greater flexibility in how the code is written.</p>
 <p>We believe that this approach of submitting jobs through a python notebook environment will feel more familiar to researchers familiar with the python data science ecosystem given how Dask is designed as a light wrapper around common libraries like numpy, pandas and Scikit-Learn. Rather than needing to rework your code into a high performing batch script as on a traditional HPC system, the scale of your SLURM job can be the size of a python function.</p>
-<p>Some example use cases include:<br>
-- Using a GPU job to develop and debug your model and train function interactively, while not tying up the GPU resources when not executing code - Using a short running GPU job to check the stability of your training functions, submitting each training epoch as a new job - Using a separate GPU job to run your evaluation function concurrently with the next training epoch - Using a larger number of low powered CPU jobs to preprocess your dataset by passing the individual samples as input, allowing your jobs to scale to the capacity of the cluster</p>
+<p>Some example use cases include:</p>
+<ul>
+<li>Using a GPU job to develop and debug your model and train function interactively, while not tying up the GPU resources when not executing code</li>
+<li>Using a short running GPU job to check the stability of your training functions, submitting each training epoch as a new job</li>
+<li>Using a separate GPU job to run your evaluation function concurrently with the next training epoch</li>
+<li>Using a larger number of low powered CPU jobs to preprocess your dataset by passing the individual samples as input, allowing your jobs to scale to the capacity of the cluster</li>
+</ul>
 <p>For more information on offloading with Dask, have a read of <a href="./tutorials/2_dask_offloading.html">this tutorial</a> and have a look at <a href="https://docs.dask.org/en/stable/">Dask’s documentation</a>.</p>
 </section>
 <section id="how-is-this-different-from-a-nectar-gpu-reservation-or-from-google-collab" class="level3">
