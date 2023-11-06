@@ -17,7 +17,8 @@ website:
     left:
       - text: "Home"
         file: index.qmd
-      - about.qmd
+      - text: About
+        file: about.qmd
       - faq.qmd
     right:
       - text: Log in

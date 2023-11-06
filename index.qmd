@@ -1,5 +1,5 @@
 ---
-title: "Welcome to the MLeRP User Guide"
+title: "Welcome to MLeRP"
 ---
 
 ![Artwork by [Kiowa Scott-Hurley](https://kiowa-scott-hurley.github.io/tea-tech-and-trials/)](./images/cluster-cat.png)
@@ -10,14 +10,12 @@ We provide users with CPU based Jupyter notebook sessions capable of basic analy
 
 Be sure to check out the [Jupyter](https://docs.jupyter.org/en/latest/), [SLURM](https://slurm.schedmd.com/documentation.html) and [Dask](https://www.dask.org/) documentation for more information.
 
-MLeRP at the moment is only available through closed beta but is planned to be available through open beta to all Australian academic researchers through AAF. You can sign up to our mailing list if you'd like us to let you know when we're ready for open beta.
+MLeRP is available through open beta to all Australian and New Zealand researchers. You can sign up with your institutional email address through the button below to gain access to the MLeRP platform or join our mailing list for updates.
 
 <p style="text-align: center;">
     <button type="button" class="btn btn-primary btn-lg" onclick="window.location.href='https://mlerp.cloud.edu.au/launch';">Log in</button>
     <button type="button" class="btn btn-primary btn-lg" onclick="window.location.href='https://forms.gle/HuPk8ckmptq2LCaR7';">Sign up</button>
 </p>
-
-<!-- MLeRP is available through open beta to all Australian researchers. You can [sign up]() to be a part of our open beta to gain access to the MLeRP platform. -->
 
 # Contact us
 Want to get in touch with the developers? You can reach us at `{{< var email >}}`.

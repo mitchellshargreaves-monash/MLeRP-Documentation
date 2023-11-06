@@ -1,7 +1,7 @@
 ---
 title: Machine Learning eResearch Platform (MLeRP)
 ---
-## What is MleRP?
+## What is MLeRP?
 ### Featuring artwork by [Kiowa Scott-Hurley](https://kiowa-scott-hurley.github.io/tea-tech-and-trials/)
 
 Say we have a researcher who is a domain expert in a field and is just discovering that machine learning algorithms might be appropriate to accelerate their work. 
