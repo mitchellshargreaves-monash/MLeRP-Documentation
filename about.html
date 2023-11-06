@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>MLeRP User Guide Documentation - About</title>
+<title>MLeRP User Guide Documentation - Machine Learning eResearch Platform (MLeRP)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -91,11 +91,11 @@ ul.task-list li input[type="checkbox"] {
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./about.html" rel="" target="">
- <span class="menu-text">About</span></a>
+ <span class="menu-text">Machine Learning eResearch Platform (MLeRP)</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./faq.html" rel="" target="">
- <span class="menu-text">FAQ</span></a>
+ <span class="menu-text">Troubleshooting</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
@@ -161,7 +161,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./faq.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">FAQ</span></a>
+ <span class="menu-text">Troubleshooting</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -285,7 +285,15 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#what-is-mlerp" id="toc-what-is-mlerp" class="nav-link active" data-scroll-target="#what-is-mlerp">What is MLeRP?</a></li>
+  <li><a href="#what-is-mlerp" id="toc-what-is-mlerp" class="nav-link active" data-scroll-target="#what-is-mlerp">What is MleRP?</a>
+  <ul class="collapse">
+  <li><a href="#featuring-artwork-by-kiowa-scott-hurley" id="toc-featuring-artwork-by-kiowa-scott-hurley" class="nav-link" data-scroll-target="#featuring-artwork-by-kiowa-scott-hurley">Featuring artwork by Kiowa Scott-Hurley</a></li>
+  <li><a href="#am-i-eligible-for-this-service" id="toc-am-i-eligible-for-this-service" class="nav-link" data-scroll-target="#am-i-eligible-for-this-service">Am I eligible for this service?</a></li>
+  <li><a href="#how-do-i-sign-up" id="toc-how-do-i-sign-up" class="nav-link" data-scroll-target="#how-do-i-sign-up">How do I sign up?</a></li>
+  <li><a href="#how-do-i-access-the-compute" id="toc-how-do-i-access-the-compute" class="nav-link" data-scroll-target="#how-do-i-access-the-compute">How do I access the compute?</a></li>
+  <li><a href="#what-is-the-advantage-of-dask-slurmclusters-over-direct-gpu-reservations" id="toc-what-is-the-advantage-of-dask-slurmclusters-over-direct-gpu-reservations" class="nav-link" data-scroll-target="#what-is-the-advantage-of-dask-slurmclusters-over-direct-gpu-reservations">What is the advantage of Dask SLURMClusters over direct GPU reservations?</a></li>
+  <li><a href="#how-is-this-different-from-a-nectar-gpu-reservation-or-from-google-collab" id="toc-how-is-this-different-from-a-nectar-gpu-reservation-or-from-google-collab" class="nav-link" data-scroll-target="#how-is-this-different-from-a-nectar-gpu-reservation-or-from-google-collab">How is this different from a Nectar GPU reservation or from Google Collab?</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -294,7 +302,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">About</h1>
+<h1 class="title">Machine Learning eResearch Platform (MLeRP)</h1>
 </div>
 
 
@@ -310,19 +318,63 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 <section id="what-is-mlerp" class="level2">
-<h2 class="anchored" data-anchor-id="what-is-mlerp">What is MLeRP?</h2>
+<h2 class="anchored" data-anchor-id="what-is-mlerp">What is MleRP?</h2>
+<section id="featuring-artwork-by-kiowa-scott-hurley" class="level3">
+<h3 class="anchored" data-anchor-id="featuring-artwork-by-kiowa-scott-hurley">Featuring artwork by <a href="https://kiowa-scott-hurley.github.io/tea-tech-and-trials/">Kiowa Scott-Hurley</a></h3>
 <p>Say we have a researcher who is a domain expert in a field and is just discovering that machine learning algorithms might be appropriate to accelerate their work.</p>
 <p><img src="./images/before-after.png" class="img-fluid"></p>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-center">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p>They explore online for potential approaches and even find some tutorials that use interactive environments, but quickly discover that dealing with large datasets requires more compute than their laptop can handle so they need to move to a HPC system.</p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="./images/notebook-cat.png" class="img-fluid"></p>
+</div>
+</div>
+</div>
 <p>While desktop sessions are available they might have prohibitively long queues and have low utilisation of the underlying hardware. They could submit a job to the HPC queue but this leads to long times between iterations. At this stage the researcher is still discovering things about their data, how to clean it and how to analyse it.</p>
 <p><img src="./images/hpc-cat.png" class="img-fluid"></p>
 <p>They need an interactive environment so they can develop and debug their algorithms and the algorithms, but still need access to high powered acceleration so they can process their dataset. At the same time we want to improve utilisation of the hardware so that we can serve more users and reduce wait times.</p>
-<p>MLeRP was built to be a middle ground that has the interactivity of a notebook with the power of a HPC environment that can share valuable resources between other users while code isn’t being executed.</p>
-<p><img src="./images/mlerp-rings.png" class="img-fluid"> <img src="./images/captain-research-cloud.png" class="img-fluid"></p>
+<p>The MLeRP environment creates a middle ground that has the interactivity of a notebook with the power of a HPC environment that can share valuable resources between other users while code isn’t being executed.</p>
+<p>We provide users with CPU based Jupyter notebook sessions capable of basic analysis, with the ability to interactively send jobs to a SLURM queue for GPU or parallelised CPU acceleration through Dask.</p>
+<p><img src="./images/mlerp-panels.png" class="img-fluid"></p>
 <p>Now our new researcher can easily import the same code that they were using on their laptops or with online notebook services straight into a HPC environment without the need to convert it first into a SBATCH script, wait in long HPC queues or load modules for dependencies.</p>
+</section>
+<section id="am-i-eligible-for-this-service" class="level3">
+<h3 class="anchored" data-anchor-id="am-i-eligible-for-this-service">Am I eligible for this service?</h3>
+<p>MLeRP is available to all Australian and New Zealand academic researchers. MLeRP supports authentication through AAF and Google. Tuakiri authentication is planned but not yet implemented.</p>
+</section>
+<section id="how-do-i-sign-up" class="level3">
+<h3 class="anchored" data-anchor-id="how-do-i-sign-up">How do I sign up?</h3>
+<p>You can apply for an allocation <a href="https://forms.gle/HuPk8ckmptq2LCaR7">here</a>.</p>
+</section>
+<section id="how-do-i-access-the-compute" class="level3">
+<h3 class="anchored" data-anchor-id="how-do-i-access-the-compute">How do I access the compute?</h3>
+<p>Notebooks attached directly to reserved GPU compute for 10 GB instances are available through the ‘Tabby’ service. This is ideal for data exploration, data visualisation or beginners who are just starting with HPC. Larger instances, such as 20 GB and 40 GB are only available through the SLURM queue either using batch submission through the ‘Lion’ Service or through Dask SLURMClusters through the ‘Cheetah’ Service.</p>
+<p>We expect new users to start their projects with notebooks using direct GPU reservation, then move to notebooks backed by Dask SLURMClusters when they need the extra power. Finally, once they have finished writing their applications and are ready to train their models, they can submit their experiments to the SLURM queue.</p>
+<p>For more information about MLeRP’s regions and compute, have a read of <a href="./compute.html">this page</a>.</p>
+</section>
+<section id="what-is-the-advantage-of-dask-slurmclusters-over-direct-gpu-reservations" class="level3">
+<h3 class="anchored" data-anchor-id="what-is-the-advantage-of-dask-slurmclusters-over-direct-gpu-reservations">What is the advantage of Dask SLURMClusters over direct GPU reservations?</h3>
+<p>Dask has the ability to offload individual python functions to another device, once complete the result is then passed back to the parent notebook. Any errors that occur during the process will be forwarded to the notebook just like running things locally, making things more intuitive to debug than a submitted script. This allows the user to write asynchronous code that doesn’t tie up the main computing device and only access it when needed, allowing the platform to serve more users at once. This adds an overhead to the process - the offloading doesn’t happen for free, but it does allow greater flexibility in how the code is written.</p>
+<p>We believe that this approach of submitting jobs through a python notebook environment will feel more familiar to researchers familiar with the python data science ecosystem given how Dask is designed as a light wrapper around common libraries like numpy, pandas and Scikit-Learn. Rather than needing to rework your code into a high performing batch script as on a traditional HPC system, the scale of your SLURM job can be the size of a python function.</p>
+<p>Some example use cases include:</p>
+<ul>
+<li>Using a GPU job to develop and debug your model and train function interactively, while not tying up the GPU resources when not executing code</li>
+<li>Using a short running GPU job to check the stability of your training functions, submitting each training epoch as a new job</li>
+<li>Using a separate GPU job to run your evaluation function concurrently with the next training epoch</li>
+<li>Using a larger number of low powered CPU jobs to preprocess your dataset by passing the individual samples as input, allowing your jobs to scale to the capacity of the cluster</li>
+</ul>
+<p>For more information on offloading with Dask, have a read of <a href="./tutorials/2_dask_offloading.html">this tutorial</a> and have a look at <a href="https://docs.dask.org/en/stable/">Dask’s documentation</a>.</p>
+</section>
+<section id="how-is-this-different-from-a-nectar-gpu-reservation-or-from-google-collab" class="level3">
+<h3 class="anchored" data-anchor-id="how-is-this-different-from-a-nectar-gpu-reservation-or-from-google-collab">How is this different from a Nectar GPU reservation or from Google Collab?</h3>
+<p>MLeRP is a HPC system. It has a permanent filesystem, letting you store your data and code base between experiments. This also enables collaboration between multiple researchers. If you would like to organise a shared project quota, please reach out.</p>
+<p>This also allows us to maintain software environments for you to use and gives you the flexibility to maintain your own by installing things directly into your user directory. We provide a conda environment with many common data science packages that will allow you to get started right away, but we fully expect that users will at some point need to move on to maintaining their own conda install. User installed conda environments are fully compatible with our Jupyter Lab application provided they contain the necessary packages.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
