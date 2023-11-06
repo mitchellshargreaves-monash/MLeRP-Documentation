@@ -1,5 +1,5 @@
 ---
-title: FAQ
+title: Troubleshooting
 ---
 
 <!-- <img src="./images/curious_mlerp.png" style="position: fixed; left: 0; bottom: 0;" class="d-none d-sm-block"/> -->
