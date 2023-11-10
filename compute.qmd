@@ -6,6 +6,8 @@ MLeRP is split into two regions which users can choose between - one based in Mo
 
 ## Monash
 
+Monash workloads are able to make use of the attached NVME on the compute nodes by writing to `/tmp`. These files will remain accessible for the course of your job.
+
 The Monash region is designed to be flexible. It is split into two partitions: `BigCats` and `HouseCats`.
 
 ![](images/mlerp-monash-arch.drawio.png)
@@ -13,13 +15,20 @@ The Monash region is designed to be flexible. It is split into two partitions: `
 ### `BigCats` Partition
 
 #### **CPU notebooks that control Dask workers**
-Lion QoS Notebook with Cheetah QoS Workers  
+Lion QoS Notebook with Cheetah QoS Workers
 
-Ideal for:  
+Ideal for:
 
 - Data processing
 - Rapid and flexible iteration during development
 - Experimenting with techniques
+
+Flavours available:
+
+- Tabby
+  - 6 VCPUs
+  - 56 GB RAM
+  - 10 GB VRAM GPU
 
 See our [tutorials](/tutorials/1_dask_slurm.ipynb) for more details and [this FAQ](/faq.qmd#how-much-compute-should-i-ask-for-with-my-slurmcluster) for advice on requesting resources through the Dask scheduler.
 
@@ -43,7 +52,18 @@ Ideal for:
 - Data visualization
 - New users who just want to get started with minimal setup
 
-Monash workloads are also able to make use of attached NVME for temporary file storage.
+Flavours available:
+
+- Small Lion
+  - 4 VCPUs
+  - 16 GB RAM
+- Medium Lion
+  - 6 VCPUs
+  - 32 GB RAM
+- Large Lion
+  - 6 VCPUs
+  - 32 GB RAM
+
 
 
 ## QCIF
@@ -54,13 +74,13 @@ GPU notebook or terminal sessions in three sizes:
 - Regular
   - 20 VCPUs
   - 190 GB RAM
-  - 10 GB VRAM
+  - 10 GB VRAM GPU
 - Double
   - 20 VCPUs
   - 190 GB RAM
-  - 20 GB VRAM
+  - 20 GB VRAM GPU
 - Node
   - 60 VCPUs
   - 570 GB RAM
-  - 2x 10 GB VRAM + 1x 20 GB VRAM
+  - 2x 10 GB VRAM  GPU + 1x 20 GB VRAM GPU
   
