@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Mitchell Hargreaves">
-<meta name="dcterms.date" content="2023-10-13">
+<meta name="dcterms.date" content="2023-11-10">
 
-<title>MLeRP User Guide Documentation - Release Notes #3</title>
+<title>MLeRP User Guide Documentation - Release Notes #4</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,40 +21,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -164,7 +130,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Release Notes #3</li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Release Notes #4</li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -324,7 +290,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Release Notes #3</h1>
+<h1 class="title">Release Notes #4</h1>
 </div>
 
 
@@ -341,7 +307,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">October 13, 2023</p>
+      <p class="date">November 10, 2023</p>
     </div>
   </div>
   
@@ -352,13 +318,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 <p>Hello MLeRP users,</p>
-<p>We’re pleased to announce that we now have a better UI solution to use conda environments with our new <a href="../applications/strudel2.html#jupyter-lab">Jupyter Lab app</a>. Now, rather than each app being tied to a given conda environment and requiring users to create a new app to support their own environments, we are using a dropdown which will allow you to select from any of the environments we provide, or any that you provide for yourself.</p>
-<p>The dropdown is populated using your <code>~/.conda/environments.txt​</code> file which conda should maintain as you create new installations of miniconda or mamba. This means that the app should automatically pick up any new environments that you create with no input from yourself. If for whatever reason this doesn’t happen and you can’t find the environment that you’re looking for, you can manually append a new environment to the file with this command:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> /path/to/your/environment <span class="op">&gt;&gt;</span> ~/.conda/environments.txt​</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>We have also used this opportunity to come out with a new version of DSKS that addresses some of the shortcomings with the previous version. The environment now has more packages to support a wider range of data types and tools, for a full list visit the <a href="../applications/environments/dsks/dsks_2023.10.html">DSKS environment’s page</a>.</p>
-<p>If you still need to use the <a href="../applications/environments/dsks/dsks_2023.05.html">old version of DSKS</a>, it’s still there just renamed. From now on, we will be versioning the environments that we release, tagging them with the year and month that they were built. The old version of DSKS that you are familiar with can now be accessed as dsks_2023.05, while the new version can be accessed as dsks_2023.10​. Similarly, the DSKS specific Jupyter App will point to this renamed environment. A full list of every environment that we support will be available on <a href="../applications/environments.html">this new page of our documentation</a>. There’s only 2 versions of DSKS there now, but we’re sure that the list will grow as we get more requests for packages and functionality. If you have a curated environment that you think would be suitable for other users, let us know and we’ll see what we can do.</p>
-<p>We are also going to be deprecating the Base Jupyter Lab application. The Base Jupyter Lab application has always been in a weird place in that it simultaneously has too many packages to be representative of a basic python installation, but not enough for the kind of useful data science that we expect from users in the system. The app was originally written to work isolated within a singularity container, but as we move towards providing environments through our mambaforge installation continuing to maintain this unicorn environment seemed more trouble as it was worth, especially since the DSKS environments offer as a superset of it’s functionality and the base environment that is created in a <a href="https://mamba.readthedocs.io/en/latest/">mambaforge</a> install is more suitable for minimal applications.</p>
-<p>Please let us know how the new Jupyter Lab app works for you. If this experiment goes well, we’ll also deprecate the old DSKS specific Jupyter Lab since you can still reach that environment by selecting it in the environment dropdown.</p>
+<p>MLeRP is now in open beta!</p>
+<p>For all of you who participated in the closed beta, thank you for your feedback and continued support of the platform. For those of you who are just joining us, welcome! You can read ARDC’s article about our service <a href="https://ardc.edu.au/article/new-machine-learning-service-for-australian-researchers/">here</a>.</p>
+<p>To support the launch of the open beta program, we will be running a webinar hosted by the <a href="https://www.ml4au.community/">Machine Learning Community of Practice for Australia (ML4AU)</a>. We will be introducing the platform’s capabilities and demonstrating some example use cases. If you’ve been wondering how you can better take advantage of the platform or are interested in knowing more about MLeRP before signing up, this webinar is for you. You can register for the webinar <a href="https://ardc.edu.au/event/introducing-machine-learning-eresearch-platform-mlerp/">here</a>.</p>
+<p>In preperation for the launch we’ve been making some updates to the documentation. We have added a new section of the documentation archiving <a href="../release.html">these release notes</a>. We have also made these release notes available <a href="https://docs.mlerp.cloud.edu.au/release.xml">over RSS</a>, so if like me you prefer to get your news through a feed aggregator rather than email you can now do that. We also updated our <a href="../index.html">home page</a> to better acknowledge our collaborators and our <a href="../about.html">about page</a> to better introduce the platform and what makes it different from other HPC offerings.</p>
+<p>We had some feedback that the Dask PyTorch tutorial was a too full on for users new to machine learning. We’ve now seperated out the Dask components into its own tutorial from the PyTorch adaptation tutorial to hopefully seperate out the concepts for easier onboarding. Please contact us if there are any aspects of the platform which could be better explained and we will work with you to develop new tutorials and documentation to support these usecases.</p>
+<p>We also made some updates to Strudel2 updated the app descriptions in Strudel2 and added a link back to the <a href="../compute.html">compute</a> page to make it clearer the difference between the compute flavours. There is also a link through to the documentation in the footer now.</p>
+<p>The old DSKS specific Jupyter Lab has now been deprecated. If you haven’t migrated to the new <a href="https://docs.mlerp.cloud.edu.au/applications/strudel2.html#jupyter-lab">Jupyter Lab app</a> yet, you’ll need to do that now. Through the app’s <code>Conda Environment</code> dropdown, you will be able to access the DSKS environments, any other environments that we provide in the future, along with any environments you’ve created in <code>conda</code> or <code>mamba</code> installations that you maintain.</p>
 <p>Regards,<br>
 Mitchell Hargreaves</p>
 

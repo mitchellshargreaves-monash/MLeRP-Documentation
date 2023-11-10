@@ -1,17 +1,18 @@
 [
   {
-    "listing": "/release.html",
-    "items": [
-      "/release/notes003.html",
-      "/release/notes002.html",
-      "/release/notes001.html"
-    ]
-  },
-  {
     "listing": "/applications/environments.html",
     "items": [
       "/applications/environments/dsks/dsks_2023.10.html",
       "/applications/environments/dsks/dsks_2023.05.html"
+    ]
+  },
+  {
+    "listing": "/release.html",
+    "items": [
+      "/release/notes004.html",
+      "/release/notes003.html",
+      "/release/notes002.html",
+      "/release/notes001.html"
     ]
   }
 ]

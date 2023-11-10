@@ -10,7 +10,32 @@
 <atom:link href="https://docs.mlerp.cloud.edu.au/release.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.3.450</generator>
-<lastBuildDate>Fri, 13 Oct 2023 00:00:00 GMT</lastBuildDate>
+<lastBuildDate>Fri, 10 Nov 2023 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>Release Notes #4</title>
+  <dc:creator>Mitchell Hargreaves</dc:creator>
+  <link>https://docs.mlerp.cloud.edu.au/release/notes004.html</link>
+  <description><![CDATA[ 
+
+
+
+<p>Hello MLeRP users,</p>
+<p>MLeRP is now in open beta!</p>
+<p>For all of you who participated in the closed beta, thank you for your feedback and continued support of the platform. For those of you who are just joining us, welcome! You can read ARDC’s article about our service <a href="https://ardc.edu.au/article/new-machine-learning-service-for-australian-researchers/">here</a>.</p>
+<p>To support the launch of the open beta program, we will be running a webinar hosted by the <a href="https://www.ml4au.community/">Machine Learning Community of Practice for Australia (ML4AU)</a>. We will be introducing the platform’s capabilities and demonstrating some example use cases. If you’ve been wondering how you can better take advantage of the platform or are interested in knowing more about MLeRP before signing up, this webinar is for you. You can register for the webinar <a href="https://ardc.edu.au/event/introducing-machine-learning-eresearch-platform-mlerp/">here</a>.</p>
+<p>In preperation for the launch we’ve been making some updates to the documentation. We have added a new section of the documentation archiving <a href="../release.html">these release notes</a>. We have also made these release notes available <a href="https://docs.mlerp.cloud.edu.au/release.xml">over RSS</a>, so if like me you prefer to get your news through a feed aggregator rather than email you can now do that. We also updated our <a href="../index.html">home page</a> to better acknowledge our collaborators and our <a href="../about.html">about page</a> to better introduce the platform and what makes it different from other HPC offerings.</p>
+<p>We had some feedback that the Dask PyTorch tutorial was a too full on for users new to machine learning. We’ve now seperated out the Dask components into its own tutorial from the PyTorch adaptation tutorial to hopefully seperate out the concepts for easier onboarding. Please contact us if there are any aspects of the platform which could be better explained and we will work with you to develop new tutorials and documentation to support these usecases.</p>
+<p>We also made some updates to Strudel2 updated the app descriptions in Strudel2 and added a link back to the <a href="../compute.html">compute</a> page to make it clearer the difference between the compute flavours. There is also a link through to the documentation in the footer now.</p>
+<p>The old DSKS specific Jupyter Lab has now been deprecated. If you haven’t migrated to the new <a href="https://docs.mlerp.cloud.edu.au/applications/strudel2.html#jupyter-lab">Jupyter Lab app</a> yet, you’ll need to do that now. Through the app’s <code>Conda Environment</code> dropdown, you will be able to access the DSKS environments, any other environments that we provide in the future, along with any environments you’ve created in <code>conda</code> or <code>mamba</code> installations that you maintain.</p>
+<p>Regards,<br>
+Mitchell Hargreaves</p>
+
+
+
+ ]]></description>
+  <guid>https://docs.mlerp.cloud.edu.au/release/notes004.html</guid>
+  <pubDate>Fri, 10 Nov 2023 00:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Release Notes #3</title>
   <dc:creator>Mitchell Hargreaves</dc:creator>
@@ -21,7 +46,7 @@
 
 <p>Hello MLeRP users,</p>
 <p>We’re pleased to announce that we now have a better UI solution to use conda environments with our new <a href="../applications/strudel2.html#jupyter-lab">Jupyter Lab app</a>. Now, rather than each app being tied to a given conda environment and requiring users to create a new app to support their own environments, we are using a dropdown which will allow you to select from any of the environments we provide, or any that you provide for yourself.</p>
-<p>The dropdown is populated using your <code>~/.conda/environments.txt​</code> file which conda should maintaining as you create new installations of miniconda or mamba. This means that the app should automatically pick up any new environments that you create with no input from yourself. If for whatever reason this doesn’t happen and you can’t find the environment that you’re looking for, you can manually append a new environment to the file with this command:</p>
+<p>The dropdown is populated using your <code>~/.conda/environments.txt​</code> file which conda should maintain as you create new installations of miniconda or mamba. This means that the app should automatically pick up any new environments that you create with no input from yourself. If for whatever reason this doesn’t happen and you can’t find the environment that you’re looking for, you can manually append a new environment to the file with this command:</p>
 <div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">echo</span> /path/to/your/environment <span class="op" style="color: #5E5E5E;
@@ -31,7 +56,8 @@ font-style: inherit;">&gt;&gt;</span> ~/.conda/environments.txt​</span></code>
 <p>If you still need to use the <a href="../applications/environments/dsks/dsks_2023.05.html">old version of DSKS</a>, it’s still there just renamed. From now on, we will be versioning the environments that we release, tagging them with the year and month that they were built. The old version of DSKS that you are familiar with can now be accessed as dsks_2023.05, while the new version can be accessed as dsks_2023.10​. Similarly, the DSKS specific Jupyter App will point to this renamed environment. A full list of every environment that we support will be available on <a href="../applications/environments.html">this new page of our documentation</a>. There’s only 2 versions of DSKS there now, but we’re sure that the list will grow as we get more requests for packages and functionality. If you have a curated environment that you think would be suitable for other users, let us know and we’ll see what we can do.</p>
 <p>We are also going to be deprecating the Base Jupyter Lab application. The Base Jupyter Lab application has always been in a weird place in that it simultaneously has too many packages to be representative of a basic python installation, but not enough for the kind of useful data science that we expect from users in the system. The app was originally written to work isolated within a singularity container, but as we move towards providing environments through our mambaforge installation continuing to maintain this unicorn environment seemed more trouble as it was worth, especially since the DSKS environments offer as a superset of it’s functionality and the base environment that is created in a <a href="https://mamba.readthedocs.io/en/latest/">mambaforge</a> install is more suitable for minimal applications.</p>
 <p>Please let us know how the new Jupyter Lab app works for you. If this experiment goes well, we’ll also deprecate the old DSKS specific Jupyter Lab since you can still reach that environment by selecting it in the environment dropdown.</p>
-<p>Regards, Mitchell Hargreaves</p>
+<p>Regards,<br>
+Mitchell Hargreaves</p>
 
 
 
@@ -57,7 +83,9 @@ font-style: inherit;">&gt;&gt;</span> ~/.conda/environments.txt​</span></code>
 <p>At the first user meeting there was a suggestion to support an environment which hosted similar packages to Google Colab’s default packages. We had a go at exporting the package list and trying to build this environment, but we were unable to get this environment to solve. Rather than iteratively trying to remove the problem packages until it builds, we believe we will be able to offer similar functionality through <a href="../applications/environments.html"><code>DSKS</code></a> by adding the key packages that you all want from Colab’s environment into the next version, so if there is something you want, please tell us which packages are missing that you’d like.</p>
 <p>In the meantime, if our environments don’t suit your purposes, at this stage you’re unfortunately going to have to maintain your own conda or mamba environment. The definitions of all of our environments can be found in the folder: <code>/apps/conda-envs/</code>. At this time, this includes <code>DSKS</code> as well as a template which has the minimum packages that you need to be compatible with our Strudel apps which you can use as a basis for your environment. To help with this process <a href="../applications/custom.html">we’ve written a tutorial</a> for installing one on our system. If there is anything that isn’t clear in this tutorial, please let us know so that we can help you. If you’re comfortable with making your environment, we still recommend that you have a look through the tutorial since it also covers how to point Strudel at your environment so that you can run Jupyter Lab sessions with it.</p>
 <p>All of our <a href="../applications/documentation.html">documentation</a> is <a href="https://github.com/mitchellshargreaves-monash/MLeRP-Documentation">publicly available on GitHub</a>. If you feel like our documentation is lacking, we encourage you to submit Issues and Pull Requests to help us make it better for all of you. Even if you’re not contributing, cloning the repository is a great way to get easy access to our notebook tutorials to explore the functionality of the cluster.</p>
-<p>Until next time, Kind Regards, Mitchell</p>
+<p>Until next time,<br>
+Kind Regards,<br>
+Mitchell</p>
 
 
 
@@ -79,7 +107,8 @@ font-style: inherit;">&gt;&gt;</span> ~/.conda/environments.txt​</span></code>
 <p>Speaking of, we have just improved our documentation on alternative methods for connecting to the cluster through <a href="../connecting/ssossh.html">SSH</a> or <a href="../connecting/vscode.html">VS Code remote sessions</a>. If this sounds like something that’s interesting to you, we’d love to get some feedback on this.</p>
 <p>Since we last spoke at the launch event we’ve been working behind the scenes on some of your requested features. We’ve updated the user permissions of the home directory to 700 rather than 755. This means that privacy is now the default rather than collaboration. You still have the flexibility to change the permissions on your files if you’d like to do so.</p>
 <p>We’ve also been having a think about the best way to implement the requested multiday low resource CPU notebooks (which we’ve been tentatively calling the Panther QoS internally). This is likely going to require changing the way we structure the cluster’s partitions under the hood, so we’ve hold off on implementing things so far but it’s on our radar. We’ll be in touch with more details when we have something for you all to try out.</p>
-<p>Kind regards, Mitchell Hargreaves</p>
+<p>Kind regards,<br>
+Mitchell Hargreaves</p>
 
 
 
