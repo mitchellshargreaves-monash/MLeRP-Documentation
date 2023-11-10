@@ -317,6 +317,7 @@ ul.task-list li input[type="checkbox"] {
 <p>MLeRP is split into two regions which users can choose between - one based in Monash (Melbourne, Victoria) and one based in QCIF (Brisbane, Queensland). The clusters have seperate file systems and quotas are provisioned seperately, so you will have to transfer your files across if you’d like to switch regions.</p>
 <section id="monash" class="level2">
 <h2 class="anchored" data-anchor-id="monash">Monash</h2>
+<p>Monash workloads are able to make use of the attached NVME on the compute nodes by writing to <code>/tmp</code>. These files will remain accessible for the course of your job.</p>
 <p>The Monash region is designed to be flexible. It is split into two partitions: <code>BigCats</code> and <code>HouseCats</code>.</p>
 <p><img src="images/mlerp-monash-arch.drawio.png" class="img-fluid"></p>
 <section id="bigcats-partition" class="level3">
@@ -329,6 +330,15 @@ ul.task-list li input[type="checkbox"] {
 <li>Data processing</li>
 <li>Rapid and flexible iteration during development</li>
 <li>Experimenting with techniques</li>
+</ul>
+<p>Flavours available:</p>
+<ul>
+<li>Tabby
+<ul>
+<li>6 VCPUs</li>
+<li>56 GB RAM</li>
+<li>10 GB VRAM GPU</li>
+</ul></li>
 </ul>
 <p>See our <a href="./tutorials/1_dask_slurm.html">tutorials</a> for more details and <a href="./faq.html#how-much-compute-should-i-ask-for-with-my-slurmcluster">this FAQ</a> for advice on requesting resources through the Dask scheduler.</p>
 </section>
@@ -354,7 +364,24 @@ ul.task-list li input[type="checkbox"] {
 <li>Data visualization</li>
 <li>New users who just want to get started with minimal setup</li>
 </ul>
-<p>Monash workloads are also able to make use of attached NVME for temporary file storage.</p>
+<p>Flavours available:</p>
+<ul>
+<li>Small Lion
+<ul>
+<li>4 VCPUs</li>
+<li>16 GB RAM</li>
+</ul></li>
+<li>Medium Lion
+<ul>
+<li>6 VCPUs</li>
+<li>32 GB RAM</li>
+</ul></li>
+<li>Large Lion
+<ul>
+<li>6 VCPUs</li>
+<li>32 GB RAM</li>
+</ul></li>
+</ul>
 </section>
 </section>
 </section>
@@ -367,19 +394,19 @@ ul.task-list li input[type="checkbox"] {
 <ul>
 <li>20 VCPUs</li>
 <li>190 GB RAM</li>
-<li>10 GB VRAM</li>
+<li>10 GB VRAM GPU</li>
 </ul></li>
 <li>Double
 <ul>
 <li>20 VCPUs</li>
 <li>190 GB RAM</li>
-<li>20 GB VRAM</li>
+<li>20 GB VRAM GPU</li>
 </ul></li>
 <li>Node
 <ul>
 <li>60 VCPUs</li>
 <li>570 GB RAM</li>
-<li>2x 10 GB VRAM + 1x 20 GB VRAM</li>
+<li>2x 10 GB VRAM GPU + 1x 20 GB VRAM GPU</li>
 </ul></li>
 </ul>
 
