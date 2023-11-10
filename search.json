@@ -235,14 +235,14 @@
     "href": "compute.html",
     "title": "Compute",
     "section": "",
-    "text": "MLeRP is split into two regions which users can choose between - one based in Monash (Melbourne, Victoria) and one based in QCIF (Brisbane, Queensland). The clusters have seperate file systems and quotas are provisioned seperately, so you will have to transfer your files across if you’d like to switch regions."
+    "text": "MLeRP is split into two regions - one based in Monash (Melbourne, Victoria) and one based in QCIF (Brisbane, Queensland). The clusters have seperate file systems and quotas are provisioned seperately, so you will have to transfer your files across if you’d like to switch regions."
   },
   {
     "objectID": "compute.html#monash",
     "href": "compute.html#monash",
     "title": "Compute",
     "section": "Monash",
-    "text": "Monash\nMonash workloads are able to make use of the attached NVME on the compute nodes by writing to /tmp. These files will remain accessible for the course of your job.\nThe Monash region is designed to be flexible. It is split into two partitions: BigCats and HouseCats.\n\n\nBigCats Partition\n\nCPU notebooks that control Dask workers\nLion QoS Notebook with Cheetah QoS Workers\nIdeal for:\n\nData processing\nRapid and flexible iteration during development\nExperimenting with techniques\n\nFlavours available:\n\nTabby\n\n6 VCPUs\n56 GB RAM\n10 GB VRAM GPU\n\n\nSee our tutorials for more details and this FAQ for advice on requesting resources through the Dask scheduler.\n\n\nBatch submission\nLion QoS Script\nIdeal for:\n\nModel training\nHeavy duty processing\nHyperparameter sweeps\n\n\n\n\nHouseCats Partition\n\nNotebooks with GPU compute\nTabby QoS Notebook\nIdeal for:\n\nData exploration\nData visualization\nNew users who just want to get started with minimal setup\n\nFlavours available:\n\nSmall Lion\n\n4 VCPUs\n16 GB RAM\n\nMedium Lion\n\n6 VCPUs\n32 GB RAM\n\nLarge Lion\n\n6 VCPUs\n32 GB RAM"
+    "text": "Monash\nMonash workloads are able to make use of the attached NVME on the compute nodes by writing to /tmp. These files will remain accessible for the course of your job.\nThe Monash region is designed to be flexible. It is split into two partitions: BigCats and HouseCats.\n\n\nBigCats Partition\n\nCPU notebooks that control Dask workers\nLion QoS Notebook with Cheetah QoS Workers\nIdeal for:\n\nData processing\nRapid and flexible iteration during development\nExperimenting with techniques\n\nFlavours available:\n\nSmall Lion\n\n4 VCPUs\n16 GB RAM\n\nMedium Lion\n\n6 VCPUs\n32 GB RAM\n\nLarge Lion\n\n6 VCPUs\n32 GB RAM\n\n\nSee our tutorials for more details and this FAQ for advice on requesting resources through the Dask scheduler.\n\n\nBatch submission\nLion QoS Script\nIdeal for:\n\nModel training\nHeavy duty processing\nHyperparameter sweeps\n\n\n\n\nHouseCats Partition\n\nNotebooks with GPU compute\nTabby QoS Notebook\nIdeal for:\n\nData exploration\nData visualization\nNew users who just want to get started with minimal setup\n\nFlavours available:\n\nTabby\n\n6 VCPUs\n56 GB RAM\n10 GB VRAM GPU"
   },
   {
     "objectID": "compute.html#qcif",
