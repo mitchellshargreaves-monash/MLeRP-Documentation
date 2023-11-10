@@ -16,5 +16,5 @@ Since we last spoke at the launch event we've been working behind the scenes on 
 
 We've also been having a think about the best way to implement the requested multiday low resource CPU notebooks (which we've been tentatively calling the Panther QoS internally). This is likely going to require changing the way we structure the cluster's partitions under the hood, so we've hold off on implementing things so far but it's on our radar. We'll be in touch with more details when we have something for you all to try out.
 
-Kind regards,
+Kind regards,  
 Mitchell Hargreaves

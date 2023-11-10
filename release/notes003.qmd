@@ -8,7 +8,7 @@ Hello MLeRP users,
 
 We're pleased to announce that we now have a better UI solution to use conda environments with our new [Jupyter Lab app](/applications/strudel2.qmd#jupyter-lab). Now, rather than each app being tied to a given conda environment and requiring users to create a new app to support their own environments, we are using a dropdown which will allow you to select from any of the environments we provide, or any that you provide for yourself.
 
-The dropdown is populated using your `~/.conda/environments.txt​` file which conda should maintaining as you create new installations of miniconda or mamba. This means that the app should automatically pick up any new environments that you create with no input from yourself. If for whatever reason this doesn't happen and you can't find the environment that you're looking for, you can manually append a new environment to the file with this command:
+The dropdown is populated using your `~/.conda/environments.txt​` file which conda should maintain as you create new installations of miniconda or mamba. This means that the app should automatically pick up any new environments that you create with no input from yourself. If for whatever reason this doesn't happen and you can't find the environment that you're looking for, you can manually append a new environment to the file with this command:
 
 ```bash
 echo /path/to/your/environment >> ~/.conda/environments.txt​
@@ -22,5 +22,5 @@ We are also going to be deprecating the Base Jupyter Lab application. The Base J
 
 Please let us know how the new Jupyter Lab app works for you. If this experiment goes well, we'll also deprecate the old DSKS specific Jupyter Lab since you can still reach that environment by selecting it in the environment dropdown. 
 
-Regards,
+Regards,  
 Mitchell Hargreaves

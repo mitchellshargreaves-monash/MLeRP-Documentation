@@ -2,7 +2,7 @@
 title: Compute
 ---
 
-MLeRP is split into two regions which users can choose between - one based in Monash (Melbourne, Victoria) and one based in QCIF (Brisbane, Queensland). The clusters have seperate file systems and quotas are provisioned seperately, so you will have to transfer your files across if you'd like to switch regions.
+MLeRP is split into two regions  - one based in Monash (Melbourne, Victoria) and one based in QCIF (Brisbane, Queensland). The clusters have seperate file systems and quotas are provisioned seperately, so you will have to transfer your files across if you'd like to switch regions.
 
 ## Monash
 
@@ -25,10 +25,15 @@ Ideal for:
 
 Flavours available:
 
-- Tabby
+- Small Lion
+  - 4 VCPUs
+  - 16 GB RAM
+- Medium Lion
   - 6 VCPUs
-  - 56 GB RAM
-  - 10 GB VRAM GPU
+  - 32 GB RAM
+- Large Lion
+  - 6 VCPUs
+  - 32 GB RAM
 
 See our [tutorials](/tutorials/1_dask_slurm.ipynb) for more details and [this FAQ](/faq.qmd#how-much-compute-should-i-ask-for-with-my-slurmcluster) for advice on requesting resources through the Dask scheduler.
 
@@ -54,17 +59,10 @@ Ideal for:
 
 Flavours available:
 
-- Small Lion
-  - 4 VCPUs
-  - 16 GB RAM
-- Medium Lion
+- Tabby
   - 6 VCPUs
-  - 32 GB RAM
-- Large Lion
-  - 6 VCPUs
-  - 32 GB RAM
-
-
+  - 56 GB RAM
+  - 10 GB VRAM GPU
 
 ## QCIF
 The QCIF region uses a more traditional approach with A100 GPU enabled notebook or terminal sessions. This user experience is much closer to using a service like Google Colab, but with a permanent file system.

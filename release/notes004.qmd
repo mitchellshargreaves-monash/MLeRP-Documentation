@@ -1,0 +1,24 @@
+---
+title: "Release Notes #4"
+date: 2023-11-10
+author: Mitchell Hargreaves
+---
+
+Hello MLeRP users,
+
+MLeRP is now in open beta!
+
+For all of you who participated in the closed beta, thank you for your feedback and continued support of the platform. For those of you who are just joining us, welcome! You can read ARDC's article about our service [here](https://ardc.edu.au/article/new-machine-learning-service-for-australian-researchers/).
+
+To support the launch of the open beta program, we will be running a webinar hosted by the [Machine Learning Community of Practice for Australia (ML4AU)](https://www.ml4au.community/). We will be introducing the platform's capabilities and demonstrating some example use cases. If you've been wondering how you can better take advantage of the platform or are interested in knowing more about MLeRP before signing up, this webinar is for you. You can register for the webinar [here](https://ardc.edu.au/event/introducing-machine-learning-eresearch-platform-mlerp/).
+
+In preperation for the launch we've been making some updates to the documentation. We have added a new section of the documentation archiving [these release notes](/release.qmd). We have also made these release notes available [over RSS](https://docs.mlerp.cloud.edu.au/release.xml), so if like me you prefer to get your news through a feed aggregator rather than email you can now do that. We also updated our [home page](/index.qmd) to better acknowledge our collaborators and our [about page](/about.qmd) to better introduce the platform and what makes it different from other HPC offerings.
+
+We had some feedback that the Dask PyTorch tutorial was a too full on for users new to machine learning. We've now seperated out the Dask components into its own tutorial from the PyTorch adaptation tutorial to hopefully seperate out the concepts for easier onboarding. Please contact us if there are any aspects of the platform which could be better explained and we will work with you to develop new tutorials and documentation to support these usecases.
+
+We also made some updates to Strudel2 updated the app descriptions in Strudel2 and added a link back to the [compute](/compute.qmd) page to make it clearer the difference between the compute flavours. There is also a link through to the documentation in the footer now.
+
+The old DSKS specific Jupyter Lab has now been deprecated. If you haven't migrated to the new [Jupyter Lab app](https://docs.mlerp.cloud.edu.au/applications/strudel2.html#jupyter-lab) yet, you'll need to do that now. Through the app's `Conda Environment` dropdown, you will be able to access the DSKS environments, any other environments that we provide in the future, along with any environments you've created in `conda` or `mamba` installations that you maintain.
+
+Regards,  
+Mitchell Hargreaves
