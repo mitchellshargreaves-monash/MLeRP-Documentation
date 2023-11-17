@@ -3,7 +3,7 @@ title: Custom Conda Environments
 ---
 
 ## Introduction
-If our conda environments don't meet your needs, you can consider maintaining your own [miniconda](https://docs.conda.io/en/latest/miniconda.html) or [mambaforge](https://mamba.readthedocs.io/en/latest/index.html) installation in your home directory.
+If our conda environments don't meet your needs, you can consider maintaining your own [miniconda](https://docs.conda.io/en/latest/miniconda.html) or [mambaforge](https://mamba.readthedocs.io/en/latest/installation/mamba-installation.html) installation in your home directory.
 
 Please **DO NOT** install this environment as you would on your desktop.
 
