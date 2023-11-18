@@ -32,8 +32,8 @@ Flavours available:
   - 6 VCPUs
   - 32 GB RAM
 - Large Lion
-  - 6 VCPUs
-  - 32 GB RAM
+  - 8 VCPUs
+  - 64 GB RAM
 
 See our [tutorials](/tutorials/1_dask_slurm.ipynb) for more details and [this FAQ](/faq.qmd#how-much-compute-should-i-ask-for-with-my-slurmcluster) for advice on requesting resources through the Dask scheduler.
 
