@@ -370,44 +370,57 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>squeue</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
-               383   BigCats dask-wor mhar0048 PD       0:00      1 (None)
-               382   BigCats dask-wor mhar0048 PD       0:00      1 (None)
-               381   BigCats dask-wor mhar0048 PD       0:00      1 (None)
-               380   BigCats dask-wor mhar0048 PD       0:00      1 (None)
-               373   BigCats DSKS Jup andrewpe  R    1:48:56      1 mlerp-monash-node00
-               375   BigCats DSKS Jup mhar0048  R    1:15:17      1 mlerp-monash-node00</code></pre>
+               933   BigCats dask-wor mhar0048 PD       0:00      1 (None)
+               932   BigCats dask-wor mhar0048 PD       0:00      1 (None)
+               931   BigCats dask-wor mhar0048 PD       0:00      1 (None)
+               930   BigCats dask-wor mhar0048 PD       0:00      1 (None)
+               919   BigCats Jupyter  ramachap  R      51:44      1 mlerp-monash-node00
+               920   BigCats Jupyter  ramachap  R      47:22      1 mlerp-monash-node00
+               916   BigCats Jupyter    charla  R    5:02:19      1 mlerp-monash-node00</code></pre>
+</div>
+</div>
+<p>You can modify the output of <code>squeue</code> to work for you by passing in flags.</p>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>squeue <span class="op">--</span>me <span class="op">--</span><span class="bu">format</span> <span class="st">"%.8P %.15j %.8T %.10M %.12L %.4C %.7m %R %q"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>PARTITIO            NAME    STATE       TIME    TIME_LEFT CPUS MIN_MEM NODELIST(REASON) QOS
+ BigCats     dask-worker  RUNNING       0:00        30:00    8     60G mlerp-monash-node00 cheetah
+ BigCats     dask-worker  RUNNING       0:00        30:00    8     60G mlerp-monash-node00 cheetah
+ BigCats     dask-worker  RUNNING       0:00        30:00    8     60G mlerp-monash-node00 cheetah
+ BigCats     dask-worker  RUNNING       0:00        30:00    8     60G mlerp-monash-node00 cheetah</code></pre>
 </div>
 </div>
 <p>Alternatively, we can use the adapt method, which will let us scale out as we need the compute… and scale back when we’re idle letting others use the cluster.</p>
 <p>We reccommend that you use the adapt method while you’re actively developing your code so that you don’t need to worry about cleaning up after yourself. The scale method can be used when you’re ready to run longer tests with higher utilisation.</p>
-<div class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>cluster.adapt(minimum<span class="op">=</span><span class="dv">0</span>, maximum<span class="op">=</span>num_nodes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="3">
-<pre><code>&lt;distributed.deploy.adaptive.Adaptive at 0x7fd919ab7670&gt;</code></pre>
-</div>
-</div>
 <div class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># You may need to run this cell a few times while waiting for Dask to clean up</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>squeue</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>cluster.adapt(minimum<span class="op">=</span><span class="dv">0</span>, maximum<span class="op">=</span>num_nodes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<pre><code>&lt;distributed.deploy.adaptive.Adaptive at 0x7fcf13681270&gt;</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># You may need to run this cell a few times while waiting for Dask to clean up</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>squeue</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
-               373   BigCats DSKS Jup andrewpe  R    1:48:56      1 mlerp-monash-node00
-               380   BigCats dask-wor mhar0048  R       0:00      1 mlerp-monash-node00
-               381   BigCats dask-wor mhar0048  R       0:00      1 mlerp-monash-node00
-               382   BigCats dask-wor mhar0048  R       0:00      1 mlerp-monash-node00
-               383   BigCats dask-wor mhar0048  R       0:00      1 mlerp-monash-node00
-               375   BigCats DSKS Jup mhar0048  R    1:15:17      1 mlerp-monash-node00</code></pre>
+               919   BigCats Jupyter  ramachap  R      51:44      1 mlerp-monash-node00
+               920   BigCats Jupyter  ramachap  R      47:22      1 mlerp-monash-node00
+               930   BigCats dask-wor mhar0048  R       0:00      1 mlerp-monash-node00
+               931   BigCats dask-wor mhar0048  R       0:00      1 mlerp-monash-node00
+               932   BigCats dask-wor mhar0048  R       0:00      1 mlerp-monash-node00
+               933   BigCats dask-wor mhar0048  R       0:00      1 mlerp-monash-node00
+               916   BigCats Jupyter    charla  R    5:02:19      1 mlerp-monash-node00</code></pre>
 </div>
 </div>
 <p>Dask has a UI that will let you see how the tasks are being computed. You won’t be able to connect to this with your web browser but VSCode and Jupyter have extensions for you to connect to it.</p>
 <p>Use the loopback address: http://127.0.0.1:8787 (Adjust the port to the one listed when you make the client if needed)</p>
 <p>Now let’s define a dask array and perform some computation. Dask arrays are parallelised across your workers nodes so they can be greater than the size of one worker’s memory. Dask evaluates lazily, retuning ‘futures’ which record the tasks needed to be completed in the compute graph. They can be computed later for its value.</p>
 <p>Dask also has parallelised implementations of dataframes and collections of objects (called bags). These are written to be as similar as possible to familiar libraries like numpy, pandas and pyspark. You can read more about <a href="https://docs.dask.org/en/stable/array.html">arrays</a>, <a href="https://docs.dask.org/en/stable/dataframe.html">dataframes</a> and <a href="https://docs.dask.org/en/stable/bag.html">bags</a> with Dask’s documentation.</p>
-<div class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> dask.array <span class="im">as</span> da</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> da.random.random((<span class="dv">1000</span>, <span class="dv">1000</span>, <span class="dv">1000</span>))</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>x  <span class="co"># Note how the value of the array hasn't been computed yet</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="5">
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> dask.array <span class="im">as</span> da</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> da.random.random((<span class="dv">1000</span>, <span class="dv">1000</span>, <span class="dv">1000</span>))</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>x  <span class="co"># Note how the value of the array hasn't been computed yet</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
 <table data-quarto-postprocess="true" class="table table-sm table-striped small">
 <colgroup>
 <col style="width: 50%">
@@ -451,19 +464,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>You can check squeue while this is running to see the jobs dynamically spinning up to perform the computation.</p>
-<div class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">0</span>][<span class="dv">0</span>][:<span class="dv">10</span>].compute()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="8">
-<pre><code>array([0.15885921, 0.35993257, 0.08629273, 0.19472071, 0.76723019,
-       0.65067334, 0.33802127, 0.61253251, 0.37531874, 0.06273974])</code></pre>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">0</span>][<span class="dv">0</span>][:<span class="dv">10</span>].compute()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<pre><code>array([0.66750137, 0.25089681, 0.7443936 , 0.7159385 , 0.09395558,
+       0.86980697, 0.11161041, 0.28340384, 0.19653293, 0.69794351])</code></pre>
 </div>
 </div>
 <p>Finally, we can shut down the SLURMCluster now that we’re done with it.</p>
-<div class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Shut down the cluster</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>client.shutdown()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Shut down the cluster</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>client.shutdown()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>2023-08-21 02:44:02,335 - distributed.deploy.adaptive_core - INFO - Adaptive stop</code></pre>
+<pre><code>2023-11-23 05:05:33,925 - distributed.deploy.adaptive_core - INFO - Adaptive stop</code></pre>
 </div>
 </div>
 
