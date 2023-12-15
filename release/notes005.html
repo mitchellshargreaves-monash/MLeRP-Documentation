@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Mitchell Hargreaves">
+<meta name="dcterms.date" content="2023-12-15">
 
-<title>MLeRP User Guide Documentation - Custom Conda Environments</title>
+<title>MLeRP User Guide Documentation - Release Notes #5</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,40 +21,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -162,7 +130,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../applications/custom.html">Applications</a></li><li class="breadcrumb-item"><a href="../applications/custom.html">Custom Conda Environments</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Release Notes #5</li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -209,7 +177,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../applications/custom.html" class="sidebar-item-text sidebar-link active">
+  <a href="../applications/custom.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Custom Conda Environments</span></a>
   </div>
 </li>
@@ -315,33 +283,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a>
-  <ul class="collapse">
-  <li><a href="#conda-vs-mamba" id="toc-conda-vs-mamba" class="nav-link" data-scroll-target="#conda-vs-mamba">Conda vs Mamba</a></li>
-  </ul></li>
-  <li><a href="#installing-miniforge" id="toc-installing-miniforge" class="nav-link" data-scroll-target="#installing-miniforge">1. Installing miniforge</a></li>
-  <li><a href="#installing-your-packages" id="toc-installing-your-packages" class="nav-link" data-scroll-target="#installing-your-packages">2. Installing your packages</a></li>
-  <li><a href="#integrating-with-strudel2" id="toc-integrating-with-strudel2" class="nav-link" data-scroll-target="#integrating-with-strudel2">3. Integrating with Strudel2</a></li>
-  </ul>
-</nav>
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Custom Conda Environments</h1>
+<h1 class="title">Release Notes #5</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Mitchell Hargreaves </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">December 15, 2023</p>
+    </div>
+  </div>
   
     
   </div>
@@ -349,87 +317,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<section id="introduction" class="level2">
-<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<p>If our conda environments don’t meet your needs, you can consider maintaining your own <a href="https://docs.conda.io/en/latest/miniconda.html">miniconda</a> or <a href="https://mamba.readthedocs.io/en/latest/installation/mamba-installation.html">miniforge</a> installation in your home directory.</p>
-<p>Please <strong>BE CAREFUL</strong> when installing this environment and have a read of this page, even if you’ve worked with conda before.</p>
-<p>By default, this will initialise conda and modify your <code>~/.bashrc</code>, which can interfere negatively with the functionality of batch submissions. Furthermore, it may then not interact well with Strudel2 and our Jupyter App.</p>
-<section id="conda-vs-mamba" class="level3">
-<h3 class="anchored" data-anchor-id="conda-vs-mamba">Conda vs Mamba</h3>
-<p>Conda is often used as a standard for maintaining python datascience environments, but because of the complexity of the environments typically needed, the conda solver can be known to hang (for 20 minutes or longer) especially if trying to install into an existing complicated environment, only to report that it was unable to solve due to version conflicts.</p>
-<p>Mamba is a parallelised C++ rewrite of the slowest parts of conda, though while much faster (similar environments can solve in a minute or so), it can be unstable at times leading to unexpected errors.</p>
-<p>Since a mamba installation comes compatible with conda and acts as a dropin replacement, we recommend that you start with a mambaforge installation and then fall back on conda commands whenever mamba fails. Simply replace the <code>mamba</code> keyword with <code>conda</code>.</p>
-<p>In this tutorial we will cover installing a mambaforge environment.</p>
-</section>
-</section>
-<section id="installing-miniforge" class="level2">
-<h2 class="anchored" data-anchor-id="installing-miniforge">1. Installing miniforge</h2>
-<ol type="1">
-<li><p>Following the recommendations on <a href="https://mamba.readthedocs.io/en/latest/mamba-installation.html">mamba’s installation page</a>, we will be using the Miniforge distribution.</p></li>
-<li><p>Following the link through to the <a href="https://github.com/conda-forge/miniforge#mambaforge">download page</a>, copy the link for the following distribution:</p>
-<ul>
-<li>OS: Linux</li>
-<li>Architecture: x86_64 (amd64)</li>
-</ul></li>
-<li><p>Using the <a href="../applications/strudel2.html#terminal-jobs">Strudel2 terminal application</a> or your favourite terminal application using <a href="../connecting/ssossh.html">SSOSSH</a>, log into the cluster.</p></li>
-<li><p>Download the distribution to your home directory and run the installer</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Replace this URL with the one you copied</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://.../Miniforge3-Linux-x86_64.sh</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">bash</span> Miniforge3-Linux-x86_64.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p>Following the prompts from the installer:</p>
-<ol type="1">
-<li>Accept the license agreement</li>
-<li>Choose where you’d like your installation to be kept.<br>
-(By default your home directory)</li>
-</ol>
-<p>The installer will prompt you to initialise conda. This is <strong>NOT</strong> recommended.</p>
-<p>This will edit your <code>~/.bashrc</code> file so the environment will activate when you log in, which can lead to unexpected interactions with batch jobs on cluster like MLeRP.</p>
-<p>If you have done so by accident you can remove the additions to your <code>.bashrc</code> file manually (this is located in your home directory).</p></li>
-<li><p>You can now activate your environment using one of the following commands:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Absolute paths are preferred for batch jobs or config files</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> /path/to/install/...miniforge/bin/activate</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Relative paths may be more convenient in everyday usage</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> ./miniforge/bin/activate </span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># `.` works as a shorthand for the source command</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="bu">.</span> ./mambaforge/bin/activate </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-</ol>
-</section>
-<section id="installing-your-packages" class="level2">
-<h2 class="anchored" data-anchor-id="installing-your-packages">2. Installing your packages</h2>
-<p>Both mamba and conda environments are intended to leave their <code>base</code> environments untouched, so when maintaining your environments it is good practice to create a new one before installing any packages.</p>
-<p>To encourage reproducability it is recommended to use an <code>environment.yml</code> file to maintain your packages. If you’d like a reference, the recipes to our environments are stored in <code>/apps/conda-envs</code>.</p>
-<p>We have created the <code>custom.yml</code> recipe for you to use as a minimal install that will be compatible with our Strudel2 apps. Alternatively, you could opt to use one of our other environments as a starting point.</p>
-<ol type="1">
-<li><p>Copy your chosen environment file to your home directory and modify it to suit your requirements. Make sure to uncomment the <code>pip</code> section if you need <code>pip</code>to install packages.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> /apps/conda-envs/custom.yml ~/custom.yml</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nano</span> ~/custom.yml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p>Then create the environment off the file. If you didn’t change the envname in the last step, by default this will create an environment with the name ‘custom’.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> env create <span class="at">-f</span> ~/custom.yml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p>You can now activate the environment we’ve created whenever you need to work with your scripts.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># List all available environments</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env list</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Activate a selected environment</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate <span class="op">&lt;</span>environment_name<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p>You can then install packages manually if you’re still experimenting with new packages, or update your install with the environment file.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> install package_name</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install package_name</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> env update <span class="at">-f</span> custom.yml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-</ol>
-<p>Conda’s solver can result in different package versions if installing packages in a different order. Once you have confirmed which packages you need, it is good practice to work out an <code>environment.yml</code> that will build your environment in one command.</p>
-<p>Alternatively if your application requires multiple install stages, consider a script to build the environment so that your work is reproducible.</p>
-<p>For more details about environment file syntax, have a look at conda’s documentation on <a href="https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html">managing environments</a>.</p>
-</section>
-<section id="integrating-with-strudel2" class="level2">
-<h2 class="anchored" data-anchor-id="integrating-with-strudel2">3. Integrating with Strudel2</h2>
-<p>Our <a href="../applications/strudel2.html#jupyter-lab">Jupyter Lab</a> application should recognise the conda environment that has just been created and you will be able to select it from the environment dropdown. If the environment that you’re looking for is missing, check that its path is included in your <code>~/.conda/environments.txt</code> file in your home directory.</p>
-<p>If it’s missing, append the path to your environment to the bottom of the file.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> /path/to/your/environment <span class="op">&gt;&gt;</span> ~/.conda/environments.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Hello MLeRP users,</p>
+<p>In the weeks since launching the platform’s open beta, we have provisioned over 60 additional individual accounts for the system, bringing our total to almost 80 users which has certainly kept us busy! We have also provisioned 7 group allocations ranging in size from 2-6 members. As always, if you’d like to ammend your allocation’s quota or would like to consider a group allocation to collaborate with others, talk to us and we’ll see what we can do for you.</p>
+<p>Speaking of the launch, if you missed our launch webinar, the event was recorded and <a href="https://www.youtube.com/watch?v=iPUL7lb9tWU&amp;t=1s">is available here</a>. In it we discussed the guiding principles that we used when designing MLeRP along with an overview of the services that we offer as a part of the platform.</p>
+<p>To accommodate this increase in users we have expanded into a second file system, bringing our total file storage for user data up to 40 TB. As a part of this refactor, all users will have a link to their allocation from the home directory, meaning that your code will not need to change depnding on where your allocation actually sits.</p>
+<p>We also expanded our applications volume dramatically, now weighing in at 500 GB, to allow us to continue to bring you new installations of software. As a part of this migration we found that the original DSKS environment <code>dsks_2023.05</code> could not be rebuilt due to some of the packages being deprecated. If you need it to rerun some legacy code, this environment is still accessible as a <a href="https://conda.github.io/conda-pack/"><code>conda-pack</code></a> at <code>/apps/conda-packs/dsks_2023.05</code>. Note that we haven’t found a way to make a <code>conda-pack</code> work with our Jupyter App yet so this will only support scripts. If you need to convert your notebook into a script, consider using <a href="https://nbconvert.readthedocs.io/en/latest/index.html"><code>nbconvert</code></a> which is available in any of our DSKS environments.</p>
+<p>One of the new offerings we’ve developed with one of our users is a new conda environment for our Jupyter App that features the <a href="https://github.com/facebookresearch/detectron2">Detectron2</a> and <a href="https://github.com/facebookresearch/segment-anything">Segment Anything</a> packages by Facebook Research. You can view the full environment definition and package list <a href="../applications/environments/detectron-sam.html">here</a>.</p>
+<p>If you’ve been working on an environment that you think will be useful to others in your field you want to share with others on the platform, we want to hear from you. Let us know and we’ll help you make it available to everyone.</p>
+<p>If you’d like to work with software that we don’t currently have installed on the platform, that does not mean that we won’t be able to support you. It just means that you’ll need to be patient and willing to help blaze the path with us so that we can extend the functionality of the platform for you. You are also free to install anything into your allocation that only requires using user space. Sometimes this just means that rather than using <code>apt</code> or <code>apt-get</code> you will need to get the software from <code>conda-forge</code>.</p>
+<p>The increase in scale has also come with a new set of challanges, especially regarding the Strudel2 API. We apologise for the instability that some of you will have experienced in this time. We have since rolled out a new version of Strudel2 which should be more performant and robust, as well as adding additional safeguards to prevent the whole system coming down if some users encounter unexpected states.</p>
+<p>If you experience any unexpected behaviour from the file system, the Strudel2 web page or anywhere else on the system, do not hesitate to reach out to us and we will work with you to resolve the issue.</p>
+<p>Regards,<br>
+Mitchell Hargreaves</p>
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/iPUL7lb9tWU" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

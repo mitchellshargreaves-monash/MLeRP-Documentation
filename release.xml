@@ -10,7 +10,35 @@
 <atom:link href="https://docs.mlerp.cloud.edu.au/release.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.3.450</generator>
-<lastBuildDate>Fri, 10 Nov 2023 00:00:00 GMT</lastBuildDate>
+<lastBuildDate>Fri, 15 Dec 2023 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>Release Notes #5</title>
+  <dc:creator>Mitchell Hargreaves</dc:creator>
+  <link>https://docs.mlerp.cloud.edu.au/release/notes005.html</link>
+  <description><![CDATA[ 
+
+
+
+<p>Hello MLeRP users,</p>
+<p>In the weeks since launching the platform’s open beta, we have provisioned over 60 additional individual accounts for the system, bringing our total to almost 80 users which has certainly kept us busy! We have also provisioned 7 group allocations ranging in size from 2-6 members. As always, if you’d like to ammend your allocation’s quota or would like to consider a group allocation to collaborate with others, talk to us and we’ll see what we can do for you.</p>
+<p>Speaking of the launch, if you missed our launch webinar, the event was recorded and <a href="https://www.youtube.com/watch?v=iPUL7lb9tWU&amp;t=1s">is available here</a>. In it we discussed the guiding principles that we used when designing MLeRP along with an overview of the services that we offer as a part of the platform.</p>
+<p>To accommodate this increase in users we have expanded into a second file system, bringing our total file storage for user data up to 40 TB. As a part of this refactor, all users will have a link to their allocation from the home directory, meaning that your code will not need to change depnding on where your allocation actually sits.</p>
+<p>We also expanded our applications volume dramatically, now weighing in at 500 GB, to allow us to continue to bring you new installations of software. As a part of this migration we found that the original DSKS environment <code>dsks_2023.05</code> could not be rebuilt due to some of the packages being deprecated. If you need it to rerun some legacy code, this environment is still accessible as a <a href="https://conda.github.io/conda-pack/"><code>conda-pack</code></a> at <code>/apps/conda-packs/dsks_2023.05</code>. Note that we haven’t found a way to make a <code>conda-pack</code> work with our Jupyter App yet so this will only support scripts. If you need to convert your notebook into a script, consider using <a href="https://nbconvert.readthedocs.io/en/latest/index.html"><code>nbconvert</code></a> which is available in any of our DSKS environments.</p>
+<p>One of the new offerings we’ve developed with one of our users is a new conda environment for our Jupyter App that features the <a href="https://github.com/facebookresearch/detectron2">Detectron2</a> and <a href="https://github.com/facebookresearch/segment-anything">Segment Anything</a> packages by Facebook Research. You can view the full environment definition and package list <a href="../applications/environments/detectron-sam.html">here</a>.</p>
+<p>If you’ve been working on an environment that you think will be useful to others in your field you want to share with others on the platform, we want to hear from you. Let us know and we’ll help you make it available to everyone.</p>
+<p>If you’d like to work with software that we don’t currently have installed on the platform, that does not mean that we won’t be able to support you. It just means that you’ll need to be patient and willing to help blaze the path with us so that we can extend the functionality of the platform for you. You are also free to install anything into your allocation that only requires using user space. Sometimes this just means that rather than using <code>apt</code> or <code>apt-get</code> you will need to get the software from <code>conda-forge</code>.</p>
+<p>The increase in scale has also come with a new set of challanges, especially regarding the Strudel2 API. We apologise for the instability that some of you will have experienced in this time. We have since rolled out a new version of Strudel2 which should be more performant and robust, as well as adding additional safeguards to prevent the whole system coming down if some users encounter unexpected states.</p>
+<p>If you experience any unexpected behaviour from the file system, the Strudel2 web page or anywhere else on the system, do not hesitate to reach out to us and we will work with you to resolve the issue.</p>
+<p>Regards,<br>
+Mitchell Hargreaves</p>
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/iPUL7lb9tWU" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+
+
+
+ ]]></description>
+  <guid>https://docs.mlerp.cloud.edu.au/release/notes005.html</guid>
+  <pubDate>Fri, 15 Dec 2023 00:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Release Notes #4</title>
   <dc:creator>Mitchell Hargreaves</dc:creator>
