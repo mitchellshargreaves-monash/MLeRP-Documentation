@@ -1,0 +1,30 @@
+---
+title: "Release Notes #5"
+date: 2023-12-15
+author: Mitchell Hargreaves
+---
+
+Hello MLeRP users,
+
+In the weeks since launching the platform's open beta, we have provisioned over 60 additional individual accounts for the system, bringing our total to almost 80 users which has certainly kept us busy! We have also provisioned 7 group allocations ranging in size from 2-6 members. As always, if you'd like to ammend your allocation's quota or would like to consider a group allocation to collaborate with others, talk to us and we'll see what we can do for you.
+
+Speaking of the launch, if you missed our launch webinar, the event was recorded and [is available here](https://www.youtube.com/watch?v=iPUL7lb9tWU&t=1s). In it we discussed the guiding principles that we used when designing MLeRP along with an overview of the services that we offer as a part of the platform.
+
+To accommodate this increase in users we have expanded into a second file system, bringing our total file storage for user data up to 40 TB. As a part of this refactor, all users will have a link to their allocation from the `/home` directory, meaning that your code will not need to change depnding on where your allocation actually sits.
+
+We also expanded our applications volume dramatically, now weighing in at 500 GB, to allow us to continue to bring you new installations of software. As a part of this migration we found that the original DSKS environment `dsks_2023.05` could not be rebuilt due to some of the packages being deprecated. If you need it to rerun some legacy code, this environment is still accessible as a [`conda-pack`](https://conda.github.io/conda-pack/) at `/apps/conda-packs/dsks_2023.05`. Note that we haven't found a way to make a `conda-pack` work with our Jupyter App yet so this will only support scripts. If you need to convert your notebook into a script, consider using [`nbconvert`](https://nbconvert.readthedocs.io/en/latest/index.html) which is available in any of our DSKS environments.
+
+One of the new offerings we've developed with one of our users is a new conda environment for our Jupyter App that features the [Detectron2](https://github.com/facebookresearch/detectron2) and [Segment Anything](https://github.com/facebookresearch/segment-anything) packages by Facebook Research. You can view the full environment definition and package list [here](/applications/environments/detectron-sam.ipynb). 
+
+If you've been working on an environment that you think will be useful to others in your field you want to share with others on the platform, we want to hear from you. Let us know and we'll help you make it available to everyone. 
+
+If you'd like to work with software that we don't currently have installed on the platform, that does not mean that we won't be able to support you. It just means that you'll need to be patient and willing to help blaze the path with us so that we can extend the functionality of the platform for you. You are also free to install anything into your allocation that only requires using user space. Sometimes this just means that rather than using `apt` or `apt-get` you will need to get the software from `conda-forge`.
+
+The increase in scale has also come with a new set of challanges, especially regarding the Strudel2 API. We apologise for the instability that some of you will have experienced in this time. We have since rolled out a new version of Strudel2 which should be more performant and robust, as well as adding additional safeguards to prevent the whole system coming down if some users encounter unexpected states.
+
+If you experience any unexpected behaviour from the file system, the Strudel2 web page or anywhere else on the system, do not hesitate to reach out to us and we will work with you to resolve the issue.
+
+Regards,  
+Mitchell Hargreaves
+
+{{< video https://www.youtube.com/watch?v=iPUL7lb9tWU&t=1s >}}

@@ -3,11 +3,11 @@ title: Custom Conda Environments
 ---
 
 ## Introduction
-If our conda environments don't meet your needs, you can consider maintaining your own [miniconda](https://docs.conda.io/en/latest/miniconda.html) or [mambaforge](https://mamba.readthedocs.io/en/latest/installation/mamba-installation.html) installation in your home directory.
+If our conda environments don't meet your needs, you can consider maintaining your own [miniconda](https://docs.conda.io/en/latest/miniconda.html) or [miniforge](https://mamba.readthedocs.io/en/latest/installation/mamba-installation.html) installation in your home directory.
 
-Please **DO NOT** install this environment as you would on your desktop.
+Please **BE CAREFUL** when installing this environment and have a read of this page, even if you've worked with conda before.
 
-By default, this will initialise conda, which can interfere negatively with the functionality of batch submissions. Furthermore, it will then not interact with Strudel2.
+By default, this will initialise conda and modify your `~/.bashrc`, which can interfere negatively with the functionality of batch submissions. Furthermore, it may then not interact well with Strudel2 and our Jupyter App. 
 
 ### Conda vs Mamba
 Conda is often used as a standard for maintaining python datascience environments, but because of the complexity of the environments typically needed, the conda solver can be known to hang (for 20 minutes or longer) especially if trying to install into an existing complicated environment, only to report that it was unable to solve due to version conflicts. 
@@ -18,8 +18,8 @@ Since a mamba installation comes compatible with conda and acts as a dropin repl
 
 In this tutorial we will cover installing a mambaforge environment. 
 
-## 1. Installing mambaforge
-1. Following the recommendations on [mamba's installation page](https://mamba.readthedocs.io/en/latest/mamba-installation.html), we will be using the Mambaforge distribution.
+## 1. Installing miniforge
+1. Following the recommendations on [mamba's installation page](https://mamba.readthedocs.io/en/latest/mamba-installation.html), we will be using the Miniforge distribution.
 
 2. Following the link through to the [download page](https://github.com/conda-forge/miniforge#mambaforge), copy the link for the following distribution:
    - OS: Linux
@@ -30,8 +30,8 @@ In this tutorial we will cover installing a mambaforge environment.
 4. Download the distribution to your home directory and run the installer
    ```bash
    # Replace this URL with the one you copied
-   wget https://.../Mambaforge-Linux-x86_64.sh
-   bash Mambaforge-Linux-x86_64.sh
+   wget https://.../Miniforge3-Linux-x86_64.sh
+   bash Miniforge3-Linux-x86_64.sh
    ```
 
 5. Following the prompts from the installer:
@@ -49,10 +49,10 @@ In this tutorial we will cover installing a mambaforge environment.
    
    ```bash
    # Absolute paths are preferred for batch jobs or config files
-   source /path/to/install/...mambaforge/bin/activate
+   source /path/to/install/...miniforge/bin/activate
 
    # Relative paths may be more convenient in everyday usage
-   source ./mambaforge/bin/activate 
+   source ./miniforge/bin/activate 
    
    # `.` works as a shorthand for the source command
    . ./mambaforge/bin/activate 
@@ -63,22 +63,32 @@ Both mamba and conda environments are intended to leave their `base` environment
 
 To encourage reproducability it is recommended to use an `environment.yml` file to maintain your packages. If you'd like a reference, the recipes to our environments are stored in `/apps/conda-envs`. 
 
-We have created the `custom-base.yml` recipe for you to use as a minimal install that will be compatible with our Strudel2 apps. Alternatively, you could opt to use one of our other environments as a starting point.
+We have created the `custom.yml` recipe for you to use as a minimal install that will be compatible with our Strudel2 apps. Alternatively, you could opt to use one of our other environments as a starting point.
 
 1. Copy your chosen environment file to your home directory and modify it to suit your requirements. Make sure to uncomment the `pip` section if you need `pip`to install packages.
 
    ```bash
-   cp /apps/conda-envs/custom-base.yml ~/custom.yml
+   cp /apps/conda-envs/custom.yml ~/custom.yml
    nano ~/custom.yml
    ```
 
-2. Then create the environment off the file.
+2. Then create the environment off the file. If you didn't change the envname in the last step, by default this will create an environment with the name 'custom'.
    
     ```bash
    mamba env create -f ~/custom.yml
    ```
 
-3. You can then install packages manually if you're still experimenting with new packages, or update your install with the environment file.
+3. You can now activate the environment we've created whenever you need to work with your scripts.
+
+   ```bash
+   # List all available environments
+   conda env list
+
+   # Activate a selected environment
+   conda activate <environment_name>
+   ```
+
+4. You can then install packages manually if you're still experimenting with new packages, or update your install with the environment file.
 
    ```bash
    mamba install package_name
@@ -94,7 +104,9 @@ For more details about environment file syntax, have a look at conda's documenta
 
 ## 3. Integrating with Strudel2
 
-Our [Jupyter Lab](/applications/strudel2.qmd#jupyter-lab) application should recognise the conda environment that has just been created and you will be able to select it from the environment dropdown. If the environment that you're looking for is missing, check that its path is included in the `~/.conda/environments.txt` file in your home directory. If it's missing, append the path to your environment to the bottom of the file.
+Our [Jupyter Lab](/applications/strudel2.qmd#jupyter-lab) application should recognise the conda environment that has just been created and you will be able to select it from the environment dropdown. If the environment that you're looking for is missing, check that its path is included in your `~/.conda/environments.txt` file in your home directory. 
+
+If it's missing, append the path to your environment to the bottom of the file.
 
 ```bash
 echo /path/to/your/environment >> ~/.conda/environments.txt
