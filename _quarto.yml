@@ -37,7 +37,8 @@ website:
         file: index.qmd
       - text: "About"
         file: about.qmd
-      - compute.qmd
+      - text: "Hardware and QoS"
+        file: hardware.qmd
       - faq.qmd
       - section: "Applications"
         contents:

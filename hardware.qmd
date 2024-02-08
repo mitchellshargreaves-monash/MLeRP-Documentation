@@ -1,0 +1,101 @@
+---
+title: Hardware and Qualities of Service
+---
+
+MLeRP workloads are able to make use of the attached NVME on the compute nodes by writing to `/tmp`. These files will remain accessible for the course of your job.
+
+MLeRP is designed to be flexible. It is split into two partitions: `HouseCats` and `BigCats`.
+
+![](images/mlerp-monash-arch.drawio.png)
+
+### `HouseCats` Partition
+
+**Tabby QoS**
+
+The is where we expect most users to start their journey with us. The Tabby service is optimised for user friendliness by giving a GPU reservation which gives an experience similar to running a notebook on your own desktop or on Google Collab. Reservations are in limited supply, and restricted to the smallest sizes of GPUs, so we encourage users to move off this service once they become more comforatble with the platform and are ready to scale up their work.
+
+We reccommend the Tabby QoS terminals for managing environments as both conda and mamba are memory intensive processes, furthermore, some packages such as `py-xgboost-gpu` require a GPU to be present during install. 
+
+- Job type: GPU Reservations
+- Walltime: 24 hours
+- Job limit: 1
+- Strudel flavour:
+  - 6 VCPUs
+  - 56 GB RAM
+  - 10 GB VRAM GPU
+
+**Ideal for:**
+
+- Notebook based development
+- Data exploration
+- Data visualization
+- New users who just want to get started with minimal setup
+- Running terminal applications which need GPU access
+- Installing packages which require a GPU to be detectable
+
+
+### `BigCats` Partition
+
+#### **Panther QoS**
+
+The Panther QoS is restricted to CPU only work but features the longest walltime of any QoS on the MLeRP platform. This makes it a perfect choice as the host for a jupyter notebook that sends larger workloads out to Dask workers. It is also well suited towards any low compute work such as file system management.
+
+- Job type: CPU only notebooks or terminals
+- Walltime: 7 days
+- Job limit: 4
+- Strudel flavour:
+  - 4 VCPUs
+  - 8 GB RAM
+
+**Ideal for:**
+
+- Notebooks supported by Dask workers
+- Data processing
+- Rapid and flexible iteration during development
+- Experimenting with techniques
+- File management
+
+See our [tutorials](/tutorials/1_dask_slurm.ipynb) for more details and [this FAQ](/faq.qmd#how-much-compute-should-i-ask-for-with-my-slurmcluster) for advice on requesting resources through the Dask scheduler.
+
+
+#### **Cheetah QoS**
+
+The Cheetah QoS is optimised for work that can be split into many smaller jobs. Dask workers will default to using this queue allowing them to spin up quickly as its much easier to clear the resources for smaller short jobs than larger ones. The small walltime allows Cheetah jobs to be taken on by the cluster whenever there is room, allowing your workload to scale up and down and adapt to the 'weather' of the cluster. 
+
+This service is also suitable for any pre or post processing jobs which can be done on individual samples by batching your work to be handled in chunks rather than clearing the resources needed to process everything at once.
+
+- Job type: Short running dask workers or batch jobs
+- Walltime: 30 minutes
+- Job limit: 20
+- Strudel flavour:
+  - N/A
+
+**Ideal for:**
+
+- Dask workers
+- Data processing
+- Rapid and flexible iteration during development
+- Experimenting with techniques
+- File management
+
+
+#### **Lion QoS**
+
+The Lion QoS is for our power users. If you need to perform CPU intensive data processing, or if you need access to GPUs larger than what's available through the Tabby QoS, this service is for you. 
+
+This service is ideal for batch processing such as model training or hyperparamter sweeps. Alternatively, if you're working with large models, such as transformers, consider consider using this QoS to back your Dask workers instead to allow for longer lived jobs.
+
+If you would like to run a process that runs for more than the maximum walltime, checkpoint your work and submit multiple successive jobs.
+
+- Job type: Batch submission or CPU intensive work
+- Walltime: 24 hours
+- Job limit: 4
+- Strudel flavour:
+  - 8 VCPUs
+  - 64 GB RAM
+
+**Ideal for:**  
+
+- Model training
+- Heavy duty processing
+- Hyperparameter sweeps
