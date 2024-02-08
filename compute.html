@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>MLeRP User Guide Documentation - Compute</title>
+<title>MLeRP User Guide Documentation - Hardware</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -128,7 +128,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./compute.html">Compute</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./compute.html">Hardware</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -155,7 +155,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./compute.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Compute</span></a>
+ <span class="menu-text">Hardware</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -285,12 +285,8 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#monash" id="toc-monash" class="nav-link active" data-scroll-target="#monash">Monash</a>
-  <ul class="collapse">
+  <li><a href="#housecats-partition" id="toc-housecats-partition" class="nav-link active" data-scroll-target="#housecats-partition"><code>HouseCats</code> Partition</a></li>
   <li><a href="#bigcats-partition" id="toc-bigcats-partition" class="nav-link" data-scroll-target="#bigcats-partition"><code>BigCats</code> Partition</a></li>
-  <li><a href="#housecats-partition" id="toc-housecats-partition" class="nav-link" data-scroll-target="#housecats-partition"><code>HouseCats</code> Partition</a></li>
-  </ul></li>
-  <li><a href="#qcif" id="toc-qcif" class="nav-link" data-scroll-target="#qcif">QCIF</a></li>
   </ul>
 </nav>
     </div>
@@ -299,7 +295,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Compute</h1>
+<h1 class="title">Hardware</h1>
 </div>
 
 
@@ -314,103 +310,104 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>MLeRP is split into two regions - one based in Monash (Melbourne, Victoria) and one based in QCIF (Brisbane, Queensland). The clusters have seperate file systems and quotas are provisioned seperately, so you will have to transfer your files across if you’d like to switch regions.</p>
-<section id="monash" class="level2">
-<h2 class="anchored" data-anchor-id="monash">Monash</h2>
-<p>Monash workloads are able to make use of the attached NVME on the compute nodes by writing to <code>/tmp</code>. These files will remain accessible for the course of your job.</p>
-<p>The Monash region is designed to be flexible. It is split into two partitions: <code>BigCats</code> and <code>HouseCats</code>.</p>
+<p>MLeRP workloads are able to make use of the attached NVME on the compute nodes by writing to <code>/tmp</code>. These files will remain accessible for the course of your job.</p>
+<p>MLeRP is designed to be flexible. It is split into two partitions: <code>HouseCats</code> and <code>BigCats</code>.</p>
 <p><img src="images/mlerp-monash-arch.drawio.png" class="img-fluid"></p>
-<section id="bigcats-partition" class="level3">
-<h3 class="anchored" data-anchor-id="bigcats-partition"><code>BigCats</code> Partition</h3>
-<section id="cpu-notebooks-that-control-dask-workers" class="level4">
-<h4 class="anchored" data-anchor-id="cpu-notebooks-that-control-dask-workers"><strong>CPU notebooks that control Dask workers</strong></h4>
-<p>Lion QoS Notebook with Cheetah QoS Workers</p>
-<p>Ideal for:</p>
-<ul>
-<li>Data processing</li>
-<li>Rapid and flexible iteration during development</li>
-<li>Experimenting with techniques</li>
-</ul>
-<p>Flavours available:</p>
-<ul>
-<li>Small Lion
-<ul>
-<li>4 VCPUs</li>
-<li>16 GB RAM</li>
-</ul></li>
-<li>Medium Lion
-<ul>
-<li>6 VCPUs</li>
-<li>32 GB RAM</li>
-</ul></li>
-<li>Large Lion
-<ul>
-<li>8 VCPUs</li>
-<li>64 GB RAM</li>
-</ul></li>
-</ul>
-<p>See our <a href="./tutorials/1_dask_slurm.html">tutorials</a> for more details and <a href="./faq.html#how-much-compute-should-i-ask-for-with-my-slurmcluster">this FAQ</a> for advice on requesting resources through the Dask scheduler.</p>
-</section>
-<section id="batch-submission" class="level4">
-<h4 class="anchored" data-anchor-id="batch-submission"><strong>Batch submission</strong></h4>
-<p>Lion QoS Script</p>
-<p>Ideal for:</p>
-<ul>
-<li>Model training</li>
-<li>Heavy duty processing</li>
-<li>Hyperparameter sweeps</li>
-</ul>
-</section>
-</section>
 <section id="housecats-partition" class="level3">
 <h3 class="anchored" data-anchor-id="housecats-partition"><code>HouseCats</code> Partition</h3>
-<section id="notebooks-with-gpu-compute" class="level4">
-<h4 class="anchored" data-anchor-id="notebooks-with-gpu-compute"><strong>Notebooks with GPU compute</strong></h4>
-<p>Tabby QoS Notebook</p>
-<p>Ideal for:</p>
+<p><strong>Tabby QoS</strong></p>
+<p>The is where we expect most users to start their journey with us. The Tabby service is optimised for user friendliness by giving a GPU reservation which gives an experience similar to running a notebook on your own desktop or on Google Collab. Reservations are in limited supply, and restricted to the smallest sizes of GPUs, so we encourage users to move off this service once they become more comforatble with the platform and are ready to scale up their work.</p>
 <ul>
-<li>Data exploration</li>
-<li>Data visualization</li>
-<li>New users who just want to get started with minimal setup</li>
-</ul>
-<p>Flavours available:</p>
-<ul>
-<li>Tabby
+<li>Job type: GPU Reservations</li>
+<li>Walltime: 24 hours</li>
+<li>Job limit: 1</li>
+<li>Strudel flavour:
 <ul>
 <li>6 VCPUs</li>
 <li>56 GB RAM</li>
 <li>10 GB VRAM GPU</li>
 </ul></li>
 </ul>
-</section>
-</section>
-</section>
-<section id="qcif" class="level2">
-<h2 class="anchored" data-anchor-id="qcif">QCIF</h2>
-<p>The QCIF region uses a more traditional approach with A100 GPU enabled notebook or terminal sessions. This user experience is much closer to using a service like Google Colab, but with a permanent file system.</p>
-<p>GPU notebook or terminal sessions in three sizes:</p>
+<p><strong>Ideal for:</strong></p>
 <ul>
-<li>Regular
+<li>Notebook based development</li>
+<li>Data exploration</li>
+<li>Data visualization</li>
+<li>New users who just want to get started with minimal setup</li>
+<li>Running terminal applications which need GPU access</li>
+<li>Installing packages which require a GPU to be detectable</li>
+</ul>
+</section>
+<section id="bigcats-partition" class="level3">
+<h3 class="anchored" data-anchor-id="bigcats-partition"><code>BigCats</code> Partition</h3>
+<section id="panther-qos" class="level4">
+<h4 class="anchored" data-anchor-id="panther-qos"><strong>Panther QoS</strong></h4>
+<p>The Panther QoS is restricted to CPU only work but features the longest walltime of any QoS on the MLeRP platform. This makes it a perfect choice as the host for a jupyter notebook that sends larger workloads out to Dask workers. It is also well suited towards any low compute work such as file system management.</p>
 <ul>
-<li>20 VCPUs</li>
-<li>190 GB RAM</li>
+<li>Job type: CPU only notebooks or terminals</li>
+<li>Walltime: 7 days</li>
+<li>Job limit: 4</li>
+<li>Strudel flavour:
+<ul>
+<li>4 VCPUs</li>
+<li>56 GB RAM</li>
 <li>10 GB VRAM GPU</li>
 </ul></li>
-<li>Double
+</ul>
+<p><strong>Ideal for:</strong></p>
 <ul>
-<li>20 VCPUs</li>
-<li>190 GB RAM</li>
-<li>20 GB VRAM GPU</li>
-</ul></li>
-<li>Node
+<li>Notebooks supported by Dask workers</li>
+<li>Data processing</li>
+<li>Rapid and flexible iteration during development</li>
+<li>Experimenting with techniques</li>
+<li>File management</li>
+</ul>
+<p>See our <a href="./tutorials/1_dask_slurm.html">tutorials</a> for more details and <a href="./faq.html#how-much-compute-should-i-ask-for-with-my-slurmcluster">this FAQ</a> for advice on requesting resources through the Dask scheduler.</p>
+</section>
+<section id="cheetah-qos" class="level4">
+<h4 class="anchored" data-anchor-id="cheetah-qos"><strong>Cheetah QoS</strong></h4>
+<p>The Cheetah QoS is optimised for work that can be split into many smaller jobs. Dask workers will default to using this queue allowing them to spin up quickly as its much easier to clear the resources for smaller short jobs than larger ones. The small walltime allows Cheetah jobs to be taken on by the cluster whenever there is room, allowing your workload to scale up and down and adapt to the ‘weather’ of the cluster.</p>
+<p>This service is also suitable for any pre or post processing jobs which can be done on individual samples by batching your work to be handled in chunks rather than clearing the resources needed to process everything at once.</p>
 <ul>
-<li>60 VCPUs</li>
-<li>570 GB RAM</li>
-<li>2x 10 GB VRAM GPU + 1x 20 GB VRAM GPU</li>
+<li>Job type: Short running dask workers or batch jobs</li>
+<li>Walltime: 30 minutes</li>
+<li>Job limit: 20</li>
+<li>Strudel flavour:
+<ul>
+<li>N/A</li>
 </ul></li>
+</ul>
+<p>Ideal for:</p>
+<ul>
+<li>Dask workers</li>
+<li>Data processing</li>
+<li>Rapid and flexible iteration during development</li>
+<li>Experimenting with techniques</li>
+<li>File management</li>
+</ul>
+<p><strong>Lion QoS</strong></p>
+<p>The Lion QoS is for our power users. It</p>
+<p>Both conda and mamba are memory intensive processes, so use Lion QoS terminal when creating your environment. Some packages, such as <code>py-xgboost-gpu</code> require a GPU to be present during install, which requires a Tabby QoS terminal.</p>
+<ul>
+<li>Job type: Batch submission or CPU intensive work</li>
+<li>Walltime: 24 hours</li>
+<li>Job limit: 4</li>
+<li>Strudel flavour:
+<ul>
+<li>4 VCPUs</li>
+<li>56 GB RAM</li>
+<li>10 GB VRAM GPU</li>
+</ul></li>
+</ul>
+<p>Ideal for:</p>
+<ul>
+<li>Model training</li>
+<li>Heavy duty processing</li>
+<li>Hyperparameter sweeps</li>
 </ul>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

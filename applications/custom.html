@@ -188,8 +188,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../compute.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Compute</span></a>
+  <a href="../hardware.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Hardware and QoS</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -353,13 +353,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
 <p>If our conda environments don’t meet your needs, you can consider maintaining your own <a href="https://docs.conda.io/en/latest/miniconda.html">miniconda</a> or <a href="https://mamba.readthedocs.io/en/latest/installation/mamba-installation.html">miniforge</a> installation in your home directory.</p>
 <p>Please <strong>BE CAREFUL</strong> when installing this environment and have a read of this page, even if you’ve worked with conda before.</p>
-<p>By default, this will initialise conda and modify your <code>~/.bashrc</code>, which can interfere negatively with the functionality of batch submissions. Furthermore, it may then not interact well with Strudel2 and our Jupyter App.</p>
+<p>By default, this will initialise conda and modify your <code>~/.bashrc</code> to activate the environment by default, which can lead to unexpected behaviour in our Strudel2 apps and batch submissions.</p>
+<p>We reccommend the Tabby QoS terminals for managing environments as both conda and mamba are memory intensive processes, furthermore, some packages such as <code>py-xgboost-gpu</code> require a GPU to be present during install.</p>
 <section id="conda-vs-mamba" class="level3">
 <h3 class="anchored" data-anchor-id="conda-vs-mamba">Conda vs Mamba</h3>
 <p>Conda is often used as a standard for maintaining python datascience environments, but because of the complexity of the environments typically needed, the conda solver can be known to hang (for 20 minutes or longer) especially if trying to install into an existing complicated environment, only to report that it was unable to solve due to version conflicts.</p>
 <p>Mamba is a parallelised C++ rewrite of the slowest parts of conda, though while much faster (similar environments can solve in a minute or so), it can be unstable at times leading to unexpected errors.</p>
 <p>Since a mamba installation comes compatible with conda and acts as a dropin replacement, we recommend that you start with a mambaforge installation and then fall back on conda commands whenever mamba fails. Simply replace the <code>mamba</code> keyword with <code>conda</code>.</p>
-<p>In this tutorial we will cover installing a mambaforge environment.</p>
+<p>In this tutorial we will cover installing a mamba environment.</p>
 </section>
 </section>
 <section id="installing-miniforge" class="level2">
