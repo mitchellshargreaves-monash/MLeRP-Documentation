@@ -28,35 +28,6 @@ That said we believe that this approach of submitting jobs through a python note
 
 You will also be able to work with the cluster without needing to convert your experimental notebook code into a script and maintain the environment with modules like with a traditional cluster.
 
-### How much compute should I ask for with my `SLURMCluster`?
-Unfortunately there is no one size fits all answer to this question. Every research problem has its on demands and constraints so this a bit like asking 'How long is a piece of string?'
-
-If your work is primarily CPU bound, Dask allows as many tasks as you have CPU cores, but if you are using GPUs you may want to dramatically limit this. One process per GPU could be a good place to start.
-
-Our GPU compute is split into `10 GiB` and `20 GiB` sizes and they are on nodes with 640 GiB RAM. If you need a larger GPU flavour for your research, contact us at `{{< var email >}}`.
-
-Here are some default jobs sizes to consider:
-
-Small GPU: 
-
-`SLURMCluster(memory="64g", processes=1, cores=8, job_extra_directives=["--gres=gpu:10g:1"])`
-
-Multi GPU: 
-
-`SLURMCluster(memory="128g", processes=1, cores=8, job_extra_directives=["--gres=gpu:10g:2"])`
-
-Medium GPU: 
-
-`SLURMCluster(memory="128g", processes=1, cores=8, job_extra_directives=["--gres=gpu:20g:1"])`
-
-Large CPU workload:
-
-`SLURMCluster(memory="64g", processes=16, cores=16)`
-
-CPU multiprocessing (increase the scale appropriately with `cluster.adapt`):
-
-`SLURMCluster(memory="4g", processes=1, cores=1)`
-
 ### Why aren't my print statements showing up in my jobs?
 Print statements that are executed on remote machines won't show up in your notebook. If you are using print statements for debugging, consider using a `LocalCluster` where they will behave as expected. 
 

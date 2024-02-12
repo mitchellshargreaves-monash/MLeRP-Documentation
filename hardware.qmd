@@ -8,11 +8,13 @@ MLeRP is designed to be flexible. It is split into two partitions: `HouseCats` a
 
 ![](images/mlerp-monash-arch.drawio.png)
 
+The `HouseCats` is optimised for user friendliness, featuring GPU reservations. However, reservations are in limited supply, and restricted to the smallest sizes of GPUs. Once users become more comforatble with the platform and are ready to scale up their work, we encourage users to move to the `BigCats` partition which features larger GPU sizes and more flexible and powerful ways to interact with the cluster.
+
 ### `HouseCats` Partition
 
 **Tabby QoS**
 
-The is where we expect most users to start their journey with us. The Tabby service is optimised for user friendliness by giving a GPU reservation which gives an experience similar to running a notebook on your own desktop or on Google Collab. Reservations are in limited supply, and restricted to the smallest sizes of GPUs, so we encourage users to move off this service once they become more comforatble with the platform and are ready to scale up their work.
+The is where we expect most users to start their journey with us. The Tabby service is optimised for user friendliness by giving a GPU reservation which gives an experience similar to running a notebook on your own desktop or on Google Collab. 
 
 We reccommend the Tabby QoS terminals for managing environments as both conda and mamba are memory intensive processes, furthermore, some packages such as `py-xgboost-gpu` require a GPU to be present during install. 
 
@@ -64,6 +66,8 @@ The Cheetah QoS is optimised for work that can be split into many smaller jobs. 
 
 This service is also suitable for any pre or post processing jobs which can be done on individual samples by batching your work to be handled in chunks rather than clearing the resources needed to process everything at once.
 
+Since Cheetah QoS jobs are intended to be short lived, ensure that you are checkpointing your work periodically so that in the event that your worker needs to be restarted you can resume your work with minimal interuption.
+
 - Job type: Short running dask workers or batch jobs
 - Walltime: 30 minutes
 - Job limit: 20
@@ -74,9 +78,6 @@ This service is also suitable for any pre or post processing jobs which can be d
 
 - Dask workers
 - Data processing
-- Rapid and flexible iteration during development
-- Experimenting with techniques
-- File management
 
 
 #### **Lion QoS**
@@ -96,6 +97,93 @@ If you would like to run a process that runs for more than the maximum walltime,
 
 **Ideal for:**  
 
+- Dask workers for larger models (eg transformers)
 - Model training
 - Heavy duty processing
 - Hyperparameter sweeps
+
+
+### Estimating your job requirements
+
+By default, when submitting a job outside of Strudel, such as with a Dask SLURMCluster or through SBATCH submission, our cluster will provide you with 12 CPUs / GPU and 8 GB RAM / CPU. If unspecified, jobs will be submitted to the Cheetah QoS with a walltime of 30 minutes.
+
+Every research problem has its own demands and constraints, so you'll need to adapt your cluster to suit your use case. If your work is primarily CPU bound, Dask allows as many tasks as you have CPU cores, but if you are using GPUs you may want to dramatically limit this. One process per GPU could be a good place to start.
+
+#### **Configuring your Dask `SLURMCluster`**
+
+Dask SLURMClusters give you the ability to send individual cells of your notebook to be evaluated by the SLURM queue, which gives you access to the full power of the cluster from the convenience of your notebook.
+
+You can start a Dask `SLURMCluster` from your notebook with this code snippet:
+```
+from dask_jobqueue import SLURMCluster
+from distributed import Client
+
+# Point Dask to the SLURM to use as it's back end
+cluster = SLURMCluster(
+    <cluster configurations>
+)
+
+cluster.adapt(<number of workers>)
+client = Client(cluster)
+```
+
+The `cluster.adapt` method allows your `SLURMCluster` to grow and shrink to your notebook's demands. This is perfect while you're still developing your code since the resources can be released back into the pool while you're editing your code and requested again once you're ready to run.
+
+The `cluster.scale` method can be used instead to keep your `SLURMCluster` at a fixed size instead. If you have finished developing your code and want to run your model's training consider switching to this instead as it will lead to a more stable experience.
+
+**Here are some example cluster configurations for you to consider:**
+
+Small GPU:  
+`SLURMCluster(memory="48g", processes=1, cores=6, job_extra_directives=["--gres=gpu:2g.10gb:1"])`
+
+Multi GPU:  
+`SLURMCluster(memory="96g", processes=1, cores=12, job_extra_directives=["--gres=gpu:2g.10gb:2"])`
+
+Medium GPU:  
+`SLURMCluster(memory="96g", processes=1, cores=12, job_extra_directives=["--gres=gpu:3g.20gb:1"])`
+
+Half Node\*:  
+`SLURMCluster(memory="192", processes=1, cores=24, job_extra_directives=["--gres=gpu:40gb:1", "--qos=lion"])`  
+* Lion QoS as the backend as we'll need longer lived jobs to work with this scale of compute
+
+Large CPU:  
+`SLURMCluster(memory="64g", processes=16, cores=16)`
+
+CPU multiprocessing\*:  
+`SLURMCluster(memory="4g", processes=1, cores=1)`  
+* increase the scale appropriately with `cluster.adapt`
+
+Please have a read of our tutorials for more info on [Dask `SLURMClusters`](/tutorials/2_dask_offloading.ipynb) in the MLeRP environment.
+
+### Batch submission
+
+If you have finished developing the code for your model and you are ready to train, batch submission may be more appropriate than notebook development as the execution of your training will not be dependent on your browser's connection.
+
+This will involve submitting an sbatch script such as the one below:
+
+```bash
+#!/bin/bash
+#SBATCH --job-name=<job name>
+#SBATCH --account=<your MLeRP username>
+#SBATCH --time=<walltime (max 24:00:00)>
+#SBATCH --ntasks=<number of processes>
+#SBATCH --cpus-per-task=1
+#SBATCH --gres=gpu:<size of gpu>:<number of gpus>
+#SBATCH --partition=BigCats
+#SBATCH --qos=lion
+
+. /path/to/conda/environment/bin/activate
+python script.py
+```
+
+Now, you can submit this job to the cluster:
+
+```bash
+sbatch <options> /path/to/sbatch/script
+```
+
+If you submit a job by mistake, or would like to terminate it early, you can cancel a job:
+
+```bash
+scancel jobid
+```
