@@ -453,33 +453,39 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h4 class="anchored" data-anchor-id="configuring-your-dask-slurmcluster"><strong>Configuring your Dask <code>SLURMCluster</code></strong></h4>
 <p>Dask SLURMClusters give you the ability to send individual cells of your notebook to be evaluated by the SLURM queue, which gives you access to the full power of the cluster from the convenience of your notebook.</p>
 <p>You can start a Dask <code>SLURMCluster</code> from your notebook with this code snippet:</p>
-<pre><code>from dask_jobqueue import SLURMCluster
-from distributed import Client
-
-# Point Dask to the SLURM to use as it's back end
-cluster = SLURMCluster(
-    &lt;cluster configurations&gt;
-)
-
-cluster.adapt(&lt;number of workers&gt;)
-client = Client(cluster)</code></pre>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dask_jobqueue <span class="im">import</span> SLURMCluster</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> distributed <span class="im">import</span> Client</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Point Dask to the SLURM to use as it's back end</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>cluster <span class="op">=</span> SLURMCluster(</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">&lt;</span>cluster configurations<span class="op">&gt;</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>cluster.adapt(<span class="op">&lt;</span>number of workers<span class="op">&gt;</span>)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>client <span class="op">=</span> Client(cluster)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The <code>cluster.adapt</code> method allows your <code>SLURMCluster</code> to grow and shrink to your notebook’s demands. This is perfect while you’re still developing your code since the resources can be released back into the pool while you’re editing your code and requested again once you’re ready to run.</p>
 <p>The <code>cluster.scale</code> method can be used instead to keep your <code>SLURMCluster</code> at a fixed size instead. If you have finished developing your code and want to run your model’s training consider switching to this instead as it will lead to a more stable experience.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>cluster.scale(<span class="op">&lt;</span>number of workers<span class="op">&gt;</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>client <span class="op">=</span> Client(cluster)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Here are some example cluster configurations for you to consider:</strong></p>
-<p>Small GPU:<br>
-<code>SLURMCluster(memory="48g", processes=1, cores=6, job_extra_directives=["--gres=gpu:2g.10gb:1"])</code></p>
-<p>Multi GPU:<br>
-<code>SLURMCluster(memory="96g", processes=1, cores=12, job_extra_directives=["--gres=gpu:2g.10gb:2"])</code></p>
-<p>Medium GPU:<br>
-<code>SLURMCluster(memory="96g", processes=1, cores=12, job_extra_directives=["--gres=gpu:3g.20gb:1"])</code></p>
-<p>Half Node*:<br>
-<code>SLURMCluster(memory="192", processes=1, cores=24, job_extra_directives=["--gres=gpu:40gb:1", "--qos=lion"])</code><br>
-* Lion QoS as the backend as we’ll need longer lived jobs to work with this scale of compute</p>
-<p>Large CPU:<br>
-<code>SLURMCluster(memory="64g", processes=16, cores=16)</code></p>
-<p>CPU multiprocessing*:<br>
-<code>SLURMCluster(memory="4g", processes=1, cores=1)</code><br>
-* increase the scale appropriately with <code>cluster.adapt</code></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Small GPU</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>SLURMCluster(memory<span class="op">=</span><span class="st">"48g"</span>, processes<span class="op">=</span><span class="dv">1</span>, cores<span class="op">=</span><span class="dv">6</span>, job_extra_directives<span class="op">=</span>[<span class="st">"--gres=gpu:2g.10gb:1"</span>])</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Multi GPU</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>SLURMCluster(memory<span class="op">=</span><span class="st">"96g"</span>, processes<span class="op">=</span><span class="dv">1</span>, cores<span class="op">=</span><span class="dv">12</span>, job_extra_directives<span class="op">=</span>[<span class="st">"--gres=gpu:2g.10gb:2"</span>])</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Medium GPU</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>SLURMCluster(memory<span class="op">=</span><span class="st">"96g"</span>, processes<span class="op">=</span><span class="dv">1</span>, cores<span class="op">=</span><span class="dv">12</span>, job_extra_directives<span class="op">=</span>[<span class="st">"--gres=gpu:3g.20gb:1"</span>])</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Half Node:</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co"># * Lion QoS as the backend as we'll need longer lived jobs to work with this scale of compute</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>SLURMCluster(memory<span class="op">=</span><span class="st">"192"</span>, processes<span class="op">=</span><span class="dv">1</span>, cores<span class="op">=</span><span class="dv">24</span>, job_extra_directives<span class="op">=</span>[<span class="st">"--gres=gpu:40gb:1"</span>, <span class="st">"--qos=lion"</span>])  </span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Large CPU</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>SLURMCluster(memory<span class="op">=</span><span class="st">"64g"</span>, processes<span class="op">=</span><span class="dv">16</span>, cores<span class="op">=</span><span class="dv">16</span>)</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="co"># CPU multiprocessing</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>SLURMCluster(memory<span class="op">=</span><span class="st">"4g"</span>, processes<span class="op">=</span><span class="dv">1</span>, cores<span class="op">=</span><span class="dv">1</span>)  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Please have a read of our tutorials for more info on <a href="./tutorials/2_dask_offloading.html">Dask <code>SLURMClusters</code></a> in the MLeRP environment.</p>
 </section>
 </section>
@@ -487,22 +493,22 @@ client = Client(cluster)</code></pre>
 <h3 class="anchored" data-anchor-id="batch-submission">Batch submission</h3>
 <p>If you have finished developing the code for your model and you are ready to train, batch submission may be more appropriate than notebook development as the execution of your training will not be dependent on your browser’s connection.</p>
 <p>This will involve submitting an sbatch script such as the one below:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --job-name=&lt;job name&gt;</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --account=&lt;your MLeRP username&gt;</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --time=&lt;walltime (max 24:00:00)&gt;</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --ntasks=&lt;number of processes&gt;</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --cpus-per-task=1</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --gres=gpu:&lt;size of gpu&gt;:&lt;number of gpus&gt;</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --partition=BigCats</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --qos=lion</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="bu">.</span> /path/to/conda/environment/bin/activate</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> script.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --job-name=&lt;job name&gt;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --account=&lt;your MLeRP username&gt;</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --time=&lt;walltime (max 24:00:00)&gt;</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --ntasks=&lt;number of processes&gt;</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --cpus-per-task=1</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --gres=gpu:&lt;size of gpu&gt;:&lt;number of gpus&gt;</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --partition=BigCats</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --qos=lion</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="bu">.</span> /path/to/conda/environment/bin/activate</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> script.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Now, you can submit this job to the cluster:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sbatch</span> <span class="op">&lt;</span>options<span class="op">&gt;</span> /path/to/sbatch/script</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sbatch</span> <span class="op">&lt;</span>options<span class="op">&gt;</span> /path/to/sbatch/script</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>If you submit a job by mistake, or would like to terminate it early, you can cancel a job:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">scancel</span> jobid</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">scancel</span> jobid</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 </section>
