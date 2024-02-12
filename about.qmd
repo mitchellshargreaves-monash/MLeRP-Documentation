@@ -41,7 +41,7 @@ Notebooks attached directly to reserved GPU compute for 10 GB instances are avai
 
 We expect new users to start their projects with notebooks using direct GPU reservation, then move to notebooks backed by Dask SLURMClusters when they need the extra power. Finally, once they have finished writing their applications and are ready to train their models, they can submit their experiments to the SLURM queue.
 
-For more information about MLeRP's regions and compute, have a read of [this page](/compute.qmd).
+For more information about MLeRP's regions and compute, have a read of [this page](/hardware.qmd).
 
 ### What is the advantage of Dask SLURMClusters over direct GPU reservations?
 Dask has the ability to offload individual python functions to another device, once complete the result is then passed back to the parent notebook. Any errors that occur during the process will be forwarded to the notebook just like running things locally, making things more intuitive to debug than a submitted script. This allows the user to write asynchronous code that doesn't tie up the main computing device and only access it when needed, allowing the platform to serve more users at once. This adds an overhead to the process - the offloading doesn't happen for free, but it does allow greater flexibility in how the code is written.
