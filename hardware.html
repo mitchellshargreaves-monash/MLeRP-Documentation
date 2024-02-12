@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -287,6 +321,8 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#housecats-partition" id="toc-housecats-partition" class="nav-link active" data-scroll-target="#housecats-partition"><code>HouseCats</code> Partition</a></li>
   <li><a href="#bigcats-partition" id="toc-bigcats-partition" class="nav-link" data-scroll-target="#bigcats-partition"><code>BigCats</code> Partition</a></li>
+  <li><a href="#estimating-your-job-requirements" id="toc-estimating-your-job-requirements" class="nav-link" data-scroll-target="#estimating-your-job-requirements">Estimating your job requirements</a></li>
+  <li><a href="#batch-submission" id="toc-batch-submission" class="nav-link" data-scroll-target="#batch-submission">Batch submission</a></li>
   </ul>
 </nav>
     </div>
@@ -313,10 +349,11 @@ ul.task-list li input[type="checkbox"] {
 <p>MLeRP workloads are able to make use of the attached NVME on the compute nodes by writing to <code>/tmp</code>. These files will remain accessible for the course of your job.</p>
 <p>MLeRP is designed to be flexible. It is split into two partitions: <code>HouseCats</code> and <code>BigCats</code>.</p>
 <p><img src="images/mlerp-monash-arch.drawio.png" class="img-fluid"></p>
+<p>The <code>HouseCats</code> is optimised for user friendliness, featuring GPU reservations. However, reservations are in limited supply, and restricted to the smallest sizes of GPUs. Once users become more comforatble with the platform and are ready to scale up their work, we encourage users to move to the <code>BigCats</code> partition which features larger GPU sizes and more flexible and powerful ways to interact with the cluster.</p>
 <section id="housecats-partition" class="level3">
 <h3 class="anchored" data-anchor-id="housecats-partition"><code>HouseCats</code> Partition</h3>
 <p><strong>Tabby QoS</strong></p>
-<p>The is where we expect most users to start their journey with us. The Tabby service is optimised for user friendliness by giving a GPU reservation which gives an experience similar to running a notebook on your own desktop or on Google Collab. Reservations are in limited supply, and restricted to the smallest sizes of GPUs, so we encourage users to move off this service once they become more comforatble with the platform and are ready to scale up their work.</p>
+<p>The is where we expect most users to start their journey with us. The Tabby service is optimised for user friendliness by giving a GPU reservation which gives an experience similar to running a notebook on your own desktop or on Google Collab.</p>
 <p>We reccommend the Tabby QoS terminals for managing environments as both conda and mamba are memory intensive processes, furthermore, some packages such as <code>py-xgboost-gpu</code> require a GPU to be present during install.</p>
 <ul>
 <li>Job type: GPU Reservations</li>
@@ -368,6 +405,7 @@ ul.task-list li input[type="checkbox"] {
 <h4 class="anchored" data-anchor-id="cheetah-qos"><strong>Cheetah QoS</strong></h4>
 <p>The Cheetah QoS is optimised for work that can be split into many smaller jobs. Dask workers will default to using this queue allowing them to spin up quickly as its much easier to clear the resources for smaller short jobs than larger ones. The small walltime allows Cheetah jobs to be taken on by the cluster whenever there is room, allowing your workload to scale up and down and adapt to the ‘weather’ of the cluster.</p>
 <p>This service is also suitable for any pre or post processing jobs which can be done on individual samples by batching your work to be handled in chunks rather than clearing the resources needed to process everything at once.</p>
+<p>Since Cheetah QoS jobs are intended to be short lived, ensure that you are checkpointing your work periodically so that in the event that your worker needs to be restarted you can resume your work with minimal interuption.</p>
 <ul>
 <li>Job type: Short running dask workers or batch jobs</li>
 <li>Walltime: 30 minutes</li>
@@ -400,13 +438,73 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <p><strong>Ideal for:</strong></p>
 <ul>
+<li>Dask workers for larger models (eg transformers)</li>
 <li>Model training</li>
 <li>Heavy duty processing</li>
 <li>Hyperparameter sweeps</li>
 </ul>
-
-
 </section>
+</section>
+<section id="estimating-your-job-requirements" class="level3">
+<h3 class="anchored" data-anchor-id="estimating-your-job-requirements">Estimating your job requirements</h3>
+<p>By default, when submitting a job outside of Strudel, such as with a Dask SLURMCluster or through SBATCH submission, our cluster will provide you with 12 CPUs / GPU and 8 GB RAM / CPU. If unspecified, jobs will be submitted to the Cheetah QoS with a walltime of 30 minutes.</p>
+<p>Every research problem has its own demands and constraints, so you’ll need to adapt your cluster to suit your use case. If your work is primarily CPU bound, Dask allows as many tasks as you have CPU cores, but if you are using GPUs you may want to dramatically limit this. One process per GPU could be a good place to start.</p>
+<section id="configuring-your-dask-slurmcluster" class="level4">
+<h4 class="anchored" data-anchor-id="configuring-your-dask-slurmcluster"><strong>Configuring your Dask <code>SLURMCluster</code></strong></h4>
+<p>Dask SLURMClusters give you the ability to send individual cells of your notebook to be evaluated by the SLURM queue, which gives you access to the full power of the cluster from the convenience of your notebook.</p>
+<p>You can start a Dask <code>SLURMCluster</code> from your notebook with this code snippet:</p>
+<pre><code>from dask_jobqueue import SLURMCluster
+from distributed import Client
+
+# Point Dask to the SLURM to use as it's back end
+cluster = SLURMCluster(
+    &lt;cluster configurations&gt;
+)
+
+cluster.adapt(&lt;number of workers&gt;)
+client = Client(cluster)</code></pre>
+<p>The <code>cluster.adapt</code> method allows your <code>SLURMCluster</code> to grow and shrink to your notebook’s demands. This is perfect while you’re still developing your code since the resources can be released back into the pool while you’re editing your code and requested again once you’re ready to run.</p>
+<p>The <code>cluster.scale</code> method can be used instead to keep your <code>SLURMCluster</code> at a fixed size instead. If you have finished developing your code and want to run your model’s training consider switching to this instead as it will lead to a more stable experience.</p>
+<p><strong>Here are some example cluster configurations for you to consider:</strong></p>
+<p>Small GPU:<br>
+<code>SLURMCluster(memory="48g", processes=1, cores=6, job_extra_directives=["--gres=gpu:2g.10gb:1"])</code></p>
+<p>Multi GPU:<br>
+<code>SLURMCluster(memory="96g", processes=1, cores=12, job_extra_directives=["--gres=gpu:2g.10gb:2"])</code></p>
+<p>Medium GPU:<br>
+<code>SLURMCluster(memory="96g", processes=1, cores=12, job_extra_directives=["--gres=gpu:3g.20gb:1"])</code></p>
+<p>Half Node*:<br>
+<code>SLURMCluster(memory="192", processes=1, cores=24, job_extra_directives=["--gres=gpu:40gb:1", "--qos=lion"])</code><br>
+* Lion QoS as the backend as we’ll need longer lived jobs to work with this scale of compute</p>
+<p>Large CPU:<br>
+<code>SLURMCluster(memory="64g", processes=16, cores=16)</code></p>
+<p>CPU multiprocessing*:<br>
+<code>SLURMCluster(memory="4g", processes=1, cores=1)</code><br>
+* increase the scale appropriately with <code>cluster.adapt</code></p>
+<p>Please have a read of our tutorials for more info on <a href="./tutorials/2_dask_offloading.html">Dask <code>SLURMClusters</code></a> in the MLeRP environment.</p>
+</section>
+</section>
+<section id="batch-submission" class="level3">
+<h3 class="anchored" data-anchor-id="batch-submission">Batch submission</h3>
+<p>If you have finished developing the code for your model and you are ready to train, batch submission may be more appropriate than notebook development as the execution of your training will not be dependent on your browser’s connection.</p>
+<p>This will involve submitting an sbatch script such as the one below:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --job-name=&lt;job name&gt;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --account=&lt;your MLeRP username&gt;</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --time=&lt;walltime (max 24:00:00)&gt;</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --ntasks=&lt;number of processes&gt;</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --cpus-per-task=1</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --gres=gpu:&lt;size of gpu&gt;:&lt;number of gpus&gt;</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --partition=BigCats</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --qos=lion</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="bu">.</span> /path/to/conda/environment/bin/activate</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> script.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Now, you can submit this job to the cluster:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sbatch</span> <span class="op">&lt;</span>options<span class="op">&gt;</span> /path/to/sbatch/script</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>If you submit a job by mistake, or would like to terminate it early, you can cancel a job:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">scancel</span> jobid</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+
 </section>
 
 </main> <!-- /main -->
