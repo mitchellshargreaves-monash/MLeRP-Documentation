@@ -114,7 +114,8 @@ Every research problem has its own demands and constraints, so you'll need to ad
 Dask SLURMClusters give you the ability to send individual cells of your notebook to be evaluated by the SLURM queue, which gives you access to the full power of the cluster from the convenience of your notebook.
 
 You can start a Dask `SLURMCluster` from your notebook with this code snippet:
-```
+
+```python
 from dask_jobqueue import SLURMCluster
 from distributed import Client
 
@@ -131,27 +132,33 @@ The `cluster.adapt` method allows your `SLURMCluster` to grow and shrink to your
 
 The `cluster.scale` method can be used instead to keep your `SLURMCluster` at a fixed size instead. If you have finished developing your code and want to run your model's training consider switching to this instead as it will lead to a more stable experience.
 
+```python
+cluster.scale(<number of workers>)
+client = Client(cluster)
+```
+
 **Here are some example cluster configurations for you to consider:**
 
-Small GPU:  
-`SLURMCluster(memory="48g", processes=1, cores=6, job_extra_directives=["--gres=gpu:2g.10gb:1"])`
+```python
+# Small GPU
+SLURMCluster(memory="48g", processes=1, cores=6, job_extra_directives=["--gres=gpu:2g.10gb:1"])
 
-Multi GPU:  
-`SLURMCluster(memory="96g", processes=1, cores=12, job_extra_directives=["--gres=gpu:2g.10gb:2"])`
+# Multi GPU
+SLURMCluster(memory="96g", processes=1, cores=12, job_extra_directives=["--gres=gpu:2g.10gb:2"])
 
-Medium GPU:  
-`SLURMCluster(memory="96g", processes=1, cores=12, job_extra_directives=["--gres=gpu:3g.20gb:1"])`
+# Medium GPU
+SLURMCluster(memory="96g", processes=1, cores=12, job_extra_directives=["--gres=gpu:3g.20gb:1"])
 
-Half Node\*:  
-`SLURMCluster(memory="192", processes=1, cores=24, job_extra_directives=["--gres=gpu:40gb:1", "--qos=lion"])`  
-* Lion QoS as the backend as we'll need longer lived jobs to work with this scale of compute
+# Half Node:
+# * Lion QoS as the backend as we'll need longer lived jobs to work with this scale of compute
+SLURMCluster(memory="192", processes=1, cores=24, job_extra_directives=["--gres=gpu:40gb:1", "--qos=lion"])  
 
-Large CPU:  
-`SLURMCluster(memory="64g", processes=16, cores=16)`
+# Large CPU
+SLURMCluster(memory="64g", processes=16, cores=16)
 
-CPU multiprocessing\*:  
-`SLURMCluster(memory="4g", processes=1, cores=1)`  
-* increase the scale appropriately with `cluster.adapt`
+# CPU multiprocessing
+SLURMCluster(memory="4g", processes=1, cores=1)  
+```
 
 Please have a read of our tutorials for more info on [Dask `SLURMClusters`](/tutorials/2_dask_offloading.ipynb) in the MLeRP environment.
 
