@@ -24,5 +24,9 @@ To support this app, we thought it was important to be able to view the results 
 
 Another big change is that we've now deprecated the MLeRP-QCIF region, leaving only the MLeRP-Monash region which will serve all users going forward. If you are an inactive MLeRP-QCIF user, we have taken a copy of the data which is now hosted in the Monash region. If you'd like to revisit the MLeRP service now that it is more mature, we can make your old qcif data available to you as a part of the provisioning process on request.
 
+Finally, the last change that we want to tell you about is an administrative one. Going forwards, we're going to be changing our help email to `mlerphelp@monash.edu`. This move away from our Gmail address is largely to help deal with some issues we've had with our user communications, such as account provision notifications, being caught by university spam filters. Any mail that is sent to our old address should be forwarded on to the new address, so we shouldn't miss anything in the transition.
+
+As always, we hope these changes will make the experience on our platform a smoother one as we continue to develop features to enable your research.
+
 Regards,  
 Mitchell Hargreaves
