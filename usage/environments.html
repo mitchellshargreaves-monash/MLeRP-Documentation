@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>MLeRP User Guide Documentation - Detectron and Segment Anything</title>
+<title>MLeRP User Guide Documentation - Environment List</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,60 +20,28 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<link href="../.././images/favicon-32x32.png" rel="icon" type="image/png">
-<script src="../../site_libs/quarto-html/quarto.js"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href=".././images/favicon-32x32.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-listing/list.min.js"></script>
+<script src="../site_libs/quarto-listing/quarto-listing.js"></script>
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -94,9 +62,40 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script>
 
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-listing .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
 
-<link rel="stylesheet" href="../../styles.css">
+    const options = {
+      valueNames: ['listing-title','listing-Version','listing-date',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
+      
+      searchColumns: ["listing-date","listing-title","listing-author"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="nav-sidebar floating nav-fixed">
@@ -106,10 +105,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
-    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../.././images/mstile-150x150.png" alt="" class="navbar-logo">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src=".././images/mstile-150x150.png" alt="" class="navbar-logo">
     </a>
-    <a class="navbar-brand" href="../../index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">MLeRP User Guide Documentation</span>
     </a>
   </div>
@@ -120,15 +119,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="../../index.html" rel="" target="" aria-current="page">
+    <a class="nav-link active" href="../index.html" rel="" target="" aria-current="page">
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../about.html" rel="" target="">
+    <a class="nav-link" href="../about.html" rel="" target="">
  <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../faq.html" rel="" target="">
+    <a class="nav-link" href="../faq.html" rel="" target="">
  <span class="menu-text">Troubleshooting</span></a>
   </li>  
 </ul>
@@ -162,7 +161,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Detectron and Segment Anything</li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../usage/strudel2.html">Using MLERP</a></li><li class="breadcrumb-item"><a href="../usage/conda.html">Conda</a></li><li class="breadcrumb-item"><a href="../usage/environments.html">Environment List</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -176,32 +175,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../index.html" class="sidebar-item-text sidebar-link">
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Home</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../about.html" class="sidebar-item-text sidebar-link">
+  <a href="../about.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">About</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../hardware.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Hardware and QoS</span></a>
+  <a href="../hardware.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Partitions and QoS</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../faq.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Troubleshooting</span></a>
+  <a href="../getting_started.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Getting Started</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
- <span class="menu-text">Applications</span></a>
+ <span class="menu-text">Using MLERP</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -209,69 +208,51 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../applications/custom.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Custom Conda Environments</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../applications/documentation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Documentation</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../applications/environments.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Provided Environments</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../applications/strudel2.html" class="sidebar-item-text sidebar-link">
+  <a href="../usage/strudel2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Strudel 2</span></a>
   </div>
 </li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../usage/documentation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Documentation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
- <span class="menu-text">Connecting</span></a>
+ <span class="menu-text">Conda</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../connecting/aaf.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">AAF</span></a>
+  <a href="../usage/conda.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Provided environments</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../connecting/ssossh.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">SSOSSH</span></a>
+  <a href="../usage/custom.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Custom environments</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../connecting/transferring_files.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Transferring Files</span></a>
+  <a href="../usage/environments.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Environment List</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../connecting/vscode.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">VS Code</span></a>
-  </div>
-</li>
+      </ul>
+  </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
- <span class="menu-text">Tutorials</span></a>
+ <span class="menu-text">Connecting</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -279,25 +260,54 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../tutorials/0_getting_started.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Getting Started</span></a>
+  <a href="../connecting/ssossh.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">SSOSSH</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../tutorials/1_dask_slurm.html" class="sidebar-item-text sidebar-link">
+  <a href="../connecting/transferring_files.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Transferring Files</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../connecting/vscode.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">VS Code</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../faq.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Troubleshooting</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text">Tutorials</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tutorials/1_dask_slurm.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Dask SLURMClusters</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../tutorials/2_dask_offloading.html" class="sidebar-item-text sidebar-link">
+  <a href="../tutorials/2_dask_offloading.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Dask Offloading</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../tutorials/3_dask_pytorch.html" class="sidebar-item-text sidebar-link">
+  <a href="../tutorials/3_dask_pytorch.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">PyTorch and Dask</span></a>
   </div>
 </li>
@@ -305,7 +315,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../release.html" class="sidebar-item-text sidebar-link">
+  <a href="../release.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Release Notes</span></a>
   </div>
 </li>
@@ -315,21 +325,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#environment-definition" id="toc-environment-definition" class="nav-link active" data-scroll-target="#environment-definition">Environment Definition</a></li>
-  <li><a href="#full-package-list" id="toc-full-package-list" class="nav-link" data-scroll-target="#full-package-list">Full Package List</a></li>
-  </ul>
-</nav>
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Detectron and Segment Anything</h1>
+<h1 class="title">Environment List</h1>
 </div>
 
 
@@ -337,12 +340,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="quarto-title-meta">
 
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">Nov 2023</p>
-    </div>
-  </div>
   
     
   </div>
@@ -350,244 +347,100 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p>This environment has features the <a href="https://github.com/facebookresearch/detectron2">Detectron2</a> and <a href="https://github.com/facebookresearch/segment-anything">Segment Anything</a> packages by Facebook Research. For full details about their functionality, be sure to check out their documentation to see if they are right for you.</p>
-<p>It is intended as an environment that users can use to get a sense of these packages without having to find a combination of compatible versions of PyTorch, CUDA and other relevant dependancies.</p>
-<p>Once satisfied that this is a good fit for your research, this can be cloned to serve as a basis for a new environment that you control to add any additional specialist packages that you need. Alternatively, these definitions and install scripts can be copied and tailored to your use case.</p>
-<section id="environment-definition" class="level3">
-<h3 class="anchored" data-anchor-id="environment-definition">Environment Definition</h3>
-<div class="cell" data-execution_count="1">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>cat <span class="op">/</span>apps<span class="op">/</span>conda<span class="op">-</span>envs<span class="op">/</span>detectron<span class="op">-</span>sam.yml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>name: detectron-sam
-channels:
-  # Add channels as needed for your research packages from most specific to least specific
-  - conda-forge
-  - pytorch
-  - nvidia
 
-dependencies:
-  # Required libraries to launch Jupyter Lab jobs
-  - jupyter
-  - jupyterlab
 
-  # Required libraries to interface with the SLURM queue with Dask
-  - dask
-  - dask-jobqueue
 
-  # PyTorch
-  - pytorch=2.0
-  - torchvision=0.15
-  - pytorch-cuda=11.7
 
-  # Image Processing
-  - opencv
-  - pycocotools 
-  - matplotlib 
-  
-  # Compilers and Package managers
-  - ninja
-  - onnxruntime 
-  - onnx
-  - pip</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="2">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>cat <span class="op">/</span>apps<span class="op">/</span>conda<span class="op">-</span>envs<span class="op">/</span>install<span class="op">-</span>detectron<span class="op">-</span>sam.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>mamba env create -f detectron-sam.yml
-conda activate detectron-sam
-CC=gcc-10 CXX=g++-10 python -m pip install /apps/facebookresearch/detectron2
-pip install /apps/facebookresearch/segment-anything
-
-</code></pre>
-</div>
-</div>
-</section>
-<section id="full-package-list" class="level3">
-<h3 class="anchored" data-anchor-id="full-package-list">Full Package List</h3>
-<div class="cell" data-execution_count="4">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip <span class="bu">list</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>Package                   Version
-------------------------- ----------------
-anyio                     4.1.0
-argon2-cffi               23.1.0
-argon2-cffi-bindings      21.2.0
-arrow                     1.3.0
-asttokens                 2.4.1
-async-lru                 2.0.4
-attrs                     23.1.0
-Babel                     2.13.1
-beautifulsoup4            4.12.2
-bleach                    6.1.0
-bokeh                     3.3.1
-Brotli                    1.1.0
-cached-property           1.5.2
-certifi                   2023.11.17
-cffi                      1.16.0
-charset-normalizer        3.3.2
-click                     8.1.7
-cloudpickle               3.0.0
-coloredlogs               15.0.1
-comm                      0.1.4
-contourpy                 1.2.0
-cycler                    0.12.1
-Cython                    3.0.6
-cytoolz                   0.12.2
-dask                      2023.11.0
-dask-jobqueue             0.8.2
-debugpy                   1.8.0
-decorator                 5.1.1
-defusedxml                0.7.1
-distributed               2023.11.0
-entrypoints               0.4
-exceptiongroup            1.2.0
-executing                 2.0.1
-fastjsonschema            2.19.0
-filelock                  3.13.1
-flatbuffers               23.5.26
-fonttools                 4.45.1
-fqdn                      1.5.1
-fsspec                    2023.10.0
-gmpy2                     2.1.2
-humanfriendly             10.0
-idna                      3.6
-importlib-metadata        6.8.0
-importlib-resources       6.1.1
-ipykernel                 6.26.0
-ipython                   8.18.1
-ipywidgets                8.1.1
-isoduration               20.11.0
-jedi                      0.19.1
-Jinja2                    3.1.2
-json5                     0.9.14
-jsonpointer               2.4
-jsonschema                4.20.0
-jsonschema-specifications 2023.11.1
-jupyter                   1.0.0
-jupyter_client            8.6.0
-jupyter-console           6.6.3
-jupyter_core              5.5.0
-jupyter-events            0.9.0
-jupyter-lsp               2.2.1
-jupyter_server            2.11.1
-jupyter_server_terminals  0.4.4
-jupyterlab                4.0.9
-jupyterlab_pygments       0.3.0
-jupyterlab_server         2.25.2
-jupyterlab-widgets        3.0.9
-kiwisolver                1.4.5
-locket                    1.0.0
-lz4                       4.3.2
-MarkupSafe                2.1.3
-matplotlib                3.8.2
-matplotlib-inline         0.1.6
-mistune                   3.0.2
-mpmath                    1.3.0
-msgpack                   1.0.7
-munkres                   1.1.4
-nbclient                  0.8.0
-nbconvert                 7.11.0
-nbformat                  5.9.2
-nest-asyncio              1.5.8
-networkx                  3.2.1
-notebook                  7.0.6
-notebook_shim             0.2.3
-numpy                     1.26.2
-onnx                      1.15.0
-onnxruntime               1.16.3
-opencv-python             4.8.1
-overrides                 7.4.0
-packaging                 23.2
-pandas                    2.1.3
-pandocfilters             1.5.0
-parso                     0.8.3
-partd                     1.4.1
-pexpect                   4.8.0
-pickleshare               0.7.5
-Pillow                    10.1.0
-pip                       23.3.1
-pkgutil_resolve_name      1.3.10
-platformdirs              4.0.0
-ply                       3.11
-prometheus-client         0.19.0
-prompt-toolkit            3.0.41
-protobuf                  4.24.4
-psutil                    5.9.5
-ptyprocess                0.7.0
-pure-eval                 0.2.2
-pyarrow                   14.0.1
-pyarrow-hotfix            0.6
-pycocotools               2.0.6
-pycparser                 2.21
-Pygments                  2.17.2
-pyparsing                 3.1.1
-PyQt5                     5.15.9
-PyQt5-sip                 12.12.2
-PySocks                   1.7.1
-python-dateutil           2.8.2
-python-json-logger        2.0.7
-pytz                      2023.3.post1
-PyYAML                    6.0.1
-pyzmq                     25.1.1
-qtconsole                 5.5.1
-QtPy                      2.4.1
-referencing               0.31.1
-requests                  2.31.0
-rfc3339-validator         0.1.4
-rfc3986-validator         0.1.1
-rpds-py                   0.13.2
-segment-anything          1.0
-Send2Trash                1.8.2
-setuptools                68.2.2
-sip                       6.7.12
-six                       1.16.0
-sniffio                   1.3.0
-sortedcontainers          2.4.0
-soupsieve                 2.5
-stack-data                0.6.2
-sympy                     1.12
-tblib                     2.0.0
-terminado                 0.18.0
-tinycss2                  1.2.1
-toml                      0.10.2
-tomli                     2.0.1
-toolz                     0.12.0
-torch                     2.0.0.post304
-torchvision               0.15.2a0+ab7b3e6
-tornado                   6.3.3
-traitlets                 5.14.0
-types-python-dateutil     2.8.19.14
-typing_extensions         4.8.0
-typing-utils              0.1.0
-tzdata                    2023.3
-uri-template              1.3.0
-urllib3                   2.1.0
-wcwidth                   0.2.12
-webcolors                 1.13
-webencodings              0.5.1
-websocket-client          1.6.4
-wheel                     0.42.0
-widgetsnbextension        4.0.9
-xyzservices               2023.10.1
-zict                      3.0.0
-zipp                      3.17.0</code></pre>
-</div>
+<div class="quarto-listing quarto-listing-container-table" id="listing-listing">
+<div class="listing-actions-group">
+   <div class="input-group input-group-sm quarto-listing-sort">
+     <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
+     <select id="listing-listing-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
+       <option value="" disabled="" selected="" hidden="">Order By</option>
+       <option value="index" data-direction="asc">Default</option>
+         <option value="listing-date-sort" data-direction="asc">
+          Date - Oldest
+        </option>
+         <option value="listing-date-sort" data-direction="desc">
+          Date - Newest
+        </option>
+         <option value="listing-title-sort" data-direction="asc">
+          Title
+        </option>
+     </select>
+  </div>
+    <div class="input-group input-group-sm quarto-listing-filter">
+      <span class="input-group-text"><i class="bi bi-search"></i></span>
+      <input type="text" class="search form-control" placeholder="Filter">
+    </div>
 </div>
 
+<table class="quarto-listing-table table">
+<thead>
+<tr>
+<th>
+<a class="sort" data-sort="listing-title-sort" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Title</a>
+</th>
+<th>
+Version
+</th>
+<th>
+<a class="sort" data-sort="listing-date-sort" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Date</a>
+</th>
+</tr>
+</thead>
+<tbody class="list">
+<tr data-index="0" data-listing-date-sort="1701388800000" data-listing-file-modified-sort="1709704887301" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="Custom Template" data-listing-filename-sort="custom.ipynb">
+<td>
+<a href="../usage/environments/custom.html" class="title listing-title">Custom Template</a>
+</td>
+<td>
+<span class="listing-Version">custom</span>
+</td>
+<td>
+<span class="listing-date">Dec 2023</span>
+</td>
+</tr>
+<tr data-index="1" data-listing-date-sort="1698796800000" data-listing-file-modified-sort="1709779876603" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="Detectron and Segment Anything" data-listing-filename-sort="detectron-sam.ipynb">
+<td>
+<a href="../usage/environments/detectron-sam.html" class="title listing-title">Detectron and Segment Anything</a>
+</td>
+<td>
+<span class="listing-Version">detectron-sam</span>
+</td>
+<td>
+<span class="listing-date">Nov 2023</span>
+</td>
+</tr>
+<tr data-index="2" data-listing-date-sort="1696118400000" data-listing-file-modified-sort="1709704455764" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="Data Science Kitchen Sink" data-listing-filename-sort="dsks_2023.10.ipynb">
+<td>
+<a href="../usage/environments/dsks/dsks_2023.10.html" class="title listing-title">Data Science Kitchen Sink</a>
+</td>
+<td>
+<span class="listing-Version">dsks_2023.10</span>
+</td>
+<td>
+<span class="listing-date">Oct 2023</span>
+</td>
+</tr>
+<tr data-index="3" data-listing-date-sort="1682899200000" data-listing-file-modified-sort="1709704416428" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="Data Science Kitchen Sink" data-listing-filename-sort="dsks_2023.05.ipynb">
+<td>
+<a href="../usage/environments/dsks/dsks_2023.05.html" class="title listing-title">Data Science Kitchen Sink</a>
+</td>
+<td>
+<span class="listing-Version">dsks_2023.05</span>
+</td>
+<td>
+<span class="listing-date">May 2023</span>
+</td>
+</tr>
+</tbody>
 
-</section>
-
-</main> <!-- /main -->
+</table>
+<div class="listing-no-matching d-none">
+No matching items
+</div>
+</div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
