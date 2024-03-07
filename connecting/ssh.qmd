@@ -16,29 +16,29 @@ Note that there is a known bug where this button breaks if Strudel2 has been ref
 To use these credentials, you will need to initialise your SSH config so knows to use them. Add these entries to your `~/.ssh/config` file:
 
 ```
-Host MLeRP_monash_login
+Host <User>_MLeRP_monash
 	HostName {{< var monash_login >}}
 	User <User>
 	IdentityFile </path/to/ssh/key>
 
-Host MLeRP_monash_job
+Host <User>_MLeRP_monash_job
 	HostName VSCode
-	User <USER>
+	User <User>
 	IdentityFile </path/to/ssh/key>
 	ProxyCommand ssh.exe -i </path/to/ssh/key> <User>@{{< var monash_login >}} /apps/strudel2/strudel_apps/sshnc.sh
 ```
 
 This will give you two configurations:
 
-1. `MLeRP_Monash_login`  
+1. `<User>_MLeRP_Monash`  
     For connecting directly to the login node for simple administrative tasks
 
-2. `MLeRP_Monash_job`  
+2. `<User>_MLeRP_Monash_job`  
     For connecting to a 'Jupyter Lab' or 'Terminal' job that you launch from Strudel2. If it can't find one, it will create a Panther QoS job with 4 VCPUs and 16 GB RAM.
 
 ```bash
-ssh MLeRP_Monash_login
-ssh MLeRP_Monash_job
+ssh <User>_MLeRP_Monash_login
+ssh <User>_MLeRP_Monash_job
 ```
 
 ## SSOSSH
@@ -94,8 +94,8 @@ Now, each time you want to connect to the cluster you can simply rerun the `ssos
 
 ```bash
 ssossh
-ssh MLeRP_Monash_login
-ssh MLeRP_Monash_job
+ssh <User>_MLeRP_Monash_login
+ssh <User>_MLeRP_Monash_job
 ```
 
 You can read more about SSOSSH at its [GitHub Repo](https://github.com/HecticHPCSolutions/ssossh).
