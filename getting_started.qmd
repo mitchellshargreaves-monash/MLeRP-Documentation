@@ -10,9 +10,9 @@ We have provided [some python environments](/usage/environments.qmd) for you so 
 
 Your home directory will be set up with a quota based on what you told us you'll need to do your research. You can use this space to maintain your datasets, programs and code base. Let us know if you need more space and we'll see what we can do.
 
-Regardless of what compute you choose, in order to start your research here you will need to be able to import your data and code. If you're working with relatively small files, then the simplest way could be to use the FTP clients built into [Jupyter Lab](/connecting/transferring_files.qmd#jupyter-lab) or [VS Code](/connecting/transferring_files.qmd#vs-code). Otherwise something like [rsync](/connecting/transferring_files.qmd#rsync) may be more appropriate.
+Regardless of what compute you choose, in order to start your research here you will need to be able to import your data and code. If you're working with relatively small files, then the simplest way could be to use the FTP clients built into [Jupyter Lab](/usage/data_management.qmd#jupyter-lab) or [VS Code](/usage/data_management.qmd#vs-code). Otherwise something like [Rsync](/usage/data_management.qmd#rsync) may be more appropriate.
 
-If you are maintaining your code base through Git, then you will likely need to set up an ssh key and add it to your account before pulling down your repository. To use the right ssh key when using git you will need to set up an ssh config that will look something like this:
+If you are maintaining your code base through [Git](/usage/data_management.qmd#git), then you will likely need to set up an ssh key and add it to your account before pulling down your repository. To use the right ssh key when using git you will need to set up an ssh config that will look something like this:
 
 ```
 Host github.com

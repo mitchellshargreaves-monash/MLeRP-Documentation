@@ -1,0 +1,39 @@
+---
+title: Data Management
+---
+MLeRP does not have a dedicated data transfer node. We recommend that you use the login node when managing your files.
+
+## Jupyter Lab
+The easiest option to move files into the {{< var cluster_name >}} environment is to use a Jupyter Lab job through Strudel2 since it requires no additional setup. You should be able to drag and drop files into the file tree on the left to move them into the direrectory you have open.
+
+You can select multiple files and drag and drop all of them at once but Jupyter Lab does not support transferring folders. So you will need to either zip your files first or create your desired structure first and drop in the files one directory at a time. Files will be added to the directory you are currently viewing.
+
+## VS Code
+If you have already gone through the steps to connect your VS Code you can drag and drop files into the file tree just like with Jupyter Lab, but VS Code will allow you to drop whole folders at once, including nested folders. You can control where the files and folders end up by hovering over the desired folder.
+
+## Wget
+If you're looking for an application or dataset that is publically available from the internet, you will be able to download the data directly into the MLeRP environment with a `wget` command:
+
+```bash
+wget -o destination URL
+```
+
+## Git
+If you are using a git repo, using git's inbuilt tools is the simplest way to get a copy of your code into your home directory. If you're new to git not using git to maintain your code, now is a great time to start. This will allow you to sync your code between your local device and the cluster. 
+
+Start a new repository on [GitHub](https://github.com/) or [GitLab](https://about.gitlab.com/) or any other git hosting service, push up a copy of your code and clone your new repository onto the cluster. 
+
+## Rsync
+If you're familiar with the terminal you can use `rsync` to synchronise file systems and to transfer large amounts of files, with the ability to stop and restart the file transfers. `rsync` will replicate all files in a folder from one spot to another. It first analyses both file systems to find the difference and then transfers only the changes.
+
+A typical command to synchronise files from a local folder to {{< var cluster_name >}} is:
+
+```bash
+rsync -auv -e ssh adirectory <username>@{{< var monash_login >}}:~/destinationdirectory/
+```
+
+`rsync` is very powerful and has many options to help transfer data. For example it can delete unwanted files with `--delete`, compress data before transfer `-z` or can you let you see what command options might do without actually executing them `--dry-run`. For more info on `rsync` try:
+
+```bash
+man rsync
+```
