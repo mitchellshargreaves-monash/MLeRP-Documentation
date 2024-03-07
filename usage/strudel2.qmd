@@ -6,7 +6,7 @@ Strudel2 is an interactive environment to develop supports two types of jobs. Yo
 
 It will allow you check the cluster's usage and your disk quota. You will also be able to launch interactive jobs on the cluster. Strudel2 offers two kinds of interactive jobs: terminal and Jupyter Lab.
 
-## Terminal Jobs
+## Terminal
 Terminal jobs give you some requested compute attached to a simple text UI. This is ideal if you need to clone repositories, create conda environments, organise your files or anything else that you can do with a linux shell that doesn't require a GUI.
 
 You can also launch the web terminal attached to the login node if you just need a quick terminal to manage your files, however this is a shared resource with limited compute.
@@ -20,7 +20,9 @@ You can use this app will using one of our provided conda environments, or one t
 
 We have provided the DSKS (Data Science Kitchen Sink) series of environments for you to explore the platform and get started right away. Each version of the environment is tagged with the month that it was compiled, so that as we update and add new packages you can continue to rely on older versions of the environment for reproducability in your experiments.
 
-If our conda environments don't meet your needs, you can consider maintaining your own [miniconda](https://docs.conda.io/en/latest/miniconda.html) or [mambaforge](https://mamba.readthedocs.io/en/latest/installation/mamba-installation.html) installation in your home directory. For a custom conda environment to be compatible with this app, you will need to include jupyter and dask related packages during. See [this page](/applications/custom.qmd) for more information about creating a conda environment to interface with our environment.
+If our conda environments don't meet your needs, you can consider maintaining your own [miniconda](https://docs.conda.io/en/latest/miniconda.html) or [mambaforge](https://mamba.readthedocs.io/en/latest/installation/mamba-installation.html) installation in your home directory. For a custom conda environment to be compatible with this app, you will need to include jupyter and dask related packages during. See [this page](/usage/custom.qmd) for more information about creating a conda environment to interface with our environment.
+
+## Terminal
 
 ## FAQ
 ### Why can't I connect to Jupyter Lab?

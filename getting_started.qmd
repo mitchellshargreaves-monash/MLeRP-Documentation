@@ -4,9 +4,9 @@ title: Getting Started
 
 Welcome to MLeRP!
 
-Most users will find that the easiest way to start using MLeRP will be through the [Strudel2 Web Interface](/applications/strudel2.qmd). Here you can find the `Terminal` and `Jupyter Lab` applications we have prepared for you. 
+Most users will find that the easiest way to start using MLeRP will be through the [Strudel2 Web Interface](/usage/strudel2.qmd). Here you can find the `Terminal` and `Jupyter Lab` applications we have prepared for you. 
 
-We have provided [some python environments](/applications/environments.qmd) for you so you can get started right away, until you eventually outgrow them and feel like you need more control over the environment. At this point, we can help you to transition to maintaining your own environment with whatever applications and packages you need. 
+We have provided [some python environments](/usage/environments.qmd) for you so you can get started right away, until you eventually outgrow them and feel like you need more control over your packages. At this point, we can help you to transition to maintaining your own environment with whatever applications and packages you need. 
 
 Your home directory will be set up with a quota based on what you told us you'll need to do your research. You can use this space to maintain your datasets, programs and code base. Let us know if you need more space and we'll see what we can do.
 

@@ -1,5 +1,5 @@
 ---
-title: "Provided Environments"
+title: "Environment List"
 listing: 
     type: table
     fields: [title, Version, date]
@@ -8,4 +8,5 @@ listing:
     contents: 
         - "environments/dsks/*.ipynb"
         - "environments/detectron-sam.ipynb"
+        - "environments/custom.ipynb"
 ---

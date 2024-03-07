@@ -10,3 +10,6 @@ We have an installation of Quarto on the MLeRP Monash to generate our documentat
 
 The full path to the Quarto CLI executable is:  
 `/apps/quarto/opt/quarto/bin/quarto`
+
+### VS Code Extension
+To use the 

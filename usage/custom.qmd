@@ -28,7 +28,7 @@ In this tutorial we will cover installing a mamba environment.
    - OS: Linux
    - Architecture: x86_64 (amd64)
 
-3. Using the [Strudel2 terminal application](/applications/strudel2.qmd#terminal-jobs) or your favourite terminal application using [SSOSSH](/connecting/ssossh.qmd), log into the cluster.
+3. Using the [Strudel2 terminal application](/usage/strudel2.qmd#terminal-jobs) or your favourite terminal application using [SSOSSH](/connecting/ssossh.qmd), log into the cluster.
 
 4. Download the distribution to your home directory and run the installer
    ```bash
@@ -109,7 +109,7 @@ For more details about environment file syntax, have a look at conda's documenta
 
 ## 3. Integrating with Strudel2
 
-Our [Jupyter Lab](/applications/strudel2.qmd#jupyter-lab) application should recognise the conda environment that has just been created and you will be able to select it from the environment dropdown. If the environment that you're looking for is missing, check that its path is included in your `~/.conda/environments.txt` file in your home directory. 
+Our [Jupyter Lab](/usage/strudel2.qmd#jupyter-lab) application should recognise the conda environment that has just been created and you will be able to select it from the environment dropdown. If the environment that you're looking for is missing, check that its path is included in your `~/.conda/environments.txt` file in your home directory. 
 
 If it's missing, append the path to your environment to the bottom of the file.
 

@@ -37,15 +37,24 @@ website:
         file: index.qmd
       - text: "About"
         file: about.qmd
-      - text: "Hardware and QoS"
+      - text: "Partitions and QoS"
         file: hardware.qmd
-      - faq.qmd
-      - section: "Applications"
+      - getting_started.qmd
+      - section: "Using MLERP"
         contents:
-        - auto: "applications/*"
+        - "usage/strudel2.qmd"
+        - "usage/documentation.qmd"
+        - section: "Conda"
+          contents:
+            - text: "Provided environments"
+              file: "usage/conda.qmd"
+            - text: "Custom environments"
+              file: "usage/custom.qmd"
+            - "usage/environments.qmd"
       - section: "Connecting"
         contents:
         - auto: "connecting/*.qmd"
+      - faq.qmd
       - section: "Tutorials"
         contents:
         - auto: "tutorials/*"

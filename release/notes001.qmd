@@ -8,7 +8,7 @@ Hello MLeRP users,
 
 I hope you are all doing well. 
 
-I have received a message from a user asking about getting help with provisioning, so I wanted to clear up that I provisioned all accounts according to your requested usernames and dataset sizes before the launch event. Meaning that you can all log in and test things right now through the [login portal](https://mlerp.cloud.edu.au/login). I apologise if that wasn't communicated clearly. The cluster has been very quiet recently, making now a great time to test the system without any wait time. If you're not sure where to start, have a look at [this tutorial](/tutorials/0_getting_started.qmd) or have a look at our documentation on [connecting through the web portal](/applications/strudel2.qmd).
+I have received a message from a user asking about getting help with provisioning, so I wanted to clear up that I provisioned all accounts according to your requested usernames and dataset sizes before the launch event. Meaning that you can all log in and test things right now through the [login portal](https://mlerp.cloud.edu.au/login). I apologise if that wasn't communicated clearly. The cluster has been very quiet recently, making now a great time to test the system without any wait time. If you're not sure where to start, have a look at [this tutorial](/getting_started.qmd) or have a look at our documentation on [connecting through the web portal](/usage/strudel2.qmd).
 
 Speaking of, we have just improved our documentation on alternative methods for connecting to the cluster through [SSH](/connecting/ssossh.qmd) or [VS Code remote sessions](/connecting/vscode.qmd). If this sounds like something that's interesting to you, we'd love to get some feedback on this.
 

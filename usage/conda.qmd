@@ -1,0 +1,45 @@
+---
+title: Provided Conda Environments
+---
+
+## Introduction
+We maintain an installation of [mambaforge](https://mamba.readthedocs.io/en/latest/installation/mamba-installation.html#). This environment can be accessed through Strudel2 or by activating the environment through a terminal or script with:
+
+```bash
+source /apps/mambaforge/bin/activate
+```
+
+## Strudel2 integration
+Our [Jupyter Lab](/usage/strudel2.qmd#jupyter-lab) and [Batch](/usage/strudel2.qmd#batch) are built to integrate with the conda installations on the platform.
+
+To change the environment loaded by the application, select your preferred choice in the 'Conda Environment' dropdown.
+
+![](/images/strudel2-jupyter.png)
+
+Each element of the dropdown will be displayed in the format:  
+`<Environment Name> | </path/to/environment>`
+
+The Batch app has the addition of the 'system' environment which does not load in any environment, using the system python instead.
+
+The dropdown will also detect any new environments that you create in installations that you maintain as listed in your `~.conda/environments.txt` file. This file is maintained by all variants of conda, adding new entries or removing them as environments are created and destroyed. 
+
+If the environment that you're looking for is missing for whatever reason, such as if it was installed by another group member, you can append the path to your environment to the bottom of the file.
+
+```bash
+echo /path/to/your/environment >> ~/.conda/environments.txt
+```
+
+Similarly if the file becomes malformed, such as due to improper removal or moving of environments - you can edit the file directly to correct it with:
+
+```bash
+nano ~/.conda/environments.txt
+```
+
+## VS Code integration
+A VS Code remote session will not pick up any of our provided environments automatically - even when attaching to a job that activates the environment. To use an environment other that system python you will need to add it as a python interpreter. See our [VS Code documentation](/connecting/vscode.qmd#python) for more details.
+
+## Provided environments
+You can see the full list of environments that we provide and their details including full package lists [here](/usage/environments.qmd).
+
+## Custom conda environments
+If our conda environments don't meet your needs, you can consider maintaining your own [miniconda](https://docs.conda.io/en/latest/miniconda.html) or [miniforge](https://mamba.readthedocs.io/en/latest/installation/mamba-installation.html) installation in your user or group home directory. See our [custom environment documentation](/usage/custom.qmd) for more details.

@@ -1,5 +1,5 @@
 ---
-title: Hardware and Qualities of Service
+title: Partitions and Qualities of Service
 ---
 
 MLeRP workloads are able to make use of the attached NVME on the compute nodes by writing to `/tmp`. These files will remain accessible for the course of your job.
