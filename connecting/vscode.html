@@ -162,7 +162,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../connecting/ssossh.html">Connecting</a></li><li class="breadcrumb-item"><a href="../connecting/vscode.html">VS Code</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../connecting/ssh.html">Connecting</a></li><li class="breadcrumb-item"><a href="../connecting/vscode.html">VS Code</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -210,7 +210,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../usage/strudel2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Strudel 2</span></a>
+ <span class="menu-text">Strudel2</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -267,8 +267,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../connecting/ssossh.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">SSOSSH</span></a>
+  <a href="../connecting/ssh.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">SSH Credentials</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -399,7 +399,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>For MLeRP Monash:</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="va">ProxyCommand</span><span class="op">=</span><span class="st">"ssh.exe &lt;username&gt;@monash-mlerp-login0.mlerp.cloud.edu.au /apps/strudel2/strudel_apps/sshnc.sh"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<p>Note that you will need to authenticate with your ssh key/cert, either through your authorized keys file <a href="../connecting/ssossh.html">or by generating a cert with ssossh</a>. You can then add it to your agent or provide it to the ssh command (and proxy command) with the <code>-i</code> flag.</p>
+<p>Note that you will need to authenticate with your ssh key/cert, either through your authorized keys file <a href="../connecting/ssh.html#ssossh">or by generating a cert with ssossh</a>. You can then add it to your agent or provide it to the ssh command (and proxy command) with the <code>-i</code> flag.</p>
 <p>If you’re not sure how to use a proxy command, read on and we’ll walk you through the steps.</p>
 </section>
 <section id="set-up-instructions-only-do-these-once" class="level2">

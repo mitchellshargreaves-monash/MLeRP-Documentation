@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>MLeRP User Guide Documentation - Transferring Files</title>
+<title>MLeRP User Guide Documentation - SSH Credentials</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -162,7 +162,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../connecting/ssossh.html">Connecting</a></li><li class="breadcrumb-item"><a href="../connecting/transferring_files.html">Transferring Files</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../connecting/ssh.html">Connecting</a></li><li class="breadcrumb-item"><a href="../connecting/ssh.html">SSH Credentials</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -210,7 +210,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../usage/strudel2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Strudel 2</span></a>
+ <span class="menu-text">Strudel2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../usage/data_management.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Management</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -261,14 +267,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../connecting/ssossh.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">SSOSSH</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../connecting/transferring_files.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Transferring Files</span></a>
+  <a href="../connecting/ssh.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">SSH Credentials</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -308,12 +308,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../tutorials/2_dask_offloading.out.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Dask Offloading</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="../tutorials/3_dask_pytorch.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">PyTorch and Dask</span></a>
   </div>
@@ -336,10 +330,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#jupyter-lab" id="toc-jupyter-lab" class="nav-link active" data-scroll-target="#jupyter-lab">Jupyter Lab</a></li>
-  <li><a href="#vs-code" id="toc-vs-code" class="nav-link" data-scroll-target="#vs-code">VS Code</a></li>
-  <li><a href="#wget" id="toc-wget" class="nav-link" data-scroll-target="#wget">Wget</a></li>
-  <li><a href="#rsync" id="toc-rsync" class="nav-link" data-scroll-target="#rsync">rsync</a></li>
+  <li><a href="#strudel2-integration" id="toc-strudel2-integration" class="nav-link active" data-scroll-target="#strudel2-integration">Strudel2 Integration</a>
+  <ul class="collapse">
+  <li><a href="#ssh-config" id="toc-ssh-config" class="nav-link" data-scroll-target="#ssh-config">SSH config</a></li>
+  </ul></li>
+  <li><a href="#ssossh" id="toc-ssossh" class="nav-link" data-scroll-target="#ssossh">SSOSSH</a>
+  <ul class="collapse">
+  <li><a href="#setting-up-the-configuration-file" id="toc-setting-up-the-configuration-file" class="nav-link" data-scroll-target="#setting-up-the-configuration-file">1. Setting up the configuration file</a></li>
+  <li><a href="#installing-ssossh" id="toc-installing-ssossh" class="nav-link" data-scroll-target="#installing-ssossh">2. Installing SSOSSH</a></li>
+  <li><a href="#generating-your-ssh-config" id="toc-generating-your-ssh-config" class="nav-link" data-scroll-target="#generating-your-ssh-config">3. Generating your SSH Config</a></li>
+  <li><a href="#connecting-to-the-cluster" id="toc-connecting-to-the-cluster" class="nav-link" data-scroll-target="#connecting-to-the-cluster">4. Connecting to the cluster</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -348,7 +349,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Transferring Files</h1>
+<h1 class="title">SSH Credentials</h1>
 </div>
 
 
@@ -363,33 +364,83 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p>MLeRP does not have a dedicated data transfer node. We recommend that you use the login node when managing your files.</p>
-<section id="jupyter-lab" class="level2">
-<h2 class="anchored" data-anchor-id="jupyter-lab">Jupyter Lab</h2>
-<p>The easiest option to move files into the MLeRP environment is to use a Jupyter Lab job through Strudel2 since it requires no additional setup. You should be able to drag and drop files into the filetree on the left though it comes with some limitations.</p>
-<p>Jupyter Lab does not support transferring folders, so you will need to either zip your files first or create your desired structure first and drop in the files later. You can still select multiple files and drag and drop all of them at once. It also only supports dropping files into the directory you are viewing.</p>
+<p>The MLeRP platform does not use passwords in any way. This means that if you want to connect to the cluster in any way other than the Strudel2, such as through your favourite terminal application or IDE, you will need some SSH credentials.</p>
+<section id="strudel2-integration" class="level2">
+<h2 class="anchored" data-anchor-id="strudel2-integration">Strudel2 Integration</h2>
+<p>Rather than requiring users to create and manage SSH keys themselves, users are able to download their SSH credentials right from within Strudel2. The ‘Download SSH Credentials’ button can be found at the bottom of your ‘Account Info’ page, below the dashboards.</p>
+<p>This will give you an SSH key as well as a corresponding SSH certificate. These credentials will be valid for a period before expiring. When they expire, requiring you to redownload your credentials periodically. Only the path to the key needs to be specified in the SSH command, but the corresponding certificate will need to be placed in the same directory so that the tool can find it.</p>
+<p>Note that there is a known bug where this button breaks if Strudel2 has been refreshed. If this happens reopen the app in a new tab or log out and back in before redownloading your credentials.</p>
+<section id="ssh-config" class="level3">
+<h3 class="anchored" data-anchor-id="ssh-config">SSH config</h3>
+<p>To use these credentials, you will need to initialise your SSH config so knows to use them. Add these entries to your <code>~/.ssh/config</code> file:</p>
+<pre><code>Host MLeRP_monash_login
+    HostName monash-mlerp-login0.mlerp.cloud.edu.au
+    User &lt;User&gt;
+    IdentityFile &lt;/path/to/ssh/key&gt;
+
+Host MLeRP_monash_job
+    HostName VSCode
+    User &lt;USER&gt;
+    IdentityFile &lt;/path/to/ssh/key&gt;
+    ProxyCommand ssh.exe -i &lt;/path/to/ssh/key&gt; &lt;User&gt;@monash-mlerp-login0.mlerp.cloud.edu.au /apps/strudel2/strudel_apps/sshnc.sh</code></pre>
+<p>This will give you two configurations:</p>
+<ol type="1">
+<li><p><code>MLeRP_Monash_login</code><br>
+For connecting directly to the login node for simple administrative tasks</p></li>
+<li><p><code>MLeRP_Monash_job</code><br>
+For connecting to a ‘Jupyter Lab’ or ‘Terminal’ job that you launch from Strudel2. If it can’t find one, it will create a Panther QoS job with 4 VCPUs and 16 GB RAM.</p></li>
+</ol>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> MLeRP_Monash_login</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> MLeRP_Monash_job</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="vs-code" class="level2">
-<h2 class="anchored" data-anchor-id="vs-code">VS Code</h2>
-<p>If you have already gone through the steps to connect your VS Code you can drag and drop files into the filetree just like with Jupyter Lab, but VS Code will allow you to drop whole folders at once, including nested folders. You can control where the files and folders end up by hovering over the desired folder.</p>
 </section>
-<section id="wget" class="level2">
-<h2 class="anchored" data-anchor-id="wget">Wget</h2>
-<p>If you’re looking for an application or dataset that is publically available from the internet, you will be able to download the data directly into the MLeRP environment with a <code>wget</code> command:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="at">-o</span> destination URL</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="ssossh" class="level2">
+<h2 class="anchored" data-anchor-id="ssossh">SSOSSH</h2>
+<p>SSOSSH is a command line tool that brings single sign on to MLeRP. You can use it as an alternative to downloading your SSH credentials from Strudel2 if you are familiar with using a terminal.</p>
+<p>Just like the Strudel2 method, the tool generates an SSH Certificate. This is more secure than a permanent key since the certificate will only be valid for 24 hours, requiring you to go through your organisation’s single sign on again to renew the certificate.</p>
+<section id="setting-up-the-configuration-file" class="level3">
+<h3 class="anchored" data-anchor-id="setting-up-the-configuration-file">1. Setting up the configuration file</h3>
+<p>SSOSSH uses a configuration file in your user’s home directory named <code>~/.authservers.json</code>. This file should be a list of configs for the clusters you wish to connect to.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ot">[</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"authorise"</span><span class="fu">:</span> <span class="st">"https://sshauthz.cloud.cvl.org.au/pysshauthz/oauth2/oauth/authorize/choose"</span><span class="fu">,</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"base"</span><span class="fu">:</span> <span class="st">"https://sshauthz.cloud.cvl.org.au/pysshauthz/oauth2/"</span><span class="fu">,</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"cafingerprint"</span><span class="fu">:</span> <span class="st">"SHA256:ywDDZvIbx7B2AxujVIsW433fd4Sl1aZ0wl4FFsCRX/E"</span><span class="fu">,</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"client_id"</span><span class="fu">:</span> <span class="st">"Q96kt2Vtw6S78dpORktM81DH"</span><span class="fu">,</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"desc"</span><span class="fu">:</span> <span class="st">"&lt;div&gt;MLeRP&lt;/div&gt;"</span><span class="fu">,</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"icon"</span><span class="fu">:</span> <span class="kw">null</span><span class="fu">,</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"login"</span><span class="fu">:</span> <span class="st">"monash-mlerp-login0.mlerp.cloud.edu.au"</span><span class="fu">,</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"logout"</span><span class="fu">:</span> <span class="st">"https://sshauthz.cloud.cvl.org.au/pysshauthz/oauth2/logout"</span><span class="fu">,</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"name"</span><span class="fu">:</span> <span class="st">"MLeRP_Monash"</span><span class="fu">,</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"proxy"</span><span class="fu">:</span> <span class="st">"/apps/strudel2/strudel_apps/sshnc.sh"</span><span class="fu">,</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"scope"</span><span class="fu">:</span> <span class="st">"user:email"</span><span class="fu">,</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"sign"</span><span class="fu">:</span> <span class="st">"https://sshauthz.cloud.cvl.org.au/pysshauthz/sign/mlerp_users/api/v1/sign_key"</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="ot">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="rsync" class="level2">
-<h2 class="anchored" data-anchor-id="rsync">rsync</h2>
-<p>If you’re familiar with the terminal you can use <code>rsync</code> to synchronise file systems and to transfer large amounts of files, with the ability to stop and restart the file transfers. <code>rsync</code> will replicate all files in a folder from one spot to another. It first analyses both file systems to find the difference and then transfers only the changes.</p>
-<p>A typical command to synchronise files from a local folder to MLeRP is:</p>
-<p>For MLeRP QCIF:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rsync</span> <span class="at">-auv</span> <span class="at">-e</span> ssh adirectory <span class="op">&lt;</span>username<span class="op">&gt;</span>@mlerp-login0.mlerp.cloud.edu.au:~/destinationdirectory/</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>For MLeRP Monash:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rsync</span> <span class="at">-auv</span> <span class="at">-e</span> ssh adirectory <span class="op">&lt;</span>username<span class="op">&gt;</span>@monash-mlerp-login0.mlerp.cloud.edu.au:~/destinationdirectory/</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><code>rsync</code> is very powerful and has many options to help transfer data. For example it can delete unwanted files with <code>--delete</code>, compress data before transfer <code>-z</code> or can you let you see what command options might do without actually executing them <code>--dry-run</code>. For more info on <code>rsync</code> try:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">man</span> rsync</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="installing-ssossh" class="level3">
+<h3 class="anchored" data-anchor-id="installing-ssossh">2. Installing SSOSSH</h3>
+<p>You can pip install SSOSSH with:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install git+https://github.com/HecticHPCSolutions/ssossh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>or if you want to test an experimental feature:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install git+https://github.com/HecticHPCSolutions/ssossh@branch-name</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>After installation you should be able to run <code>ssossh</code> in your favourite terminal to run the program. By default it will create the SSH keys and certificates in your <code>.ssh</code> folder, but you can optionally change this path or have it add direct to your SSH Agent which you may find to be neater.</p>
+</section>
+<section id="generating-your-ssh-config" class="level3">
+<h3 class="anchored" data-anchor-id="generating-your-ssh-config">3. Generating your SSH Config</h3>
+<p>Before connecting to the cluster you will need to initialise your SSH config. We recommend using the <code>--setssh</code> flag the first time you use SSOSSH to set up some default SSH configurations to connect to the login node and start up a Jupyter session. This will generate the config described <a href="../connecting/ssh.html#ssh-config">in the section above</a>.</p>
+<p>Open up your ssh config file to confirm everything is as it should be. If you have accidentally run this command multiple times or with an improperly configured <code>~/.authservers.json</code> file there may be duplicate or malformed entries that you will need to correct.</p>
+</section>
+<section id="connecting-to-the-cluster" class="level3">
+<h3 class="anchored" data-anchor-id="connecting-to-the-cluster">4. Connecting to the cluster</h3>
+<p>Now, each time you want to connect to the cluster you can simply rerun the <code>ssossh</code> program to refresh your certificates then use your SSH or VS Code remote session as per normal.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">ssossh</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> MLeRP_Monash_login</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> MLeRP_Monash_job</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>You can read more about SSOSSH at its <a href="https://github.com/HecticHPCSolutions/ssossh">GitHub Repo</a>.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
