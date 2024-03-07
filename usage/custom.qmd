@@ -28,12 +28,11 @@ In this tutorial we will cover installing a mamba environment.
    - OS: Linux
    - Architecture: x86_64 (amd64)
 
-3. Using the [Strudel2 terminal application](/usage/strudel2.qmd#terminal-jobs) or your favourite terminal application using [SSOSSH](/connecting/ssossh.qmd), log into the cluster.
+3. Using the [Strudel2 terminal application](/usage/strudel2.qmd#terminal-jobs) or your favourite terminal application using [SSOSSH](/connecting/ssh.qmd#ssossh), log into the cluster.
 
 4. Download the distribution to your home directory and run the installer
    ```bash
-   # Replace this URL with the one you copied
-   wget https://.../Miniforge3-Linux-x86_64.sh
+   wget <https://.../Miniforge3-Linux-x86_64.sh> # Replace this URL with the one you copied
    bash Miniforge3-Linux-x86_64.sh
    ```
 

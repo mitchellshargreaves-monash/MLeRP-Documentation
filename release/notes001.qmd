@@ -10,7 +10,7 @@ I hope you are all doing well.
 
 I have received a message from a user asking about getting help with provisioning, so I wanted to clear up that I provisioned all accounts according to your requested usernames and dataset sizes before the launch event. Meaning that you can all log in and test things right now through the [login portal](https://mlerp.cloud.edu.au/login). I apologise if that wasn't communicated clearly. The cluster has been very quiet recently, making now a great time to test the system without any wait time. If you're not sure where to start, have a look at [this tutorial](/getting_started.qmd) or have a look at our documentation on [connecting through the web portal](/usage/strudel2.qmd).
 
-Speaking of, we have just improved our documentation on alternative methods for connecting to the cluster through [SSH](/connecting/ssossh.qmd) or [VS Code remote sessions](/connecting/vscode.qmd). If this sounds like something that's interesting to you, we'd love to get some feedback on this.
+Speaking of, we have just improved our documentation on alternative methods for connecting to the cluster through [SSH](/connecting/ssh.qmd) or [VS Code remote sessions](/connecting/vscode.qmd). If this sounds like something that's interesting to you, we'd love to get some feedback on this.
 
 Since we last spoke at the launch event we've been working behind the scenes on some of your requested features. We've updated the user permissions of the home directory to 700 rather than 755. This means that privacy is now the default rather than collaboration. You still have the flexibility to change the permissions on your files if you'd like to do so. 
 

@@ -43,6 +43,7 @@ website:
       - section: "Using MLERP"
         contents:
         - "usage/strudel2.qmd"
+        - "usage/data_management.qmd"
         - "usage/documentation.qmd"
         - section: "Conda"
           contents:

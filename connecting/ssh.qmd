@@ -1,0 +1,101 @@
+---
+title: SSH Credentials
+---
+
+The MLeRP platform does not use passwords in any way. This means that if you want to connect to the cluster in any way other than the Strudel2, such as through your favourite terminal application or IDE, you will need some SSH credentials.
+
+## Strudel2 Integration
+Rather than requiring users to create and manage SSH keys themselves, users are able to download their SSH credentials right from within Strudel2. The 'Download SSH Credentials' button can be found at the bottom of your 'Account Info' page, below the dashboards. 
+
+This will give you an SSH key as well as a corresponding SSH certificate. These credentials will be valid for a period before expiring. When they expire, requiring you to redownload your credentials periodically. Only the path to the key needs to be specified in the SSH command, but the corresponding certificate will need to be placed in the same directory so that the tool can find it.
+
+Note that there is a known bug where this button breaks if Strudel2 has been refreshed. If this happens reopen the app in a new tab or log out and back in before redownloading your credentials.
+
+### SSH config
+
+To use these credentials, you will need to initialise your SSH config so knows to use them. Add these entries to your `~/.ssh/config` file:
+
+```
+Host MLeRP_monash_login
+	HostName {{< var monash_login >}}
+	User <User>
+	IdentityFile </path/to/ssh/key>
+
+Host MLeRP_monash_job
+	HostName VSCode
+	User <USER>
+	IdentityFile </path/to/ssh/key>
+	ProxyCommand ssh.exe -i </path/to/ssh/key> <User>@{{< var monash_login >}} /apps/strudel2/strudel_apps/sshnc.sh
+```
+
+This will give you two configurations:
+
+1. `MLeRP_Monash_login`  
+    For connecting directly to the login node for simple administrative tasks
+
+2. `MLeRP_Monash_job`  
+    For connecting to a 'Jupyter Lab' or 'Terminal' job that you launch from Strudel2. If it can't find one, it will create a Panther QoS job with 4 VCPUs and 16 GB RAM.
+
+```bash
+ssh MLeRP_Monash_login
+ssh MLeRP_Monash_job
+```
+
+## SSOSSH
+SSOSSH is a command line tool that brings single sign on to {{< var cluster_name >}}. You can use it as an alternative to downloading your SSH credentials from Strudel2 if you are familiar with using a terminal.
+
+Just like the Strudel2 method, the tool generates an SSH Certificate. This is more secure than a permanent key since the certificate will only be valid for 24 hours, requiring you to go through your organisation's single sign on again to renew the certificate.
+
+### 1. Setting up the configuration file
+
+SSOSSH uses a configuration file in your user's home directory named `~/.authservers.json`. This file should be a list of configs for the clusters you wish to connect to. 
+
+```json
+[
+    {
+        "authorise": "https://sshauthz.cloud.cvl.org.au/pysshauthz/oauth2/oauth/authorize/choose",
+        "base": "https://sshauthz.cloud.cvl.org.au/pysshauthz/oauth2/",
+        "cafingerprint": "SHA256:ywDDZvIbx7B2AxujVIsW433fd4Sl1aZ0wl4FFsCRX/E",
+        "client_id": "Q96kt2Vtw6S78dpORktM81DH",
+        "desc": "<div>MLeRP</div>",
+        "icon": null,
+        "login": "{{< var monash_login >}}",
+        "logout": "https://sshauthz.cloud.cvl.org.au/pysshauthz/oauth2/logout",
+        "name": "MLeRP_Monash",
+        "proxy": "/apps/strudel2/strudel_apps/sshnc.sh",
+        "scope": "user:email",
+        "sign": "https://sshauthz.cloud.cvl.org.au/pysshauthz/sign/mlerp_users/api/v1/sign_key"
+    }
+]
+```
+
+### 2. Installing SSOSSH
+
+You can pip install SSOSSH with: 
+```bash
+pip install git+https://github.com/HecticHPCSolutions/ssossh
+```
+or if you want to test an experimental feature:
+```bash
+pip install git+https://github.com/HecticHPCSolutions/ssossh@branch-name
+```
+
+After installation you should be able to run `ssossh` in your favourite terminal to run the program. By default it will create the SSH keys and certificates in your `.ssh` folder, but you can optionally change this path or have it add direct to your SSH Agent which you may find to be neater. 
+
+### 3. Generating your SSH Config
+
+Before connecting to the cluster you will need to initialise your SSH config. We recommend using the `--setssh` flag the first time you use SSOSSH to set up some default SSH configurations to connect to the login node and start up a Jupyter session. This will generate the config described [in the section above](/connecting/ssh.qmd#ssh-config).
+
+Open up your ssh config file to confirm everything is as it should be. If you have accidentally run this command multiple times or with an improperly configured `~/.authservers.json` file there may be duplicate or malformed entries that you will need to correct.
+
+### 4. Connecting to the cluster
+
+Now, each time you want to connect to the cluster you can simply rerun the `ssossh` program to refresh your certificates then use your SSH or VS Code remote session as per normal.
+
+```bash
+ssossh
+ssh MLeRP_Monash_login
+ssh MLeRP_Monash_job
+```
+
+You can read more about SSOSSH at its [GitHub Repo](https://github.com/HecticHPCSolutions/ssossh).

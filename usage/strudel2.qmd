@@ -1,5 +1,5 @@
 ---
-title: Strudel 2
+title: Strudel2
 ---
 
 Strudel2 is an interactive environment to develop supports two types of jobs. You will be able to reach it from `{{< var strudel2 >}}`.
@@ -31,4 +31,4 @@ Jupyter Lab needs to be able to create files to run properly. If your disk quota
 There is also a known bug where Brave's 'shield' feature will block the Strudel2 Jupyter application. To bypass this, you'll need to turn off 'shields' for both the [Strudel2 home page](https://mlerp.cloud.edu.au/) and the [Strudel2 api](https://strudel2-api-dev.cloud.cvl.org.au/).
 
 ### Why is my VS Code not attaching to the remote session?
-The SSH certificates that [SSOSSH](/connecting/ssossh.qmd) creates are only valid for 24 hours, this means that you'll need to generate new certificates each day before you connect. VS Code also has a known bug where it can get confused if you have another SSH client (such as MobaXTerm) open when it tries to establish the connection.
+The SSH certificates that [SSOSSH](/connecting/ssh.qmd) creates are only valid for 24 hours, this means that you'll need to generate new certificates each day before you connect. VS Code also has a known bug where it can get confused if you have another SSH client (such as MobaXTerm) open when it tries to establish the connection.
