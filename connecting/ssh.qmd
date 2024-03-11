@@ -4,6 +4,9 @@ title: SSH Credentials
 
 The MLeRP platform does not use passwords in any way. This means that if you want to connect to the cluster in any way other than the Strudel2, such as through your favourite terminal application or IDE, you will need some SSH credentials.
 
+This [YouTube video](https://www.youtube.com/watch?v=dPAw4opzN9g) does a good job of explaining why ssh keys are more secure than passwords,
+even if it is designed for an AWS user.
+
 ## Strudel2 Integration
 Rather than requiring users to create and manage SSH keys themselves, users are able to download their SSH credentials right from within Strudel2. The 'Download SSH Credentials' button can be found at the bottom of your 'Account Info' page, below the dashboards. 
 
@@ -15,7 +18,7 @@ Note that there is a known bug where this button breaks if Strudel2 has been ref
 
 To use these credentials, you will need to initialise your SSH config so knows to use them. Add these entries to your `~/.ssh/config` file:
 
-```
+```bash
 Host <User>_MLeRP_monash
 	HostName {{< var monash_login >}}
 	User <User>
@@ -25,7 +28,17 @@ Host <User>_MLeRP_monash_job
 	HostName VSCode
 	User <User>
 	IdentityFile </path/to/ssh/key>
-	ProxyCommand ssh.exe -i </path/to/ssh/key> <User>@{{< var monash_login >}} /apps/strudel2/strudel_apps/sshnc.sh
+	ProxyCommand <ProxyCommand>
+```
+
+The ProxyCommand you should use will be different between Windows and Mac/Linux:
+
+```bash
+# Linux and Mac
+ProxyCommand="ssh -i </path/to/ssh/key> <username>@{{< var monash_login >}} /apps/strudel2/strudel_apps/sshnc.sh"
+
+# Windows
+ProxyCommand="ssh.exe -i </path/to/ssh/key> <username>@{{< var monash_login >}} /apps/strudel2/strudel_apps/sshnc.sh"
 ```
 
 This will give you two configurations:
@@ -34,10 +47,10 @@ This will give you two configurations:
     For connecting directly to the login node for simple administrative tasks
 
 2. `<User>_MLeRP_Monash_job`  
-    For connecting to a 'Jupyter Lab' or 'Terminal' job that you launch from Strudel2. If it can't find one, it will create a Panther QoS job with 4 VCPUs and 16 GB RAM.
+    For connecting to a 'Jupyter Lab' or 'Terminal' job that you launch from Strudel2. If it can't find one, it will create a 12 hour Panther QoS job with 4 VCPUs and 16 GB RAM.
 
 ```bash
-ssh <User>_MLeRP_Monash_login
+ssh <User>_MLeRP_Monash
 ssh <User>_MLeRP_Monash_job
 ```
 
@@ -94,8 +107,54 @@ Now, each time you want to connect to the cluster you can simply rerun the `ssos
 
 ```bash
 ssossh
-ssh <User>_MLeRP_Monash_login
+ssh <User>_MLeRP_Monash
 ssh <User>_MLeRP_Monash_job
 ```
 
 You can read more about SSOSSH at its [GitHub Repo](https://github.com/HecticHPCSolutions/ssossh).
+
+## Enabling SSH on Windows
+
+If you're working in Windows, you will need OpenSSH to be installed and enabled:
+
+1. Check OpenSSH installation:
+    - Navigate to `Setting > System > Optional Features`
+    - Select `Optional Features`. 
+    - Check if `OpenSSH Client` is in the list. If it is, go to step 2. 
+    - If it isn't, select the `Add a feature` button at the top of the page, then select `OpenSSH Client`, and `Install`. This will install the OpenSSH Client. 
+2. Start the OpenSSH Client:
+    - Use the Windows search bar to search for and open `Services`. 
+    - Scroll through the list to find `OpenSSH Authentication Agent` 
+    - Double click `OpenSSH Authentication Agent`. Change the Startup type to `Automatic` and select `OK`. 
+    - Double click on `OpenSSH Authentication Agent` again and select `Start`.  
+
+The OpenSSH Agent will now start automatically in future.
+
+## Adding your key to the SSH Agent
+
+Rather than specifying the key path in your config, you could opt to load the SSH key into your agent. This is useful if you've added an SSH key to MLeRP manually with a password attached to it. This way you will only be prompted for the password once per reboot. You can do this with:
+
+```bash
+ssh-add </path/to/ssh/key>
+```
+
+If you do, then your config will look and ProxyCommand will look like this:
+
+```bash
+Host <User>_MLeRP_monash
+	HostName {{< var monash_login >}}
+	User <User>
+
+Host <User>_MLeRP_monash_job
+	HostName VSCode
+	User <User>
+	ProxyCommand <ProxyCommand>
+```
+
+```bash
+# Linux and Mac
+ProxyCommand="ssh <username>@{{< var monash_login >}} /apps/strudel2/strudel_apps/sshnc.sh"
+
+# Windows
+ProxyCommand="ssh.exe <username>@{{< var monash_login >}} /apps/strudel2/strudel_apps/sshnc.sh"
+```

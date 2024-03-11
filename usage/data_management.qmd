@@ -26,10 +26,10 @@ Start a new repository on [GitHub](https://github.com/) or [GitLab](https://abou
 ## Rsync
 If you're familiar with the terminal you can use `rsync` to synchronise file systems and to transfer large amounts of files, with the ability to stop and restart the file transfers. `rsync` will replicate all files in a folder from one spot to another. It first analyses both file systems to find the difference and then transfers only the changes.
 
-A typical command to synchronise files from a local folder to {{< var cluster_name >}} is:
+To use rsync you'll need to generate some [SSH credentials](/connecting/ssh.qmd) and set up your SSH config. A typical command that uses this config to synchronise files from a local folder to {{< var cluster_name >}} is:
 
 ```bash
-rsync -auv -e ssh </path/to/source> <username>@{{< var monash_login >}}:</path/to/destination>
+rsync -auv -e ssh </path/to/source> <username>_MLeRP_Monash:</path/to/destination>
 ```
 
 `rsync` is very powerful and has many options to help transfer data. For example it can delete unwanted files with `--delete`, compress data before transfer `-z` or can you let you see what command options might do without actually executing them `--dry-run`. For more info on `rsync` try:

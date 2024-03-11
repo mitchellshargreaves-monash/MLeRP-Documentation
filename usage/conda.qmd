@@ -36,7 +36,7 @@ nano ~/.conda/environments.txt
 ```
 
 ## VS Code integration
-A VS Code remote session will not pick up any of our provided environments automatically - even when attaching to a job that activates the environment. To use an environment other that system python you will need to add it as a python interpreter. See our [VS Code documentation](/connecting/vscode.qmd#python) for more details.
+A VS Code remote session will not pick up any of our provided environments automatically - even when attaching to a job that activates the environment. To use an environment other that system python you will need to add it as a python interpreter. See our [VS Code documentation](/connecting/vscode.qmd#adding-a-python-interpreter) for more details.
 
 ## Provided environments
 You can see the full list of environments that we provide and their details including full package lists [here](/usage/environments.qmd).
