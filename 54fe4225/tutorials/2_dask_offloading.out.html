@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>MLeRP User Guide Documentation - VS Code</title>
+<title>MLeRP User Guide Documentation - Dask Offloading</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -57,23 +57,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<link href=".././images/favicon-32x32.png" rel="icon" type="image/png">
-<script src="../site_libs/quarto-html/quarto.js"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../.././images/favicon-32x32.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -96,7 +96,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
 
-<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-sidebar floating nav-fixed">
@@ -106,10 +106,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
-    <a href="../index.html" class="navbar-brand navbar-brand-logo">
-    <img src=".././images/mstile-150x150.png" alt="" class="navbar-logo">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../.././images/mstile-150x150.png" alt="" class="navbar-logo">
     </a>
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">MLeRP User Guide Documentation</span>
     </a>
   </div>
@@ -120,15 +120,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="../index.html" rel="" target="" aria-current="page">
+    <a class="nav-link active" href="../../index.html" rel="" target="" aria-current="page">
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../about.html" rel="" target="">
+    <a class="nav-link" href="../../about.html" rel="" target="">
  <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../faq.html" rel="" target="">
+    <a class="nav-link" href="../../faq.html" rel="" target="">
  <span class="menu-text">Troubleshooting</span></a>
   </li>  
 </ul>
@@ -162,7 +162,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../connecting/ssh.html">Connecting</a></li><li class="breadcrumb-item"><a href="../connecting/vscode.html">VS Code</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Dask Offloading</li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -176,25 +176,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Home</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../about.html" class="sidebar-item-text sidebar-link">
+  <a href="../../about.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">About</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../hardware.html" class="sidebar-item-text sidebar-link">
+  <a href="../../hardware.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Partitions and QoS</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../getting_started.html" class="sidebar-item-text sidebar-link">
+  <a href="../../getting_started.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Getting Started</span></a>
   </div>
 </li>
@@ -209,19 +209,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../usage/strudel2.html" class="sidebar-item-text sidebar-link">
+  <a href="../../usage/strudel2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Strudel2</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../usage/data_management.html" class="sidebar-item-text sidebar-link">
+  <a href="../../usage/data_management.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Data Management</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../usage/documentation.html" class="sidebar-item-text sidebar-link">
+  <a href="../../usage/documentation.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Documentation</span></a>
   </div>
 </li>
@@ -236,19 +236,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../usage/conda.html" class="sidebar-item-text sidebar-link">
+  <a href="../../usage/conda.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Provided environments</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../usage/custom.html" class="sidebar-item-text sidebar-link">
+  <a href="../../usage/custom.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Custom environments</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../usage/environments.html" class="sidebar-item-text sidebar-link">
+  <a href="../../usage/environments.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Environment List</span></a>
   </div>
 </li>
@@ -267,13 +267,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../connecting/ssh.html" class="sidebar-item-text sidebar-link">
+  <a href="../../connecting/ssh.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">SSH Credentials</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../connecting/vscode.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../connecting/vscode.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">VS Code</span></a>
   </div>
 </li>
@@ -281,7 +281,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../faq.html" class="sidebar-item-text sidebar-link">
+  <a href="../../faq.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Troubleshooting</span></a>
   </div>
 </li>
@@ -296,19 +296,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../tutorials/1_dask_slurm.html" class="sidebar-item-text sidebar-link">
+  <a href="../../tutorials/1_dask_slurm.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Dask SLURMClusters</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../tutorials/2_dask_offloading.html" class="sidebar-item-text sidebar-link">
+  <a href="../../tutorials/2_dask_offloading.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Dask Offloading</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../tutorials/3_dask_pytorch.html" class="sidebar-item-text sidebar-link">
+  <a href="../../tutorials/3_dask_pytorch.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">PyTorch and Dask</span></a>
   </div>
 </li>
@@ -316,7 +316,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../release.html" class="sidebar-item-text sidebar-link">
+  <a href="../../release.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Release Notes</span></a>
   </div>
 </li>
@@ -330,26 +330,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#initial-set-up-instructions" id="toc-initial-set-up-instructions" class="nav-link" data-scroll-target="#initial-set-up-instructions">Initial set-up instructions</a>
-  <ul class="collapse">
-  <li><a href="#prepare-vs-code" id="toc-prepare-vs-code" class="nav-link" data-scroll-target="#prepare-vs-code">1. Prepare VS Code</a></li>
-  <li><a href="#generate-an-ssh-key-and-certificate" id="toc-generate-an-ssh-key-and-certificate" class="nav-link" data-scroll-target="#generate-an-ssh-key-and-certificate">2. Generate an ssh key and certificate</a></li>
-  <li><a href="#configure-vs-code" id="toc-configure-vs-code" class="nav-link" data-scroll-target="#configure-vs-code">3. Configure VS Code</a></li>
-  </ul></li>
-  <li><a href="#using-your-vs-code-remote-server" id="toc-using-your-vs-code-remote-server" class="nav-link" data-scroll-target="#using-your-vs-code-remote-server">Using your VS Code remote server</a>
-  <ul class="collapse">
-  <li><a href="#optionally-allocate-resources-for-the-remote-server-i.e.-start-a-job" id="toc-optionally-allocate-resources-for-the-remote-server-i.e.-start-a-job" class="nav-link" data-scroll-target="#optionally-allocate-resources-for-the-remote-server-i.e.-start-a-job">1. Optionally allocate resources for the remote server (i.e.&nbsp;start a job)</a></li>
-  <li><a href="#start-the-remote-server" id="toc-start-the-remote-server" class="nav-link" data-scroll-target="#start-the-remote-server">2. Start the remote server</a></li>
-  </ul></li>
-  <li><a href="#adding-a-python-interpreter" id="toc-adding-a-python-interpreter" class="nav-link" data-scroll-target="#adding-a-python-interpreter">Adding a python interpreter</a></li>
-  <li><a href="#faq" id="toc-faq" class="nav-link" data-scroll-target="#faq">FAQ</a>
-  <ul class="collapse">
-  <li><a href="#i-see-a-message-about-connection-reset-by-peer." id="toc-i-see-a-message-about-connection-reset-by-peer." class="nav-link" data-scroll-target="#i-see-a-message-about-connection-reset-by-peer.">I see a message about “Connection Reset by peer”.</a></li>
-  <li><a href="#i-keep-getting-prompted-for-a-password-even-though-im-using-a-key." id="toc-i-keep-getting-prompted-for-a-password-even-though-im-using-a-key." class="nav-link" data-scroll-target="#i-keep-getting-prompted-for-a-password-even-though-im-using-a-key.">I keep getting prompted for a password even though I’m using a key.</a></li>
-  <li><a href="#i-got-an-error-message-about-posix-spawn." id="toc-i-got-an-error-message-about-posix-spawn." class="nav-link" data-scroll-target="#i-got-an-error-message-about-posix-spawn.">I got an error message about posix spawn.</a></li>
-  <li><a href="#i-tried-to-use-the-ssh-agent-but-it-says-permissions-mykey-are-too-open." id="toc-i-tried-to-use-the-ssh-agent-but-it-says-permissions-mykey-are-too-open." class="nav-link" data-scroll-target="#i-tried-to-use-the-ssh-agent-but-it-says-permissions-mykey-are-too-open.">I tried to use the ssh-agent but it says “Permissions <code>mykey</code> are too open.</a></li>
-  </ul></li>
+  <li><a href="#testing-with-a-localcluster" id="toc-testing-with-a-localcluster" class="nav-link active" data-scroll-target="#testing-with-a-localcluster">Testing with a <code>LocalCluster</code></a></li>
+  <li><a href="#running-on-a-slurmcluster" id="toc-running-on-a-slurmcluster" class="nav-link" data-scroll-target="#running-on-a-slurmcluster">Running on a <code>SLURMCluster</code></a></li>
   </ul>
 </nav>
     </div>
@@ -358,7 +340,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">VS Code</h1>
+<h1 class="title">Dask Offloading</h1>
 </div>
 
 
@@ -373,101 +355,118 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<section id="introduction" class="level2">
-<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<p>So you’d like to use <a href="https://code.visualstudio.com/">Visual Studio Code</a>, but you need access to MLeRP too - maybe your data is on the cluster, or you want to run code interactively on a GPU, or you just really love VS Code.</p>
-<p>No problem. You want a VS Code remote server.</p>
-<p>Please <strong>DO NOT</strong> follow the <a href="https://code.visualstudio.com/docs/remote/ssh">official VS Code documentation for remote servers</a>.</p>
-<p>By default, if you follow those instructions, you will end up running the VS Code remote server on the login node. This is fine if you’re managing your files, but if you’re running a notebook or running scripts you’ll need you’ll need to allocate a resource just for you.</p>
-<p>This proxy command which will forward your connection to our compute nodes rather than the login node. This will connect to a <code>Jupyter Lab</code> job, or if one doesn’t exist, it will make one for you.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Linux and Mac</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="va">ProxyCommand</span><span class="op">=</span><span class="st">"ssh &lt;username&gt;@monash-mlerp-login0.mlerp.cloud.edu.au /apps/strudel2/strudel_apps/sshnc.sh"</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Windows</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="va">ProxyCommand</span><span class="op">=</span><span class="st">"ssh.exe &lt;username&gt;@monash-mlerp-login0.mlerp.cloud.edu.au /apps/strudel2/strudel_apps/sshnc.sh"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Note that you will need to authenticate with your <a href="../connecting/ssh.html">ssh key/cert</a>. You can then add it to your agent or provide it to the ssh command (and proxy command) with the <code>-i</code> flag.</p>
-<p>If you’re not sure how to use a proxy command, read on and we’ll walk you through the steps.</p>
+<section id="testing-with-a-localcluster" class="level3">
+<h3 class="anchored" data-anchor-id="testing-with-a-localcluster">Testing with a <code>LocalCluster</code></h3>
+<p>Once you’ve written your function and are ready to move things over to . Working with Dask workers introduces another layer of complexity where things can go wrong, which make Dask LocalClusters the easiest way to prepare your code for offloading. This will mean that code will execute in the notebook session, just like running your function straight, allowing you to view print statements and debug errors normally rather than dealing with remote code execusion before we’re ready. Once you’re satisfied with your code you can switch over to a SLURMCluster to accelerate with GPU.</p>
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> distributed <span class="im">import</span> Client, LocalCluster</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>cluster <span class="op">=</span> LocalCluster()</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>client <span class="op">=</span> Client(cluster)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We can submit our function to the cluster with the <code>client.submit</code> method. This will return a future which can be unpacked with its result using <code>future.result()</code>. We can see the outputs of print statements while we’re using a <code>LocalCluster</code>. Print statements will not be visible when executing remotely with <code>SLURMCluster</code>. Similarly, the full stack trace is still visible when an error or assertion is raised within the function.</p>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> client_test(input1, input2, error<span class="op">=</span><span class="va">False</span>, test<span class="op">=</span><span class="va">False</span>):</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Force an error</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> error:</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">assert</span> <span class="dv">0</span> <span class="op">==</span> <span class="dv">1</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Stop after one batch when testing        </span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> test: </span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"When running in a local cluster you can see print statements!"</span>)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> input1, input2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>future <span class="op">=</span> client.submit(client_test, <span class="st">"input1"</span>, <span class="st">"input2"</span>, test<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>future.result()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>When running in a local cluster you can see print statements!</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre><code>('input1', 'input2')</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>future <span class="op">=</span> client.submit(client_test, <span class="st">"input1"</span>, <span class="st">"input2"</span>, error<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>future.result()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>2024-02-09 03:58:33,152 - distributed.worker - WARNING - Compute Failed
+Key:       client_test-4a09713a18d9ca3a2cc865eed9a8b248
+Function:  client_test
+args:      ('input1', 'input2')
+kwargs:    {'error': True}
+Exception: 'AssertionError()'</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>client.shutdown()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
-<section id="initial-set-up-instructions" class="level2">
-<h2 class="anchored" data-anchor-id="initial-set-up-instructions">Initial set-up instructions</h2>
-<section id="prepare-vs-code" class="level3">
-<h3 class="anchored" data-anchor-id="prepare-vs-code">1. Prepare VS Code</h3>
-<ol type="1">
-<li>Install <a href="https://code.visualstudio.com/">Visual Studio Code</a></li>
-<li>Install the <a href="https://aka.ms/vscode-remote/download/extension">Remote Development Extension Pack</a></li>
-<li>Open <code>Settings</code> with <code>Ctrl+,</code> and search for <code>Remote.SSH: Remote Server Listen On Socket</code>. Select the checkbox. <img src="https://code.visualstudio.com/assets/docs/remote/ssh/ssh-listen-on-socket.png" class="img-fluid" alt="ssh-listen-on-socket-settings-screen"></li>
-</ol>
-</section>
-<section id="generate-an-ssh-key-and-certificate" class="level3">
-<h3 class="anchored" data-anchor-id="generate-an-ssh-key-and-certificate">2. Generate an ssh key and certificate</h3>
-<ol type="1">
-<li>Generate your credentials SSH credentials <a href="../connecting/ssh.html#strudel2-integration">through Strudel2</a> or <a href="../connecting/ssh.html#ssossh">through SSOSSH</a></li>
-<li>If you’re working in Windows, ensure <a href="../connecting/ssh.html#enabling-ssh-on-windows">OpenSSH is installed and enabled</a></li>
-<li>Optionally add the key to your <a href="../connecting/ssh.html#adding-your-key-to-the-ssh-agent">ssh agent</a>. Skip this step if you want to keep things simple.</li>
-</ol>
-</section>
-<section id="configure-vs-code" class="level3">
-<h3 class="anchored" data-anchor-id="configure-vs-code">3. Configure VS Code</h3>
-<ol type="1">
-<li><p>Follow the instructions on our ssh page to configure your <a href="../connecting/ssh.html#ssh-config">SSH Config</a>. Note that your config will be different if you’re using <a href="../connecting/ssh.html#adding-your-key-to-the-ssh-agent">keys added to the SSH agent</a>.</p></li>
-<li><p>Test our configurations with:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> <span class="op">&lt;</span>User<span class="op">&gt;</span>_MLeRP_Monash</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> <span class="op">&lt;</span>User<span class="op">&gt;</span>_MLeRP_Monash_job</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-</ol>
-<p>The first configuration will connect directly to the login node, for you to view log files, upload data and so on. The second configuration will use the ProxyCommand to connect to a Jupyter Lab or Terminal job that you start from the <a href="../usage/strudel2.html">Strudel2</a> login portal. If a job does not exist yet, it will create a small Panther QoS resource for you.</p>
-</section>
-</section>
-<section id="using-your-vs-code-remote-server" class="level2">
-<h2 class="anchored" data-anchor-id="using-your-vs-code-remote-server">Using your VS Code remote server</h2>
-<section id="optionally-allocate-resources-for-the-remote-server-i.e.-start-a-job" class="level3">
-<h3 class="anchored" data-anchor-id="optionally-allocate-resources-for-the-remote-server-i.e.-start-a-job">1. Optionally allocate resources for the remote server (i.e.&nbsp;start a job)</h3>
-<p>Using <a href="../usage/strudel2.html">Strudel2</a> in your web browser, login and select Jupyter Lab or Terminal. Choose the resources you will need, including QoS, number of CPUs, amount of RAM and time. Click <code>Launch</code> and wait for the job to begin running under <code>Pending/Running</code>.</p>
-</section>
-<section id="start-the-remote-server" class="level3">
-<h3 class="anchored" data-anchor-id="start-the-remote-server">2. Start the remote server</h3>
-<p>Your SSH configurations should be visible from the Remote Explorer tab in the side bar. You can now connect to the cluster by selecting the appropriate SSH configuration from the menu. Hovering over an entry will reveal options to connect in the current window or connect in a new window.</p>
-<p><img src="../images/remote_sidebar.png" class="img-fluid"></p>
-<p>You will be prompted to provide the OS of the server, select Linux. If you are using a password on your SSH key, VS Code will ask twice (once to the connect to the login nodes, then again to connect to the node running the remote server).</p>
-<p>You should now have an active connection to the cluster. Using <code>File &gt; Open File</code> or <code>File &gt; Open Folder</code> will open files and projects on the cluster.</p>
-<p>There are some extensions which will carry over to your remote server, but others, such as the Jupyter extension, will need to be installed to the remote server. You can do so from the extensions menu in the side bar just as normal.</p>
-</section>
-</section>
-<section id="adding-a-python-interpreter" class="level2">
-<h2 class="anchored" data-anchor-id="adding-a-python-interpreter">Adding a python interpreter</h2>
-<p>A VS Code remote session will not pick up any of our provided environments automatically - even when attaching to a job that activates the environment. To use an environment other that system python you will need to add it as a python interpreter.</p>
-<ol type="1">
-<li>Open the command pallet with <code>View &gt; Command Pallete</code></li>
-<li>Select <code>Python: Select Interpreter</code></li>
-<li>Select <code>Enter interpreter path</code> and fill in the prompt</li>
-</ol>
-<p>This environment will now be visible to the python debugger and Jupyter extension.</p>
-<p>If you’d like to use one of our environments, you can find the path to their interpreter on its environment page. A full list of our environments can be found <a href="../usage/environments.html">here</a>. If you’d like to use an environment that you maintain yourself through conda or mamba, the interpreter is found at:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Base </span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">/path/to/conda/bin/python3</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Virtual Environment</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="ex">/path/to/conda/envs/</span><span class="op">&lt;</span>environment_name<span class="op">&gt;</span>/bin/python3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="faq" class="level2">
-<h2 class="anchored" data-anchor-id="faq">FAQ</h2>
-<section id="i-see-a-message-about-connection-reset-by-peer." class="level3">
-<h3 class="anchored" data-anchor-id="i-see-a-message-about-connection-reset-by-peer.">I see a message about “Connection Reset by peer”.</h3>
-<p>This will happen if you fail to authenticate too many times - perhaps typing in your key passphrase incorrectly. Wait 10 minutes, and try again. If you still run into errors please contact the helpdesk at <code>mlerphelp@monash.edu</code>.</p>
-</section>
-<section id="i-keep-getting-prompted-for-a-password-even-though-im-using-a-key." class="level3">
-<h3 class="anchored" data-anchor-id="i-keep-getting-prompted-for-a-password-even-though-im-using-a-key.">I keep getting prompted for a password even though I’m using a key.</h3>
-<p>Check that your connection command includes the username everwhere you need it (it should be in there twice, once for the login node and once for the compute node). Also, ensure you added your keys to the ssh-agent to avoid typing your key passphrase every time. You will need to do this after every reboot.</p>
-</section>
-<section id="i-got-an-error-message-about-posix-spawn." class="level3">
-<h3 class="anchored" data-anchor-id="i-got-an-error-message-about-posix-spawn.">I got an error message about posix spawn.</h3>
-<p>You’re probably on Windows. Check that you used the Windows specific command line with <code>ssh.exe</code> instead of <code>ssh</code>.</p>
-</section>
-<section id="i-tried-to-use-the-ssh-agent-but-it-says-permissions-mykey-are-too-open." class="level3">
-<h3 class="anchored" data-anchor-id="i-tried-to-use-the-ssh-agent-but-it-says-permissions-mykey-are-too-open.">I tried to use the ssh-agent but it says “Permissions <code>mykey</code> are too open.</h3>
-<p>Private keys should never be shared - ensure only you have read, write, and execute permissions on your private key. Linux/Mac user see this <a href="https://stackoverflow.com/questions/9270734/ssh-permissions-are-too-open-error">StackOverflow post</a>. Windows Users, see this <a href="https://itectec.com/superuser/windows-ssh-permissions-for-private-key-are-too-open/">blog post</a></p>
+<section id="running-on-a-slurmcluster" class="level3">
+<h3 class="anchored" data-anchor-id="running-on-a-slurmcluster">Running on a <code>SLURMCluster</code></h3>
+<p>We can pass in extra SLURM requirements in job_extra_directives to request a GPU for our jobs. To read more about configuring the <code>SLURMCluster</code> to interact with the SLURM queue, go to Dask’s <a href="https://jobqueue.dask.org/en/latest/generated/dask_jobqueue.SLURMCluster.html?highlight=slurmcluster">jobqueue documentation</a>.</p>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dask_jobqueue <span class="im">import</span> SLURMCluster</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> distributed <span class="im">import</span> Client</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>cluster <span class="op">=</span> SLURMCluster(</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    memory<span class="op">=</span><span class="st">"128g"</span>, processes<span class="op">=</span><span class="dv">1</span>, cores<span class="op">=</span><span class="dv">16</span>, job_extra_directives<span class="op">=</span>[<span class="st">"--gres=gpu:1"</span>]</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>cluster.scale(<span class="dv">1</span>)</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>client <span class="op">=</span> Client(cluster)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Since this code is executing remotely we won’t see our print statements</p>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>client.submit(client_test, <span class="st">"input1"</span>, <span class="st">"input2"</span>, test<span class="op">=</span><span class="va">True</span>).result()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>('input1', 'input2')</code></pre>
+</div>
+</div>
+<p>Dask will raise any errors that the process triggers locally, even when executing remotely - but you may not get the full stack trace</p>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>client.submit(client_test, <span class="st">"input1"</span>, <span class="st">"input2"</span>, error<span class="op">=</span><span class="va">True</span>).result()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>If you’re working with any objects that are particularly memory intensive, you can consider using the <code>client.scatter</code> method to scatter large objects out to our workers ahead of time for more efficient execution.</p>
+<div class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>large_object <span class="op">=</span> <span class="st">"Let's pretend that this string is actually a really big object like your dataset"</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>input1_future <span class="op">=</span> client.scatter(large_object)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>client.submit(client_test, input1_future, <span class="st">"input2"</span>).result()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>("Let's pretend that this string is actually really big", 'input2')</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>client.shutdown()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>In the next tutorial we’ll see how we can apply this kind of offloading to training a model in PyTorch.</p>
+<div class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>cluster <span class="op">=</span> SLURMCluster(</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    memory<span class="op">=</span><span class="st">"128g"</span>, processes<span class="op">=</span><span class="dv">1</span>, cores<span class="op">=</span><span class="dv">16</span>, job_extra_directives<span class="op">=</span>[<span class="st">"--gres=gpu:40gb:1"</span>]</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>client <span class="op">=</span> Client(cluster)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>client.submit(client_test, <span class="st">"input1"</span>, <span class="st">"input2"</span>, test<span class="op">=</span><span class="va">True</span>).result()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>cluster <span class="op">=</span> SLURMCluster(</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    memory<span class="op">=</span><span class="st">"128g"</span>, processes<span class="op">=</span><span class="dv">1</span>, cores<span class="op">=</span><span class="dv">16</span>, job_extra_directives<span class="op">=</span>[<span class="st">"--gres=gpu:3g.20gb:1"</span>, <span class="st">"--qos=lion"</span>]</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>cluster.scale(<span class="dv">1</span>)</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>client <span class="op">=</span> Client(cluster)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/apps/mambaforge/envs/dsks_2023.10/lib/python3.10/site-packages/distributed/node.py:182: UserWarning: Port 8787 is already in use.
+Perhaps you already have a cluster running?
+Hosting the HTTP server on port 46635 instead
+  warnings.warn(</code></pre>
+</div>
+</div>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
