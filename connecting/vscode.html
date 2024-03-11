@@ -341,8 +341,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#optionally-allocate-resources-for-the-remote-server-i.e.-start-a-job" id="toc-optionally-allocate-resources-for-the-remote-server-i.e.-start-a-job" class="nav-link" data-scroll-target="#optionally-allocate-resources-for-the-remote-server-i.e.-start-a-job">1. Optionally allocate resources for the remote server (i.e.&nbsp;start a job)</a></li>
   <li><a href="#start-the-remote-server" id="toc-start-the-remote-server" class="nav-link" data-scroll-target="#start-the-remote-server">2. Start the remote server</a></li>
+  <li><a href="#using-the-remote-server" id="toc-using-the-remote-server" class="nav-link" data-scroll-target="#using-the-remote-server">3. Using the remote server</a></li>
+  <li><a href="#adding-your-python-interpreters" id="toc-adding-your-python-interpreters" class="nav-link" data-scroll-target="#adding-your-python-interpreters">4. Adding your python interpreters</a></li>
   </ul></li>
-  <li><a href="#adding-a-python-interpreter" id="toc-adding-a-python-interpreter" class="nav-link" data-scroll-target="#adding-a-python-interpreter">Adding a python interpreter</a></li>
   <li><a href="#faq" id="toc-faq" class="nav-link" data-scroll-target="#faq">FAQ</a>
   <ul class="collapse">
   <li><a href="#i-see-a-message-about-connection-reset-by-peer." id="toc-i-see-a-message-about-connection-reset-by-peer." class="nav-link" data-scroll-target="#i-see-a-message-about-connection-reset-by-peer.">I see a message about “Connection Reset by peer”.</a></li>
@@ -428,12 +429,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Your SSH configurations should be visible from the Remote Explorer tab in the side bar. You can now connect to the cluster by selecting the appropriate SSH configuration from the menu. Hovering over an entry will reveal options to connect in the current window or connect in a new window.</p>
 <p><img src="../images/remote_sidebar.png" class="img-fluid"></p>
 <p>You will be prompted to provide the OS of the server, select Linux. If you are using a password on your SSH key, VS Code will ask twice (once to the connect to the login nodes, then again to connect to the node running the remote server).</p>
-<p>You should now have an active connection to the cluster. Using <code>File &gt; Open File</code> or <code>File &gt; Open Folder</code> will open files and projects on the cluster.</p>
+<p>You should now have an active connection to the cluster.</p>
+</section>
+<section id="using-the-remote-server" class="level3">
+<h3 class="anchored" data-anchor-id="using-the-remote-server">3. Using the remote server</h3>
+<p>Using <code>File &gt; Open File</code> or <code>File &gt; Open Folder</code> will open files and projects on the cluster.</p>
 <p>There are some extensions which will carry over to your remote server, but others, such as the Jupyter extension, will need to be installed to the remote server. You can do so from the extensions menu in the side bar just as normal.</p>
 </section>
-</section>
-<section id="adding-a-python-interpreter" class="level2">
-<h2 class="anchored" data-anchor-id="adding-a-python-interpreter">Adding a python interpreter</h2>
+<section id="adding-your-python-interpreters" class="level3">
+<h3 class="anchored" data-anchor-id="adding-your-python-interpreters">4. Adding your python interpreters</h3>
 <p>A VS Code remote session will not pick up any of our provided environments automatically - even when attaching to a job that activates the environment. To use an environment other that system python you will need to add it as a python interpreter.</p>
 <ol type="1">
 <li>Open the command pallet with <code>View &gt; Command Pallete</code></li>
@@ -447,6 +451,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Virtual Environment</span></span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="ex">/path/to/conda/envs/</span><span class="op">&lt;</span>environment_name<span class="op">&gt;</span>/bin/python3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
 </section>
 <section id="faq" class="level2">
 <h2 class="anchored" data-anchor-id="faq">FAQ</h2>
