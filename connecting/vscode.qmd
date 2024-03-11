@@ -66,11 +66,15 @@ Your SSH configurations should be visible from the Remote Explorer tab in the si
 
 You will be prompted to provide the OS of the server, select Linux. If you are using a password on your SSH key, VS Code will ask twice (once to the connect to the login nodes, then again to connect to the node running the remote server).
 
-You should now have an active connection to the cluster. Using `File > Open File` or `File > Open Folder` will open files and projects on the cluster.
+You should now have an active connection to the cluster.
+
+### 3. Using the remote server
+
+Using `File > Open File` or `File > Open Folder` will open files and projects on the cluster.
 
 There are some extensions which will carry over to your remote server, but others, such as the Jupyter extension, will need to be installed to the remote server. You can do so from the extensions menu in the side bar just as normal.
 
-## Adding a python interpreter
+### 4. Adding your python interpreters
 
 A VS Code remote session will not pick up any of our provided environments automatically - even when attaching to a job that activates the environment. To use an environment other that system python you will need to add it as a python interpreter. 
 
