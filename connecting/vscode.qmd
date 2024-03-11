@@ -56,8 +56,10 @@ The first configuration will connect directly to the login node, for you to view
 
 ## Using your VS Code remote server
 
-### 1. Optionally allocate resources for the remote server (i.e. start a job)
+### 1. Start a job for the remote server
 Using [Strudel2](/usage/strudel2.qmd) in your web browser, login and select Jupyter Lab or Terminal. Choose the resources you will need, including QoS, number of CPUs, amount of RAM and time. Click `Launch` and wait for the job to begin running under `Pending/Running`.
+
+If you skip this step, we will create a default Panther QoS job for you.
 
 ### 2. Start the remote server
 Your SSH configurations should be visible from the Remote Explorer tab in the side bar. You can now connect to the cluster by selecting the appropriate SSH configuration from the menu. Hovering over an entry will reveal options to connect in the current window or connect in a new window.
