@@ -28,17 +28,10 @@ Host <User>_MLeRP_monash_job
 	HostName VSCode
 	User <User>
 	IdentityFile </path/to/ssh/key>
-	ProxyCommand <ProxyCommand>
-```
-
-The ProxyCommand you should use will be different between Windows and Mac/Linux:
-
-```bash
-# Linux and Mac
-ProxyCommand="ssh -i </path/to/ssh/key> <username>@{{< var monash_login >}} /apps/strudel2/strudel_apps/sshnc.sh"
-
-# Windows
-ProxyCommand="ssh.exe -i </path/to/ssh/key> <username>@{{< var monash_login >}} /apps/strudel2/strudel_apps/sshnc.sh"
+        # for Linux or Mac
+	ProxyCommand ssh -i </path/to/ssh/key> <username>@{{< var monash_login >}} /apps/strudel2/strudel_apps/sshnc.sh
+        # For Windows, replace the above with
+        # ProxyCommand ssh.exe -i </path/to/ssh/key> <username>@{{< var monash_login >}} /apps/strudel2/strudel_apps/sshnc.sh
 ```
 
 This will give you two configurations:
