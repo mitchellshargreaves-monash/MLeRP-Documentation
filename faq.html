@@ -275,7 +275,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./tutorials/3_submitit_offloading.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Dask Offloading</span></a>
+ <span class="menu-text">SubmitIt Offloading</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -346,7 +346,7 @@ ul.task-list li input[type="checkbox"] {
 <h3 class="anchored" data-anchor-id="why-dask">Why Dask?</h3>
 <p>We looked at a few different options for the MLeRP environment including <a href="https://aws.amazon.com/sagemaker/">Sagemaker</a>, <a href="https://spark.apache.org/">Spark</a> and <a href="https://docs.ray.io/en/releases-1.11.1/index.html">Ray</a>. Ultimately we settled on Dask as the primary tool to interface with the queue because:</p>
 <ul>
-<li>SLURM jobs can be submitted with <code>SLURMCluster</code> whenever HPC is needed</li>
+<li>SLURM jobs can be submitted with <code>SLURMCluster</code> whenever the GPU cluster is needed</li>
 <li>Debugging can be done locally first with <code>LocalCluster</code> with minimal code change</li>
 <li>It has a familiar syntax as it’s designed as a light wrapper around common libraries like Numpy, Pandas and SciKit-Learn</li>
 <li>High level applications can be implemented easily with <a href="https://ml.dask.org/joblib.html">Scikit-Learn</a>, <a href="https://ml.dask.org/xgboost.html">XGBoost</a>, <a href="https://ml.dask.org/pytorch.html">Skorch</a>, <a href="https://ml.dask.org/keras.html">SciKeras</a></li>
