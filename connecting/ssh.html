@@ -308,8 +308,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../tutorials/3_dask_pytorch.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">PyTorch and Dask</span></a>
+  <a href="../tutorials/3_submitit_offloading.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Dask Offloading</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tutorials/4_submitit_pytorch.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">PyTorch and Submitit</span></a>
   </div>
 </li>
       </ul>
@@ -388,10 +394,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="ex">ProxyCommand</span> <span class="op">&lt;</span>ProxyCommand<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The ProxyCommand you should use will be different between Windows and Mac/Linux:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Linux and Mac</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="va">ProxyCommand</span><span class="op">=</span><span class="st">"ssh -i &lt;/path/to/ssh/key&gt; &lt;username&gt;@monash-mlerp-login0.mlerp.cloud.edu.au /apps/strudel2/strudel_apps/sshnc.sh"</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">ProxyCommand</span> ssh <span class="at">-i</span> <span class="op">&lt;</span>/path/to/ssh/key<span class="op">&gt;</span> <span class="op">&lt;</span>username<span class="op">&gt;</span>@monash-mlerp-login0.mlerp.cloud.edu.au /apps/strudel2/strudel_apps/sshnc.sh</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Windows</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="va">ProxyCommand</span><span class="op">=</span><span class="st">"ssh.exe -i &lt;/path/to/ssh/key&gt; &lt;username&gt;@monash-mlerp-login0.mlerp.cloud.edu.au /apps/strudel2/strudel_apps/sshnc.sh"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="ex">ProxyCommand</span> ssh.exe <span class="at">-i</span> <span class="op">&lt;</span>/path/to/ssh/key<span class="op">&gt;</span> <span class="op">&lt;</span>username<span class="op">&gt;</span>@monash-mlerp-login0.mlerp.cloud.edu.au /apps/strudel2/strudel_apps/sshnc.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This will give you two configurations:</p>
 <ol type="1">
 <li><p><code>&lt;User&gt;_MLeRP_Monash</code><br>
@@ -484,10 +490,10 @@ For connecting to a ‘Jupyter Lab’ or ‘Terminal’ job that you launch from
 <span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    <span class="ex">User</span> <span class="op">&lt;</span>User<span class="op">&gt;</span></span>
 <span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    <span class="ex">ProxyCommand</span> <span class="op">&lt;</span>ProxyCommand<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Linux and Mac</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="va">ProxyCommand</span><span class="op">=</span><span class="st">"ssh &lt;username&gt;@monash-mlerp-login0.mlerp.cloud.edu.au /apps/strudel2/strudel_apps/sshnc.sh"</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ex">ProxyCommand</span> ssh <span class="at">-i</span> <span class="op">&lt;</span>/path/to/ssh/key<span class="op">&gt;</span> <span class="op">&lt;</span>username<span class="op">&gt;</span>@monash-mlerp-login0.mlerp.cloud.edu.au /apps/strudel2/strudel_apps/sshnc.sh</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Windows</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="va">ProxyCommand</span><span class="op">=</span><span class="st">"ssh.exe &lt;username&gt;@monash-mlerp-login0.mlerp.cloud.edu.au /apps/strudel2/strudel_apps/sshnc.sh"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="ex">ProxyCommand</span> ssh.exe <span class="at">-i</span> <span class="op">&lt;</span>/path/to/ssh/key<span class="op">&gt;</span> <span class="op">&lt;</span>username<span class="op">&gt;</span>@monash-mlerp-login0.mlerp.cloud.edu.au /apps/strudel2/strudel_apps/sshnc.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 </section>

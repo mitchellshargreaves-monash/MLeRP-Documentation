@@ -1,14 +1,5 @@
 [
   {
-    "listing": "/usage/environments.html",
-    "items": [
-      "/usage/environments/custom.html",
-      "/usage/environments/detectron-sam.html",
-      "/usage/environments/dsks/dsks_2023.10.html",
-      "/usage/environments/dsks/dsks_2023.05.html"
-    ]
-  },
-  {
     "listing": "/release.html",
     "items": [
       "/release/notes006.html",
@@ -17,6 +8,15 @@
       "/release/notes003.html",
       "/release/notes002.html",
       "/release/notes001.html"
+    ]
+  },
+  {
+    "listing": "/usage/environments.html",
+    "items": [
+      "/usage/environments/custom.html",
+      "/usage/environments/detectron-sam.html",
+      "/usage/environments/dsks/dsks_2023.10.html",
+      "/usage/environments/dsks/dsks_2023.05.html"
     ]
   }
 ]

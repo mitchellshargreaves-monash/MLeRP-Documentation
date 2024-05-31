@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Mitchell Hargreaves">
-<meta name="dcterms.date" content="2024-02-21">
 
-<title>MLeRP User Guide Documentation - Release Notes #6</title>
+<title>MLeRP User Guide Documentation - Dask Offloading</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -130,7 +162,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Release Notes #6</li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../tutorials/1_dask_slurm.html">Tutorials</a></li><li class="breadcrumb-item"><a href="../tutorials/3_submitit_offloading.html">Dask Offloading</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -276,7 +308,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../tutorials/3_submitit_offloading.html" class="sidebar-item-text sidebar-link">
+  <a href="../tutorials/3_submitit_offloading.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Dask Offloading</span></a>
   </div>
 </li>
@@ -300,33 +332,27 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#comparison-with-dask" id="toc-comparison-with-dask" class="nav-link active" data-scroll-target="#comparison-with-dask">Comparison with Dask</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="3_submitit_offloading.out.ipynb" download="3_submitit_offloading.out.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Release Notes #6</h1>
+<h1 class="title">Dask Offloading</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Mitchell Hargreaves </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">February 21, 2024</p>
-    </div>
-  </div>
   
     
   </div>
@@ -334,22 +360,61 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>Hello MLeRP users,</p>
-<p>Since we last had an update we’ve been hard at work refactoring some of the software we use to maintain cluster to prepare it for any growth to come.</p>
-<p>Our main focus has been on the way that our provisioning code handles quotas. We had some reports from users with group allocations that the code used to meter disk usage wasn’t behaving as expected. To resolve this, we have moved away from the ‘user’ and ‘group’ quota system that we used to have and implemented ‘project’ quotas.</p>
-<p>In this new implementation, ‘user’ and ‘group’ allocations are both metered through the disk usage in their allocated directory, rather than attempting to count usage based on file ownership. We hope that this should be less confusing and address the reports we’ve been getting of some files being counted towards multiple allocations. As before, you will still be able to check the disk usage of all your allocations from your ‘Account Info’ app. If you continue to experience anomalies with your allocated quota, please let us know so we can work through things with you.</p>
-<p>Speaking of the ‘Account Info’ page, we’ve added a new feature there that will allow you to download your SSH credentials. This will generate and download an SSH key as well as an SSH certificate that you can use to connect to our cluster using any tool of your choice. These credentials have a limited lifespan and will be cycled periodically, requiring you to log back in and redownload them to refresh your access. The main way we expect users to use this feature is to enable Remote Development through IDEs like <a href="../connecting/vscode.html">VS Code</a>. Previously, the only way to do this was through using our commandline tool, <a href="../connecting/ssh.html#ssossh">SSOSSH</a>, or to generate your own keys using our <a href="../usage/strudel2.html#terminal-jobs">terminal app</a>. We hope that this will help remove friction associated with using your favourite tools with our service. If this experimental feature proves stable and useful, we’ll update our documentation to recommend this as the primary method to remotely access our services.</p>
-<p>We’ve started a rework of our documentation to address some of the common stumbling blocks we’ve noticed users regularly asking us about. This will include new tutorials covering things like ‘checkpointing’, and refining our existing ones of Dask usage which some have found to be counter intuitive. If there’s a specific section of the documentation that you believe needs attention and you have ideas on how we can clarify it, please let us know.</p>
-<p>Our first update to the docs has been to rewrite our outdated <a href="../hardware.html">Hardware</a> page (formerly the Compute page) to better reflect the current architecture and usage advice. The biggest change you might notice is a description of each QoS that we offer, how they differ, and what they’re each optimised for… which includes the addition of our new QoS <a href="../hardware.html#panther-qos">Panther</a>! The Panther QoS is restricted to CPU only jobs, which lets us be much more lenient with the wall time (7 days!). This makes it the perfect choice as the host for a jupyter notebook that sends larger workloads out to Dask workers. This lets us reserve the Lion QoS for big workloads such as memory intensive data visualisation or batch processing.</p>
-<p>Which leads us into our new experimental Strudel2 app - the Batch Job app! This application, which will be backed by the Lion QoS, will allow you to queue scripts that you’ve delveoped to be picked up by the SLURM scheduler without ever having to use the <code>sbatch</code> command. The application will allow you to select any compute requirements from a web form, such as number of CPUs, RAM, GPU number and flavour, and run a script from a path that you specify. At present we support python and bash scripts, but in the future we also hope to support automatically converting the ipython notebooks you’ve been working on in our Jupyter Lab app through <code>nbconvert</code>. We’d also like to support a method for our power users to paste their <code>SBATCH</code> scripts into a text box in the form for full control. Once we’ve solidified the app’s functionality and ironed out any bugs, we will finalise its documentation along with the other documentation work we’re doing.</p>
-<p>To support this app, we thought it was important to be able to view the results of your jobs from the Strudel2 web application. We’ve now added a <code>View log</code> button to all job records, running or completed. This feature will be available for all Strudel2 applications, not just the Batch Job app. To keep things a little tidier, Strudel2 logs will now be placed in a dedicated folder rather than filling up your home directory: <code>~/.strudel2/logs/</code>. Note that this will not apply to any logs generated by Dask jobs since they are not spawned by Strudel2 - if you’d like to control where these land you can specify with the <code>log_directory</code> paramater.</p>
-<p>Another big change is that we’ve now deprecated the MLeRP-QCIF region, leaving only the MLeRP-Monash region which will serve all users going forward. If you are an inactive MLeRP-QCIF user, we have taken a copy of the data which is now hosted in the Monash region. If you’d like to revisit the MLeRP service now that it is more mature, we can make your old qcif data available to you as a part of the provisioning process on request.</p>
-<p>Finally, the last change that we want to tell you about is an administrative one. Going forwards, we’re going to be changing our help email to <code>mlerphelp@monash.edu</code>. This move away from our Gmail address is largely to help deal with some issues we’ve had with our user communications, such as account provision notifications, being caught by university spam filters. Any mail that is sent to our old address should be forwarded on to the new address, so we shouldn’t miss anything in the transition.</p>
-<p>As always, we hope these changes will make the experience on our platform a smoother one as we continue to develop features to enable your research.</p>
-<p>Regards,<br>
-Mitchell Hargreaves</p>
+<p>SubmitIt is a lower level library than Dask which you can also use to offload parts of your notebook to the SLURM queue. Rather than managing a cluster, you will instead directly be submitting python functions to the SLURM queue giving you more control. For more information, have a read of their <a href="https://pypi.org/project/submitit/">PyPi page</a>.</p>
+<div class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> submitit</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Define where we'd like submitit to place our logs</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>executor <span class="op">=</span> submitit.AutoExecutor(folder<span class="op">=</span><span class="st">'~/submitit_logs'</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the parameters of our slurm job</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Just like Dasks' job_extra_directives, additional_parameters allows us to specify things that submitit doesn't support directly</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>executor.update_parameters(timeout_min<span class="op">=</span><span class="dv">30</span>, mem_gb<span class="op">=</span><span class="dv">128</span>, cpus_per_task<span class="op">=</span><span class="dv">16</span>, slurm_partition<span class="op">=</span><span class="st">"BigCats"</span>, additional_parameters<span class="op">=</span>{<span class="st">"gres"</span>: <span class="st">"gpu:1"</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We can submit our function to the cluster with the <code>executor.submit</code> method. This will return a future which can be unpacked with its result using <code>future.result()</code> just like when we were working with Dask. Because we are offloading to the SLURM queue print statements will not be visible, just like with Dask <code>SLURMClusters</code>. However, the full stack trace is still visible when an error or assertion is raised within the function.</p>
+<div class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> client_test(input1, input2, error<span class="op">=</span><span class="va">False</span>, test<span class="op">=</span><span class="va">False</span>):</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Force an error</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> error:</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">assert</span> <span class="dv">0</span> <span class="op">==</span> <span class="dv">1</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Stop after one batch when testing        </span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> test: </span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"When running in a local cluster you can see print statements!"</span>)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> input1, input2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>future <span class="op">=</span> executor.submit(client_test, <span class="st">"input1"</span>, <span class="st">"input2"</span>, test<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>future.result()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="19">
+<pre><code>('input1', 'input2')</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>future <span class="op">=</span> client.submit(client_test, <span class="st">"input1"</span>, <span class="st">"input2"</span>, error<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>future.result()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>NameError: name 'client' is not defined</code></pre>
+</div>
+</div>
+<p>Note that since we are interacting directly with the queue, we don’t need to clean up and shut down our cluster when using SubmitIt.</p>
+<p>If needed we can be more specific about the specific GPU type and QoS we need if we have more complex requirements.</p>
+<div class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>executor.update_parameters(timeout_min<span class="op">=</span><span class="dv">30</span>, mem_gb<span class="op">=</span><span class="dv">128</span>, cpus_per_task<span class="op">=</span><span class="dv">16</span>, slurm_partition<span class="op">=</span><span class="st">"BigCats"</span>, additional_parameters<span class="op">=</span>{<span class="st">"gres"</span>: <span class="st">"gpu:3g.20gb:1"</span>, <span class="st">"partition"</span>: <span class="st">"lion"</span>})</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>client.submit(client_test, <span class="st">"input1"</span>, <span class="st">"input2"</span>, test<span class="op">=</span><span class="va">True</span>).result()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="23">
+<pre><code>('input1', 'input2')</code></pre>
+</div>
+</div>
+<section id="comparison-with-dask" class="level2">
+<h2 class="anchored" data-anchor-id="comparison-with-dask">Comparison with Dask</h2>
+<p>As you can see, we’ve implemented the same use case with both Dask and SubmitIt. Which begs the question - which should you use for your research?</p>
+<p>Both packages have pros and cons, but on the whole, Dask is much better suited towards tasks which can benefit from being broken into many small tasks - like when preprocessing your data. SubmitIt on the other hand is much better suited for use cases where you are looking to offload one larger job at a time, like when you are training.</p>
+<p>Of the two, Dask is the more mature package with more flexibility and complete documentation - but if you are looking for a simple offloading package it is often far more complexity than you need.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
