@@ -4,7 +4,7 @@ title: "Welcome to MLeRP"
 
 ![Artwork by [Kiowa Scott-Hurley](https://kiowa-scott-hurley.github.io/tea-tech-and-trials/)](./images/cluster-cat.png)
 
-The Machine Learning eResearch Platform (MLeRP) creates a middle ground that has the interactivity of a notebook with the power of a HPC environment that can share valuable resources between other users while code isn’t being executed.
+The Machine Learning eResearch Platform (MLeRP) creates a middle ground that has the interactivity of a notebook with the power of a GPU Cluster environment that can share valuable resources between other users while code isn’t being executed.
 
 We provide users with CPU based Jupyter notebook sessions capable of basic analysis, with the ability to interactively send jobs to a SLURM queue for GPU or parallelised CPU acceleration through Dask.
 

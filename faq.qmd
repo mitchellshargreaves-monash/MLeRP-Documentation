@@ -14,7 +14,7 @@ MLeRP is designed with the idea that a job's size should be about the size of a 
 ### Why Dask?
 We looked at a few different options for the MLeRP environment including [Sagemaker](https://aws.amazon.com/sagemaker/), [Spark](https://spark.apache.org/) and [Ray](https://docs.ray.io/en/releases-1.11.1/index.html). Ultimately we settled on Dask as the primary tool to interface with the queue because:
 
-* SLURM jobs can be submitted with `SLURMCluster` whenever HPC is needed
+* SLURM jobs can be submitted with `SLURMCluster` whenever the GPU cluster is needed
 * Debugging can be done locally first with `LocalCluster` with minimal code change
 * It has a familiar syntax as it's designed as a light wrapper around common libraries like Numpy, Pandas and SciKit-Learn
 * High level applications can be implemented easily with [Scikit-Learn](https://ml.dask.org/joblib.html), [XGBoost](https://ml.dask.org/xgboost.html), [Skorch](https://ml.dask.org/pytorch.html), [SciKeras](https://ml.dask.org/keras.html)

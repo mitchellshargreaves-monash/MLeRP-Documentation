@@ -22,13 +22,13 @@ While desktop sessions are available they might have prohibitively long queues a
 
 They need an interactive environment so they can develop and debug their algorithms and the algorithms, but still need access to high powered acceleration so they can process their dataset. At the same time we want to improve utilisation of the hardware so that we can serve more users and reduce wait times.
 
-The MLeRP environment creates a middle ground that has the interactivity of a notebook with the power of a HPC environment that can share valuable resources between other users while code isn’t being executed.
+The MLeRP environment creates a middle ground that has the interactivity of a notebook with the power of a cluster environment that can share valuable resources between other users while code isn’t being executed.
 
 We provide users with CPU based Jupyter notebook sessions capable of basic analysis, with the ability to interactively send jobs to a SLURM queue for GPU or parallelised CPU acceleration through Dask.
 
 ![](./images/mlerp-panels.png)
 
-Now our new researcher can easily import the same code that they were using on their laptops or with online notebook services straight into a HPC environment without the need to convert it first into a SBATCH script, wait in long HPC queues or load modules for dependencies. 
+Now our new researcher can easily import the same code that they were using on their laptops or with online notebook services straight into a cluster environment without the need to convert it first into a SBATCH script, wait in long cluster queues or load modules for dependencies. 
 
 ### Am I eligible for this service?
 MLeRP is available to all Australian and New Zealand academic researchers. MLeRP supports authentication through AAF and Google. Tuakiri authentication is planned but not yet implemented.
@@ -37,7 +37,7 @@ MLeRP is available to all Australian and New Zealand academic researchers. MLeRP
 You can apply for an allocation [here](https://forms.gle/HuPk8ckmptq2LCaR7).
 
 ### How do I access the compute?
-Notebooks attached directly to reserved GPU compute for 10 GB instances are available through the 'Tabby' service. This is ideal for data exploration, data visualisation or beginners who are just starting with HPC. Larger instances, such as 20 GB and 40 GB are only available through the SLURM queue either using batch submission through the 'Lion' Service or through Dask SLURMClusters through the 'Cheetah' Service.
+Notebooks attached directly to reserved GPU compute for 10 GB instances are available through the 'Tabby' service. This is ideal for data exploration, data visualisation or beginners who are just starting with clusters. Larger instances, such as 20 GB and 40 GB are only available through the SLURM queue either using batch submission through the 'Lion' Service or through Dask SLURMClusters through the 'Cheetah' Service.
 
 We expect new users to start their projects with notebooks using direct GPU reservation, then move to notebooks backed by Dask SLURMClusters when they need the extra power. Finally, once they have finished writing their applications and are ready to train their models, they can submit their experiments to the SLURM queue.
 
