@@ -13,6 +13,7 @@
   {
     "listing": "/usage/environments.html",
     "items": [
+      "/usage/environments/dsks/dsks_2024.06.html",
       "/usage/environments/custom.html",
       "/usage/environments/detectron-sam.html",
       "/usage/environments/dsks/dsks_2023.10.html",

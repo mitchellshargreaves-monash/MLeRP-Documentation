@@ -403,7 +403,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 Files already downloaded and verified</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>/mnt/userdata2/mhar0048/miniforge3/envs/dsks_2023.10/lib/python3.10/site-packages/torch/utils/data/dataloader.py:558: UserWarning: This DataLoader will create 16 worker processes in total. Our suggested max number of worker in current system is 8, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+<pre><code>/apps/mambaforge/envs/dsks_2024.06/lib/python3.10/site-packages/torch/utils/data/dataloader.py:558: UserWarning: This DataLoader will create 16 worker processes in total. Our suggested max number of worker in current system is 8, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
   warnings.warn(_create_warning_msg(</code></pre>
 </div>
 </div>
@@ -549,11 +549,10 @@ Files already downloaded and verified</code></pre>
 </section>
 <section id="testing-locally" class="level3">
 <h3 class="anchored" data-anchor-id="testing-locally">Testing locally</h3>
-<p>We can submit our function to the cluster with the <code>client.submit</code> method. This will return a future which can be unpacked with its result using <code>future.result()</code>.</p>
 <div class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>train(trainloader, test<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
-<pre><code>2.1011123657226562</code></pre>
+<pre><code>2.065371513366699</code></pre>
 </div>
 </div>
 </section>
@@ -567,41 +566,37 @@ Files already downloaded and verified</code></pre>
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the parameters of our slurm job</span></span>
 <span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Just like Dasks' job_extra_directives, additional_parameters allows us to specify things that submitit doesn't support directly</span></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>executor.update_parameters(timeout_min<span class="op">=</span><span class="dv">30</span>, mem_gb<span class="op">=</span><span class="dv">128</span>, cpus_per_task<span class="op">=</span><span class="dv">16</span>, slurm_partition<span class="op">=</span><span class="st">"BigCats"</span>, additional_parameters<span class="op">=</span>{<span class="st">"gres"</span>: <span class="st">"gpu:2g.10gb:1"</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>/mnt/userdata2/mhar0048/miniforge3/envs/dsks_2023.10/lib/python3.10/site-packages/submitit/auto/auto.py:23: UserWarning: Setting 'additional_parameters' is deprecated. Use 'slurm_additional_parameters' instead.
-  warnings.warn(f"Setting '{arg}' is deprecated. Use '{new_arg}' instead.")</code></pre>
-</div>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>executor.update_parameters(timeout_min<span class="op">=</span><span class="dv">30</span>, mem_gb<span class="op">=</span><span class="dv">128</span>, cpus_per_task<span class="op">=</span><span class="dv">16</span>, slurm_partition<span class="op">=</span><span class="st">"BigCats"</span>, slurm_additional_parameters<span class="op">=</span>{<span class="st">"gres"</span>: <span class="st">"gpu:2g.10gb:1"</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># First test offloading before we run the full training loop</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>executor.submit(train, trainloader, test<span class="op">=</span><span class="va">True</span>).result()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># First test offloading before we run the full training loop</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>executor.submit(train, trainloader, test<span class="op">=</span><span class="va">True</span>).result()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
-<pre><code>2.071967840194702</code></pre>
+<pre><code>2.058852434158325</code></pre>
 </div>
 </div>
 <p>Finally we can bring everything together and run our training loop.</p>
 <div class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Run the training loop</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>epochs <span class="op">=</span> <span class="dv">5</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> tqdm(total<span class="op">=</span>(epochs)) <span class="im">as</span> pbar:</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> epoch <span class="kw">in</span> <span class="bu">range</span>(epochs):</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>        train_loss <span class="op">=</span> executor.submit(train, trainloader, load<span class="op">=</span>(epoch <span class="op">&gt;</span> <span class="dv">0</span>)).result()</span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>        valid_loss, accuracy <span class="op">=</span> executor.submit(valid, validloader).result()</span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>        pbar.update()</span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>        pbar.set_postfix(loss<span class="op">=</span>train_loss)</span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>( <span class="ss">f"epoch: </span><span class="sc">{</span>epoch<span class="sc">}</span><span class="ss">, train_loss: </span><span class="sc">{</span>train_loss <span class="sc">: .3f}</span><span class="ss">, valid_loss: </span><span class="sc">{</span>valid_loss <span class="sc">: .3f}</span><span class="ss">, accuracy: </span><span class="sc">{</span>accuracy <span class="sc">: .3f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Run the training loop</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>epochs <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> tqdm(total<span class="op">=</span>(epochs)) <span class="im">as</span> pbar:</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> epoch <span class="kw">in</span> <span class="bu">range</span>(epochs):</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>        train_loss <span class="op">=</span> executor.submit(train, trainloader, load<span class="op">=</span>(epoch <span class="op">&gt;</span> <span class="dv">0</span>)).result()</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>        valid_loss, accuracy <span class="op">=</span> executor.submit(valid, validloader).result()</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>        pbar.update()</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>        pbar.set_postfix(loss<span class="op">=</span>train_loss)</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>( <span class="ss">f"epoch: </span><span class="sc">{</span>epoch<span class="sc">}</span><span class="ss">, train_loss: </span><span class="sc">{</span>train_loss <span class="sc">: .3f}</span><span class="ss">, valid_loss: </span><span class="sc">{</span>valid_loss <span class="sc">: .3f}</span><span class="ss">, accuracy: </span><span class="sc">{</span>accuracy <span class="sc">: .3f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"783058d6cb3e4cfc9eaeafc3e3c63e6a","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+{"model_id":"e1061bb29ae148108ff86fe545bfedcb","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
 </script>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>epoch: 0, train_loss:  2.252, valid_loss:  2.075, accuracy:  0.239
-epoch: 1, train_loss:  2.012, valid_loss:  1.955, accuracy:  0.282
-epoch: 2, train_loss:  1.906, valid_loss:  1.840, accuracy:  0.335
-epoch: 3, train_loss:  1.811, valid_loss:  1.747, accuracy:  0.357
-epoch: 4, train_loss:  1.727, valid_loss:  1.672, accuracy:  0.382</code></pre>
+<pre><code>epoch: 0, train_loss:  2.273, valid_loss:  2.119, accuracy:  0.224
+epoch: 1, train_loss:  1.998, valid_loss:  1.928, accuracy:  0.294
+epoch: 2, train_loss:  1.872, valid_loss:  1.807, accuracy:  0.333
+epoch: 3, train_loss:  1.770, valid_loss:  1.720, accuracy:  0.365
+epoch: 4, train_loss:  1.702, valid_loss:  1.654, accuracy:  0.385</code></pre>
 </div>
 </div>
 <p>Note how in this example we offload every epoch as its own function. If your model or dataset is large, you may find it more efficient to submit multiple epochs to be trained per batch. In doing so, consider specifying larger GPU sizes and using the lion qos if the 30 minute joblength for Cheetah is too short.</p>
@@ -611,61 +606,61 @@ epoch: 4, train_loss:  1.727, valid_loss:  1.672, accuracy:  0.382</code></pre>
 <p>Offloading tasks doesn’t come for free, there is an initial cost associated with sending the data to a remote device. Let’s compare the time it would take to train a Resnet18 on CIFAR for a range of epochs comparing a local GPU, a remote GPU using Dask and a remote GPU using Dask with a scattered dataset. For this expriment we will not bother saving the weights afterwards since this should be relatively constant between methods.</p>
 <p>Note that this test was run directly on the compute node to gain direct access to the GPUs to measure overheads. You will only be able to mimic our results for the final graph if you’re running with an inbuilt GPU (Tabby service) since it compares reserved GPUs with Dask driven GPU jobs. Running this cell in a lion service will likely freeze the notebook since you’d have no accelleration.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torchvision.models <span class="im">import</span> resnet18</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> time <span class="im">import</span> time</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Store times in arrays</span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>local <span class="op">=</span> []</span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>remote <span class="op">=</span> []</span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>scatter <span class="op">=</span> []</span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Test some number of epochs</span></span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>epoch_list <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">10</span>]</span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> tqdm(total<span class="op">=</span>(<span class="bu">len</span>(epoch_list) <span class="op">*</span> <span class="dv">3</span>)) <span class="im">as</span> pbar:</span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> num_epochs <span class="kw">in</span> epoch_list:</span>
-<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Local GPU</span></span>
-<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>        start <span class="op">=</span> time()</span>
-<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>        train(trainloader, arch<span class="op">=</span>resnet18, epochs<span class="op">=</span>(num_epochs <span class="op">+</span> <span class="dv">1</span>), save<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>        local.append(time() <span class="op">-</span> start)</span>
-<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>        pbar.update()</span>
-<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Remote GPU</span></span>
-<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>        start <span class="op">=</span> time()</span>
-<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a>        client.submit(train, trainloader, arch<span class="op">=</span>resnet18, epochs<span class="op">=</span>(num_epochs <span class="op">+</span> <span class="dv">1</span>), save<span class="op">=</span><span class="va">False</span>).result()</span>
-<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a>        remote.append(time() <span class="op">-</span> start)</span>
-<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a>        pbar.update()</span>
-<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Remote GPU with scatter</span></span>
-<span id="cb15-27"><a href="#cb15-27" aria-hidden="true" tabindex="-1"></a>        start <span class="op">=</span> time()</span>
-<span id="cb15-28"><a href="#cb15-28" aria-hidden="true" tabindex="-1"></a>        trainloader_future <span class="op">=</span> client.scatter(trainloader)</span>
-<span id="cb15-29"><a href="#cb15-29" aria-hidden="true" tabindex="-1"></a>        client.submit(train, trainloader_future, arch<span class="op">=</span>resnet18, epochs<span class="op">=</span>(num_epochs <span class="op">+</span> <span class="dv">1</span>), save<span class="op">=</span><span class="va">False</span>).result()</span>
-<span id="cb15-30"><a href="#cb15-30" aria-hidden="true" tabindex="-1"></a>        scatter.append(time() <span class="op">-</span> start)</span>
-<span id="cb15-31"><a href="#cb15-31" aria-hidden="true" tabindex="-1"></a>        pbar.update()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torchvision.models <span class="im">import</span> resnet18</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> time <span class="im">import</span> time</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Store times in arrays</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>local <span class="op">=</span> []</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>remote <span class="op">=</span> []</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>scatter <span class="op">=</span> []</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Test some number of epochs</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>epoch_list <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">10</span>]</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> tqdm(total<span class="op">=</span>(<span class="bu">len</span>(epoch_list) <span class="op">*</span> <span class="dv">3</span>)) <span class="im">as</span> pbar:</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> num_epochs <span class="kw">in</span> epoch_list:</span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Local GPU</span></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>        start <span class="op">=</span> time()</span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>        train(trainloader, arch<span class="op">=</span>resnet18, epochs<span class="op">=</span>(num_epochs <span class="op">+</span> <span class="dv">1</span>), save<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>        local.append(time() <span class="op">-</span> start)</span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>        pbar.update()</span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Remote GPU</span></span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>        start <span class="op">=</span> time()</span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>        client.submit(train, trainloader, arch<span class="op">=</span>resnet18, epochs<span class="op">=</span>(num_epochs <span class="op">+</span> <span class="dv">1</span>), save<span class="op">=</span><span class="va">False</span>).result()</span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>        remote.append(time() <span class="op">-</span> start)</span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a>        pbar.update()</span>
+<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Remote GPU with scatter</span></span>
+<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a>        start <span class="op">=</span> time()</span>
+<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a>        trainloader_future <span class="op">=</span> client.scatter(trainloader)</span>
+<span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a>        client.submit(train, trainloader_future, arch<span class="op">=</span>resnet18, epochs<span class="op">=</span>(num_epochs <span class="op">+</span> <span class="dv">1</span>), save<span class="op">=</span><span class="va">False</span>).result()</span>
+<span id="cb14-30"><a href="#cb14-30" aria-hidden="true" tabindex="-1"></a>        scatter.append(time() <span class="op">-</span> start)</span>
+<span id="cb14-31"><a href="#cb14-31" aria-hidden="true" tabindex="-1"></a>        pbar.update()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> itertools <span class="im">import</span> chain</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> <span class="bu">list</span>(chain(<span class="op">*</span><span class="bu">zip</span>(local, remote, scatter)))</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>columns <span class="op">=</span> []</span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> num_epochs <span class="kw">in</span> epoch_list:</span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> test <span class="kw">in</span> [<span class="st">"local"</span>, <span class="st">"remote"</span>, <span class="st">"scatter"</span>]:</span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>        columns.append(test <span class="op">+</span> <span class="st">" "</span> <span class="op">+</span> <span class="bu">str</span>(num_epochs))</span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>plt.bar(<span class="bu">range</span>(<span class="bu">len</span>(data)), data, tick_label<span class="op">=</span>columns)</span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">90</span>)</span>
-<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Experiment"</span>)</span>
-<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Seconds"</span>)</span>
-<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Runtime comparison for local, remote and scatter"</span>)</span>
-<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> itertools <span class="im">import</span> chain</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> <span class="bu">list</span>(chain(<span class="op">*</span><span class="bu">zip</span>(local, remote, scatter)))</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>columns <span class="op">=</span> []</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> num_epochs <span class="kw">in</span> epoch_list:</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> test <span class="kw">in</span> [<span class="st">"local"</span>, <span class="st">"remote"</span>, <span class="st">"scatter"</span>]:</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>        columns.append(test <span class="op">+</span> <span class="st">" "</span> <span class="op">+</span> <span class="bu">str</span>(num_epochs))</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>plt.bar(<span class="bu">range</span>(<span class="bu">len</span>(data)), data, tick_label<span class="op">=</span>columns)</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">90</span>)</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Experiment"</span>)</span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Seconds"</span>)</span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Runtime comparison for local, remote and scatter"</span>)</span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="4_submitit_pytorch_files/figure-html/cell-11-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <p>From this experiment we can see that the cost associated with running code remotely is small, and the impact decreases with the size of the function that we submit. It also shows that it always makes sense to scatter large objects before computing, even for small jobs.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>client.shutdown()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>client.shutdown()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 

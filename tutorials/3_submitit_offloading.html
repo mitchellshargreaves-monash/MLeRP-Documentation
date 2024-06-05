@@ -361,7 +361,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 <p>SubmitIt is a lower level library than Dask which you can also use to offload parts of your notebook to the SLURM queue. Rather than managing a cluster, you will instead directly be submitting python functions to the SLURM queue giving you more control. For more information, have a read of their <a href="https://pypi.org/project/submitit/">PyPi page</a>.</p>
-<div class="cell" data-execution_count="24">
+<div class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> submitit</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Define where we'd like submitit to place our logs</span></span>
@@ -369,10 +369,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the parameters of our slurm job</span></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Just like Dasks' job_extra_directives, additional_parameters allows us to specify things that submitit doesn't support directly</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>executor.update_parameters(timeout_min<span class="op">=</span><span class="dv">30</span>, mem_gb<span class="op">=</span><span class="dv">128</span>, cpus_per_task<span class="op">=</span><span class="dv">16</span>, slurm_partition<span class="op">=</span><span class="st">"BigCats"</span>, additional_parameters<span class="op">=</span>{<span class="st">"gres"</span>: <span class="st">"gpu:1"</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>executor.update_parameters(timeout_min<span class="op">=</span><span class="dv">30</span>, mem_gb<span class="op">=</span><span class="dv">128</span>, cpus_per_task<span class="op">=</span><span class="dv">16</span>, slurm_partition<span class="op">=</span><span class="st">"BigCats"</span>, slurm_additional_parameters<span class="op">=</span>{<span class="st">"gres"</span>: <span class="st">"gpu:1"</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We can submit our function to the cluster with the <code>executor.submit</code> method. This will return a future which can be unpacked with its result using <code>future.result()</code> just like when we were working with Dask. Because we are offloading to the SLURM queue print statements will not be visible, just like with Dask <code>SLURMClusters</code>. However, the full stack trace is still visible when an error or assertion is raised within the function.</p>
-<div class="cell" data-execution_count="18">
+<div class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> client_test(input1, input2, error<span class="op">=</span><span class="va">False</span>, test<span class="op">=</span><span class="va">False</span>):</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Force an error</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> error:</span>
@@ -384,26 +384,43 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> input1, input2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="19">
+<div class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>future <span class="op">=</span> executor.submit(client_test, <span class="st">"input1"</span>, <span class="st">"input2"</span>, test<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>future.result()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="19">
+<div class="cell-output cell-output-display" data-execution_count="3">
 <pre><code>('input1', 'input2')</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="20">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>future <span class="op">=</span> client.submit(client_test, <span class="st">"input1"</span>, <span class="st">"input2"</span>, error<span class="op">=</span><span class="va">True</span>)</span>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>future <span class="op">=</span> executor.submit(client_test, <span class="st">"input1"</span>, <span class="st">"input2"</span>, error<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>future.result()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
-<pre><code>NameError: name 'client' is not defined</code></pre>
+<pre><code>FailedJobError: Job (task=0) failed during processing with trace:
+----------------------
+Traceback (most recent call last):
+  File "/apps/mambaforge/envs/dsks_2024.06/lib/python3.10/site-packages/submitit/core/submission.py", line 55, in process_job
+    result = delayed.result()
+  File "/apps/mambaforge/envs/dsks_2024.06/lib/python3.10/site-packages/submitit/core/utils.py", line 133, in result
+    self._result = self.function(*self.args, **self.kwargs)
+  File "/tmp/ipykernel_1235436/858968069.py", line 4, in client_test
+AssertionError
+
+----------------------
+You can check full logs with 'job.stderr(0)' and 'job.stdout(0)'or at paths:
+  - /home/mhar0048/submitit_logs/6952_0_log.err
+  - /home/mhar0048/submitit_logs/6952_0_log.out</code></pre>
 </div>
 </div>
 <p>Note that since we are interacting directly with the queue, we don’t need to clean up and shut down our cluster when using SubmitIt.</p>
 <p>If needed we can be more specific about the specific GPU type and QoS we need if we have more complex requirements.</p>
-<div class="cell" data-execution_count="23">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>executor.update_parameters(timeout_min<span class="op">=</span><span class="dv">30</span>, mem_gb<span class="op">=</span><span class="dv">128</span>, cpus_per_task<span class="op">=</span><span class="dv">16</span>, slurm_partition<span class="op">=</span><span class="st">"BigCats"</span>, additional_parameters<span class="op">=</span>{<span class="st">"gres"</span>: <span class="st">"gpu:3g.20gb:1"</span>, <span class="st">"partition"</span>: <span class="st">"lion"</span>})</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>client.submit(client_test, <span class="st">"input1"</span>, <span class="st">"input2"</span>, test<span class="op">=</span><span class="va">True</span>).result()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="23">
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>executor.update_parameters(timeout_min<span class="op">=</span><span class="dv">30</span>, mem_gb<span class="op">=</span><span class="dv">128</span>, cpus_per_task<span class="op">=</span><span class="dv">16</span>, slurm_partition<span class="op">=</span><span class="st">"BigCats"</span>, slurm_additional_parameters<span class="op">=</span>{<span class="st">"gres"</span>: <span class="st">"gpu:3g.20gb:1"</span>, <span class="st">"partition"</span>: <span class="st">"BigCats"</span>})</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>executor.submit(client_test, <span class="st">"input1"</span>, <span class="st">"input2"</span>, test<span class="op">=</span><span class="va">True</span>).result()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/apps/mambaforge/envs/dsks_2024.06/lib/python3.10/site-packages/submitit/auto/auto.py:23: UserWarning: Setting 'additional_parameters' is deprecated. Use 'slurm_additional_parameters' instead.
+  warnings.warn(f"Setting '{arg}' is deprecated. Use '{new_arg}' instead.")</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="5">
 <pre><code>('input1', 'input2')</code></pre>
 </div>
 </div>
