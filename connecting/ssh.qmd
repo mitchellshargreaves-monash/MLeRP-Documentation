@@ -35,10 +35,10 @@ The ProxyCommand you should use will be different between Windows and Mac/Linux:
 
 ```bash
 # Linux and Mac
-ProxyCommand="ssh -i </path/to/ssh/key> <username>@{{< var monash_login >}} /apps/strudel2/strudel_apps/sshnc.sh"
+ProxyCommand ssh -i </path/to/ssh/key> <username>@{{< var monash_login >}} /apps/strudel2/strudel_apps/sshnc.sh
 
 # Windows
-ProxyCommand="ssh.exe -i </path/to/ssh/key> <username>@{{< var monash_login >}} /apps/strudel2/strudel_apps/sshnc.sh"
+ProxyCommand ssh.exe -i </path/to/ssh/key> <username>@{{< var monash_login >}} /apps/strudel2/strudel_apps/sshnc.sh
 ```
 
 This will give you two configurations:
@@ -153,8 +153,8 @@ Host <User>_MLeRP_monash_job
 
 ```bash
 # Linux and Mac
-ProxyCommand="ssh <username>@{{< var monash_login >}} /apps/strudel2/strudel_apps/sshnc.sh"
+ProxyCommand ssh -i </path/to/ssh/key> <username>@{{< var monash_login >}} /apps/strudel2/strudel_apps/sshnc.sh
 
 # Windows
-ProxyCommand="ssh.exe <username>@{{< var monash_login >}} /apps/strudel2/strudel_apps/sshnc.sh"
+ProxyCommand ssh.exe -i </path/to/ssh/key> <username>@{{< var monash_login >}} /apps/strudel2/strudel_apps/sshnc.sh
 ```
