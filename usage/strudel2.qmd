@@ -22,7 +22,15 @@ We have provided the DSKS (Data Science Kitchen Sink) series of environments for
 
 If our conda environments don't meet your needs, you can consider maintaining your own [miniconda](https://docs.conda.io/en/latest/miniconda.html) or [mambaforge](https://mamba.readthedocs.io/en/latest/installation/mamba-installation.html) installation in your home directory. For a custom conda environment to be compatible with this app, you will need to include jupyter and dask related packages during. See [this page](/usage/custom.qmd) for more information about creating a conda environment to interface with our environment.
 
-## Terminal
+## Batch
+The Batch app gives you the ability to submit jobs to be picked up by the SLURM queue. This allows you to continue to run your tests while you are away from the computer and check back in later when they're done. The app currently supports python scripts as well as bash scripts.
+
+Of course if you're comfortable with manually submitting to the queue you can do so if you need the extra control. Batch jobs are run in the Lion QoS meaning you can have up to 4 running at once.
+
+Any outputs to terminal will be captured and stored in the job's log file for later viewing. Be sure to checkpoint your code and periodically save any trained models so that you can reload your desired model from any chosen point during training process. Checkpointing also enables you to train your model for longer than the 24 hour wall time, as long as you save everything you need to resume at the end of your job.
+
+## VS Code Server
+Code Server offers a simpler alternative to connecting your IDE to MLeRP over SSH. Just as you can customise your VS Code experience with the desktop app using plugins, you can install VS Code plugins while using Code Server. For more information about code server, see the [code server documentation](https://code.visualstudio.com/docs/remote/vscode-server).
 
 ## FAQ
 ### Why can't I connect to Jupyter Lab?

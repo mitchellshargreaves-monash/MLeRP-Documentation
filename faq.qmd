@@ -2,8 +2,6 @@
 title: Troubleshooting
 ---
 
-<!-- <img src="./images/curious_mlerp.png" style="position: fixed; left: 0; bottom: 0;" class="d-none d-sm-block"/> -->
-
 ### Why do I still have to wait in queue?
 Directly attaching GPU compute to notebooks leads to very low utilisation since the GPU sits idle while you're debugging your code. By using a queue we are able to service more researchers at once with greater efficiency.
 

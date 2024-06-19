@@ -1,0 +1,13 @@
+---
+title: R
+---
+
+If you'd like to work with R as a part of your data science workflow, you can do that on MLeRP too. 
+
+The full path to the R executable is as below:  
+For a specific version: `/apps/R-x.x.x`   
+For the latest installed version:`/apps/R`
+
+While we don't support R Studio as a part of Strudel2, VS Code has a robust [R plugin ecosystem](https://code.visualstudio.com/docs/languages/r) that can be used as your R development environment.
+
+We recommend maintaining your R virtual environment using the [`renv` package](https://github.com/rstudio/renv) so that you can ensure isolation, portability and reproducibility in your environments.

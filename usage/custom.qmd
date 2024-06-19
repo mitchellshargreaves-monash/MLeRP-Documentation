@@ -22,7 +22,7 @@ Since a mamba installation comes compatible with conda and acts as a dropin repl
 In this tutorial we will cover installing a mamba environment. 
 
 ## 1. Installing miniforge
-1. Following the recommendations on [mamba's installation page](https://mamba.readthedocs.io/en/latest/mamba-installation.html), we will be using the Miniforge distribution.
+1. Following the recommendations on [mamba's installation page](https://mamba.readthedocs.io/en/latest/installation/mamba-installation.html), we will be using the Miniforge distribution.
 
 2. Following the link through to the [download page](https://github.com/conda-forge/miniforge#mambaforge), copy the link for the following distribution:
    - OS: Linux
@@ -54,7 +54,7 @@ In this tutorial we will cover installing a mamba environment.
    source /path/to/install/...miniforge/bin/activate
 
    # Relative paths may be more convenient in everyday usage
-   source ./miniforge/bin/activate 
+   source ./miniforge3/bin/activate 
    
    # `.` works as a shorthand for the source command
    . ./mambaforge/bin/activate 
