@@ -130,7 +130,7 @@
     "href": "usage/strudel2.html#vs-code-server",
     "title": "Strudel2",
     "section": "VS Code Server",
-    "text": "VS Code Server\nCode Server offers a simpler alternative to connecting your IDE to MLeRP over SSH. Just as you can customise your VS Code experience with the desktop app using plugins, you can install VS Code plugins while using Code Server. For more information about code server, see the Code Server documentation."
+    "text": "VS Code Server\nCode Server offers a simpler alternative to connecting your IDE to MLeRP over SSH. Just as you can customise your VS Code experience with the desktop app using plugins, you can install VS Code plugins while using Code Server. See the Code Server documentation for more information."
   },
   {
     "objectID": "usage/strudel2.html#faq",
