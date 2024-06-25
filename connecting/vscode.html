@@ -385,7 +385,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>So you’d like to use <a href="https://code.visualstudio.com/">Visual Studio Code</a>, but you need access to MLeRP too - maybe your data is on the cluster, or you want to run code interactively on a GPU, or you just really love VS Code.</p>
 <p>No problem. You want a VS Code remote server.</p>
 <p>Please <strong>DO NOT</strong> follow the <a href="https://code.visualstudio.com/docs/remote/ssh">official VS Code documentation for remote servers</a>.</p>
-<p>By default, if you follow those instructions, you will end up running the VS Code remote server on the login node. This is fine if you’re managing your files, but if you’re running a notebook or running scripts you’ll need you’ll need to allocate a resource just for you.</p>
+<p>By default, if you follow those instructions, you will end up running the VS Code remote server on the login node. Even if you’re just managing your files, but especially if you’re running a notebook or running scripts we’ll need to allocate a resource just for you.</p>
 <p>This proxy command which will forward your connection to our compute nodes rather than the login node. This will connect to a <code>Jupyter Lab</code> job, or if one doesn’t exist, it will make one for you.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Linux and Mac</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="va">ProxyCommand</span><span class="op">=</span><span class="st">"ssh &lt;username&gt;@monash-mlerp-login0.mlerp.cloud.edu.au /apps/strudel2/strudel_apps/sshnc.sh"</span></span>
@@ -418,10 +418,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol type="1">
 <li><p>Follow the instructions on our ssh page to configure your <a href="../connecting/ssh.html#ssh-config">SSH Config</a>. Note that your config will be different if you’re using <a href="../connecting/ssh.html#adding-your-key-to-the-ssh-agent">keys added to the SSH agent</a>.</p></li>
 <li><p>Test our configurations with:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> <span class="op">&lt;</span>User<span class="op">&gt;</span>_MLeRP_Monash</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> <span class="op">&lt;</span>User<span class="op">&gt;</span>_MLeRP_Monash_job</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> <span class="op">&lt;</span>User<span class="op">&gt;</span>_MLeRP_Monash <span class="co"># Use this only for testing as it will connect direct to the login node</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> <span class="op">&lt;</span>User<span class="op">&gt;</span>_MLeRP_Monash_job <span class="co"># This is the one that we will use to connect to your allocated job</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ol>
-<p>The first configuration will connect directly to the login node, for you to view log files, upload data and so on. The second configuration will use the ProxyCommand to connect to a Jupyter Lab or Terminal job that you start from the <a href="../usage/strudel2.html">Strudel2</a> login portal. If a job does not exist yet, it will create a small Panther QoS resource for you.</p>
+<p>The first configuration will connect directly to the login node, perfect for testing the connection. The second configuration will use the ProxyCommand to connect to a Jupyter Lab or Terminal job that you start from the <a href="../usage/strudel2.html">Strudel2</a> login portal. If a job does not exist yet, it will create a small Panther QoS resource for you.</p>
 </section>
 </section>
 <section id="using-your-vs-code-remote-server" class="level2">

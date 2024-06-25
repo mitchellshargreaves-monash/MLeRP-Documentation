@@ -377,27 +377,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="strudel2-integration" class="level2">
 <h2 class="anchored" data-anchor-id="strudel2-integration">Strudel2 Integration</h2>
 <p>Rather than requiring users to create and manage SSH keys themselves, users are able to download their SSH credentials right from within Strudel2. The ‘Download SSH Credentials’ button can be found at the bottom of your ‘Account Info’ page, below the dashboards.</p>
-<p>This will give you an SSH key as well as a corresponding SSH certificate. These credentials will be valid for a period before expiring. When they expire, requiring you to redownload your credentials periodically. Only the path to the key needs to be specified in the SSH command, but the corresponding certificate will need to be placed in the same directory so that the tool can find it.</p>
+<p>This will give you an SSH key as well as a corresponding SSH certificate. These credentials will be valid for a period before expiring. When they expire, requiring you to redownload your credentials periodically. Only the path to the key needs to be specified in the SSH command, but the corresponding certificate will need to be placed in the same directory so that the tool can find.</p>
+<p>You will need to rename the files you download to remove any extra numbers that may have been added if you’ve downloaded the files more than once, for example: strudel2_ssh_key (1) -&gt; strudel2_ssh_key.</p>
+<p>You will also need to set the permissions of the key and certificate to 600 with chmod before connecting.</p>
+<pre><code>chmod 600 /path/to/strudel2_ssh_key*</code></pre>
 <p>Note that there is a known bug where this button breaks if Strudel2 has been refreshed. If this happens reopen the app in a new tab or log out and back in before redownloading your credentials.</p>
 <section id="ssh-config" class="level3">
 <h3 class="anchored" data-anchor-id="ssh-config">SSH config</h3>
 <p>To use these credentials, you will need to initialise your SSH config so knows to use them. Add these entries to your <code>~/.ssh/config</code> file:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Host</span> <span class="op">&lt;</span>User<span class="op">&gt;</span>_MLeRP_monash</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="ex">HostName</span> monash-mlerp-login0.mlerp.cloud.edu.au</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="ex">User</span> <span class="op">&lt;</span>User<span class="op">&gt;</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="ex">IdentityFile</span> <span class="op">&lt;</span>/path/to/ssh/key<span class="op">&gt;</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="ex">Host</span> <span class="op">&lt;</span>User<span class="op">&gt;</span>_MLeRP_monash_job</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="ex">HostName</span> VSCode</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="ex">User</span> <span class="op">&lt;</span>User<span class="op">&gt;</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="ex">IdentityFile</span> <span class="op">&lt;</span>/path/to/ssh/key<span class="op">&gt;</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="ex">ProxyCommand</span> <span class="op">&lt;</span>ProxyCommand<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Host</span> <span class="op">&lt;</span>User<span class="op">&gt;</span>_MLeRP_monash</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="ex">HostName</span> monash-mlerp-login0.mlerp.cloud.edu.au</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="ex">User</span> <span class="op">&lt;</span>User<span class="op">&gt;</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="ex">IdentityFile</span> <span class="op">&lt;</span>/path/to/ssh/key<span class="op">&gt;</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="ex">Host</span> <span class="op">&lt;</span>User<span class="op">&gt;</span>_MLeRP_monash_job</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="ex">HostName</span> VSCode</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="ex">User</span> <span class="op">&lt;</span>User<span class="op">&gt;</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="ex">IdentityFile</span> <span class="op">&lt;</span>/path/to/ssh/key<span class="op">&gt;</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="ex">ProxyCommand</span> <span class="op">&lt;</span>ProxyCommand<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The ProxyCommand you should use will be different between Windows and Mac/Linux:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Linux and Mac</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">ProxyCommand</span> ssh <span class="at">-i</span> <span class="op">&lt;</span>/path/to/ssh/key<span class="op">&gt;</span> <span class="op">&lt;</span>username<span class="op">&gt;</span>@monash-mlerp-login0.mlerp.cloud.edu.au /apps/strudel2/strudel_apps/sshnc.sh</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Windows</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="ex">ProxyCommand</span> ssh.exe <span class="at">-i</span> <span class="op">&lt;</span>/path/to/ssh/key<span class="op">&gt;</span> <span class="op">&lt;</span>username<span class="op">&gt;</span>@monash-mlerp-login0.mlerp.cloud.edu.au /apps/strudel2/strudel_apps/sshnc.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Linux and Mac</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">ProxyCommand</span> ssh <span class="at">-i</span> <span class="op">&lt;</span>/path/to/ssh/key<span class="op">&gt;</span> <span class="op">&lt;</span>username<span class="op">&gt;</span>@monash-mlerp-login0.mlerp.cloud.edu.au /apps/strudel2/strudel_apps/sshnc.sh</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Windows</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="ex">ProxyCommand</span> ssh.exe <span class="at">-i</span> <span class="op">&lt;</span>/path/to/ssh/key<span class="op">&gt;</span> <span class="op">&lt;</span>username<span class="op">&gt;</span>@monash-mlerp-login0.mlerp.cloud.edu.au /apps/strudel2/strudel_apps/sshnc.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This will give you two configurations:</p>
 <ol type="1">
 <li><p><code>&lt;User&gt;_MLeRP_Monash</code><br>
@@ -405,8 +408,8 @@ For connecting directly to the login node for simple administrative tasks</p></l
 <li><p><code>&lt;User&gt;_MLeRP_Monash_job</code><br>
 For connecting to a ‘Jupyter Lab’ or ‘Terminal’ job that you launch from Strudel2. If it can’t find one, it will create a 12 hour Panther QoS job with 4 VCPUs and 16 GB RAM.</p></li>
 </ol>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> <span class="op">&lt;</span>User<span class="op">&gt;</span>_MLeRP_Monash</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> <span class="op">&lt;</span>User<span class="op">&gt;</span>_MLeRP_Monash_job</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> <span class="op">&lt;</span>User<span class="op">&gt;</span>_MLeRP_Monash</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> <span class="op">&lt;</span>User<span class="op">&gt;</span>_MLeRP_Monash_job</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 <section id="ssossh" class="level2">
@@ -416,29 +419,29 @@ For connecting to a ‘Jupyter Lab’ or ‘Terminal’ job that you launch from
 <section id="setting-up-the-configuration-file" class="level3">
 <h3 class="anchored" data-anchor-id="setting-up-the-configuration-file">1. Setting up the configuration file</h3>
 <p>SSOSSH uses a configuration file in your user’s home directory named <code>~/.authservers.json</code>. This file should be a list of configs for the clusters you wish to connect to.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ot">[</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"authorise"</span><span class="fu">:</span> <span class="st">"https://sshauthz.cloud.cvl.org.au/pysshauthz/oauth2/oauth/authorize/choose"</span><span class="fu">,</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"base"</span><span class="fu">:</span> <span class="st">"https://sshauthz.cloud.cvl.org.au/pysshauthz/oauth2/"</span><span class="fu">,</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"cafingerprint"</span><span class="fu">:</span> <span class="st">"SHA256:ywDDZvIbx7B2AxujVIsW433fd4Sl1aZ0wl4FFsCRX/E"</span><span class="fu">,</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"client_id"</span><span class="fu">:</span> <span class="st">"Q96kt2Vtw6S78dpORktM81DH"</span><span class="fu">,</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"desc"</span><span class="fu">:</span> <span class="st">"&lt;div&gt;MLeRP&lt;/div&gt;"</span><span class="fu">,</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"icon"</span><span class="fu">:</span> <span class="kw">null</span><span class="fu">,</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"login"</span><span class="fu">:</span> <span class="st">"monash-mlerp-login0.mlerp.cloud.edu.au"</span><span class="fu">,</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"logout"</span><span class="fu">:</span> <span class="st">"https://sshauthz.cloud.cvl.org.au/pysshauthz/oauth2/logout"</span><span class="fu">,</span></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"name"</span><span class="fu">:</span> <span class="st">"MLeRP_Monash"</span><span class="fu">,</span></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"proxy"</span><span class="fu">:</span> <span class="st">"/apps/strudel2/strudel_apps/sshnc.sh"</span><span class="fu">,</span></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"scope"</span><span class="fu">:</span> <span class="st">"user:email"</span><span class="fu">,</span></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"sign"</span><span class="fu">:</span> <span class="st">"https://sshauthz.cloud.cvl.org.au/pysshauthz/sign/mlerp_users/api/v1/sign_key"</span></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span></span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="ot">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ot">[</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"authorise"</span><span class="fu">:</span> <span class="st">"https://sshauthz.cloud.cvl.org.au/pysshauthz/oauth2/oauth/authorize/choose"</span><span class="fu">,</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"base"</span><span class="fu">:</span> <span class="st">"https://sshauthz.cloud.cvl.org.au/pysshauthz/oauth2/"</span><span class="fu">,</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"cafingerprint"</span><span class="fu">:</span> <span class="st">"SHA256:ywDDZvIbx7B2AxujVIsW433fd4Sl1aZ0wl4FFsCRX/E"</span><span class="fu">,</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"client_id"</span><span class="fu">:</span> <span class="st">"Q96kt2Vtw6S78dpORktM81DH"</span><span class="fu">,</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"desc"</span><span class="fu">:</span> <span class="st">"&lt;div&gt;MLeRP&lt;/div&gt;"</span><span class="fu">,</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"icon"</span><span class="fu">:</span> <span class="kw">null</span><span class="fu">,</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"login"</span><span class="fu">:</span> <span class="st">"monash-mlerp-login0.mlerp.cloud.edu.au"</span><span class="fu">,</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"logout"</span><span class="fu">:</span> <span class="st">"https://sshauthz.cloud.cvl.org.au/pysshauthz/oauth2/logout"</span><span class="fu">,</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"name"</span><span class="fu">:</span> <span class="st">"MLeRP_Monash"</span><span class="fu">,</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"proxy"</span><span class="fu">:</span> <span class="st">"/apps/strudel2/strudel_apps/sshnc.sh"</span><span class="fu">,</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"scope"</span><span class="fu">:</span> <span class="st">"user:email"</span><span class="fu">,</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"sign"</span><span class="fu">:</span> <span class="st">"https://sshauthz.cloud.cvl.org.au/pysshauthz/sign/mlerp_users/api/v1/sign_key"</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="ot">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="installing-ssossh" class="level3">
 <h3 class="anchored" data-anchor-id="installing-ssossh">2. Installing SSOSSH</h3>
 <p>You can pip install SSOSSH with:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install git+https://github.com/HecticHPCSolutions/ssossh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install git+https://github.com/HecticHPCSolutions/ssossh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>or if you want to test an experimental feature:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install git+https://github.com/HecticHPCSolutions/ssossh@branch-name</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install git+https://github.com/HecticHPCSolutions/ssossh@branch-name</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>After installation you should be able to run <code>ssossh</code> in your favourite terminal to run the program. By default it will create the SSH keys and certificates in your <code>.ssh</code> folder, but you can optionally change this path or have it add direct to your SSH Agent which you may find to be neater.</p>
 </section>
 <section id="generating-your-ssh-config" class="level3">
@@ -449,9 +452,9 @@ For connecting to a ‘Jupyter Lab’ or ‘Terminal’ job that you launch from
 <section id="connecting-to-the-cluster" class="level3">
 <h3 class="anchored" data-anchor-id="connecting-to-the-cluster">4. Connecting to the cluster</h3>
 <p>Now, each time you want to connect to the cluster you can simply rerun the <code>ssossh</code> program to refresh your certificates then use your SSH or VS Code remote session as per normal.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">ssossh</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> <span class="op">&lt;</span>User<span class="op">&gt;</span>_MLeRP_Monash</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> <span class="op">&lt;</span>User<span class="op">&gt;</span>_MLeRP_Monash_job</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">ssossh</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> <span class="op">&lt;</span>User<span class="op">&gt;</span>_MLeRP_Monash</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> <span class="op">&lt;</span>User<span class="op">&gt;</span>_MLeRP_Monash_job</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>You can read more about SSOSSH at its <a href="https://github.com/HecticHPCSolutions/ssossh">GitHub Repo</a>.</p>
 </section>
 </section>
@@ -479,21 +482,21 @@ For connecting to a ‘Jupyter Lab’ or ‘Terminal’ job that you launch from
 <section id="adding-your-key-to-the-ssh-agent" class="level2">
 <h2 class="anchored" data-anchor-id="adding-your-key-to-the-ssh-agent">Adding your key to the SSH Agent</h2>
 <p>Rather than specifying the key path in your config, you could opt to load the SSH key into your agent. This is useful if you’ve added an SSH key to MLeRP manually with a password attached to it. This way you will only be prompted for the password once per reboot. You can do this with:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-add</span> <span class="op">&lt;</span>/path/to/ssh/key<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-add</span> <span class="op">&lt;</span>/path/to/ssh/key<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>If you do, then your config will look and ProxyCommand will look like this:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Host</span> <span class="op">&lt;</span>User<span class="op">&gt;</span>_MLeRP_monash</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="ex">HostName</span> monash-mlerp-login0.mlerp.cloud.edu.au</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="ex">User</span> <span class="op">&lt;</span>User<span class="op">&gt;</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="ex">Host</span> <span class="op">&lt;</span>User<span class="op">&gt;</span>_MLeRP_monash_job</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="ex">HostName</span> VSCode</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    <span class="ex">User</span> <span class="op">&lt;</span>User<span class="op">&gt;</span></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    <span class="ex">ProxyCommand</span> <span class="op">&lt;</span>ProxyCommand<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Linux and Mac</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ex">ProxyCommand</span> ssh <span class="at">-i</span> <span class="op">&lt;</span>/path/to/ssh/key<span class="op">&gt;</span> <span class="op">&lt;</span>username<span class="op">&gt;</span>@monash-mlerp-login0.mlerp.cloud.edu.au /apps/strudel2/strudel_apps/sshnc.sh</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Windows</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="ex">ProxyCommand</span> ssh.exe <span class="at">-i</span> <span class="op">&lt;</span>/path/to/ssh/key<span class="op">&gt;</span> <span class="op">&lt;</span>username<span class="op">&gt;</span>@monash-mlerp-login0.mlerp.cloud.edu.au /apps/strudel2/strudel_apps/sshnc.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Host</span> <span class="op">&lt;</span>User<span class="op">&gt;</span>_MLeRP_monash</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="ex">HostName</span> monash-mlerp-login0.mlerp.cloud.edu.au</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="ex">User</span> <span class="op">&lt;</span>User<span class="op">&gt;</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="ex">Host</span> <span class="op">&lt;</span>User<span class="op">&gt;</span>_MLeRP_monash_job</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    <span class="ex">HostName</span> VSCode</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    <span class="ex">User</span> <span class="op">&lt;</span>User<span class="op">&gt;</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    <span class="ex">ProxyCommand</span> <span class="op">&lt;</span>ProxyCommand<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Linux and Mac</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="ex">ProxyCommand</span> ssh <span class="at">-i</span> <span class="op">&lt;</span>/path/to/ssh/key<span class="op">&gt;</span> <span class="op">&lt;</span>username<span class="op">&gt;</span>@monash-mlerp-login0.mlerp.cloud.edu.au /apps/strudel2/strudel_apps/sshnc.sh</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Windows</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="ex">ProxyCommand</span> ssh.exe <span class="at">-i</span> <span class="op">&lt;</span>/path/to/ssh/key<span class="op">&gt;</span> <span class="op">&lt;</span>username<span class="op">&gt;</span>@monash-mlerp-login0.mlerp.cloud.edu.au /apps/strudel2/strudel_apps/sshnc.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 </section>
