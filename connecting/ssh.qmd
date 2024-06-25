@@ -10,7 +10,14 @@ even if it is designed for an AWS user.
 ## Strudel2 Integration
 Rather than requiring users to create and manage SSH keys themselves, users are able to download their SSH credentials right from within Strudel2. The 'Download SSH Credentials' button can be found at the bottom of your 'Account Info' page, below the dashboards. 
 
-This will give you an SSH key as well as a corresponding SSH certificate. These credentials will be valid for a period before expiring. When they expire, requiring you to redownload your credentials periodically. Only the path to the key needs to be specified in the SSH command, but the corresponding certificate will need to be placed in the same directory so that the tool can find it.
+This will give you an SSH key as well as a corresponding SSH certificate. These credentials will be valid for a period before expiring. When they expire, requiring you to redownload your credentials periodically. Only the path to the key needs to be specified in the SSH command, but the corresponding certificate will need to be placed in the same directory so that the tool can find. 
+
+You will need to rename the files you download to remove any extra numbers that may have been added if you've downloaded the files more than once, for example: strudel2_ssh_key (1) -> strudel2_ssh_key.
+
+You will also need to set the permissions of the key and certificate to 600 with chmod before connecting.
+```
+chmod 600 /path/to/strudel2_ssh_key*
+```
 
 Note that there is a known bug where this button breaks if Strudel2 has been refreshed. If this happens reopen the app in a new tab or log out and back in before redownloading your credentials.
 

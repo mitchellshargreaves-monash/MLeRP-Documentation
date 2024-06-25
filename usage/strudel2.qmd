@@ -30,7 +30,7 @@ Of course if you're comfortable with manually submitting to the queue you can do
 Any outputs to terminal will be captured and stored in the job's log file for later viewing. Be sure to checkpoint your code and periodically save any trained models so that you can reload your desired model from any chosen point during training process. Checkpointing also enables you to train your model for longer than the 24 hour wall time, as long as you save everything you need to resume at the end of your job.
 
 ## VS Code Server
-Code Server offers a simpler alternative to connecting your IDE to MLeRP over SSH. Just as you can customise your VS Code experience with the desktop app using plugins, you can install VS Code plugins while using Code Server. For more information about code server, see the [code server documentation](https://code.visualstudio.com/docs/remote/vscode-server).
+Code Server offers a simpler alternative to connecting your IDE to MLeRP over SSH. Just as you can customise your VS Code experience with the desktop app using plugins, you can install VS Code plugins while using Code Server. See the [Code Server documentation](https://code.visualstudio.com/docs/remote/vscode-server) for more information.
 
 ## FAQ
 ### Why can't I connect to Jupyter Lab?

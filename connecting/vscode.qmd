@@ -11,7 +11,7 @@ No problem. You want a VS Code remote server.
 
 Please **DO NOT** follow the [official VS Code documentation for remote servers](https://code.visualstudio.com/docs/remote/ssh).
 
-By default, if you follow those instructions, you will end up running the VS Code remote server on the login node. This is fine if you're managing your files, but if you're running a notebook or running scripts you'll need you'll need to allocate a resource just for you.
+By default, if you follow those instructions, you will end up running the VS Code remote server on the login node. Even if you're just managing your files, but especially if you're running a notebook or running scripts we'll need to allocate a resource just for you.
 
 This proxy command which will forward your connection to our compute nodes rather than the login node. This will connect to a `Jupyter Lab` job, or if one doesn't exist, it will make one for you.
 
@@ -48,11 +48,11 @@ If you're not sure how to use a proxy command, read on and we'll walk you throug
 1. Follow the instructions on our ssh page to configure your [SSH Config](/connecting/ssh.qmd#ssh-config). Note that your config will be different if you're using [keys added to the SSH agent](/connecting/ssh.qmd#adding-your-key-to-the-ssh-agent).
 2. Test our configurations with:  
    ```bash
-   ssh <User>_MLeRP_Monash
-   ssh <User>_MLeRP_Monash_job
+   ssh <User>_MLeRP_Monash # Use this only for testing as it will connect direct to the login node
+   ssh <User>_MLeRP_Monash_job # This is the one that we will use to connect to your allocated job
    ```
 
-The first configuration will connect directly to the login node, for you to view log files, upload data and so on. The second configuration will use the ProxyCommand to connect to a Jupyter Lab or Terminal job that you start from the [Strudel2](/usage/strudel2.qmd) login portal. If a job does not exist yet, it will create a small Panther QoS resource for you.
+The first configuration will connect directly to the login node, perfect for testing the connection. The second configuration will use the ProxyCommand to connect to a Jupyter Lab or Terminal job that you start from the [Strudel2](/usage/strudel2.qmd) login portal. If a job does not exist yet, it will create a small Panther QoS resource for you.
 
 ## Using your VS Code remote server
 
