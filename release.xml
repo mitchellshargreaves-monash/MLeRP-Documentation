@@ -10,7 +10,31 @@
 <atom:link href="https://docs.mlerp.cloud.edu.au/release.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.3.450</generator>
-<lastBuildDate>Wed, 21 Feb 2024 00:00:00 GMT</lastBuildDate>
+<lastBuildDate>Tue, 02 Jul 2024 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>Release Notes #7</title>
+  <dc:creator>Mitchell Hargreaves</dc:creator>
+  <link>https://docs.mlerp.cloud.edu.au/release/notes007.html</link>
+  <description><![CDATA[ 
+
+
+
+<p>Hello MLeRP users,</p>
+<p>The most important change that we’ve making is that we’re revising our policy on GPU reservations. After many requests we are now allowing 20GB Reservations through the Tabby QoS. Why now? The short answer is we realised that there are some packages, such some hugging face libraries, which are built in a way that makes Dask offloading very difficult. As a result we’re now repartitioning the HouseCats nodes into a total of 8 10GB slices and 4 20GB slices. We’ve also used this as an opportunity to rethink how we’d like to position the BigCats nodes, so now we are devoting 2 nodes to whole 40 GB GPUs for batch work, bringing us up to 4 whole GPUs in the pool.</p>
+<p>The second most important change that we’ve made is that we’ve updated our version of SLURM. This is important because it patches some errant behaviour we’ve caught on some GPU interactions which would allow some users to use unallocated GPUs. If you were previously using this exploit, please make sure that you request a GPU reservation if you need to use one, or use Dask to offload your work to the SLURM queue. Similarly, if you were a user that needed to manually set the CUDA_VISIBLE_DEVICES environment variable, please note that you likely won’t need to anymore and doing so could negatively impact your job.</p>
+<p>To acknowledge our most visible change, in the inbetween months you may have noticed a new app appear, VS Code Server. This app acts as yet one more way for users to log in to cluster. It gives users the ability to run an instance of Code Server on MLeRP and connect through their web browser without the need to manage an <a href="../connecting/ssh.html">SSH connection</a> or connect with their <a href="../connecting/vscode.html">own VS Code instance</a>.</p>
+<p>To facilitate another common request that we’ve had, if you’d like to work with <a href="../usage/r.html">R</a> as a part of your data science workflow, now you can do that on MLeRP too. While we don’t support R Studio as a part of Strudel2, VS Code has a robust <a href="https://code.visualstudio.com/docs/languages/r">R plugin ecosystem</a> that can be used as your R development environment. We recommend maintaining your R virtual environment using the <a href="https://github.com/rstudio/renv"><code>renv</code> package</a> so that you can ensure isolation, portability and reproducibility in your environments.</p>
+<p>We’ve also been hard at work in refining our API to improve the web experience of <a href="../usage/strudel2.html">Strudel2</a>. Many of these changes are invisible to you all, but this change allows us to specify a tunnelid for each app, taking the guesswork out of which app to connect to. This should patch the bug where Strudel2 connects to the wrong log or app if you try and open multiple apps too close together. We hope that this change will make apps like the batch app much more usable.</p>
+<p>As always, we hope these changes will improve your experience, please let us know if you find any issues or ways that you think we can improve.</p>
+<p>Regards,<br>
+Mitchell Hargreaves</p>
+
+
+
+ ]]></description>
+  <guid>https://docs.mlerp.cloud.edu.au/release/notes007.html</guid>
+  <pubDate>Tue, 02 Jul 2024 00:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Release Notes #6</title>
   <dc:creator>Mitchell Hargreaves</dc:creator>
