@@ -329,6 +329,13 @@
     "text": "VS Code Server\nCode Server offers a simpler alternative to connecting your IDE to MLeRP over SSH. Just as you can customise your VS Code experience with the desktop app using plugins, you can install VS Code plugins while using Code Server. See the Code Server documentation for more information."
   },
   {
+    "objectID": "usage/strudel2.html#ollama",
+    "href": "usage/strudel2.html#ollama",
+    "title": "Strudel2",
+    "section": "Ollama",
+    "text": "Ollama\nOllama offers a way to interact with open source large language models interactively. The app will give you a chat window similar to ChatGPT, allowing you to ‘talk’ with the model of your choice. We have installed a selection of models for you. For more information on the provided models, have a look at the Ollama library. More models can be made available on request, please reach out if you would like more functionality.\nAn Ollama server can also be interfaced with programmatically through the Ollama python library. To do this we recommend splitting your window with Ctrl+b %, which will give you a terminal to run your python scripts with. You can switch between panes with Ctrl+b ;. Your new terminal will operate the same as the terminal app, but with access to the Ollama server that’s running in the background.\nTo get the exact names of the models available, you can run /apps/ollama/ollama list. With the model name, you can interface with the model through the python api. For example:\nollama.chat(model='&lt;model_name&gt;', messages=[{'role': 'user', 'content': 'Why is the sky blue?'}]).\nFor more details on usage, please view the library docs. Note that you may want to use a second app, such as our VS Code Server app to edit your python script unless you’re familiar with a terminal editor like Vim or Nano."
+  },
+  {
     "objectID": "usage/strudel2.html#faq",
     "href": "usage/strudel2.html#faq",
     "title": "Strudel2",
