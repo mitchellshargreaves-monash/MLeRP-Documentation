@@ -45,6 +45,7 @@ website:
         - "usage/strudel2.qmd"
         - "usage/data_management.qmd"
         - "usage/documentation.qmd"
+        - "usage/r.qmd"
         - section: "Conda"
           contents:
             - text: "Provided environments"

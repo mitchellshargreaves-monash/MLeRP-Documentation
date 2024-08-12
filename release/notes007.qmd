@@ -1,0 +1,22 @@
+---
+title: "Release Notes #7"
+date: 2024-07-02
+author: Mitchell Hargreaves
+---
+
+Hello MLeRP users,
+
+The most important change that we've making is that we're revising our policy on GPU reservations. After many requests we are now allowing 20GB Reservations through the Tabby QoS. Why now? The short answer is we realised that there are some packages, such some hugging face libraries, which are built in a way that makes Dask offloading very difficult. As a result we're now repartitioning the HouseCats nodes into a total of 8 10GB slices and 4 20GB slices. We've also used this as an opportunity to rethink how we'd like to position the BigCats nodes, so now we are devoting 2 nodes to whole 40 GB GPUs for batch work, bringing us up to 4 whole GPUs in the pool.
+
+The second most important change that we've made is that we've updated our version of SLURM. This is important because it patches some errant behaviour we've caught on some GPU interactions which would allow some users to use unallocated GPUs. If you were previously using this exploit, please make sure that you request a GPU reservation if you need to use one, or use Dask to offload your work to the SLURM queue. Similarly, if you were a user that needed to manually set the CUDA_VISIBLE_DEVICES environment variable, please note that you likely won't need to anymore and doing so could negatively impact your job.
+
+To acknowledge our most visible change, in the inbetween months you may have noticed a new app appear, VS Code Server. This app acts as yet one more way for users to log in to cluster. It gives users the ability to run an instance of Code Server on MLeRP and connect through their web browser without the need to manage an [SSH connection](/connecting/ssh.qmd) or connect with their [own VS Code instance](/connecting/vscode.qmd).
+
+To facilitate another common request that we've had, if you'd like to work with [R](/usage/r.qmd) as a part of your data science workflow, now you can do that on MLeRP too. While we don't support R Studio as a part of Strudel2, VS Code has a robust [R plugin ecosystem](https://code.visualstudio.com/docs/languages/r) that can be used as your R development environment. We recommend maintaining your R virtual environment using the [`renv` package](https://github.com/rstudio/renv) so that you can ensure isolation, portability and reproducibility in your environments.
+
+We've also been hard at work in refining our API to improve the web experience of [Strudel2](/usage/strudel2.qmd). Many of these changes are invisible to you all, but this change allows us to specify a tunnelid for each app, taking the guesswork out of which app to connect to. This should patch the bug where Strudel2 connects to the wrong log or app if you try and open multiple apps too close together. We hope that this change will make apps like the batch app much more usable.
+
+As always, we hope these changes will improve your experience, please let us know if you find any issues or ways that you think we can improve.
+
+Regards,  
+Mitchell Hargreaves
