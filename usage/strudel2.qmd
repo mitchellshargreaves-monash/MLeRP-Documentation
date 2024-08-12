@@ -32,6 +32,16 @@ Any outputs to terminal will be captured and stored in the job's log file for la
 ## VS Code Server
 Code Server offers a simpler alternative to connecting your IDE to MLeRP over SSH. Just as you can customise your VS Code experience with the desktop app using plugins, you can install VS Code plugins while using Code Server. See the [Code Server documentation](https://code.visualstudio.com/docs/remote/vscode-server) for more information.
 
+## Ollama
+Ollama offers a way to interact with open source large language models interactively. The app will give you a chat window similar to ChatGPT, allowing you to 'talk' with the model of your choice. We have installed a selection of models for you. For more information on the provided models, have a look at the [Ollama library](https://ollama.com/library). More models can be made available on request, please reach out if you would like more functionality.
+
+An Ollama server can also be interfaced with programmatically through the [Ollama python library](https://github.com/ollama/ollama-python). To do this we recommend splitting your window with **Ctrl+b %**, which will give you a terminal to run your python scripts with. You can switch between panes with **Ctrl+b** ;. Your new terminal will operate the same as the terminal app, but with access to the Ollama server that's running in the background. 
+
+To get the exact names of the models available, you can run `/apps/ollama/ollama list`. With the model name, you can interface with the model through the python api. For example:  
+`ollama.chat(model='<model_name>', messages=[{'role': 'user', 'content': 'Why is the sky blue?'}])`.
+
+For more details on usage, please view the [library docs](https://github.com/ollama/ollama-python). Note that you may want to use a second app, such as our VS Code Server app to edit your python script unless you're familiar with a terminal editor like Vim or Nano.
+
 ## FAQ
 ### Why can't I connect to Jupyter Lab?
 Jupyter Lab needs to be able to create files to run properly. If your disk quota is completely full, it will create empty files that will confuse the system. To fix this, ssh into the cluster or use a terminal job to reduce your disk usage back under quota, then delete the empty files which will be found at `/home/<USERNAME>/.local/share/jupyter/runtime`.
