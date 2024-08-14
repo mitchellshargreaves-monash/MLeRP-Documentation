@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>MLeRP User Guide Documentation - Python Ollama</title>
+<title>MLeRP User Guide Documentation - Ollama Python</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -162,7 +162,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../tutorials/1_dask_slurm.html">Tutorials</a></li><li class="breadcrumb-item"><a href="../tutorials/5_ollama.html">Python Ollama</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../tutorials/1_dask_slurm.html">Tutorials</a></li><li class="breadcrumb-item"><a href="../tutorials/5_ollama.html">Ollama Python</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -327,7 +327,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../tutorials/5_ollama.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Python Ollama</span></a>
+ <span class="menu-text">Ollama Python</span></a>
   </div>
 </li>
       </ul>
@@ -351,14 +351,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#preparing-the-dataset" id="toc-preparing-the-dataset" class="nav-link active" data-scroll-target="#preparing-the-dataset">Preparing the dataset</a></li>
   <li><a href="#passing-the-articles-through-to-ollama" id="toc-passing-the-articles-through-to-ollama" class="nav-link" data-scroll-target="#passing-the-articles-through-to-ollama">Passing the articles through to Ollama</a></li>
   </ul>
-</nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="5_ollama.out.ipynb" download="5_ollama.out.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Python Ollama</h1>
+<h1 class="title">Ollama Python</h1>
 </div>
 
 
@@ -395,7 +395,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  ' = = = 2000 – 2005 = = = \n']</code></pre>
 </div>
 </div>
-<p>We can identify the split between articles by looking out for the article headings. In this dataset: - Headers have the format: <code>" = &lt;HEADING&gt; = \n"</code> - Subheadings have the format: <code>" = = &lt;SUBHEADING&gt; = = \n"</code> - Subsubheadings have the format: <code>" = = = &lt;SUBSUBHEADING&gt; = = = \n"</code></p>
+<p>We can identify the split between articles by looking out for the article headings. In this dataset:<br>
+- Headers have the format: <code>" = &lt;HEADING&gt; = \n"</code><br>
+- Subheadings have the format: <code>" = = &lt;SUBHEADING&gt; = = \n"</code><br>
+- Subsubheadings have the format: <code>" = = = &lt;SUBSUBHEADING&gt; = = = \n"</code></p>
 <div class="cell" data-execution_count="29">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>articles <span class="op">=</span> []</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -427,32 +430,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="passing-the-articles-through-to-ollama" class="level2">
 <h2 class="anchored" data-anchor-id="passing-the-articles-through-to-ollama">Passing the articles through to Ollama</h2>
-<p>To use the ollama library we need to start an ollama server in the background inside of our SLURM job. We can do this by running the commands below in a <strong>Jupyter Lab</strong> terminal (This is not the same as launching a terminal app as that will launch a NEW SLURM job instead).</p>
+<p>To use the ollama library we need to start an ollama server in the background inside of our SLURM job. We can do this by running the commands below in a <strong>Jupyter Lab terminal</strong>. This is not the same as launching a terminal app as that will launch a new SLURM job instead. Instead, select ‘Terminal’ from the Launcher after clicking on the ‘+’ button in the top left corner of your Jupyter Lab application.</p>
 <p>We also need to point Ollama towards our shared model repository in order to be able to import the models that we’ve downloaded for you. Alternatively if you’d like to experiment with models on your own, feel free to modify that path to a directory that you control. Note that LLMs are big and they will count towards your disk quota.</p>
-<pre><code>export OLLAMA_MODELS="/apps/ollama/models/"
-/apps/ollama/ollama serve</code></pre>
+<p><code>export OLLAMA_MODELS="/apps/ollama/models/"</code><br>
+<code>/apps/ollama/ollama serve</code></p>
 <div class="cell" data-execution_count="31">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> ollama</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> ollama.chat(model<span class="op">=</span><span class="st">'llama3'</span>, messages<span class="op">=</span>[</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  {</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'role'</span>: <span class="st">'user'</span>,</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">'content'</span>: <span class="st">'Why is the sky blue?'</span>,</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  },</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>])</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(response)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> ollama</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> ollama.chat(model<span class="op">=</span><span class="st">'llama3'</span>, messages<span class="op">=</span>[</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  {</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'role'</span>: <span class="st">'user'</span>,</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">'content'</span>: <span class="st">'Why is the sky blue?'</span>,</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  },</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>])</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(response)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>{'model': 'llama3', 'created_at': '2024-08-14T05:34:36.062060907Z', 'message': {'role': 'assistant', 'content': "What a great question!\n\nThe sky appears blue because of a phenomenon called Rayleigh scattering. This is when short (blue) wavelengths of light are scattered more than longer (red) wavelengths by tiny molecules of gases in the atmosphere, such as nitrogen and oxygen.\n\nHere's what happens:\n\n1. When sunlight enters Earth's atmosphere, it encounters tiny molecules of gases like nitrogen (N2) and oxygen (O2).\n2. These molecules scatter the light in all directions.\n3. The shorter blue wavelengths are scattered more than longer red wavelengths because they have a higher energy and interact more strongly with the gas molecules.\n4. As a result, our eyes perceive the scattered blue light as a blue color, making the sky appear blue.\n\nThis scattering effect is most pronounced when the sun is overhead (at an angle of about 90 degrees), which is why the sky often appears more vibrant blue during midday. As the sun sets or rises lower in the sky, the light has to travel longer distances through the atmosphere, which means more of the shorter wavelengths are scattered away, making the sky appear more orange or red due to the dominance of the longer wavelengths.\n\nSo, to summarize: the sky appears blue because of the scattering of short blue wavelengths by tiny gas molecules in the atmosphere!\n\n(P.S. There are other factors that can affect the apparent color of the sky, such as dust particles, water vapor, and pollution. But Rayleigh scattering is the primary reason for the sky's blue hue.)"}, 'done_reason': 'stop', 'done': True, 'total_duration': 6096306797, 'load_duration': 2782395, 'prompt_eval_count': 11, 'prompt_eval_duration': 234876000, 'eval_count': 301, 'eval_duration': 5719801000}</code></pre>
 </div>
 </div>
 <p>We can then formulate our request to the LLM using the articles from our dataset and ask for it’s summary</p>
 <div class="cell" data-execution_count="32">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> ollama.chat(model<span class="op">=</span><span class="st">'llama3'</span>, messages<span class="op">=</span>[</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  {</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'role'</span>: <span class="st">'user'</span>,</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'content'</span>: <span class="st">"Please summarise this article:</span><span class="ch">\n\n\n</span><span class="st">"</span> <span class="op">+</span> articles[<span class="dv">0</span>],</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  },</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>])</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(response[<span class="st">'message'</span>][<span class="st">'content'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> ollama.chat(model<span class="op">=</span><span class="st">'llama3'</span>, messages<span class="op">=</span>[</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  {</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'role'</span>: <span class="st">'user'</span>,</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'content'</span>: <span class="st">"Please summarise this article:</span><span class="ch">\n\n\n</span><span class="st">"</span> <span class="op">+</span> articles[<span class="dv">0</span>],</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  },</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>])</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(response[<span class="st">'message'</span>][<span class="st">'content'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>The article is about the career of Robert Boulter, an English actor. Here's a summary:
 
@@ -482,22 +485,22 @@ Overall, Robert Boulter has had a diverse career, appearing in TV shows, films, 
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># And finally we can automate </span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>responses <span class="op">=</span> []</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> article <span class="kw">in</span> articles:</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    response <span class="op">=</span> ollama.chat(model<span class="op">=</span><span class="st">'llama3'</span>, messages<span class="op">=</span>[</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>        {</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>            <span class="st">'role'</span>: <span class="st">'user'</span>,</span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>            <span class="st">'content'</span>: <span class="st">"Please summarise this article:</span><span class="ch">\n\n\n</span><span class="st">"</span> <span class="op">+</span> article,</span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>        },</span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    ])</span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    responses.append(response[<span class="st">'message'</span>][<span class="st">'content'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># And finally we can automate </span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>responses <span class="op">=</span> []</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> article <span class="kw">in</span> articles:</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    response <span class="op">=</span> ollama.chat(model<span class="op">=</span><span class="st">'llama3'</span>, messages<span class="op">=</span>[</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>        {</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>            <span class="st">'role'</span>: <span class="st">'user'</span>,</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>            <span class="st">'content'</span>: <span class="st">"Please summarise this article:</span><span class="ch">\n\n\n</span><span class="st">"</span> <span class="op">+</span> article,</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>        },</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    ])</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>    responses.append(response[<span class="st">'message'</span>][<span class="st">'content'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="36">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the first 5 summaries</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> response <span class="kw">in</span> responses[:<span class="dv">5</span>]:</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(response)</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"======================"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the first 5 summaries</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> response <span class="kw">in</span> responses[:<span class="dv">5</span>]:</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(response)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"======================"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>The article is a biography of English actor Robert Boulter. Here's a summary:
 
