@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>MLeRP User Guide Documentation - Strudel2</title>
+<title>MLeRP User Guide Documentation - Dask Offloading</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,26 +20,60 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<link href=".././images/favicon-32x32.png" rel="icon" type="image/png">
-<script src="../site_libs/quarto-html/quarto.js"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../.././images/favicon-32x32.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -62,7 +96,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-sidebar floating nav-fixed">
@@ -72,10 +106,10 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
-    <a href="../index.html" class="navbar-brand navbar-brand-logo">
-    <img src=".././images/mstile-150x150.png" alt="" class="navbar-logo">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../.././images/mstile-150x150.png" alt="" class="navbar-logo">
     </a>
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">MLeRP User Guide Documentation</span>
     </a>
   </div>
@@ -86,15 +120,15 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="../index.html" rel="" target="" aria-current="page">
+    <a class="nav-link active" href="../../index.html" rel="" target="" aria-current="page">
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../about.html" rel="" target="">
+    <a class="nav-link" href="../../about.html" rel="" target="">
  <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../faq.html" rel="" target="">
+    <a class="nav-link" href="../../faq.html" rel="" target="">
  <span class="menu-text">Troubleshooting</span></a>
   </li>  
 </ul>
@@ -128,7 +162,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../usage/strudel2.html">Using MLERP</a></li><li class="breadcrumb-item"><a href="../usage/strudel2.html">Strudel2</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Dask Offloading</li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -142,25 +176,25 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Home</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../about.html" class="sidebar-item-text sidebar-link">
+  <a href="../../about.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">About</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../hardware.html" class="sidebar-item-text sidebar-link">
+  <a href="../../hardware.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Partitions and QoS</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../getting_started.html" class="sidebar-item-text sidebar-link">
+  <a href="../../getting_started.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Getting Started</span></a>
   </div>
 </li>
@@ -175,25 +209,25 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../usage/strudel2.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../usage/strudel2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Strudel2</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../usage/data_management.html" class="sidebar-item-text sidebar-link">
+  <a href="../../usage/data_management.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Data Management</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../usage/documentation.html" class="sidebar-item-text sidebar-link">
+  <a href="../../usage/documentation.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Documentation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../usage/r.html" class="sidebar-item-text sidebar-link">
+  <a href="../../usage/r.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">R</span></a>
   </div>
 </li>
@@ -208,19 +242,19 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../usage/conda.html" class="sidebar-item-text sidebar-link">
+  <a href="../../usage/conda.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Provided environments</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../usage/custom.html" class="sidebar-item-text sidebar-link">
+  <a href="../../usage/custom.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Custom environments</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../usage/environments.html" class="sidebar-item-text sidebar-link">
+  <a href="../../usage/environments.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Environment List</span></a>
   </div>
 </li>
@@ -239,13 +273,13 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../connecting/ssh.html" class="sidebar-item-text sidebar-link">
+  <a href="../../connecting/ssh.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">SSH Credentials</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../connecting/vscode.html" class="sidebar-item-text sidebar-link">
+  <a href="../../connecting/vscode.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">VS Code</span></a>
   </div>
 </li>
@@ -253,7 +287,7 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../faq.html" class="sidebar-item-text sidebar-link">
+  <a href="../../faq.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Troubleshooting</span></a>
   </div>
 </li>
@@ -268,31 +302,31 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../tutorials/1_dask_slurm.html" class="sidebar-item-text sidebar-link">
+  <a href="../../tutorials/1_dask_slurm.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Dask SLURMClusters</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../tutorials/2_dask_offloading.html" class="sidebar-item-text sidebar-link">
+  <a href="../../tutorials/2_dask_offloading.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Dask Offloading</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../tutorials/3_submitit_offloading.html" class="sidebar-item-text sidebar-link">
+  <a href="../../tutorials/3_submitit_offloading.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">SubmitIt Offloading</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../tutorials/4_submitit_pytorch.html" class="sidebar-item-text sidebar-link">
+  <a href="../../tutorials/4_submitit_pytorch.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">PyTorch and Submitit</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../tutorials/5_ollama.html" class="sidebar-item-text sidebar-link">
+  <a href="../../tutorials/5_ollama.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Ollama Python</span></a>
   </div>
 </li>
@@ -300,7 +334,7 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../release.html" class="sidebar-item-text sidebar-link">
+  <a href="../../release.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Release Notes</span></a>
   </div>
 </li>
@@ -314,16 +348,8 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#terminal" id="toc-terminal" class="nav-link active" data-scroll-target="#terminal">Terminal</a></li>
-  <li><a href="#jupyter-lab" id="toc-jupyter-lab" class="nav-link" data-scroll-target="#jupyter-lab">Jupyter Lab</a></li>
-  <li><a href="#batch" id="toc-batch" class="nav-link" data-scroll-target="#batch">Batch</a></li>
-  <li><a href="#vs-code-server" id="toc-vs-code-server" class="nav-link" data-scroll-target="#vs-code-server">VS Code Server</a></li>
-  <li><a href="#ollama" id="toc-ollama" class="nav-link" data-scroll-target="#ollama">Ollama</a></li>
-  <li><a href="#faq" id="toc-faq" class="nav-link" data-scroll-target="#faq">FAQ</a>
-  <ul class="collapse">
-  <li><a href="#why-cant-i-connect-to-jupyter-lab" id="toc-why-cant-i-connect-to-jupyter-lab" class="nav-link" data-scroll-target="#why-cant-i-connect-to-jupyter-lab">Why can’t I connect to Jupyter Lab?</a></li>
-  <li><a href="#why-is-my-vs-code-not-attaching-to-the-remote-session" id="toc-why-is-my-vs-code-not-attaching-to-the-remote-session" class="nav-link" data-scroll-target="#why-is-my-vs-code-not-attaching-to-the-remote-session">Why is my VS Code not attaching to the remote session?</a></li>
-  </ul></li>
+  <li><a href="#testing-with-a-localcluster" id="toc-testing-with-a-localcluster" class="nav-link active" data-scroll-target="#testing-with-a-localcluster">Testing with a <code>LocalCluster</code></a></li>
+  <li><a href="#running-on-a-slurmcluster" id="toc-running-on-a-slurmcluster" class="nav-link" data-scroll-target="#running-on-a-slurmcluster">Running on a <code>SLURMCluster</code></a></li>
   </ul>
 </nav>
     </div>
@@ -332,7 +358,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Strudel2</h1>
+<h1 class="title">Dask Offloading</h1>
 </div>
 
 
@@ -347,52 +373,111 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>Strudel2 is an interactive environment to develop supports two types of jobs. You will be able to reach it from <code>https://mlerp.cloud.edu.au/</code>.</p>
-<p>It will allow you check the cluster’s usage and your disk quota. You will also be able to launch interactive jobs on the cluster. Strudel2 offers two kinds of interactive jobs: terminal and Jupyter Lab.</p>
-<section id="terminal" class="level2">
-<h2 class="anchored" data-anchor-id="terminal">Terminal</h2>
-<p>Terminal jobs give you some requested compute attached to a simple text UI. This is ideal if you need to clone repositories, create conda environments, organise your files or anything else that you can do with a linux shell that doesn’t require a GUI.</p>
-<p>You can also launch the web terminal attached to the login node if you just need a quick terminal to manage your files, however this is a shared resource with limited compute.</p>
+<section id="testing-with-a-localcluster" class="level3">
+<h3 class="anchored" data-anchor-id="testing-with-a-localcluster">Testing with a <code>LocalCluster</code></h3>
+<p>Once you’ve written your function and are ready to move things over to . Working with Dask workers introduces another layer of complexity where things can go wrong, which make Dask LocalClusters the easiest way to prepare your code for offloading. This will mean that code will execute in the notebook session, just like running your function straight, allowing you to view print statements and debug errors normally rather than dealing with remote code execusion before we’re ready. Once you’re satisfied with your code you can switch over to a SLURMCluster to accelerate with GPU.</p>
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> distributed <span class="im">import</span> Client, LocalCluster</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>cluster <span class="op">=</span> LocalCluster()</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>client <span class="op">=</span> Client(cluster)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We can submit our function to the cluster with the <code>client.submit</code> method. This will return a future which can be unpacked with its result using <code>future.result()</code>. We can see the outputs of print statements while we’re using a <code>LocalCluster</code>. Print statements will not be visible when executing remotely with <code>SLURMCluster</code>. Similarly, the full stack trace is still visible when an error or assertion is raised within the function.</p>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> client_test(input1, input2, error<span class="op">=</span><span class="va">False</span>, test<span class="op">=</span><span class="va">False</span>):</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Force an error</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> error:</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">assert</span> <span class="dv">0</span> <span class="op">==</span> <span class="dv">1</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Stop after one batch when testing        </span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> test: </span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"When running in a local cluster you can see print statements!"</span>)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> input1, input2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>future <span class="op">=</span> client.submit(client_test, <span class="st">"input1"</span>, <span class="st">"input2"</span>, test<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>future.result()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>When running in a local cluster you can see print statements!</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre><code>('input1', 'input2')</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>future <span class="op">=</span> client.submit(client_test, <span class="st">"input1"</span>, <span class="st">"input2"</span>, error<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>future.result()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>2024-05-31 06:32:22,017 - distributed.worker - WARNING - Compute Failed
+Key:       client_test-821dd3f7995546bf5d9280be38a9afd3
+Function:  client_test
+args:      ('input1', 'input2')
+kwargs:    {'error': True}
+Exception: 'AssertionError()'</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>client.shutdown()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
-<section id="jupyter-lab" class="level2">
-<h2 class="anchored" data-anchor-id="jupyter-lab">Jupyter Lab</h2>
-<p>Jupyter Lab jobs give you some requested compute attached to a Jupyter Lab IDE. This is ideal if you prefer experimenting in python notebooks or visualising data with a GUI.</p>
-<p>If you prefer using VS Code to the Jupyter Lab IDE you can also connect to this job with the <a href="https://aka.ms/vscode-remote/download/extension">Remote Development Extension Pack</a>. For more details see our page on <a href="../connecting/vscode.html">connecting via VS Code</a>.</p>
-<p>You can use this app will using one of our provided conda environments, or one that you provide. If you’re looking for an envionment that’s not listed here, check that its path is included in the <code>~/.conda/environments.txt</code> file in your home directory.</p>
-<p>We have provided the DSKS (Data Science Kitchen Sink) series of environments for you to explore the platform and get started right away. Each version of the environment is tagged with the month that it was compiled, so that as we update and add new packages you can continue to rely on older versions of the environment for reproducability in your experiments.</p>
-<p>If our conda environments don’t meet your needs, you can consider maintaining your own <a href="https://docs.conda.io/en/latest/miniconda.html">miniconda</a> or <a href="https://mamba.readthedocs.io/en/latest/installation/mamba-installation.html">mambaforge</a> installation in your home directory. For a custom conda environment to be compatible with this app, you will need to include jupyter and dask related packages during. See <a href="../usage/custom.html">this page</a> for more information about creating a conda environment to interface with our environment.</p>
-</section>
-<section id="batch" class="level2">
-<h2 class="anchored" data-anchor-id="batch">Batch</h2>
-<p>The Batch app gives you the ability to submit jobs to be picked up by the SLURM queue. This allows you to continue to run your tests while you are away from the computer and check back in later when they’re done. The app currently supports python scripts as well as bash scripts.</p>
-<p>Of course if you’re comfortable with manually submitting to the queue you can do so if you need the extra control. Batch jobs are run in the Lion QoS meaning you can have up to 4 running at once.</p>
-<p>Any outputs to terminal will be captured and stored in the job’s log file for later viewing. Be sure to checkpoint your code and periodically save any trained models so that you can reload your desired model from any chosen point during training process. Checkpointing also enables you to train your model for longer than the 24 hour wall time, as long as you save everything you need to resume at the end of your job.</p>
-</section>
-<section id="vs-code-server" class="level2">
-<h2 class="anchored" data-anchor-id="vs-code-server">VS Code Server</h2>
-<p>Code Server offers a simpler alternative to connecting your IDE to MLeRP over SSH. Just as you can customise your VS Code experience with the desktop app using plugins, you can install VS Code plugins while using Code Server. See the <a href="https://code.visualstudio.com/docs/remote/vscode-server">Code Server documentation</a> for more information.</p>
-</section>
-<section id="ollama" class="level2">
-<h2 class="anchored" data-anchor-id="ollama">Ollama</h2>
-<p>Ollama offers a way to interact with open source large language models interactively. The app will give you a chat window similar to ChatGPT, allowing you to ‘talk’ with the model of your choice. We have installed a selection of models for you. For more information on the provided models, including any model licences, please have a look at the <a href="https://ollama.com/library">Ollama library</a>. More models can be made available on request, please reach out if you would like more functionality.</p>
-<p>An Ollama server can also be interfaced with programmatically through the <a href="https://github.com/ollama/ollama-python">Ollama python library</a>. To do this we recommend splitting your window with <strong>Ctrl+b %</strong>, which will give you a terminal to run your python scripts with. You can switch between panes with <strong>Ctrl+b</strong> ;. Your new terminal will operate the same as the terminal app, but with access to the Ollama server that’s running in the background.</p>
-<p>To get the exact names of the models available, you can run <code>/apps/ollama/ollama list</code>. With the model name, you can interface with the model through the python api. For example:<br>
-<code>ollama.chat(model='&lt;model_name&gt;', messages=[{'role': 'user', 'content': 'Why is the sky blue?'}])</code>.</p>
-<p>For more details on usage, please view the <a href="https://github.com/ollama/ollama-python">Ollama python library docs</a>. Note that you may want to use a second app, such as our VS Code Server app to edit your python script unless you’re familiar with a terminal editor like Vim or Nano.</p>
-</section>
-<section id="faq" class="level2">
-<h2 class="anchored" data-anchor-id="faq">FAQ</h2>
-<section id="why-cant-i-connect-to-jupyter-lab" class="level3">
-<h3 class="anchored" data-anchor-id="why-cant-i-connect-to-jupyter-lab">Why can’t I connect to Jupyter Lab?</h3>
-<p>Jupyter Lab needs to be able to create files to run properly. If your disk quota is completely full, it will create empty files that will confuse the system. To fix this, ssh into the cluster or use a terminal job to reduce your disk usage back under quota, then delete the empty files which will be found at <code>/home/&lt;USERNAME&gt;/.local/share/jupyter/runtime</code>.</p>
-<p>There is also a known bug where Brave’s ‘shield’ feature will block the Strudel2 Jupyter application. To bypass this, you’ll need to turn off ‘shields’ for both the <a href="https://mlerp.cloud.edu.au/">Strudel2 home page</a> and the <a href="https://strudel2-api-dev.cloud.cvl.org.au/">Strudel2 api</a>.</p>
-</section>
-<section id="why-is-my-vs-code-not-attaching-to-the-remote-session" class="level3">
-<h3 class="anchored" data-anchor-id="why-is-my-vs-code-not-attaching-to-the-remote-session">Why is my VS Code not attaching to the remote session?</h3>
-<p>The SSH certificates that <a href="../connecting/ssh.html">SSOSSH</a> creates are only valid for 24 hours, this means that you’ll need to generate new certificates each day before you connect. VS Code also has a known bug where it can get confused if you have another SSH client (such as MobaXTerm) open when it tries to establish the connection.</p>
+<section id="running-on-a-slurmcluster" class="level3">
+<h3 class="anchored" data-anchor-id="running-on-a-slurmcluster">Running on a <code>SLURMCluster</code></h3>
+<p>We can pass in extra SLURM requirements in job_extra_directives to request a GPU for our jobs. To read more about configuring the <code>SLURMCluster</code> to interact with the SLURM queue, go to Dask’s <a href="https://jobqueue.dask.org/en/latest/generated/dask_jobqueue.SLURMCluster.html?highlight=slurmcluster">jobqueue documentation</a>.</p>
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dask_jobqueue <span class="im">import</span> SLURMCluster</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> distributed <span class="im">import</span> Client</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>cluster <span class="op">=</span> SLURMCluster(</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    memory<span class="op">=</span><span class="st">"128g"</span>, processes<span class="op">=</span><span class="dv">1</span>, cores<span class="op">=</span><span class="dv">16</span>, job_extra_directives<span class="op">=</span>[<span class="st">"--gres=gpu:1"</span>, <span class="st">"--partition=BigCats"</span>]</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>cluster.scale(<span class="dv">1</span>)</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>client <span class="op">=</span> Client(cluster)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Since this code is executing remotely we won’t see our print statements</p>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>client.submit(client_test, <span class="st">"input1"</span>, <span class="st">"input2"</span>, test<span class="op">=</span><span class="va">True</span>).result()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>('input1', 'input2')</code></pre>
+</div>
+</div>
+<p>Dask will raise any errors that the process triggers locally, even when executing remotely - but you may not get the full stack trace</p>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>client.submit(client_test, <span class="st">"input1"</span>, <span class="st">"input2"</span>, error<span class="op">=</span><span class="va">True</span>).result()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>If you’re working with any objects that are particularly memory intensive, you can consider using the <code>client.scatter</code> method to scatter large objects out to our workers ahead of time for more efficient execution.</p>
+<div class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>large_object <span class="op">=</span> <span class="st">"Let's pretend that this string is actually a really big object like your dataset"</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>input1_future <span class="op">=</span> client.scatter(large_object)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>client.submit(client_test, input1_future, <span class="st">"input2"</span>).result()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>("Let's pretend that this string is actually a really big object like your dataset",
+ 'input2')</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>client.shutdown()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>2024-05-31 06:32:32,584 - distributed.scheduler - ERROR - Removing worker 'tcp://192.168.0.208:38481' caused the cluster to lose scattered data, which can't be recovered: {'str-aed0f69a5b2b8dbc59a28f905628b181'} (stimulus_id='handle-worker-cleanup-1717137152.584407')</code></pre>
+</div>
+</div>
+<p>If needed we can be more specific about the specific GPU type and QoS we need if we have more complex requirements.</p>
+<div class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>cluster <span class="op">=</span> SLURMCluster(</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    memory<span class="op">=</span><span class="st">"128g"</span>, processes<span class="op">=</span><span class="dv">1</span>, cores<span class="op">=</span><span class="dv">16</span>, job_extra_directives<span class="op">=</span>[<span class="st">"--gres=gpu:3g.20gb:1"</span>, <span class="st">"--qos=lion"</span>, <span class="st">"--partition=BigCats"</span>]</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>cluster.scale(<span class="dv">1</span>)</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>client <span class="op">=</span> Client(cluster)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>client.submit(client_test, <span class="st">"input1"</span>, <span class="st">"input2"</span>, test<span class="op">=</span><span class="va">True</span>).result()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>('input1', 'input2')</code></pre>
+</div>
+</div>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

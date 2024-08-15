@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>MLeRP User Guide Documentation - Strudel2</title>
+<title>MLeRP User Guide Documentation - SubmitIt Offloading</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,26 +20,60 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<link href=".././images/favicon-32x32.png" rel="icon" type="image/png">
-<script src="../site_libs/quarto-html/quarto.js"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../.././images/favicon-32x32.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -62,7 +96,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-sidebar floating nav-fixed">
@@ -72,10 +106,10 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
-    <a href="../index.html" class="navbar-brand navbar-brand-logo">
-    <img src=".././images/mstile-150x150.png" alt="" class="navbar-logo">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../.././images/mstile-150x150.png" alt="" class="navbar-logo">
     </a>
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">MLeRP User Guide Documentation</span>
     </a>
   </div>
@@ -86,15 +120,15 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="../index.html" rel="" target="" aria-current="page">
+    <a class="nav-link active" href="../../index.html" rel="" target="" aria-current="page">
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../about.html" rel="" target="">
+    <a class="nav-link" href="../../about.html" rel="" target="">
  <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../faq.html" rel="" target="">
+    <a class="nav-link" href="../../faq.html" rel="" target="">
  <span class="menu-text">Troubleshooting</span></a>
   </li>  
 </ul>
@@ -128,7 +162,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../usage/strudel2.html">Using MLERP</a></li><li class="breadcrumb-item"><a href="../usage/strudel2.html">Strudel2</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">SubmitIt Offloading</li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -142,25 +176,25 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Home</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../about.html" class="sidebar-item-text sidebar-link">
+  <a href="../../about.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">About</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../hardware.html" class="sidebar-item-text sidebar-link">
+  <a href="../../hardware.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Partitions and QoS</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../getting_started.html" class="sidebar-item-text sidebar-link">
+  <a href="../../getting_started.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Getting Started</span></a>
   </div>
 </li>
@@ -175,25 +209,25 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../usage/strudel2.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../usage/strudel2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Strudel2</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../usage/data_management.html" class="sidebar-item-text sidebar-link">
+  <a href="../../usage/data_management.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Data Management</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../usage/documentation.html" class="sidebar-item-text sidebar-link">
+  <a href="../../usage/documentation.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Documentation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../usage/r.html" class="sidebar-item-text sidebar-link">
+  <a href="../../usage/r.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">R</span></a>
   </div>
 </li>
@@ -208,19 +242,19 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../usage/conda.html" class="sidebar-item-text sidebar-link">
+  <a href="../../usage/conda.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Provided environments</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../usage/custom.html" class="sidebar-item-text sidebar-link">
+  <a href="../../usage/custom.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Custom environments</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../usage/environments.html" class="sidebar-item-text sidebar-link">
+  <a href="../../usage/environments.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Environment List</span></a>
   </div>
 </li>
@@ -239,13 +273,13 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../connecting/ssh.html" class="sidebar-item-text sidebar-link">
+  <a href="../../connecting/ssh.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">SSH Credentials</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../connecting/vscode.html" class="sidebar-item-text sidebar-link">
+  <a href="../../connecting/vscode.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">VS Code</span></a>
   </div>
 </li>
@@ -253,7 +287,7 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../faq.html" class="sidebar-item-text sidebar-link">
+  <a href="../../faq.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Troubleshooting</span></a>
   </div>
 </li>
@@ -268,31 +302,31 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../tutorials/1_dask_slurm.html" class="sidebar-item-text sidebar-link">
+  <a href="../../tutorials/1_dask_slurm.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Dask SLURMClusters</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../tutorials/2_dask_offloading.html" class="sidebar-item-text sidebar-link">
+  <a href="../../tutorials/2_dask_offloading.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Dask Offloading</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../tutorials/3_submitit_offloading.html" class="sidebar-item-text sidebar-link">
+  <a href="../../tutorials/3_submitit_offloading.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">SubmitIt Offloading</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../tutorials/4_submitit_pytorch.html" class="sidebar-item-text sidebar-link">
+  <a href="../../tutorials/4_submitit_pytorch.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">PyTorch and Submitit</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../tutorials/5_ollama.html" class="sidebar-item-text sidebar-link">
+  <a href="../../tutorials/5_ollama.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Ollama Python</span></a>
   </div>
 </li>
@@ -300,7 +334,7 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../release.html" class="sidebar-item-text sidebar-link">
+  <a href="../../release.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Release Notes</span></a>
   </div>
 </li>
@@ -314,16 +348,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#terminal" id="toc-terminal" class="nav-link active" data-scroll-target="#terminal">Terminal</a></li>
-  <li><a href="#jupyter-lab" id="toc-jupyter-lab" class="nav-link" data-scroll-target="#jupyter-lab">Jupyter Lab</a></li>
-  <li><a href="#batch" id="toc-batch" class="nav-link" data-scroll-target="#batch">Batch</a></li>
-  <li><a href="#vs-code-server" id="toc-vs-code-server" class="nav-link" data-scroll-target="#vs-code-server">VS Code Server</a></li>
-  <li><a href="#ollama" id="toc-ollama" class="nav-link" data-scroll-target="#ollama">Ollama</a></li>
-  <li><a href="#faq" id="toc-faq" class="nav-link" data-scroll-target="#faq">FAQ</a>
-  <ul class="collapse">
-  <li><a href="#why-cant-i-connect-to-jupyter-lab" id="toc-why-cant-i-connect-to-jupyter-lab" class="nav-link" data-scroll-target="#why-cant-i-connect-to-jupyter-lab">Why can’t I connect to Jupyter Lab?</a></li>
-  <li><a href="#why-is-my-vs-code-not-attaching-to-the-remote-session" id="toc-why-is-my-vs-code-not-attaching-to-the-remote-session" class="nav-link" data-scroll-target="#why-is-my-vs-code-not-attaching-to-the-remote-session">Why is my VS Code not attaching to the remote session?</a></li>
-  </ul></li>
+  <li><a href="#comparison-with-dask" id="toc-comparison-with-dask" class="nav-link active" data-scroll-target="#comparison-with-dask">Comparison with Dask</a></li>
   </ul>
 </nav>
     </div>
@@ -332,7 +357,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Strudel2</h1>
+<h1 class="title">SubmitIt Offloading</h1>
 </div>
 
 
@@ -347,52 +372,61 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>Strudel2 is an interactive environment to develop supports two types of jobs. You will be able to reach it from <code>https://mlerp.cloud.edu.au/</code>.</p>
-<p>It will allow you check the cluster’s usage and your disk quota. You will also be able to launch interactive jobs on the cluster. Strudel2 offers two kinds of interactive jobs: terminal and Jupyter Lab.</p>
-<section id="terminal" class="level2">
-<h2 class="anchored" data-anchor-id="terminal">Terminal</h2>
-<p>Terminal jobs give you some requested compute attached to a simple text UI. This is ideal if you need to clone repositories, create conda environments, organise your files or anything else that you can do with a linux shell that doesn’t require a GUI.</p>
-<p>You can also launch the web terminal attached to the login node if you just need a quick terminal to manage your files, however this is a shared resource with limited compute.</p>
-</section>
-<section id="jupyter-lab" class="level2">
-<h2 class="anchored" data-anchor-id="jupyter-lab">Jupyter Lab</h2>
-<p>Jupyter Lab jobs give you some requested compute attached to a Jupyter Lab IDE. This is ideal if you prefer experimenting in python notebooks or visualising data with a GUI.</p>
-<p>If you prefer using VS Code to the Jupyter Lab IDE you can also connect to this job with the <a href="https://aka.ms/vscode-remote/download/extension">Remote Development Extension Pack</a>. For more details see our page on <a href="../connecting/vscode.html">connecting via VS Code</a>.</p>
-<p>You can use this app will using one of our provided conda environments, or one that you provide. If you’re looking for an envionment that’s not listed here, check that its path is included in the <code>~/.conda/environments.txt</code> file in your home directory.</p>
-<p>We have provided the DSKS (Data Science Kitchen Sink) series of environments for you to explore the platform and get started right away. Each version of the environment is tagged with the month that it was compiled, so that as we update and add new packages you can continue to rely on older versions of the environment for reproducability in your experiments.</p>
-<p>If our conda environments don’t meet your needs, you can consider maintaining your own <a href="https://docs.conda.io/en/latest/miniconda.html">miniconda</a> or <a href="https://mamba.readthedocs.io/en/latest/installation/mamba-installation.html">mambaforge</a> installation in your home directory. For a custom conda environment to be compatible with this app, you will need to include jupyter and dask related packages during. See <a href="../usage/custom.html">this page</a> for more information about creating a conda environment to interface with our environment.</p>
-</section>
-<section id="batch" class="level2">
-<h2 class="anchored" data-anchor-id="batch">Batch</h2>
-<p>The Batch app gives you the ability to submit jobs to be picked up by the SLURM queue. This allows you to continue to run your tests while you are away from the computer and check back in later when they’re done. The app currently supports python scripts as well as bash scripts.</p>
-<p>Of course if you’re comfortable with manually submitting to the queue you can do so if you need the extra control. Batch jobs are run in the Lion QoS meaning you can have up to 4 running at once.</p>
-<p>Any outputs to terminal will be captured and stored in the job’s log file for later viewing. Be sure to checkpoint your code and periodically save any trained models so that you can reload your desired model from any chosen point during training process. Checkpointing also enables you to train your model for longer than the 24 hour wall time, as long as you save everything you need to resume at the end of your job.</p>
-</section>
-<section id="vs-code-server" class="level2">
-<h2 class="anchored" data-anchor-id="vs-code-server">VS Code Server</h2>
-<p>Code Server offers a simpler alternative to connecting your IDE to MLeRP over SSH. Just as you can customise your VS Code experience with the desktop app using plugins, you can install VS Code plugins while using Code Server. See the <a href="https://code.visualstudio.com/docs/remote/vscode-server">Code Server documentation</a> for more information.</p>
-</section>
-<section id="ollama" class="level2">
-<h2 class="anchored" data-anchor-id="ollama">Ollama</h2>
-<p>Ollama offers a way to interact with open source large language models interactively. The app will give you a chat window similar to ChatGPT, allowing you to ‘talk’ with the model of your choice. We have installed a selection of models for you. For more information on the provided models, including any model licences, please have a look at the <a href="https://ollama.com/library">Ollama library</a>. More models can be made available on request, please reach out if you would like more functionality.</p>
-<p>An Ollama server can also be interfaced with programmatically through the <a href="https://github.com/ollama/ollama-python">Ollama python library</a>. To do this we recommend splitting your window with <strong>Ctrl+b %</strong>, which will give you a terminal to run your python scripts with. You can switch between panes with <strong>Ctrl+b</strong> ;. Your new terminal will operate the same as the terminal app, but with access to the Ollama server that’s running in the background.</p>
-<p>To get the exact names of the models available, you can run <code>/apps/ollama/ollama list</code>. With the model name, you can interface with the model through the python api. For example:<br>
-<code>ollama.chat(model='&lt;model_name&gt;', messages=[{'role': 'user', 'content': 'Why is the sky blue?'}])</code>.</p>
-<p>For more details on usage, please view the <a href="https://github.com/ollama/ollama-python">Ollama python library docs</a>. Note that you may want to use a second app, such as our VS Code Server app to edit your python script unless you’re familiar with a terminal editor like Vim or Nano.</p>
-</section>
-<section id="faq" class="level2">
-<h2 class="anchored" data-anchor-id="faq">FAQ</h2>
-<section id="why-cant-i-connect-to-jupyter-lab" class="level3">
-<h3 class="anchored" data-anchor-id="why-cant-i-connect-to-jupyter-lab">Why can’t I connect to Jupyter Lab?</h3>
-<p>Jupyter Lab needs to be able to create files to run properly. If your disk quota is completely full, it will create empty files that will confuse the system. To fix this, ssh into the cluster or use a terminal job to reduce your disk usage back under quota, then delete the empty files which will be found at <code>/home/&lt;USERNAME&gt;/.local/share/jupyter/runtime</code>.</p>
-<p>There is also a known bug where Brave’s ‘shield’ feature will block the Strudel2 Jupyter application. To bypass this, you’ll need to turn off ‘shields’ for both the <a href="https://mlerp.cloud.edu.au/">Strudel2 home page</a> and the <a href="https://strudel2-api-dev.cloud.cvl.org.au/">Strudel2 api</a>.</p>
-</section>
-<section id="why-is-my-vs-code-not-attaching-to-the-remote-session" class="level3">
-<h3 class="anchored" data-anchor-id="why-is-my-vs-code-not-attaching-to-the-remote-session">Why is my VS Code not attaching to the remote session?</h3>
-<p>The SSH certificates that <a href="../connecting/ssh.html">SSOSSH</a> creates are only valid for 24 hours, this means that you’ll need to generate new certificates each day before you connect. VS Code also has a known bug where it can get confused if you have another SSH client (such as MobaXTerm) open when it tries to establish the connection.</p>
+<p>SubmitIt is a lower level library than Dask which you can also use to offload parts of your notebook to the SLURM queue. Rather than managing a cluster, you will instead directly be submitting python functions to the SLURM queue giving you more control. For more information, have a read of their <a href="https://pypi.org/project/submitit/">PyPi page</a>.</p>
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> submitit</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Define where we'd like submitit to place our logs</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>executor <span class="op">=</span> submitit.AutoExecutor(folder<span class="op">=</span><span class="st">'~/submitit_logs'</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the parameters of our slurm job</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Just like Dasks' job_extra_directives, additional_parameters allows us to specify things that submitit doesn't support directly</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>executor.update_parameters(timeout_min<span class="op">=</span><span class="dv">30</span>, mem_gb<span class="op">=</span><span class="dv">128</span>, cpus_per_task<span class="op">=</span><span class="dv">16</span>, slurm_partition<span class="op">=</span><span class="st">"BigCats"</span>, slurm_additional_parameters<span class="op">=</span>{<span class="st">"gres"</span>: <span class="st">"gpu:1"</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We can submit our function to the cluster with the <code>executor.submit</code> method. This will return a future which can be unpacked with its result using <code>future.result()</code> just like when we were working with Dask. Because we are offloading to the SLURM queue print statements will not be visible, just like with Dask <code>SLURMClusters</code>. However, the full stack trace is still visible when an error or assertion is raised within the function.</p>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> client_test(input1, input2, error<span class="op">=</span><span class="va">False</span>, test<span class="op">=</span><span class="va">False</span>):</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Force an error</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> error:</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">assert</span> <span class="dv">0</span> <span class="op">==</span> <span class="dv">1</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Stop after one batch when testing        </span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> test: </span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"When running in a local cluster you can see print statements!"</span>)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> input1, input2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>future <span class="op">=</span> executor.submit(client_test, <span class="st">"input1"</span>, <span class="st">"input2"</span>, test<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>future.result()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>('input1', 'input2')</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>future <span class="op">=</span> executor.submit(client_test, <span class="st">"input1"</span>, <span class="st">"input2"</span>, error<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>future.result()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Note that since we are interacting directly with the queue, we don’t need to clean up and shut down our cluster when using SubmitIt.</p>
+<p>If needed we can be more specific about the specific GPU type and QoS we need if we have more complex requirements.</p>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>executor.update_parameters(timeout_min<span class="op">=</span><span class="dv">30</span>, mem_gb<span class="op">=</span><span class="dv">128</span>, cpus_per_task<span class="op">=</span><span class="dv">16</span>, slurm_partition<span class="op">=</span><span class="st">"BigCats"</span>, slurm_additional_parameters<span class="op">=</span>{<span class="st">"gres"</span>: <span class="st">"gpu:3g.20gb:1"</span>, <span class="st">"partition"</span>: <span class="st">"BigCats"</span>})</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>executor.submit(client_test, <span class="st">"input1"</span>, <span class="st">"input2"</span>, test<span class="op">=</span><span class="va">True</span>).result()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/apps/mambaforge/envs/dsks_2024.06/lib/python3.10/site-packages/submitit/auto/auto.py:23: UserWarning: Setting 'additional_parameters' is deprecated. Use 'slurm_additional_parameters' instead.
+  warnings.warn(f"Setting '{arg}' is deprecated. Use '{new_arg}' instead.")</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre><code>('input1', 'input2')</code></pre>
+</div>
+</div>
+<section id="comparison-with-dask" class="level2">
+<h2 class="anchored" data-anchor-id="comparison-with-dask">Comparison with Dask</h2>
+<p>As you can see, we’ve implemented the same use case with both Dask and SubmitIt. Which begs the question - which should you use for your research?</p>
+<p>Both packages have pros and cons, but on the whole, Dask is much better suited towards tasks which can benefit from being broken into many small tasks - like when preprocessing your data. SubmitIt on the other hand is much better suited for use cases where you are looking to offload one larger job at a time, like when you are training.</p>
+<p>Of the two, Dask is the more mature package with more flexibility and complete documentation - but if you are looking for a simple offloading package it is often far more complexity than you need.</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
