@@ -2,138 +2,130 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://docs.mlerp.cloud.edu.au/tutorials/2_dask_offloading.html</loc>
-    <lastmod>2024-08-15T06:52:45.254Z</lastmod>
+    <lastmod>2024-08-20T06:04:49.294Z</lastmod>
   </url>
   <url>
     <loc>https://docs.mlerp.cloud.edu.au/tutorials/4_submitit_pytorch.html</loc>
-    <lastmod>2024-08-15T06:52:43.550Z</lastmod>
+    <lastmod>2024-08-20T06:04:47.582Z</lastmod>
   </url>
   <url>
     <loc>https://docs.mlerp.cloud.edu.au/tutorials/1_dask_slurm.html</loc>
-    <lastmod>2024-08-15T06:52:41.678Z</lastmod>
+    <lastmod>2024-08-20T06:04:45.722Z</lastmod>
   </url>
   <url>
     <loc>https://docs.mlerp.cloud.edu.au/release/notes004.html</loc>
-    <lastmod>2024-08-15T06:52:40.070Z</lastmod>
+    <lastmod>2024-08-20T06:04:44.102Z</lastmod>
   </url>
   <url>
     <loc>https://docs.mlerp.cloud.edu.au/release/notes002.html</loc>
-    <lastmod>2024-08-15T06:52:39.018Z</lastmod>
+    <lastmod>2024-08-20T06:04:43.074Z</lastmod>
   </url>
   <url>
     <loc>https://docs.mlerp.cloud.edu.au/release/notes001.html</loc>
-    <lastmod>2024-08-15T06:52:37.974Z</lastmod>
+    <lastmod>2024-08-20T06:04:42.030Z</lastmod>
   </url>
   <url>
     <loc>https://docs.mlerp.cloud.edu.au/index.html</loc>
-    <lastmod>2024-08-15T06:52:36.838Z</lastmod>
+    <lastmod>2024-08-20T06:04:41.010Z</lastmod>
   </url>
   <url>
     <loc>https://docs.mlerp.cloud.edu.au/release.html</loc>
-    <lastmod>2024-08-15T06:52:35.734Z</lastmod>
+    <lastmod>2024-08-20T06:04:39.898Z</lastmod>
   </url>
   <url>
     <loc>https://docs.mlerp.cloud.edu.au/hardware.html</loc>
-    <lastmod>2024-08-15T06:52:34.466Z</lastmod>
-  </url>
-  <url>
-    <loc>https://docs.mlerp.cloud.edu.au/05a70202/tutorials/2_dask_offloading.out.html</loc>
-    <lastmod>2024-08-15T06:52:33.218Z</lastmod>
+    <lastmod>2024-08-20T06:04:38.730Z</lastmod>
   </url>
   <url>
     <loc>https://docs.mlerp.cloud.edu.au/usage/documentation.html</loc>
-    <lastmod>2024-08-15T06:52:32.194Z</lastmod>
+    <lastmod>2024-08-20T06:04:37.534Z</lastmod>
   </url>
   <url>
     <loc>https://docs.mlerp.cloud.edu.au/usage/environments.html</loc>
-    <lastmod>2024-08-15T06:52:31.258Z</lastmod>
+    <lastmod>2024-08-20T06:04:36.594Z</lastmod>
   </url>
   <url>
     <loc>https://docs.mlerp.cloud.edu.au/usage/environments/dsks/dsks_2024.06.html</loc>
-    <lastmod>2024-08-15T06:52:30.250Z</lastmod>
+    <lastmod>2024-08-20T06:04:35.582Z</lastmod>
   </url>
   <url>
     <loc>https://docs.mlerp.cloud.edu.au/usage/environments/dsks/dsks_2023.05.html</loc>
-    <lastmod>2024-08-15T06:52:29.262Z</lastmod>
+    <lastmod>2024-08-20T06:04:34.642Z</lastmod>
   </url>
   <url>
     <loc>https://docs.mlerp.cloud.edu.au/usage/strudel2.html</loc>
-    <lastmod>2024-08-15T06:52:28.222Z</lastmod>
+    <lastmod>2024-08-20T06:04:33.690Z</lastmod>
   </url>
   <url>
     <loc>https://docs.mlerp.cloud.edu.au/usage/r.html</loc>
-    <lastmod>2024-08-15T06:52:26.986Z</lastmod>
+    <lastmod>2024-08-20T06:04:32.438Z</lastmod>
   </url>
   <url>
     <loc>https://docs.mlerp.cloud.edu.au/connecting/ssh.html</loc>
-    <lastmod>2024-08-15T06:52:26.010Z</lastmod>
+    <lastmod>2024-08-20T06:04:31.398Z</lastmod>
   </url>
   <url>
     <loc>https://docs.mlerp.cloud.edu.au/connecting/vscode.html</loc>
-    <lastmod>2024-08-15T06:52:25.302Z</lastmod>
+    <lastmod>2024-08-20T06:04:30.702Z</lastmod>
   </url>
   <url>
     <loc>https://docs.mlerp.cloud.edu.au/usage/data_management.html</loc>
-    <lastmod>2024-08-15T06:52:26.562Z</lastmod>
+    <lastmod>2024-08-20T06:04:32.010Z</lastmod>
   </url>
   <url>
     <loc>https://docs.mlerp.cloud.edu.au/usage/custom.html</loc>
-    <lastmod>2024-08-15T06:52:27.614Z</lastmod>
+    <lastmod>2024-08-20T06:04:33.066Z</lastmod>
   </url>
   <url>
     <loc>https://docs.mlerp.cloud.edu.au/usage/environments/detectron-sam.html</loc>
-    <lastmod>2024-08-15T06:52:28.778Z</lastmod>
+    <lastmod>2024-08-20T06:04:34.178Z</lastmod>
   </url>
   <url>
     <loc>https://docs.mlerp.cloud.edu.au/usage/environments/dsks/dsks_2023.10.html</loc>
-    <lastmod>2024-08-15T06:52:29.750Z</lastmod>
+    <lastmod>2024-08-20T06:04:35.110Z</lastmod>
   </url>
   <url>
     <loc>https://docs.mlerp.cloud.edu.au/usage/environments/custom.html</loc>
-    <lastmod>2024-08-15T06:52:30.678Z</lastmod>
+    <lastmod>2024-08-20T06:04:36.010Z</lastmod>
   </url>
   <url>
     <loc>https://docs.mlerp.cloud.edu.au/usage/conda.html</loc>
-    <lastmod>2024-08-15T06:52:31.770Z</lastmod>
+    <lastmod>2024-08-20T06:04:37.110Z</lastmod>
   </url>
   <url>
     <loc>https://docs.mlerp.cloud.edu.au/getting_started.html</loc>
-    <lastmod>2024-08-15T06:52:32.670Z</lastmod>
-  </url>
-  <url>
-    <loc>https://docs.mlerp.cloud.edu.au/05a70202/tutorials/3_submitit_offloading.out.html</loc>
-    <lastmod>2024-08-15T06:52:33.738Z</lastmod>
+    <lastmod>2024-08-20T06:04:37.998Z</lastmod>
   </url>
   <url>
     <loc>https://docs.mlerp.cloud.edu.au/faq.html</loc>
-    <lastmod>2024-08-15T06:52:35.010Z</lastmod>
+    <lastmod>2024-08-20T06:04:39.294Z</lastmod>
   </url>
   <url>
     <loc>https://docs.mlerp.cloud.edu.au/about.html</loc>
-    <lastmod>2024-08-15T06:52:36.362Z</lastmod>
+    <lastmod>2024-08-20T06:04:40.538Z</lastmod>
   </url>
   <url>
     <loc>https://docs.mlerp.cloud.edu.au/release/notes005.html</loc>
-    <lastmod>2024-08-15T06:52:37.514Z</lastmod>
+    <lastmod>2024-08-20T06:04:41.570Z</lastmod>
   </url>
   <url>
     <loc>https://docs.mlerp.cloud.edu.au/release/notes007.html</loc>
-    <lastmod>2024-08-15T06:52:38.466Z</lastmod>
+    <lastmod>2024-08-20T06:04:42.530Z</lastmod>
   </url>
   <url>
     <loc>https://docs.mlerp.cloud.edu.au/release/notes003.html</loc>
-    <lastmod>2024-08-15T06:52:39.534Z</lastmod>
+    <lastmod>2024-08-20T06:04:43.610Z</lastmod>
   </url>
   <url>
     <loc>https://docs.mlerp.cloud.edu.au/release/notes006.html</loc>
-    <lastmod>2024-08-15T06:52:40.670Z</lastmod>
+    <lastmod>2024-08-20T06:04:44.702Z</lastmod>
   </url>
   <url>
     <loc>https://docs.mlerp.cloud.edu.au/tutorials/3_submitit_offloading.html</loc>
-    <lastmod>2024-08-15T06:52:42.522Z</lastmod>
+    <lastmod>2024-08-20T06:04:46.542Z</lastmod>
   </url>
   <url>
     <loc>https://docs.mlerp.cloud.edu.au/tutorials/5_ollama.html</loc>
-    <lastmod>2024-08-15T06:52:44.414Z</lastmod>
+    <lastmod>2024-08-20T06:04:48.434Z</lastmod>
   </url>
 </urlset>
