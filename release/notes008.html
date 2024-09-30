@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Mitchell Hargreaves">
+<meta name="dcterms.date" content="2024-09-30">
 
-<title>MLeRP User Guide Documentation - Release Notes</title>
+<title>MLeRP User Guide Documentation - Release Notes #8</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,25 +25,23 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="././images/favicon-32x32.png" rel="icon" type="image/png">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href=".././images/favicon-32x32.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -62,41 +62,10 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
 
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<link rel="stylesheet" href="styles.css">
-<link rel="alternate" type="application/rss+xml" title="MLeRP User Guide Documentation" href="release.xml"></head>
+<link rel="stylesheet" href="../styles.css">
+</head>
 
 <body class="nav-sidebar floating nav-fixed">
 
@@ -105,10 +74,10 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
-    <a href="./index.html" class="navbar-brand navbar-brand-logo">
-    <img src="././images/mstile-150x150.png" alt="" class="navbar-logo">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src=".././images/mstile-150x150.png" alt="" class="navbar-logo">
     </a>
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">MLeRP User Guide Documentation</span>
     </a>
   </div>
@@ -119,15 +88,15 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" rel="" target="" aria-current="page">
+    <a class="nav-link active" href="../index.html" rel="" target="" aria-current="page">
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./about.html" rel="" target="">
+    <a class="nav-link" href="../about.html" rel="" target="">
  <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./faq.html" rel="" target="">
+    <a class="nav-link" href="../faq.html" rel="" target="">
  <span class="menu-text">Troubleshooting</span></a>
   </li>  
 </ul>
@@ -161,7 +130,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./release.html">Release Notes</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Release Notes #8</li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -175,25 +144,25 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Home</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./about.html" class="sidebar-item-text sidebar-link">
+  <a href="../about.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">About</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./hardware.html" class="sidebar-item-text sidebar-link">
+  <a href="../hardware.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Partitions and QoS</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./getting_started.html" class="sidebar-item-text sidebar-link">
+  <a href="../getting_started.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Getting Started</span></a>
   </div>
 </li>
@@ -208,25 +177,25 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./usage/strudel2.html" class="sidebar-item-text sidebar-link">
+  <a href="../usage/strudel2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Strudel2</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./usage/data_management.html" class="sidebar-item-text sidebar-link">
+  <a href="../usage/data_management.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Data Management</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./usage/documentation.html" class="sidebar-item-text sidebar-link">
+  <a href="../usage/documentation.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Documentation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./usage/r.html" class="sidebar-item-text sidebar-link">
+  <a href="../usage/r.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">R</span></a>
   </div>
 </li>
@@ -241,19 +210,19 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./usage/conda.html" class="sidebar-item-text sidebar-link">
+  <a href="../usage/conda.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Provided environments</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./usage/custom.html" class="sidebar-item-text sidebar-link">
+  <a href="../usage/custom.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Custom environments</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./usage/environments.html" class="sidebar-item-text sidebar-link">
+  <a href="../usage/environments.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Environment List</span></a>
   </div>
 </li>
@@ -272,13 +241,13 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./connecting/ssh.html" class="sidebar-item-text sidebar-link">
+  <a href="../connecting/ssh.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">SSH Credentials</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./connecting/vscode.html" class="sidebar-item-text sidebar-link">
+  <a href="../connecting/vscode.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">VS Code</span></a>
   </div>
 </li>
@@ -286,7 +255,7 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./faq.html" class="sidebar-item-text sidebar-link">
+  <a href="../faq.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Troubleshooting</span></a>
   </div>
 </li>
@@ -301,31 +270,31 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorials/1_dask_slurm.html" class="sidebar-item-text sidebar-link">
+  <a href="../tutorials/1_dask_slurm.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Dask SLURMClusters</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorials/2_dask_offloading.html" class="sidebar-item-text sidebar-link">
+  <a href="../tutorials/2_dask_offloading.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Dask Offloading</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorials/3_submitit_offloading.html" class="sidebar-item-text sidebar-link">
+  <a href="../tutorials/3_submitit_offloading.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">SubmitIt Offloading</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorials/4_submitit_pytorch.html" class="sidebar-item-text sidebar-link">
+  <a href="../tutorials/4_submitit_pytorch.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">PyTorch and Submitit</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorials/5_ollama.html" class="sidebar-item-text sidebar-link">
+  <a href="../tutorials/5_ollama.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Ollama Python</span></a>
   </div>
 </li>
@@ -333,7 +302,7 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./release.html" class="sidebar-item-text sidebar-link active">
+  <a href="../release.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Release Notes</span></a>
   </div>
 </li>
@@ -350,14 +319,26 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Release Notes</h1>
+<h1 class="title">Release Notes #8</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Mitchell Hargreaves </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">September 30, 2024</p>
+    </div>
+  </div>
   
     
   </div>
@@ -365,147 +346,18 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
+<p>Hello MLeRP users,</p>
+<p>ML4AU is planning a series of webinars for AI Month (14 Oct - 15 Nov). As a part of this, we would love to hear from some of you MLeRP Users! If you’re doing some exciting ML or AI work on our platform and would like to share it with the community, please reach out to us.</p>
+<p>Our first major change is that we have updated our old Terminal app. The new Terminal runs on <code>xterm</code> rather than <code>hterm</code> which hasn’t been updated recently. It also gives us some more flexibility in that we can we can pass it commands to run other apps - which we have taken advantage of to run our ‘View Log’ feature.</p>
+<p>We’ve also used it to develop our new <a href="https://ollama.com/">Ollama</a> app, which you may have noticed crop up in your side bar. If you’re interested in playing around with large language models, but aren’t sure where to start, this could be a good way to experiment. For now we’ve preloaded the phi3, mistral, mixtral and two variants of llama3, but <a href="https://ollama.com/library">more models</a> are available on request. Opening the app will give you a chat window with your model of choice for you to interact with directly.</p>
+<p>However, Ollama also supports interaction through a python API. We’ve put together <a href="../tutorials/ollama.ipynb">a tutorial</a> showcasing this which involves using a model to summarise Wikipedia articles. If you’re a more advanced user and want to experiment with Ollama more directly, you will be should be able to run the program directly which is installed at <code>/apps/ollama/ollama</code>. Note that doing so will use your home directory to store your model repository, but this can be reconfigured if you need to reroute it to use a project directory.</p>
+<p>As always, we hope these changes will improve your experience, please let us know if you find any issues or ways that you think we can improve.</p>
+<p>Regards,<br>
+Mitchell Hargreaves</p>
 
 
 
-
-<div class="quarto-listing quarto-listing-container-table" id="listing-listing">
-<div class="listing-actions-group">
-   <div class="input-group input-group-sm quarto-listing-sort">
-     <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
-     <select id="listing-listing-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
-       <option value="" disabled="" selected="" hidden="">Order By</option>
-       <option value="index" data-direction="asc">Default</option>
-         <option value="listing-date-sort" data-direction="asc">
-          Date - Oldest
-        </option>
-         <option value="listing-date-sort" data-direction="desc">
-          Date - Newest
-        </option>
-         <option value="listing-title-sort" data-direction="asc">
-          Title
-        </option>
-         <option value="listing-author" data-direction="asc">
-          Author
-        </option>
-     </select>
-  </div>
-    <div class="input-group input-group-sm quarto-listing-filter">
-      <span class="input-group-text"><i class="bi bi-search"></i></span>
-      <input type="text" class="search form-control" placeholder="Filter">
-    </div>
-</div>
-
-<table class="quarto-listing-table table">
-<thead>
-<tr>
-<th>
-<a class="sort" data-sort="listing-date-sort" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Date</a>
-</th>
-<th>
-<a class="sort" data-sort="listing-title-sort" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Title</a>
-</th>
-<th>
-<a class="sort" data-sort="listing-author" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Author</a>
-</th>
-</tr>
-</thead>
-<tbody class="list">
-<tr data-index="0" data-listing-date-sort="1727654400000" data-listing-file-modified-sort="1727674581277" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-title-sort="Release Notes #8" data-listing-filename-sort="notes008.qmd">
-<td>
-<span class="listing-date">Sep 30, 2024</span>
-</td>
-<td>
-<a href="./release/notes008.html" class="title listing-title">Release Notes #8</a>
-</td>
-<td>
-<span class="listing-author">Mitchell Hargreaves</span>
-</td>
-</tr>
-<tr data-index="1" data-listing-date-sort="1719878400000" data-listing-file-modified-sort="1719989598254" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-title-sort="Release Notes #7" data-listing-filename-sort="notes007.qmd">
-<td>
-<span class="listing-date">Jul 2, 2024</span>
-</td>
-<td>
-<a href="./release/notes007.html" class="title listing-title">Release Notes #7</a>
-</td>
-<td>
-<span class="listing-author">Mitchell Hargreaves</span>
-</td>
-</tr>
-<tr data-index="2" data-listing-date-sort="1708473600000" data-listing-file-modified-sort="1709797018317" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-title-sort="Release Notes #6" data-listing-filename-sort="notes006.qmd">
-<td>
-<span class="listing-date">Feb 21, 2024</span>
-</td>
-<td>
-<a href="./release/notes006.html" class="title listing-title">Release Notes #6</a>
-</td>
-<td>
-<span class="listing-author">Mitchell Hargreaves</span>
-</td>
-</tr>
-<tr data-index="3" data-listing-date-sort="1702598400000" data-listing-file-modified-sort="1709780274173" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-title-sort="Release Notes #5" data-listing-filename-sort="notes005.qmd">
-<td>
-<span class="listing-date">Dec 15, 2023</span>
-</td>
-<td>
-<a href="./release/notes005.html" class="title listing-title">Release Notes #5</a>
-</td>
-<td>
-<span class="listing-author">Mitchell Hargreaves</span>
-</td>
-</tr>
-<tr data-index="4" data-listing-date-sort="1699574400000" data-listing-file-modified-sort="1709780352289" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-title-sort="Release Notes #4" data-listing-filename-sort="notes004.qmd">
-<td>
-<span class="listing-date">Nov 10, 2023</span>
-</td>
-<td>
-<a href="./release/notes004.html" class="title listing-title">Release Notes #4</a>
-</td>
-<td>
-<span class="listing-author">Mitchell Hargreaves</span>
-</td>
-</tr>
-<tr data-index="5" data-listing-date-sort="1697155200000" data-listing-file-modified-sort="1709780489917" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-title-sort="Release Notes #3" data-listing-filename-sort="notes003.qmd">
-<td>
-<span class="listing-date">Oct 13, 2023</span>
-</td>
-<td>
-<a href="./release/notes003.html" class="title listing-title">Release Notes #3</a>
-</td>
-<td>
-<span class="listing-author">Mitchell Hargreaves</span>
-</td>
-</tr>
-<tr data-index="6" data-listing-date-sort="1695340800000" data-listing-file-modified-sort="1709780635433" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-title-sort="Release Notes #2" data-listing-filename-sort="notes002.qmd">
-<td>
-<span class="listing-date">Sep 22, 2023</span>
-</td>
-<td>
-<a href="./release/notes002.html" class="title listing-title">Release Notes #2</a>
-</td>
-<td>
-<span class="listing-author">Mitchell Hargreaves</span>
-</td>
-</tr>
-<tr data-index="7" data-listing-date-sort="1693872000000" data-listing-file-modified-sort="1709797031121" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-title-sort="Release Notes #1" data-listing-filename-sort="notes001.qmd">
-<td>
-<span class="listing-date">Sep 5, 2023</span>
-</td>
-<td>
-<a href="./release/notes001.html" class="title listing-title">Release Notes #1</a>
-</td>
-<td>
-<span class="listing-author">Mitchell Hargreaves</span>
-</td>
-</tr>
-</tbody>
-
-</table>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

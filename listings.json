@@ -1,17 +1,5 @@
 [
   {
-    "listing": "/release.html",
-    "items": [
-      "/release/notes007.html",
-      "/release/notes006.html",
-      "/release/notes005.html",
-      "/release/notes004.html",
-      "/release/notes003.html",
-      "/release/notes002.html",
-      "/release/notes001.html"
-    ]
-  },
-  {
     "listing": "/usage/environments.html",
     "items": [
       "/usage/environments/dsks/dsks_2024.06.html",
@@ -19,6 +7,19 @@
       "/usage/environments/detectron-sam.html",
       "/usage/environments/dsks/dsks_2023.10.html",
       "/usage/environments/dsks/dsks_2023.05.html"
+    ]
+  },
+  {
+    "listing": "/release.html",
+    "items": [
+      "/release/notes008.html",
+      "/release/notes007.html",
+      "/release/notes006.html",
+      "/release/notes005.html",
+      "/release/notes004.html",
+      "/release/notes003.html",
+      "/release/notes002.html",
+      "/release/notes001.html"
     ]
   }
 ]
