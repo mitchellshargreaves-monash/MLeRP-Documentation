@@ -1,0 +1,20 @@
+---
+title: "Release Notes #8"
+date: 2024-09-30
+author: Mitchell Hargreaves
+---
+
+Hello MLeRP users,
+
+ML4AU is planning a series of webinars for AI Month (14 Oct - 15 Nov). As a part of this, we would love to hear from some of you MLeRP Users! If you're doing some exciting ML or AI work on our platform and would like to share it with the community, please reach out to us. 
+
+Our first major change is that we have updated our old Terminal app. The new Terminal runs on `xterm` rather than `hterm` which hasn't been updated recently. It also gives us some more flexibility in that we can we can pass it commands to run other apps - which we have taken advantage of to run our 'View Log' feature.
+
+We've also used it to develop our new [Ollama](https://ollama.com/) app, which you may have noticed crop up in your side bar. If you're interested in playing around with large language models, but aren't sure where to start, this could be a good way to experiment. For now we've preloaded the phi3, mistral, mixtral and two variants of llama3, but [more models](https://ollama.com/library) are available on request. Opening the app will give you a chat window with your model of choice for you to interact with directly.  
+
+However, Ollama also supports interaction through a python API. We've put together [a tutorial](/tutorials/ollama.ipynb) showcasing this which involves using a model to summarise Wikipedia articles. If you're a more advanced user and want to experiment with Ollama more directly, you will be should be able to run the program directly which is installed at `/apps/ollama/ollama`. Note that doing so will use your home directory to store your model repository, but this can be reconfigured if you need to reroute it to use a project directory.
+
+As always, we hope these changes will improve your experience, please let us know if you find any issues or ways that you think we can improve.
+
+Regards,  
+Mitchell Hargreaves

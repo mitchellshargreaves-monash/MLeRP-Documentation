@@ -8,11 +8,19 @@ The easiest option to move files into the {{< var cluster_name >}} environment i
 
 You can select multiple files and drag and drop all of them at once but Jupyter Lab does not support transferring folders. So you will need to either zip your files first or create your desired structure first and drop in the files one directory at a time. Files will be added to the directory you are currently viewing.
 
+Jupyter Lab allows you to download files back to your device by right clicking on the file(s) in the file tree and selecting 'Download'. You can download multiple files in this way by selecting multiple files first before right clicking, though downloading folders is not supported. If you are moving many files at once, you may want to consider zipping them up first with a terminal.
+
+```bash
+zip archive.zip filename1 filename2
+```
+
 ## VS Code
 If you have already gone through the steps to connect your VS Code you can drag and drop files into the file tree just like with Jupyter Lab, but VS Code will allow you to drop whole folders at once, including nested folders. You can control where the files and folders end up by hovering over the desired folder.
 
+VS Code allows you to download files back to your device by right clicking on the selected file(s) or folder(s) in the file tree and selecting 'Download'.
+
 ## Wget
-If you're looking for an application or dataset that is publically available from the internet, you will be able to download the data directly into the MLeRP environment with a `wget` command:
+If you're looking for an application or dataset that is publicly available from the internet, you will be able to download the data directly into the MLeRP environment with a `wget` command:
 
 ```bash
 wget -o </path/to/destination> <http://example.com>
