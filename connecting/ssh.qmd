@@ -26,12 +26,12 @@ Note that there is a known bug where this button breaks if Strudel2 has been ref
 To use these credentials, you will need to initialise your SSH config so knows to use them. Add these entries to your `~/.ssh/config` file:
 
 ```bash
-Host <User>_MLeRP_monash
+Host <User>_MLeRP_Monash
 	HostName {{< var monash_login >}}
 	User <User>
 	IdentityFile </path/to/ssh/key>
 
-Host <User>_MLeRP_monash_job
+Host <User>_MLeRP_Monash_job
 	HostName VSCode
 	User <User>
 	IdentityFile </path/to/ssh/key>
@@ -148,11 +148,11 @@ ssh-add </path/to/ssh/key>
 If you do, then your config will look and ProxyCommand will look like this:
 
 ```bash
-Host <User>_MLeRP_monash
+Host <User>_MLeRP_Monash
 	HostName {{< var monash_login >}}
 	User <User>
 
-Host <User>_MLeRP_monash_job
+Host <User>_MLeRP_Monash_job
 	HostName VSCode
 	User <User>
 	ProxyCommand <ProxyCommand>
