@@ -46,6 +46,7 @@ website:
         - "usage/data_management.qmd"
         - "usage/documentation.qmd"
         - "usage/r.qmd"
+        - "usage/ollama.qmd"
         - section: "Conda"
           contents:
             - text: "Provided environments"
