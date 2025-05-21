@@ -1,0 +1,116 @@
+---
+title: Ollama
+---
+
+MLeRP is running an Ollama server on `mlerp-monash-node13` which you can access from any other MLeRP node.
+
+We do not enable the full Ollama API but rather only allow the following endpoints:
+
+- /api/generate
+- /api/chat
+- /api/tags
+- /api/show
+- /api/embed
+- /api/version
+
+If our existing model library does not suit your purposes, more Ollama models can be made available on request. Alternatively you can consider running Ollama yourself within your SLURM job and maintaining your own model repository. You can do that with the following commands:
+
+```bash
+# Replace this path with wherever you'd like to store your Ollama models
+`export OLLAMA_MODELS="/apps/ollama/models/"`
+`/apps/ollama/ollama serve`
+```
+
+Note that these commands need to be run in the same job as the rest of your task. For example if you're working with a Jupyter Lab you will need to open a Jupyter Lab terminal to do this rather than opening a new Terminal App.
+
+This can be used in conjunction with the [ollama-python](https://github.com/ollama/ollama-python) library for large language model experimentation. To connect the library to our API you will need to define a custom client and call it:
+
+```python
+from ollama import Client
+
+client = Client(
+  host='http://mlerp-monash-node13:80'
+)
+
+client.chat(model='deepseek-r1:70b', messages=[
+  {
+    'role': 'user',
+    'content': 'Why is the sky blue?',
+  },
+])
+```
+
+This can be integrated with your VSCode workflow through AI assistant plugins like [Continue](https://open-vsx.org/extension/Continue/continue). This allows you to do tasks like AI assisted code generation and code autocomplete without paying for access or sending research data to online services like ChatGPT and Claude. To do this we recommend the following Continue config:
+
+```json
+{
+  "models": [
+    {
+      "model": "AUTODETECT",
+      "title": "Autodetect",
+      "provider": "ollama",
+      "apiBase": "http://mlerp-monash-node13"
+    }
+  ],
+  "contextProviders": [
+    {
+      "name": "code",
+      "params": {}
+    },
+    {
+      "name": "docs",
+      "params": {}
+    },
+    {
+      "name": "diff",
+      "params": {}
+    },
+    {
+      "name": "terminal",
+      "params": {}
+    },
+    {
+      "name": "problems",
+      "params": {}
+    },
+    {
+      "name": "folder",
+      "params": {}
+    },
+    {
+      "name": "codebase",
+      "params": {}
+    }
+  ],
+  "slashCommands": [
+    {
+      "name": "share",
+      "description": "Export the current chat session to markdown"
+    },
+    {
+      "name": "cmd",
+      "description": "Generate a shell command"
+    },
+    {
+      "name": "commit",
+      "description": "Generate a git commit message"
+    }
+  ],
+  "data": [],
+  "tabAutocompleteModel": {
+    "title": "Qwen2.5-Coder",
+    "provider": "ollama",
+    "model": "qwen2.5-coder:latest",
+    "apiBase": "http://mlerp-monash-node13"
+  },
+  "embeddingsProvider": {
+    "title": "Nomic-Embed-Text",
+    "provider": "ollama",
+    "model": "nomic-embed-text:latest",
+    "apiBase": "http://mlerp-monash-node13"
+  }
+}
+```
+
+You can find your Continue config at the following path: 
+`.continue/config.json`.
