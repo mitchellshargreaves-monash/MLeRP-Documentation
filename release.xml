@@ -10,7 +10,38 @@
 <atom:link href="https://docs.mlerp.cloud.edu.au/release.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.3.450</generator>
-<lastBuildDate>Mon, 30 Sep 2024 00:00:00 GMT</lastBuildDate>
+<lastBuildDate>Thu, 29 May 2025 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>Release Notes #8</title>
+  <dc:creator>Mitchell Hargreaves</dc:creator>
+  <link>https://docs.mlerp.cloud.edu.au/release/notes009.html</link>
+  <description><![CDATA[ 
+
+
+
+<p>Hello MLeRP users,</p>
+<p>MLeRP has officially crossed 200 users!</p>
+<p>As you may have noticed, MLeRP has just undergone a major upgrade, increasing the number of compute nodes from 6 to 14! This has allowed us to double the size of the Tabby partition, and for the rest - we’re leaving as whole GPU nodes to assist with Batch processing. We will monitor usage of the cluster and redistribute the nodes if we feel we need to at a later date.</p>
+<p>As an experiment, we’re setting aside one of these new nodes, <code>mlerp-monash-node13</code>, to run an Ollama server. You can reach this api from any other MLeRP node on port 80. You can use this <a href="https://github.com/ollama/ollama/blob/main/docs/api.md">API</a> to generate LLM responses by calling the endpoints it directly or interact with it through the <a href="https://github.com/ollama/ollama-python">ollama-python</a> library.</p>
+<p>Please note that we do not enable the full Ollama API but rather only allow the following endpoints:</p>
+<ul>
+<li>/api/generate</li>
+<li>/api/chat</li>
+<li>/api/tags</li>
+<li>/api/show</li>
+<li>/api/embed</li>
+<li>/api/version</li>
+</ul>
+<p>Ollama can also be integrated with your VSCode workflow through AI assistant plugins like <a href="https://open-vsx.org/extension/Continue/continue">Continue</a>. This allows for AI assisted code generation and code autocomplete without paying for access or sending research data to online services like ChatGPT and Claude.</p>
+<p>For more information on Ollama, please have a look at our <a href="../usage/ollama.html">Ollama</a> documentation.</p>
+<p>Regards, Mitchell Hargreaves</p>
+
+
+
+ ]]></description>
+  <guid>https://docs.mlerp.cloud.edu.au/release/notes009.html</guid>
+  <pubDate>Thu, 29 May 2025 00:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Release Notes #8</title>
   <dc:creator>Mitchell Hargreaves</dc:creator>
