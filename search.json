@@ -60,7 +60,7 @@
     "href": "release.html",
     "title": "Release Notes",
     "section": "",
-    "text": "Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Title\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nMay 29, 2025\n\n\nRelease Notes #8\n\n\nMitchell Hargreaves\n\n\n\n\nSep 30, 2024\n\n\nRelease Notes #8\n\n\nMitchell Hargreaves\n\n\n\n\nJul 2, 2024\n\n\nRelease Notes #7\n\n\nMitchell Hargreaves\n\n\n\n\nFeb 21, 2024\n\n\nRelease Notes #6\n\n\nMitchell Hargreaves\n\n\n\n\nDec 15, 2023\n\n\nRelease Notes #5\n\n\nMitchell Hargreaves\n\n\n\n\nNov 10, 2023\n\n\nRelease Notes #4\n\n\nMitchell Hargreaves\n\n\n\n\nOct 13, 2023\n\n\nRelease Notes #3\n\n\nMitchell Hargreaves\n\n\n\n\nSep 22, 2023\n\n\nRelease Notes #2\n\n\nMitchell Hargreaves\n\n\n\n\nSep 5, 2023\n\n\nRelease Notes #1\n\n\nMitchell Hargreaves\n\n\n\n\n\n\nNo matching items"
+    "text": "Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Title\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nMay 29, 2025\n\n\nRelease Notes #9\n\n\nMitchell Hargreaves\n\n\n\n\nSep 30, 2024\n\n\nRelease Notes #8\n\n\nMitchell Hargreaves\n\n\n\n\nJul 2, 2024\n\n\nRelease Notes #7\n\n\nMitchell Hargreaves\n\n\n\n\nFeb 21, 2024\n\n\nRelease Notes #6\n\n\nMitchell Hargreaves\n\n\n\n\nDec 15, 2023\n\n\nRelease Notes #5\n\n\nMitchell Hargreaves\n\n\n\n\nNov 10, 2023\n\n\nRelease Notes #4\n\n\nMitchell Hargreaves\n\n\n\n\nOct 13, 2023\n\n\nRelease Notes #3\n\n\nMitchell Hargreaves\n\n\n\n\nSep 22, 2023\n\n\nRelease Notes #2\n\n\nMitchell Hargreaves\n\n\n\n\nSep 5, 2023\n\n\nRelease Notes #1\n\n\nMitchell Hargreaves\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "hardware.html",
@@ -429,7 +429,7 @@
   {
     "objectID": "release/notes009.html",
     "href": "release/notes009.html",
-    "title": "Release Notes #8",
+    "title": "Release Notes #9",
     "section": "",
     "text": "Hello MLeRP users,\nMLeRP has officially crossed 200 users!\nAs you may have noticed, MLeRP has just undergone a major upgrade, increasing the number of compute nodes from 6 to 14! This has allowed us to double the size of the Tabby partition, and for the rest - we’re leaving as whole GPU nodes to assist with Batch processing. We will monitor usage of the cluster and redistribute the nodes if we feel we need to at a later date.\nAs an experiment, we’re setting aside one of these new nodes, mlerp-monash-node13, to run an Ollama server. You can reach this api from any other MLeRP node on port 80. You can use this API to generate LLM responses by calling the endpoints it directly or interact with it through the ollama-python library.\nPlease note that we do not enable the full Ollama API but rather only allow the following endpoints:\n\n/api/generate\n/api/chat\n/api/tags\n/api/show\n/api/embed\n/api/version\n\nOllama can also be integrated with your VSCode workflow through AI assistant plugins like Continue. This allows for AI assisted code generation and code autocomplete without paying for access or sending research data to online services like ChatGPT and Claude.\nFor more information on Ollama, please have a look at our Ollama documentation.\nRegards, Mitchell Hargreaves"
   },
