@@ -1,0 +1,29 @@
+---
+title: "Release Notes #9"
+date: 2025-05-29
+author: Mitchell Hargreaves
+---
+
+Hello MLeRP users,
+
+MLeRP has officially crossed 200 users!
+
+As you may have noticed, MLeRP has just undergone a major upgrade, increasing the number of compute nodes from 6 to 14! This has allowed us to double the size of the Tabby partition, and for the rest - we're leaving as whole GPU nodes to assist with Batch processing. We will monitor usage of the cluster and redistribute the nodes if we feel we need to at a later date.
+
+As an experiment, we're setting aside one of these new nodes, `mlerp-monash-node13`, to run an Ollama server. You can reach this api from any other MLeRP node on port 80. You can use this [API](https://github.com/ollama/ollama/blob/main/docs/api.md) to generate LLM responses by calling the endpoints it directly or interact with it through the [ollama-python](https://github.com/ollama/ollama-python) library.
+
+Please note that we do not enable the full Ollama API but rather only allow the following endpoints:
+
+- /api/generate
+- /api/chat
+- /api/tags
+- /api/show
+- /api/embed
+- /api/version
+
+Ollama can also be integrated with your VSCode workflow through AI assistant plugins like [Continue](https://open-vsx.org/extension/Continue/continue). This allows for AI assisted code generation and code autocomplete without paying for access or sending research data to online services like ChatGPT and Claude.
+
+For more information on Ollama, please have a look at our [Ollama](/usage/ollama.qmd) documentation.
+
+Regards,
+Mitchell Hargreaves

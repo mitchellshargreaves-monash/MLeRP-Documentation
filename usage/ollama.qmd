@@ -4,6 +4,8 @@ title: Ollama
 
 MLeRP is running an Ollama server on `mlerp-monash-node13` which you can access from any other MLeRP node.
 
+### API Endpoints
+
 We do not enable the full Ollama API but rather only allow the following endpoints:
 
 - /api/generate
@@ -13,15 +15,12 @@ We do not enable the full Ollama API but rather only allow the following endpoin
 - /api/embed
 - /api/version
 
-If our existing model library does not suit your purposes, more Ollama models can be made available on request. Alternatively you can consider running Ollama yourself within your SLURM job and maintaining your own model repository. You can do that with the following commands:
-
-```bash
-# Replace this path with wherever you'd like to store your Ollama models
-`export OLLAMA_MODELS="/apps/ollama/models/"`
-`/apps/ollama/ollama serve`
+### Model List
+```{python}
+!curl mlerp-monash-node13:80/api/tags | jq
 ```
 
-Note that these commands need to be run in the same job as the rest of your task. For example if you're working with a Jupyter Lab you will need to open a Jupyter Lab terminal to do this rather than opening a new Terminal App.
+### Ollama Python
 
 This can be used in conjunction with the [ollama-python](https://github.com/ollama/ollama-python) library for large language model experimentation. To connect the library to our API you will need to define a custom client and call it:
 
@@ -39,6 +38,10 @@ client.chat(model='deepseek-r1:70b', messages=[
   },
 ])
 ```
+
+For more information on using Ollama Python have a look at [our tutorial](/tutorials/5_ollama.ipynb).
+
+### Continue
 
 This can be integrated with your VSCode workflow through AI assistant plugins like [Continue](https://open-vsx.org/extension/Continue/continue). This allows you to do tasks like AI assisted code generation and code autocomplete without paying for access or sending research data to online services like ChatGPT and Claude. To do this we recommend the following Continue config:
 
@@ -114,3 +117,15 @@ This can be integrated with your VSCode workflow through AI assistant plugins li
 
 You can find your Continue config at the following path: 
 `.continue/config.json`.
+
+### Running Ollama yourself
+
+If our existing model library does not suit your purposes, more Ollama models can be made available on request. Alternatively you can consider running Ollama yourself within your SLURM job and maintaining your own model repository. You can do that with the following commands:
+
+```bash
+# Replace this path with wherever you'd like to store your Ollama models
+`export OLLAMA_MODELS="/apps/ollama/models/"`
+`/apps/ollama/ollama serve`
+```
+
+Note that these commands need to be run in the same job as the rest of your task. For example if you're working with a Jupyter Lab you will need to open a Jupyter Lab terminal to do this rather than opening a new Terminal App.
