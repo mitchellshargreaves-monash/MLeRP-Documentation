@@ -402,9 +402,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-stdout">
 <pre><code>  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100  3678    0  3678    0     0   173k      0 --:--:-- --:--:-- --:--:--  179k
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100  4008    0  4008    0     0   161k      0 --:--:-- --:--:-- --:--:--  163k
 {
   "models": [
+    {
+      "name": "gpt-oss:120b",
+      "model": "gpt-oss:120b",
+      "modified_at": "2025-08-13T04:08:07.447892868Z",
+      "size": 65290192093,
+      "digest": "f7f8e2f8f4e087e0e6791636dfe1a28d701d548dada674d12ef0d85ccb02a2a4",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "gptoss",
+        "families": [
+          "gptoss"
+        ],
+        "parameter_size": "116.8B",
+        "quantization_level": "MXFP4"
+      }
+    },
     {
       "name": "deepseek-r1:70b",
       "model": "deepseek-r1:70b",
@@ -597,6 +614,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</code></pre>
 </div>
 </div>
+<p>If our existing model library does not suit your purposes, more Ollama models can be made available on request.</p>
 </section>
 <section id="ollama-python" class="level3">
 <h3 class="anchored" data-anchor-id="ollama-python">Ollama Python</h3>
@@ -689,7 +707,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="running-ollama-yourself" class="level3">
 <h3 class="anchored" data-anchor-id="running-ollama-yourself">Running Ollama yourself</h3>
-<p>If our existing model library does not suit your purposes, more Ollama models can be made available on request. Alternatively you can consider running Ollama yourself within your SLURM job and maintaining your own model repository. You can do that with the following commands:</p>
+<p>Alternatively you can consider running Ollama yourself within your SLURM job and maintaining your own model repository. You can do that with the following commands:</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Replace this path with wherever you'd like to store your Ollama models</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="kw">`</span><span class="bu">export</span> <span class="va">OLLAMA_MODELS</span><span class="op">=</span><span class="st">"/apps/ollama/models/"</span><span class="kw">`</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="kw">`</span>/apps/ollama/ollama <span class="va">serve</span><span class="kw">`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
