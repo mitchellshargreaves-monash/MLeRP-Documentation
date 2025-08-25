@@ -20,6 +20,8 @@ We do not enable the full Ollama API but rather only allow the following endpoin
 !curl mlerp-monash-node13:80/api/tags | jq
 ```
 
+If our existing model library does not suit your purposes, more Ollama models can be made available on request. 
+
 ### Ollama Python
 
 This can be used in conjunction with the [ollama-python](https://github.com/ollama/ollama-python) library for large language model experimentation. To connect the library to our API you will need to define a custom client and call it:
@@ -120,7 +122,7 @@ You can find your Continue config at the following path:
 
 ### Running Ollama yourself
 
-If our existing model library does not suit your purposes, more Ollama models can be made available on request. Alternatively you can consider running Ollama yourself within your SLURM job and maintaining your own model repository. You can do that with the following commands:
+Alternatively you can consider running Ollama yourself within your SLURM job and maintaining your own model repository. You can do that with the following commands:
 
 ```bash
 # Replace this path with wherever you'd like to store your Ollama models
