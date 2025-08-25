@@ -1,0 +1,17 @@
+---
+title: "Release Notes #10"
+date: 2025-08-25
+author: Mitchell Hargreaves
+---
+
+Hello MLeRP users,
+
+We have introduced a new app to Strudel, [Open Web UI](https://docs.openwebui.com/). In the words of the developer:
+> Open WebUI is an extensible, feature-rich, and user-friendly self-hosted AI platform designed to operate entirely offline. 
+
+What this means for MLeRP users is that we have configured this app to talk to the [Ollama](https://ollama.com/) server on `mlerp-monash-node13`, allowing you to chat with the LLMs we have hosted there. All while keeping your chat data contained within MLeRP, rather than sending your data to Open AI or some other provider. The app supports uploading documents for RAG as well as internet search and a code compiler. 
+
+We hope that this will allow you to experiment with the models and their capabilities with greater usability than our previous Ollama app, which we will now be retiring, since it's functionality is similar - albeit with a text UI. Note that the deprecation of the Ollama Strudel app, does not prevent you from using the Ollama server through the [ollama-python](https://github.com/ollama/ollama-python) or through [Continue](https://docs.continue.dev/) - this functionality will still be supported.
+
+Regards,
+Mitchell Hargreaves
