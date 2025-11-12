@@ -13,7 +13,7 @@ Please **DO NOT** follow the [official VS Code documentation for remote servers]
 
 By default, if you follow those instructions, you will end up running the VS Code remote server on the login node. Even if you're just managing your files, but especially if you're running a notebook or running scripts we'll need to allocate a resource just for you.
 
-This proxy command which will forward your connection to our compute nodes rather than the login node. This will connect to a `Jupyter Lab` job, or if one doesn't exist, it will make one for you.
+This proxy command which will forward your connection to our compute nodes rather than the login node. This will connect to a `Terminal` job, or if one doesn't exist, it will make one for you.
 
 
 ```bash
@@ -57,7 +57,7 @@ The first configuration will connect directly to the login node, perfect for tes
 ## Using your VS Code remote server
 
 ### 1. Start a job for the remote server
-Using [Strudel2](/usage/strudel2.qmd) in your web browser, login and select Jupyter Lab or Terminal. Choose the resources you will need, including QoS, number of CPUs, amount of RAM and time. Click `Launch` and wait for the job to begin running under `Pending/Running`.
+Using [Strudel2](/usage/strudel2.qmd) in your web browser, login and select Terminal. Choose the resources you will need, including QoS, number of CPUs, amount of RAM and time. Click `Launch` and wait for the job to begin running under `Pending/Running`.
 
 If you skip this step, we will create a default Panther QoS job for you.
 
