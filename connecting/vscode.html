@@ -404,7 +404,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>No problem. You want a VS Code remote server.</p>
 <p>Please <strong>DO NOT</strong> follow the <a href="https://code.visualstudio.com/docs/remote/ssh">official VS Code documentation for remote servers</a>.</p>
 <p>By default, if you follow those instructions, you will end up running the VS Code remote server on the login node. Even if you’re just managing your files, but especially if you’re running a notebook or running scripts we’ll need to allocate a resource just for you.</p>
-<p>This proxy command which will forward your connection to our compute nodes rather than the login node. This will connect to a <code>Jupyter Lab</code> job, or if one doesn’t exist, it will make one for you.</p>
+<p>This proxy command which will forward your connection to our compute nodes rather than the login node. This will connect to a <code>Terminal</code> job, or if one doesn’t exist, it will make one for you.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Linux and Mac</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="va">ProxyCommand</span><span class="op">=</span><span class="st">"ssh &lt;username&gt;@monash-mlerp-login0.mlerp.cloud.edu.au /apps/strudel2/strudel_apps/sshnc.sh"</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -446,7 +446,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="using-your-vs-code-remote-server">Using your VS Code remote server</h2>
 <section id="start-a-job-for-the-remote-server" class="level3">
 <h3 class="anchored" data-anchor-id="start-a-job-for-the-remote-server">1. Start a job for the remote server</h3>
-<p>Using <a href="../usage/strudel2.html">Strudel2</a> in your web browser, login and select Jupyter Lab or Terminal. Choose the resources you will need, including QoS, number of CPUs, amount of RAM and time. Click <code>Launch</code> and wait for the job to begin running under <code>Pending/Running</code>.</p>
+<p>Using <a href="../usage/strudel2.html">Strudel2</a> in your web browser, login and select Terminal. Choose the resources you will need, including QoS, number of CPUs, amount of RAM and time. Click <code>Launch</code> and wait for the job to begin running under <code>Pending/Running</code>.</p>
 <p>If you skip this step, we will create a default Panther QoS job for you.</p>
 </section>
 <section id="start-the-remote-server" class="level3">
