@@ -402,9 +402,198 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-stdout">
 <pre><code>  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100  4656    0  4656    0     0  81486      0 --:--:-- --:--:-- --:--:-- 83142
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100  5650    0  5650    0     0   203k      0 --:--:-- --:--:-- --:--:--  212k
 {
   "models": [
+    {
+      "name": "gemma3:4b",
+      "model": "gemma3:4b",
+      "modified_at": "2025-11-13T05:45:41.810326653Z",
+      "size": 3338801804,
+      "digest": "a2af6cc3eb7fa8be8504abaf9b04e88f17a119ec3f04a3addf55f92841195f5a",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "gemma3",
+        "families": [
+          "gemma3"
+        ],
+        "parameter_size": "4.3B",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "name": "gemma3:270m",
+      "model": "gemma3:270m",
+      "modified_at": "2025-11-13T05:44:11.282400714Z",
+      "size": 291554930,
+      "digest": "e7d36fb2c3b3293cfe56d55889867a064b3a2b22e98335f2e6e8a387e081d6be",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "gemma3",
+        "families": [
+          "gemma3"
+        ],
+        "parameter_size": "268.10M",
+        "quantization_level": "Q8_0"
+      }
+    },
+    {
+      "name": "mistral-small3.2:24b",
+      "model": "mistral-small3.2:24b",
+      "modified_at": "2025-11-13T05:43:24.258437102Z",
+      "size": 15177384862,
+      "digest": "5a408ab55df5c1b5cf46533c368813b30bf9e4d8fc39263bf2a3338cfa3b895b",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "mistral3",
+        "families": [
+          "mistral3"
+        ],
+        "parameter_size": "24.0B",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "name": "llava:34b",
+      "model": "llava:34b",
+      "modified_at": "2025-11-13T05:36:14.88667241Z",
+      "size": 20166497526,
+      "digest": "3d2d24f4667475bd28d515495b0dcc03b5a951be261a0babdb82087fc11620ee",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "llama",
+        "families": [
+          "llama",
+          "clip"
+        ],
+        "parameter_size": "34B",
+        "quantization_level": "Q4_0"
+      }
+    },
+    {
+      "name": "llava:7b",
+      "model": "llava:7b",
+      "modified_at": "2025-11-13T05:26:37.598496648Z",
+      "size": 4733363377,
+      "digest": "8dd30f6b0cb19f555f2c7a7ebda861449ea2cc76bf1f44e262931f45fc81d081",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "llama",
+        "families": [
+          "llama",
+          "clip"
+        ],
+        "parameter_size": "7B",
+        "quantization_level": "Q4_0"
+      }
+    },
+    {
+      "name": "llama3.2-vision:11b",
+      "model": "llama3.2-vision:11b",
+      "modified_at": "2025-11-13T05:21:09.690994005Z",
+      "size": 7816589186,
+      "digest": "6f2f9757ae97e8a3f8ea33d6adb2b11d93d9a35bef277cd2c0b1b5af8e8d0b1e",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "mllama",
+        "families": [
+          "mllama"
+        ],
+        "parameter_size": "10.7B",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "name": "phi4:latest",
+      "model": "phi4:latest",
+      "modified_at": "2025-11-13T05:16:04.435477407Z",
+      "size": 9053116391,
+      "digest": "ac896e5b8b34a1f4efa7b14d7520725140d5512484457fab45d2a4ea14c69dba",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "phi3",
+        "families": [
+          "phi3"
+        ],
+        "parameter_size": "14.7B",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "name": "llama4:16x17b",
+      "model": "llama4:16x17b",
+      "modified_at": "2025-11-13T05:10:58.519998172Z",
+      "size": 67436862523,
+      "digest": "bf31604e25c25d964e250bcf28a82bfbdbe88af5f236257fabb27629bb24c7f3",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "llama4",
+        "families": [
+          "llama4"
+        ],
+        "parameter_size": "108.6B",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "name": "qwen3-vl:32b",
+      "model": "qwen3-vl:32b",
+      "modified_at": "2025-11-13T04:41:59.303402527Z",
+      "size": 20910297800,
+      "digest": "ff2e46876908853b8d0872595047c46d599d970056277e4864c8a1f0fd93fd3b",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3vl",
+        "families": [
+          "qwen3vl"
+        ],
+        "parameter_size": "33.4B",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "name": "qwen3-vl:8b",
+      "model": "qwen3-vl:8b",
+      "modified_at": "2025-11-13T04:33:28.427770398Z",
+      "size": 6140415879,
+      "digest": "901cae73216286ea8c5aba8b46d307ff7188f737285ec500c795a12f05225d28",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3vl",
+        "families": [
+          "qwen3vl"
+        ],
+        "parameter_size": "8.8B",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "name": "qwen3-vl:2b",
+      "model": "qwen3-vl:2b",
+      "modified_at": "2025-11-13T04:30:54.863857977Z",
+      "size": 1889519687,
+      "digest": "0635d9d857d497aeadba3d7d27485746c50554446f9f6ec01ef39788221adbe8",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3vl",
+        "families": [
+          "qwen3vl"
+        ],
+        "parameter_size": "2.1B",
+        "quantization_level": "Q4_K_M"
+      }
+    },
     {
       "name": "qwen3:32b",
       "model": "qwen3:32b",
@@ -505,143 +694,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         ],
         "parameter_size": "7.6B",
         "quantization_level": "Q4_K_M"
-      }
-    },
-    {
-      "name": "llama2:latest",
-      "model": "llama2:latest",
-      "modified_at": "2025-04-11T01:56:23.793691145Z",
-      "size": 3826793677,
-      "digest": "78e26419b4469263f75331927a00a0284ef6544c1975b826b15abdaef17bb962",
-      "details": {
-        "parent_model": "",
-        "format": "gguf",
-        "family": "llama",
-        "families": [
-          "llama"
-        ],
-        "parameter_size": "7B",
-        "quantization_level": "Q4_0"
-      }
-    },
-    {
-      "name": "llava:latest",
-      "model": "llava:latest",
-      "modified_at": "2024-10-19T01:42:13.25114468Z",
-      "size": 4733363377,
-      "digest": "8dd30f6b0cb19f555f2c7a7ebda861449ea2cc76bf1f44e262931f45fc81d081",
-      "details": {
-        "parent_model": "",
-        "format": "gguf",
-        "family": "llama",
-        "families": [
-          "llama",
-          "clip"
-        ],
-        "parameter_size": "7B",
-        "quantization_level": "Q4_0"
-      }
-    },
-    {
-      "name": "phi3:latest",
-      "model": "phi3:latest",
-      "modified_at": "2024-05-22T06:28:54.376692434Z",
-      "size": 2318920898,
-      "digest": "a2c89ceaed85371d0b8a51b5cc70ff054acc37465ea25e72e1612fe28bce7ad9",
-      "details": {
-        "parent_model": "",
-        "format": "gguf",
-        "family": "llama",
-        "families": [
-          "llama"
-        ],
-        "parameter_size": "4B",
-        "quantization_level": "Q4_K_M"
-      }
-    },
-    {
-      "name": "example:latest",
-      "model": "example:latest",
-      "modified_at": "2024-05-22T06:24:49.868288928Z",
-      "size": 4109865272,
-      "digest": "d5995444bef50f0228000a192137c99169a1e208310a4513096fbdb19a1ef434",
-      "details": {
-        "parent_model": "",
-        "format": "gguf",
-        "family": "llama",
-        "families": [
-          "llama"
-        ],
-        "parameter_size": "7.2B",
-        "quantization_level": "Q4_0"
-      }
-    },
-    {
-      "name": "mistral:latest",
-      "model": "mistral:latest",
-      "modified_at": "2024-05-22T05:52:09.029778918Z",
-      "size": 4109865159,
-      "digest": "61e88e884507ba5e06c49b40e6226884b2a16e872382c2b44a42f2d119d804a5",
-      "details": {
-        "parent_model": "",
-        "format": "gguf",
-        "family": "llama",
-        "families": [
-          "llama"
-        ],
-        "parameter_size": "7B",
-        "quantization_level": "Q4_0"
-      }
-    },
-    {
-      "name": "llama3:70b-instruct-q3_K_L",
-      "model": "llama3:70b-instruct-q3_K_L",
-      "modified_at": "2024-05-22T02:54:19.560500966Z",
-      "size": 37140605383,
-      "digest": "e5d560a5f1ae27e8daab2c685267f0816826867187b8a49f48c3dfbb71665130",
-      "details": {
-        "parent_model": "",
-        "format": "gguf",
-        "family": "llama",
-        "families": [
-          "llama"
-        ],
-        "parameter_size": "70.6B",
-        "quantization_level": "Q3_K_L"
-      }
-    },
-    {
-      "name": "mixtral:latest",
-      "model": "mixtral:latest",
-      "modified_at": "2024-05-22T02:11:25.19863845Z",
-      "size": 26442481545,
-      "digest": "d39eb76ed9c5a624130f087be1d6e3267e65025cd264c79deb9b3771e4b7bd19",
-      "details": {
-        "parent_model": "",
-        "format": "gguf",
-        "family": "llama",
-        "families": [
-          "llama"
-        ],
-        "parameter_size": "47B",
-        "quantization_level": "Q4_0"
-      }
-    },
-    {
-      "name": "llama3:latest",
-      "model": "llama3:latest",
-      "modified_at": "2024-05-22T00:37:07.00241393Z",
-      "size": 4661224676,
-      "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
-      "details": {
-        "parent_model": "",
-        "format": "gguf",
-        "family": "llama",
-        "families": [
-          "llama"
-        ],
-        "parameter_size": "8.0B",
-        "quantization_level": "Q4_0"
       }
     }
   ]
