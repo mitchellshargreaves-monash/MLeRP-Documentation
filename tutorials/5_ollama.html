@@ -384,11 +384,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="preparing-the-dataset" class="level2">
 <h2 class="anchored" data-anchor-id="preparing-the-dataset">Preparing the dataset</h2>
 <p>The Wikitext 2 dataset is easily available through the Hugging Face library ‘datasets’, but rather than splitting the dataset by article like we need the data is split by paragraph. This means we’ll need to reprocess the dataset back into articles for our example.</p>
-<div class="cell" data-execution_count="2">
+<div class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> datasets <span class="im">import</span> load_dataset</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>ds <span class="op">=</span> load_dataset(<span class="st">"Salesforce/wikitext"</span>, <span class="st">"wikitext-2-raw-v1"</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>ds[<span class="st">"test"</span>][<span class="st">"text"</span>][:<span class="dv">10</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="2">
+<div class="cell-output cell-output-stderr">
+<pre><code>/home/mhar0048/miniforge3/envs/ollama2/lib/python3.11/site-packages/tqdm/auto.py:21: TqdmWarning: IProgress not found. Please update jupyter and ipywidgets. See https://ipywidgets.readthedocs.io/en/stable/user_install.html
+  from .autonotebook import tqdm as notebook_tqdm</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="1">
 <pre><code>['',
  ' = Robert Boulter = \n',
  '',
@@ -405,21 +409,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 - Headers have the format: <code>" = &lt;HEADING&gt; = \n"</code><br>
 - Subheadings have the format: <code>" = = &lt;SUBHEADING&gt; = = \n"</code><br>
 - Subsubheadings have the format: <code>" = = = &lt;SUBSUBHEADING&gt; = = = \n"</code></p>
-<div class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>articles <span class="op">=</span> []</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Drop the 0th line as its empty</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> line <span class="kw">in</span> ds[<span class="st">"test"</span>][<span class="st">"text"</span>][<span class="dv">1</span>:]:</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Identify headings, but exclude subheadings and subsubheadings</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> line[:<span class="dv">3</span>] <span class="op">==</span> <span class="st">" = "</span> <span class="kw">and</span> line[<span class="dv">3</span>] <span class="op">!=</span> <span class="st">"="</span>:</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>        articles.append(line)</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>        articles[<span class="op">-</span><span class="dv">1</span>] <span class="op">+=</span> line</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>articles <span class="op">=</span> []</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Drop the 0th line as its empty</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> line <span class="kw">in</span> ds[<span class="st">"test"</span>][<span class="st">"text"</span>][<span class="dv">1</span>:]:</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Identify headings, but exclude subheadings and subsubheadings</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> line[:<span class="dv">3</span>] <span class="op">==</span> <span class="st">" = "</span> <span class="kw">and</span> line[<span class="dv">3</span>] <span class="op">!=</span> <span class="st">"="</span>:</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>        articles.append(line)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>        articles[<span class="op">-</span><span class="dv">1</span>] <span class="op">+=</span> line</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check the first 100 characters of the first 5 articles to make sure we split the dataset correctly</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> article <span class="kw">in</span> articles[:<span class="dv">5</span>]:</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(article[:<span class="dv">100</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check the first 100 characters of the first 5 articles to make sure we split the dataset correctly</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> article <span class="kw">in</span> articles[:<span class="dv">5</span>]:</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(article[:<span class="dv">100</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> = Robert Boulter = 
  Robert Boulter is an English film , television and theatre actor . He had a gu
@@ -439,32 +443,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>To use the ollama library we need to point it to a running Ollama server.</p>
 <p>MLeRP is running an Ollama server on <code>mlerp-monash-node13</code> which you can access from any other MLeRP node. To connect the library to our API you will need to define a custom client and call it:</p>
 <div class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> ollama <span class="im">import</span> Client</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>client <span class="op">=</span> Client(</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  host<span class="op">=</span><span class="st">'http://mlerp-monash-node13:80'</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> client.chat(model<span class="op">=</span><span class="st">'llama3'</span>, messages<span class="op">=</span>[</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  {</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">'role'</span>: <span class="st">'user'</span>,</span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">'content'</span>: <span class="st">'Why is the sky blue?'</span>,</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  },</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>])</span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(response)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> ollama <span class="im">import</span> Client</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>client <span class="op">=</span> Client(</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  host<span class="op">=</span><span class="st">'http://mlerp-monash-node13:80'</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> client.chat(model<span class="op">=</span><span class="st">'llama4:16x17b'</span>, messages<span class="op">=</span>[</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  {</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">'role'</span>: <span class="st">'user'</span>,</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">'content'</span>: <span class="st">'Why is the sky blue?'</span>,</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  },</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>])</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(response)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>{'model': 'llama3', 'created_at': '2025-08-13T01:45:32.825751542Z', 'message': {'role': 'assistant', 'content': "The sky appears blue because of a phenomenon called Rayleigh scattering, named after the British physicist Lord Rayleigh. Here's what happens:\n\n1. **Sunlight enters Earth's atmosphere**: When sunlight travels through space and reaches our planet, it contains all the colors of the visible spectrum, including red, orange, yellow, green, blue, indigo, and violet.\n2. **Molecules in the air scatter shorter wavelengths**: As this light travels through the atmosphere, it encounters tiny molecules of gases like nitrogen (N2) and oxygen (O2). These molecules are much smaller than the wavelength of visible light.\n3. **Blue light is scattered more**: When the shorter-wavelength blue light hits these molecules, it is scattered in all directions by the molecules themselves. This scattering effect is more pronounced for shorter wavelengths, like blue and violet, because they interact more strongly with the small air molecules.\n4. **Red light continues to travel straight**: Meanwhile, the longer-wavelength red light travels through the atmosphere relatively unaffected, since it doesn't scatter as much due to its larger wavelength. This allows red light to reach our eyes from a more direct path.\n5. **Our eyes perceive blue**: When we look at the sky, our eyes see the scattered blue light as blue, while the unscattered longer-wavelength light (like red and orange) appears as the sky's subtle gradient of color. The exact shade of blue can vary depending on atmospheric conditions like pollution, dust, and water vapor.\n\nIn summary, the sky appears blue because shorter-wavelength blue light is scattered more by the tiny molecules in the air, while longer-wavelength red light continues to travel straighter to our eyes, resulting in the blue hue we see."}, 'done_reason': 'stop', 'done': True, 'total_duration': 5800302752, 'load_duration': 2759382579, 'prompt_eval_count': 16, 'prompt_eval_duration': 213570364, 'eval_count': 351, 'eval_duration': 2826615612}</code></pre>
+<pre><code>{'model': 'llama4:16x17b', 'created_at': '2025-12-19T03:33:17.292997186Z', 'message': {'role': 'assistant', 'content': "The sky appears blue because of a phenomenon called Rayleigh scattering, which occurs when sunlight interacts with the Earth's atmosphere. Here's a simplified explanation:\n\n1. **Sunlight**: The sun emits a wide range of electromagnetic radiation, including visible light, which is made up of different colors (wavelengths).\n2. **Atmosphere**: When sunlight enters Earth's atmosphere, it encounters tiny molecules of gases like nitrogen (N2) and oxygen (O2).\n3. **Scattering**: These gas molecules scatter the sunlight in all directions. The amount of scattering that occurs depends on the wavelength of the light.\n4. **Wavelength and scattering**: Shorter wavelengths (like blue and violet) are scattered more than longer wavelengths (like red and orange). This is known as Rayleigh scattering.\n5. **Blue dominance**: As a result of this scattering, the blue light is dispersed throughout the atmosphere, making it visible from all directions. This is why the sky typically appears blue during the daytime.\n\nOther factors can influence the color of the sky, such as:\n\n* **Dust and water vapor**: Tiny particles in the air can scatter light in different ways, affecting the apparent color of the sky.\n* **Time of day**: During sunrise and sunset, the light travels through more of the atmosphere, scattering shorter wavelengths and making the sky appear redder.\n* **Atmospheric conditions**: Pollution, dust, and water vapor can alter the apparent color of the sky.\n\nSo, to summarize, the sky appears blue because of the scattering of sunlight by the tiny molecules in the Earth's atmosphere, with shorter wavelengths (like blue) being scattered more than longer wavelengths."}, 'done': True, 'done_reason': 'stop', 'total_duration': 235749943260, 'load_duration': 229259105041, 'prompt_eval_count': 349, 'prompt_eval_duration': 720422763, 'eval_count': 329, 'eval_duration': 5455994274}</code></pre>
 </div>
 </div>
 <p>We can then formulate our request to the LLM using the articles from our dataset and ask for it’s summary</p>
-<div class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> client.chat(model<span class="op">=</span><span class="st">'llama3'</span>, messages<span class="op">=</span>[</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  {</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'role'</span>: <span class="st">'user'</span>,</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'content'</span>: <span class="st">"Please summarise this article:</span><span class="ch">\n\n\n</span><span class="st">"</span> <span class="op">+</span> articles[<span class="dv">0</span>],</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  },</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>])</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(response[<span class="st">'message'</span>][<span class="st">'content'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> client.chat(model<span class="op">=</span><span class="st">'llama3'</span>, messages<span class="op">=</span>[</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  {</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'role'</span>: <span class="st">'user'</span>,</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'content'</span>: <span class="st">"Please summarise this article:</span><span class="ch">\n\n\n</span><span class="st">"</span> <span class="op">+</span> articles[<span class="dv">0</span>],</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  },</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>])</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(response[<span class="st">'message'</span>][<span class="st">'content'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>The article is about the career of English actor Robert Boulter. Here's a summary:
 
@@ -479,23 +483,23 @@ Later Career: Boulter had a recurring role on the TV series "Casualty" (2010-201
 Throughout his career, Boulter has received positive reviews from critics and has worked with notable actors such as Ben Whishaw and Mark Strong.</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># And finally we can automate </span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>responses <span class="op">=</span> []</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> article <span class="kw">in</span> articles:</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    response <span class="op">=</span> client.chat(model<span class="op">=</span><span class="st">'llama3'</span>, messages<span class="op">=</span>[</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>        {</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>            <span class="st">'role'</span>: <span class="st">'user'</span>,</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>            <span class="st">'content'</span>: <span class="st">"Please summarise this article:</span><span class="ch">\n\n\n</span><span class="st">"</span> <span class="op">+</span> article,</span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>        },</span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    ])</span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>    responses.append(response[<span class="st">'message'</span>][<span class="st">'content'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># And finally we can automate </span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>responses <span class="op">=</span> []</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> article <span class="kw">in</span> articles:</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    response <span class="op">=</span> client.chat(model<span class="op">=</span><span class="st">'llama3'</span>, messages<span class="op">=</span>[</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>        {</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>            <span class="st">'role'</span>: <span class="st">'user'</span>,</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>            <span class="st">'content'</span>: <span class="st">"Please summarise this article:</span><span class="ch">\n\n\n</span><span class="st">"</span> <span class="op">+</span> article,</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>        },</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    ])</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    responses.append(response[<span class="st">'message'</span>][<span class="st">'content'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the first 5 summaries</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> response <span class="kw">in</span> responses[:<span class="dv">5</span>]:</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(response)</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"======================"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the first 5 summaries</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> response <span class="kw">in</span> responses[:<span class="dv">5</span>]:</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(response)</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"======================"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>The article is a biographical summary of Robert Boulter, an English actor. Here's a brief overview:
 
