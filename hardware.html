@@ -381,10 +381,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
+<p>MLeRP features 40GB A100 GPUs. Each MLeRP node has 54 VCPUs, 460 GB RAM, 1.5 TB NVME and 2 GPUs attached, though many of them are split into MIG partitions.</p>
 <p>MLeRP workloads are able to make use of the attached NVME on the compute nodes by writing to <code>/tmp</code>. These files will remain accessible for the course of your job.</p>
 <p>MLeRP is designed to be flexible. It is split into two partitions: <code>HouseCats</code> and <code>BigCats</code>.</p>
 <p><img src="images/mlerp-monash-arch.drawio.png" class="img-fluid"></p>
-<p>The <code>HouseCats</code> is optimised for user friendliness, featuring GPU reservations. However, reservations are in limited supply, and restricted to the smallest sizes of GPUs. Once users become more comforatble with the platform and are ready to scale up their work, we encourage users to move to the <code>BigCats</code> partition which features larger GPU sizes and more flexible and powerful ways to interact with the cluster.</p>
+<p>The <code>HouseCats</code> is optimised for user friendliness, featuring GPU reservations. However, reservations are in limited supply. Once users become more comforatble with the platform and are ready to scale up their work, we encourage users to move to the <code>BigCats</code> partition which features larger GPU sizes and more flexible and powerful ways to interact with the cluster.</p>
 <section id="housecats-partition" class="level3">
 <h3 class="anchored" data-anchor-id="housecats-partition"><code>HouseCats</code> Partition</h3>
 <p><strong>Tabby QoS</strong></p>
