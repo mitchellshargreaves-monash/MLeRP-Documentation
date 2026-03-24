@@ -2,13 +2,15 @@
 title: Partitions and Qualities of Service
 ---
 
+MLeRP features 40GB A100 GPUs. Each MLeRP node has 54 VCPUs, 460 GB RAM, 1.5 TB NVME and 2 GPUs attached, though many of them are split into MIG partitions. 
+
 MLeRP workloads are able to make use of the attached NVME on the compute nodes by writing to `/tmp`. These files will remain accessible for the course of your job.
 
 MLeRP is designed to be flexible. It is split into two partitions: `HouseCats` and `BigCats`.
 
 ![](images/mlerp-monash-arch.drawio.png)
 
-The `HouseCats` is optimised for user friendliness, featuring GPU reservations. However, reservations are in limited supply, and restricted to the smallest sizes of GPUs. Once users become more comforatble with the platform and are ready to scale up their work, we encourage users to move to the `BigCats` partition which features larger GPU sizes and more flexible and powerful ways to interact with the cluster.
+The `HouseCats` is optimised for user friendliness, featuring GPU reservations. However, reservations are in limited supply. Once users become more comforatble with the platform and are ready to scale up their work, we encourage users to move to the `BigCats` partition which features larger GPU sizes and more flexible and powerful ways to interact with the cluster.
 
 ### `HouseCats` Partition
 
