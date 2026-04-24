@@ -402,8 +402,215 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-stdout">
 <pre><code>  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100  4109    0  4109    0     0   133k      0 --:--:-- --:--:-- --:--:--  138k
-/bin/bash: line 1: jq: command not found</code></pre>
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100  4101    0  4101    0     0   205k      0 --:--:-- --:--:-- --:--:--  210k
+{
+  "models": [
+    {
+      "name": "qwen3-vl:8b-thinking-bf16",
+      "model": "qwen3-vl:8b-thinking-bf16",
+      "modified_at": "2026-03-25T00:59:08.366757298Z",
+      "size": 17542391455,
+      "digest": "a86052dd9262fb994cc656c431231377512df1c7b8a64ff368baf1e7517041aa",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3vl",
+        "families": [
+          "qwen3vl"
+        ],
+        "parameter_size": "8.8B",
+        "quantization_level": "F16"
+      }
+    },
+    {
+      "name": "qwen3-vl:8b-instruct-bf16",
+      "model": "qwen3-vl:8b-instruct-bf16",
+      "modified_at": "2026-03-25T00:49:25.762391645Z",
+      "size": 17542391551,
+      "digest": "55aa31bad4e2ded596d2d491708e0c07b72b15c68606b523ce2d86b6231b4e9d",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3vl",
+        "families": [
+          "qwen3vl"
+        ],
+        "parameter_size": "8.8B",
+        "quantization_level": "F16"
+      }
+    },
+    {
+      "name": "gpt-oss:20b",
+      "model": "gpt-oss:20b",
+      "modified_at": "2026-02-11T03:12:11.392282858Z",
+      "size": 13793441244,
+      "digest": "17052f91a42e97930aa6e28a6c6c06a983e6a58dbb00434885a0cf5313e376f7",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "gptoss",
+        "families": [
+          "gptoss"
+        ],
+        "parameter_size": "20.9B",
+        "quantization_level": "MXFP4"
+      }
+    },
+    {
+      "name": "qwen3:30b-a3b-instruct-2507-fp16",
+      "model": "qwen3:30b-a3b-instruct-2507-fp16",
+      "modified_at": "2026-01-19T02:23:30.299775831Z",
+      "size": 61095815695,
+      "digest": "2ad425bc080c78daab8840c77aad6bb55a64a8f7b589885ddb6075b1d3e3203a",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3moe",
+        "families": [
+          "qwen3moe"
+        ],
+        "parameter_size": "30.5B",
+        "quantization_level": "F16"
+      }
+    },
+    {
+      "name": "llama3.2-vision:11b",
+      "model": "llama3.2-vision:11b",
+      "modified_at": "2025-11-13T05:21:09.690994005Z",
+      "size": 7816589186,
+      "digest": "6f2f9757ae97e8a3f8ea33d6adb2b11d93d9a35bef277cd2c0b1b5af8e8d0b1e",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "mllama",
+        "families": [
+          "mllama"
+        ],
+        "parameter_size": "10.7B",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "name": "phi4:latest",
+      "model": "phi4:latest",
+      "modified_at": "2025-11-13T05:16:04.435477407Z",
+      "size": 9053116391,
+      "digest": "ac896e5b8b34a1f4efa7b14d7520725140d5512484457fab45d2a4ea14c69dba",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "phi3",
+        "families": [
+          "phi3"
+        ],
+        "parameter_size": "14.7B",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "name": "llama4:16x17b",
+      "model": "llama4:16x17b",
+      "modified_at": "2025-11-13T05:10:58.519998172Z",
+      "size": 67436862523,
+      "digest": "bf31604e25c25d964e250bcf28a82bfbdbe88af5f236257fabb27629bb24c7f3",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "llama4",
+        "families": [
+          "llama4"
+        ],
+        "parameter_size": "108.6B",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "name": "qwen3-vl:32b",
+      "model": "qwen3-vl:32b",
+      "modified_at": "2025-11-13T04:41:59.303402527Z",
+      "size": 20910297800,
+      "digest": "ff2e46876908853b8d0872595047c46d599d970056277e4864c8a1f0fd93fd3b",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3vl",
+        "families": [
+          "qwen3vl"
+        ],
+        "parameter_size": "33.4B",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "name": "gemma3:27b",
+      "model": "gemma3:27b",
+      "modified_at": "2025-09-15T04:18:51.306115308Z",
+      "size": 17396936941,
+      "digest": "a418f5838eaf7fe2cfe0a3046c8384b68ba43a4435542c942f9db00a5f342203",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "gemma3",
+        "families": [
+          "gemma3"
+        ],
+        "parameter_size": "27.4B",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "name": "gpt-oss:120b",
+      "model": "gpt-oss:120b",
+      "modified_at": "2025-08-13T04:08:07.447892868Z",
+      "size": 65290192093,
+      "digest": "f7f8e2f8f4e087e0e6791636dfe1a28d701d548dada674d12ef0d85ccb02a2a4",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "gptoss",
+        "families": [
+          "gptoss"
+        ],
+        "parameter_size": "116.8B",
+        "quantization_level": "MXFP4"
+      }
+    },
+    {
+      "name": "nomic-embed-text:latest",
+      "model": "nomic-embed-text:latest",
+      "modified_at": "2025-05-09T03:52:16.498038773Z",
+      "size": 274302450,
+      "digest": "0a109f422b47e3a30ba2b10eca18548e944e8a23073ee3f3e947efcf3c45e59f",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "nomic-bert",
+        "families": [
+          "nomic-bert"
+        ],
+        "parameter_size": "137M",
+        "quantization_level": "F16"
+      }
+    },
+    {
+      "name": "qwen2.5-coder:latest",
+      "model": "qwen2.5-coder:latest",
+      "modified_at": "2025-05-09T03:51:42.066102898Z",
+      "size": 4683087519,
+      "digest": "2b0496514337a3d5901f1d253d01726c890b721e891335a56d6e08cedf3e2cb0",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen2",
+        "families": [
+          "qwen2"
+        ],
+        "parameter_size": "7.6B",
+        "quantization_level": "Q4_K_M"
+      }
+    }
+  ]
+}</code></pre>
 </div>
 </div>
 <p>If our existing model library does not suit your purposes, more Ollama models can be made available on request.</p>

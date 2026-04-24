@@ -390,7 +390,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="housecats-partition"><code>HouseCats</code> Partition</h3>
 <p><strong>Tabby QoS</strong></p>
 <p>The is where we expect most users to start their journey with us. The Tabby service is optimised for user friendliness by giving a GPU reservation which gives an experience similar to running a notebook on your own desktop or on Google Collab.</p>
-<p>We reccommend the Tabby QoS terminals for managing environments as both conda and mamba are memory intensive processes, furthermore, some packages such as <code>py-xgboost-gpu</code> require a GPU to be present during install.</p>
+<p>We recommend the Tabby QoS terminals for managing environments as both conda and mamba are memory intensive processes, furthermore, some packages such as <code>py-xgboost-gpu</code> require a GPU to be present during install.</p>
 <ul>
 <li>Job type: GPU Reservations</li>
 <li>Walltime: 24 hours</li>
@@ -441,7 +441,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h4 class="anchored" data-anchor-id="cheetah-qos"><strong>Cheetah QoS</strong></h4>
 <p>The Cheetah QoS is optimised for work that can be split into many smaller jobs. Dask workers will default to using this queue allowing them to spin up quickly as its much easier to clear the resources for smaller short jobs than larger ones. The small walltime allows Cheetah jobs to be taken on by the cluster whenever there is room, allowing your workload to scale up and down and adapt to the ‘weather’ of the cluster.</p>
 <p>This service is also suitable for any pre or post processing jobs which can be done on individual samples by batching your work to be handled in chunks rather than clearing the resources needed to process everything at once.</p>
-<p>Since Cheetah QoS jobs are intended to be short lived, ensure that you are checkpointing your work periodically so that in the event that your worker needs to be restarted you can resume your work with minimal interuption.</p>
+<p>Since Cheetah QoS jobs are intended to be short lived, ensure that you are checkpointing your work periodically so that in the event that your worker needs to be restarted you can resume your work with minimal interruption.</p>
 <ul>
 <li>Job type: Short running dask workers or batch jobs</li>
 <li>Walltime: 30 minutes</li>
